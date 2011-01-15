@@ -131,4 +131,4 @@ endif
 
 "Directories for swp files
 set backupdir=~/.vim/backup
-set directory=~/.vim/backu
+set directory=~/.vim/backup
