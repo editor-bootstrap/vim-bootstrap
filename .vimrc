@@ -9,11 +9,17 @@ set cursorline
 
 " Whitespace stuff
 " set nowrap
+
 set tabstop=4
+set softtabstop=0
 set shiftwidth=4
-" set softtabstop=2
 set expandtab
-set list listchars=tab:\ \ ,trail:·
+
+" set smartindent
+" set tabstop=4
+" set shiftwidth=4
+" set expandtab
+" set list listchars=tab:\ \ ,trail:·
 
 " Searching
 set hlsearch
@@ -29,7 +35,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
 set laststatus=2
 
 " NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$']
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
 map <Leader>n :NERDTreeToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 
@@ -59,9 +65,8 @@ function s:setupMarkup()
   map <buffer> <Leader>p :Mm <CR>
 endfunction
 
-" make and python use real tabs
+" make use real tabs
 au FileType make                                     set noexpandtab
-au FileType python                                   set noexpandtab
 
 " Thorfile, Rakefile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
@@ -110,8 +115,8 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 " no one is really happy until you have this shortcuts
-cab W! w!  
-cab Q! q! 
+cab W! w!
+cab Q! q!
 cab Wq wq
 cab Wa wa
 cab wQ wq
