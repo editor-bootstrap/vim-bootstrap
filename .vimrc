@@ -1,7 +1,7 @@
 set nocompatible
 
-set number
 set ruler
+set number
 syntax on
 
 " cursor line
@@ -10,16 +10,11 @@ set cursorline
 " Whitespace stuff
 " set nowrap
 
+" tab
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
-
-" set smartindent
-" set tabstop=4
-" set shiftwidth=4
-" set expandtab
-" set list listchars=tab:\ \ ,trail:·
 
 " Searching
 set hlsearch
@@ -33,6 +28,9 @@ set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
 
 " Status bar
 set laststatus=2
+
+map <C-K> :!python<CR>
+map <C-L> :!python %<CR>
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
@@ -107,7 +105,9 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+color eclipse
+set transparency=5
+
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
