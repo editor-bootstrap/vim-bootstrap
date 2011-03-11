@@ -29,8 +29,18 @@ set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
 " Status bar
 set laststatus=2
 
+" Python
 map <C-K> :!python<CR>
 map <C-L> :!python %<CR>
+
+
+" Screen
+map <Leader>h :split<CR>
+map <Leader>v :vsplit<CR>
+
+map <Leader>ga :!git add .<CR>
+map <Leader>gc :!git commit -m '<C-R>="'"<CR>
+map <Leader>gsh :!git push<CR>
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
@@ -105,9 +115,11 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color eclipse
-set transparency=5
-
+" color eclipse
+" set transparency=5
+" colorscheme desert
+color wombat
+set background=dark
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
@@ -128,6 +140,20 @@ cab Q q
 if has("gui_running")
     set guioptions=egmrt
 endif
+
+
+" Autocomplet Django Template
+let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
+let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
+let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
+let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
+let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
+
+" Virtualenv
+let g:virtualenv_directory = "~/.virtualenvs"
+let g:virtualenv_stl_format = "[%n]"
+let g:virtualenv_name = "dojo"
+
 
 "Directories for swp files
 set backupdir=~/.vim/backup
