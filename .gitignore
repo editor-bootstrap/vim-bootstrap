@@ -1,0 +1,16 @@
+.netrwhist
+tmp
+nerdtree_plugin
+
+after
+autoload
+doc
+plugin
+ruby
+snippets
+syntax
+ftdetect
+ftplugin
+colors
+indent
+.VimballRecord
