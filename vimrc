@@ -1,16 +1,20 @@
 set nocompatible
 
-set number
 set ruler
+set number
 syntax on
 
+" cursor line
+set cursorline
+
 " Whitespace stuff
-set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+" set nowrap
+
+" tab
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
 set expandtab
-set list listchars=tab:\ \ ,trail:·
 
 " Searching
 set hlsearch
@@ -25,18 +29,34 @@ set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
 " Status bar
 set laststatus=2
 
+" Python
+map <C-K> :!python<CR>
+map <C-L> :!python %<CR>
+
+" Screen
+map <Leader>h :split<CR>
+map <Leader>v :vsplit<CR>
+
+map <Leader>ga :!git add .<CR>
+map <Leader>gc :!git commit -m '<C-R>="'"<CR>
+map <Leader>gsh :!git push<CR>
+
+map <Leader>p :Dpaste<CR>
+
 " NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
+let NERDTreeShowBookmarks=1
 map <Leader>n :NERDTreeToggle<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
-
-" CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
 " Remember last location in file
 if has("autocmd")
@@ -55,9 +75,15 @@ function s:setupMarkup()
   map <buffer> <Leader>p :Mm <CR>
 endfunction
 
-" make and python use real tabs
+" make use real tabs
 au FileType make                                     set noexpandtab
-au FileType python                                   set noexpandtab
+
+" code completion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
 
 " Thorfile, Rakefile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
@@ -98,12 +124,44 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+set background=dark
+if has("gui_running")
+    set guioptions-=T
+    set t_Co=256
+    " set transparency=5
+    colorscheme molokai
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    set guioptions=egmrt
+else
+    colorscheme peaksea
+endif
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" no one is really happy until you have this shortcuts
+cab W! w!
+cab Q! q!
+cab Wq wq
+cab Wa wa
+cab wQ wq
+cab WQ wq
+cab W w
+cab Q q
+
+" Virtualenv
+let g:virtualenv_directory = "~/.virtualenvs"
+let g:virtualenv_stl_format = "[%n]"
+let g:virtualenv_name = "dojo"
+
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+
+set bomb
+set fileencoding=utf-8
 
 "Directories for swp files
 set backupdir=~/.vim/backup
