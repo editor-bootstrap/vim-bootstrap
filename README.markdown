@@ -24,7 +24,7 @@ report an issue to the issue tracker.
    done`
 1. `git clone git://github.com/avelino/.vimrc.git ~/.vim`
 2. `cd ~/.vim`
-3. `rake`
+3. `cp .vimrc ../`
 
 or
 
