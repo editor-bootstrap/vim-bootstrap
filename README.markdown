@@ -1,4 +1,4 @@
-# Janus: Carlhuda's vim Distribution
+# Avelino's vim Distribution
 
 This is a basic distribution of vim plugins and tools intended to be run
 on top of the latest MacVIM snapshot.
@@ -22,13 +22,13 @@ report an issue to the issue tracker.
 
 0. `for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old;
    done`
-1. `git clone git://github.com/carlhuda/janus.git ~/.vim`
+1. `git clone git://github.com/avelino/.vimrc.git ~/.vim`
 2. `cd ~/.vim`
 3. `rake`
 
 or
 
-  `curl https://github.com/carlhuda/janus/raw/master/bootstrap.sh -o - | sh`
+  `curl https://github.com/avelino/.vimrc/raw/master/bootstrap.sh -o - | sh`
 
 ## Updating to the latest version
 
@@ -252,3 +252,7 @@ To permanently set a color scheme, update your local vimrc files:
 
     echo color desert > ~/.vimrc.local
     echo color jellybeans+ > ~/.gvimrc.local
+
+
+
+by github.com/carlhuda/janus
