@@ -1,0 +1,156 @@
+*ConqueTerm* Plugin to run a shell in a buffer
+
+The ConqueTerm plugin will convert a buffer into a terminal emulator, allowing
+you to run a shell or shell application in the buffer.
+
+                                                           *conque_term-usage*
+
+Type :ConqueTerm <command> to launch an application in the current buffer. E.g.
+
+  :ConqueTerm bash
+  :ConqueTerm mysql -h localhost -u joe_lunchbox Menu
+  :ConqueTerm man top
+
+Use :ConqueTermSplit or :ConqueTermVSplit to open Conque in a new horizontal
+or vertical buffer.
+
+Keys pressed in insert mode will be sent to the shell, along with output from
+the 'p' command in normal mode.
+
+Press the <Esc> key twice to send a single <Esc> to the shell. Pressing this 
+key once will leave insert mode like normal.
+
+Press <F9> in any buffer to send a visual selection to the shell.
+
+
+                                                         *conque_term-settings*
+
+Set the following in your .vimrc (default values shown)
+
+" Enable colors. Setting this to 0 will make your terminal faster.
+let g:ConqueTerm_Color = 1
+
+" Set your terminal type. I strong recommend leaving this as vt100, 
+" however more features may be enabled with xterm.
+let g:ConqueTerm_TERM = 'vt100'
+
+" Set buffer syntax. Conque has highlighting for MySQL, but not much else.
+let g:ConqueTerm_Syntax = 'conque'
+
+" Continue updating shell when it's not the current, focused buffer
+let g:ConqueTerm_ReadUnfocused = 1
+
+
+                                                     *conque_term-requirements*
+
+The following minimum requirements are needed to run Conque. Conque will not 
+run on Windows without a Cygwin-like environment.
+
+ - Vim 7.1
+ - Python 2.3
+ - Supported operating systems: *nix, Mac, or Cygwin
+
+Tested on:
+ - Vim 7.2 / Python 2.6 / Ubuntu 9.10 (Gnome & GTK)
+ - Vim 7.2 / Python 2.6 / FreeBSD 8.0 (GTK)
+ - Vim 7.1 / Python 2.6 / FreeBSD 8.0 (GTK)
+ x Vim 7.0 / Python 2.6 / FreeBSD 8.0 (GTK)
+    * feedkeys() doesn't restart updatetime
+ - Vim 7.2 / Python 2.4 / OpenSolaris 2009.06 (Gnome)
+ - Vim 7.2 / Python 2.4 / CentOS 5.3 (no GUI)
+ - Vim 7.1 / Python 2.3 / RHEL 4 (no GUI)
+ - Vim 7.2 / Python 2.5 / Cygwin (Windows Vista 64b)
+ - MacVim 7.2 / Python 2.3 / OS X 10.6.2
+
+                                                             *conque_term-bugs*
+
+The following are known limitations:
+
+ - Font/color highlighting is imperfect and slow. If you don't care about
+   color in your shell, set g:ConqueTerm_Color = 0 in your .vimrc
+ - Conque only supports the extended ASCII character set for input, not utf-8.
+ - VT100 escape sequence support is not complete.
+ - Alt/Meta key support in Vim isn't great in general, and conque is no 
+   exception. Pressing <Esc><Esc>x or <Esc><M-x> instead of <M-x> works in 
+   most cases.
+
+                                                             *conque_term-todo*
+
+ - Fix pasting from named registers
+ - Polling unfucused conque buffers (Top explodes when window resizes)
+ - Enable graphics character set
+ - Consider supporting xterm escapes
+ - Improve color logic
+ - Find a solution to UTF-8 input (See InsertCharPre in Vim todo.txt)
+ - Find an alternative to updatetime polling (See Vim todo.txt)
+ - Find a graceful solution to Meta key input
+ - Windows support 
+   (See PyConsole http://www.vim.org/scripts/script.php?script_id=1974)
+ - Always: look for performance improvements
+
+
+                                                       *conque_term-contribute*
+
+The two contributions most in need are improvements to Vim itself. I currently 
+use hacks to simulate a key press event and repeating CursorHold event. The 
+Vim todo.txt document lists proposed improvements to give users this behavior 
+without hacks. Having a key press event should allow Conque to work with multi-
+byte input. If you are a Vim developer, please consider prioritizing these two 
+items: 
+
+ - todo.txt (Autocommands, line ~3137)
+     8   Add an event like CursorHold that is triggered repeatedly, not just 
+         once after typing something.
+
+ - todo.txt (Autocommands, proposed event list, line ~3189)
+     InsertCharPre   - user typed character Insert mode, before inserting the
+     char.  Pattern is matched with text before the cursor. Set v:char to the 
+     character, can be changed. (not triggered when 'paste' is set).
+
+Bugs, suggestions and patches are all welcome.
+
+For more information visit http://conque.googlecode.com
+
+Check out the latest from svn at http://conque.googlecode.com/svn/trunk/
+
+                                                       *conque_term-changelog*
+
+ - 1.0 / 2010-02-
+    * Complete python rewrite
+    * Add support for ncurses based applications
+    * Add continuous polling, instead of using <Tab>
+    * Improve speed
+    * Improve syntax highlighting
+
+ - 0.6 / 2009-12-18
+    * Fix GVim errors with non-english locale
+    * No functional changes
+
+ - 0.5 / 2009-12-02
+    * Various performance enhancements and bugfixes. 
+    * Rewritten escape sequence processing
+
+ - 0.4 / 2009-10-30
+    * Improved history and tab completion
+    * Fix escape sequence formatting and improve highlighting
+    * Send selected text to shell from any buffer
+    * Add special handling of "vi" and "man" commands
+    * Improve error handling
+    * Add key mappings for <C-p> <C-n> <C-l> <C-j>
+    * Various bugfixes
+
+ - 0.3 / 2009-10-13
+    * Apply escape sequence coloring to output, e.g. ls --color
+    * Clean up syntax files for portability
+    * Fix several Vim 7.1 bugs
+    * Bugfixes for multiple shell buffers
+    * Add experimental shell folding option
+
+ - 0.2 / 2009-10-01
+    * Rewritten subprocess management module in python instead of c
+    * Added support for OS X, partial support for Windows
+    * Improved tab completion
+
+ - 0.1 / 2009-09-03
+    * Initial release
+
