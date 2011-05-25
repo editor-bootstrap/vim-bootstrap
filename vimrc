@@ -1,11 +1,35 @@
 set nocompatible
 
+" activate a permanent ruler and disable Toolbar, and add line
+" highlightng as well as numbers.
+" And disable the sucking pydoc preview window for the omni completion
+" also highlight current line and disable the blinking cursor.
 set ruler
 set number
 syntax on
+set guioptions-=T
+set completeopt-=preview
+set gcr=a:blinkon0
+
+
+" No Compatibility. That just sucks
+" especially annoying on redhat/windows/osx
+set nocompatible
+set backspace=indent,eol,start
+
+
+" Menus I like :-)
+" This must happen before the syntax system is enabled
+aunmenu Help.
+aunmenu Window.
+let no_buffers_menu=1
+set mousemodel=popup
+
+" Better modes.  Remeber where we are, support yankring
+set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
+
 
 " cursor line
-set cursorline
 
 " Whitespace stuff
 " set nowrap
@@ -15,6 +39,104 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
+
+" The PC is fast enough, do syntax highlight syncing from start
+autocmd BufEnter * :syntax sync fromstart
+
+" Remember cursor position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Enable hidden buffers
+set hidden
+
+" python support
+" --------------
+"  don't highlight exceptions and builtins. I love to override them in local
+"  scopes and it sucks ass if it's highlighted then. And for exceptions I
+"  don't really want to have different colors for my own exceptions ;-)
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
+\ formatoptions+=croq softtabstop=4 smartindent
+\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+let python_highlight_all=1
+let python_highlight_exceptions=0
+let python_highlight_builtins=0
+autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+" go support
+" ----------
+autocmd BufNewFile,BufRead *.go setlocal ft=go
+autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+
+" php support
+" -----------
+autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
+
+" Verilog
+" -------
+autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+
+" CSS
+" ---
+autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+fun! s:SelectHTML()
+let n = 1
+    while n < 50 && n < line("$")
+        " check for jinja
+        if getline(n) =~ '{%\s*\(extends\|block\|macro\|set\|if\|for\|include\|trans\)\>'
+            set ft=htmljinja
+            return
+        endif
+        " check for mako
+        if getline(n) =~ '<%\(def\|inherit\)'
+            set ft=mako
+            return
+        endif
+        " check for genshi
+        if getline(n) =~ 'xmlns:py\|py:\(match\|for\|if\|def\|strip\|xmlns\)'
+            set ft=genshi
+            return
+        endif
+        let n = n + 1
+    endwhile
+    " go with html
+    set ft=html
+endfun
+
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd bufnewfile,bufread *.rhtml setlocal ft=eruby
+autocmd BufNewFile,BufRead *.mako setlocal ft=mako
+autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
+autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
+let html_no_rendering=1
+
+let g:closetag_default_xml=1
+let g:sparkupNextMapping='<c-l>'
+autocmd FileType html,htmldjango,htmljinja,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/scripts/closetag.vim
+
+" C/Obj-C/C++
+autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+let c_no_curly_error=1
+
+" vim
+" ---
+autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+
+" Javascript
+" ----------
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+autocmd BufNewFile,BufRead *.json setlocal ft=javascript
+let javascript_enable_domhtmlcss=1
+
+
+" cmake support
+" -------------
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
 
 " Searching
 set hlsearch
@@ -128,15 +250,54 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set t_Co=256
-    " set transparency=5
-    colorscheme molokai
+    "set transparency=5
+    "colorscheme molokai
+    colorscheme fruity
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
     set guioptions=egmrt
+    set cursorline
+
+    if has("mac")
+        set guifont=Consolas:h13
+        set fuoptions=maxvert,maxhorz
+        " does not work properly on os x
+        " au GUIEnter * set fullscreen
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
+    
 else
     colorscheme peaksea
 endif
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+" gundo
+nnoremap <Leader>u :GundoToggle<CR>
+
+
+" GUI Tab settings
+function! GuiTabLabel()
+    let label = ''
+    let buflist = tabpagebuflist(v:lnum)
+    if exists('t:title')
+        let label .= t:title . ' '
+    endif
+    let label .= '[' . bufname(buflist[tabpagewinnr(v:lnum) - 1]) . ']'
+    for bufnr in buflist
+        if getbufvar(bufnr, '&modified')
+            let label .= '+'
+            break
+        endif
+    endfor
+    return label
+endfunction
+set guitablabel=%{GuiTabLabel()}
+
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

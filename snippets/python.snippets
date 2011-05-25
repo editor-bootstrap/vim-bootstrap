@@ -3,6 +3,20 @@ snippet #!
 
 snippet imp
 	import ${1:module}
+
+snippet mod
+	# -*- coding: utf-8 -*-
+	"""
+		${1:`Filename('', 'module name')`}
+
+		${2:Description goes here...}
+
+		:copyright: (c) `strftime('%Y')` by the ${3:Project Name} Team, see AUTHORS for more details.
+		:license: ${4:BSD}, see LICENSE for more details.
+	"""
+	${5}
+
+
 # Module Docstring
 snippet docs
 	'''
@@ -91,3 +105,13 @@ snippet pdb
 
 snippet utf
 	# -*- coding: UTF-8 -*-
+
+snippet main
+	def main():
+		${1:pass}
+
+	if __name__ == '__main__':
+		main(sys.argv[1:])
+snippet _
+	__${1:init}__${2}
+
