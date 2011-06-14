@@ -1,9 +1,3 @@
 ﻿let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/avelino/Sites/nodegrid'
-let g:netrw_dirhist_2='/Users/avelino/Sites/tarefasradix'
-let g:netrw_dirhist_3='/Users/avelino/guestbook'
-let g:netrw_dirhist_4='/Users/avelino/Sites/gaeupload'
-let g:netrw_dirhist_5='/Users/avelino/Sites/ingresso'
-let g:netrw_dirhist_6='/Users/avelino/git/test'
-let g:netrw_dirhist_7='/Users/avelino/git/test/master'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Volumes/version/merge/trivine'
