@@ -5,16 +5,19 @@ snippet imp
 	import ${1:module}
 
 snippet mod
+	#!/usr/bin/python
 	# -*- coding: utf-8 -*-
 	"""
 		${1:`Filename('', 'module name')`}
 
 		${2:Description goes here...}
 
-		:copyright: (c) `strftime('%Y')` by the ${3:Project Name} Team, see AUTHORS for more details.
-		:license: ${4:BSD}, see LICENSE for more details.
+		:copyright: (c) `strftime('%Y')` by the ${3:`g:snips_copyright`} Team
+		:author: ${4:`g:snips_author`}
+		:license: ${5:New BSD License}
+		:version: ${6:0.1}
 	"""
-	${5}
+	${7}
 
 
 # Module Docstring
@@ -104,7 +107,7 @@ snippet pdb
 	import pdb; pdb.set_trace()
 
 snippet utf
-	# -*- coding: UTF-8 -*-
+	# -*- coding: utf-8 -*-
 
 snippet main
 	def main():

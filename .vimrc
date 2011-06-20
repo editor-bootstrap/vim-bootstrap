@@ -319,6 +319,10 @@ let g:virtualenv_directory = "~/.virtualenvs"
 let g:virtualenv_stl_format = "[%n]"
 let g:virtualenv_name = "dojo"
 
+" Conf Avelino
+let g:snips_author = "Thiago Avelino"
+let g:snips_copyright = "Youngworks"
+
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
 set bomb
