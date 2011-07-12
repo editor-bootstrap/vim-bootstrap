@@ -162,6 +162,9 @@ map <Leader>v :vsplit<CR>
 map <Leader>ga :!git add .<CR>
 map <Leader>gc :!git commit -m '<C-R>="'"<CR>
 map <Leader>gsh :!git push<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gd :Gvdiff<CR>
+map <Leader>gr :Gremove<CR>
 
 map <Leader>p :Dpaste<CR>
 
@@ -314,14 +317,9 @@ cab WQ wq
 cab W w
 cab Q q
 
-" Virtualenv
-let g:virtualenv_directory = "~/.virtualenvs"
-let g:virtualenv_stl_format = "[%n]"
-let g:virtualenv_name = "dojo"
-
 " Conf Avelino
 let g:snips_author = "Thiago Avelino"
-let g:snips_copyright = "Youngworks"
+let g:snips_copyright = "Avelino Labs"
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 

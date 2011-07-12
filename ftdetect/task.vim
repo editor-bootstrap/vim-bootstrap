@@ -1,0 +1,1 @@
+../bundle/vim-task/ftdetect/task.vim
