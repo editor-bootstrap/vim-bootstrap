@@ -166,6 +166,8 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>gd :Gvdiff<CR>
 map <Leader>gr :Gremove<CR>
 
+map <Leader>sh :ConqueTerm bash --login<CR>
+
 map <Leader>p :Dpaste<CR>
 
 " NERDTree configuration
@@ -271,8 +273,8 @@ if has("gui_running")
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
     
-else
-    colorscheme peaksea
+" else
+    " colorscheme peaksea
 endif
 
 set title
