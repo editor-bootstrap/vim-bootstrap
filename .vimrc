@@ -46,6 +46,9 @@ autocmd BufEnter * :syntax sync fromstart
 " Remember cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" less comprez
+au BufNewFile,BufRead *.less set filetype=less
+
 " Enable hidden buffers
 set hidden
 
@@ -184,6 +187,11 @@ let g:CommandTMaxHeight=20
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
+
+map th :tabnext<CR>
+map tl :tabprev<CR>
+map tn :tabnew<CR>
+map td :tabclose<CR>
 
 " Remember last location in file
 if has("autocmd")
