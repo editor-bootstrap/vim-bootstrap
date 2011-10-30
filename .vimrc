@@ -189,7 +189,9 @@ let g:CommandTMaxHeight=20
 map <Leader>z :ZoomWin<CR>
 
 map th :tabnext<CR>
+map t] :tabnext<CR>
 map tl :tabprev<CR>
+map t[ :tabprev<CR>
 map tn :tabnew<CR>
 map td :tabclose<CR>
 
@@ -263,9 +265,7 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set t_Co=256
-    "set transparency=5
     colorscheme molokai
-    "colorscheme fruity
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
