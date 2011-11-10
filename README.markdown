@@ -28,7 +28,7 @@ report an issue to the issue tracker.
 
 or
 
-  `curl https://github.com/avelino/.vimrc/raw/master/bootstrap.sh -o - | sh`
+  `curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh`
 
 ## Updating to the latest version
 
