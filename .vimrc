@@ -63,7 +63,15 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=11
 let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_highlight_builtins=0
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+au BufNewFile *.py,*.pyw set fileformat=unix
+
 
 " go support
 " ----------
@@ -179,6 +187,7 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 map <Leader>n :NERDTreeToggle<CR>
+map <Plug> :NERDTreeToggle<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 map <F3> :NERDTreeToggle<CR>
 
@@ -273,7 +282,7 @@ if has("gui_running")
     set cursorline
 
     if has("mac")
-        set guifont=Consolas:h13
+        set guifont=Consolas:h10
         set fuoptions=maxvert,maxhorz
         " does not work properly on os x
         " au GUIEnter * set fullscreen
@@ -329,7 +338,6 @@ cab Q q
 
 " Conf Avelino
 let g:snips_author = "Thiago Avelino"
-let g:snips_copyright = "Avelino Labs"
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 

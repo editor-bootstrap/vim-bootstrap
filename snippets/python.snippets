@@ -12,10 +12,10 @@ snippet mod
 
 		${2:Description goes here...}
 
-		:copyright: (c) `strftime('%Y')` by the ${3:`g:snips_copyright`} Team
-		:author: ${4:`g:snips_author`}
-		:license: ${5:New BSD License}
-		:version: ${6:0.1}
+		:copyright: (c) `strftime('%Y')`
+		:author: ${3:`g:snips_author`}
+		:license: ${4:New BSD License}
+		:version: ${5:0.1}
 	"""
 	${7}
 
@@ -104,13 +104,13 @@ snippet _
 
 # pdb
 snippet pdb
-	import pdb; pdb.set_trace()
+	try:
+		import ipdb; ipdb.set_trace()
+	except:
+		import pdb; pdb.set_trace()
 
 snippet ipdb
 	import ipdb; ipdb.set_trace()
-
-snippet vpdb
-	import vimpdb; vimpdb.set_trace()
 
 snippet utf
 	# -*- coding: utf-8 -*-
