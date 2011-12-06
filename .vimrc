@@ -71,6 +71,8 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au BufNewFile *.py,*.pyw set fileformat=unix
+autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
+autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 
 " go support
@@ -274,7 +276,8 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set t_Co=256
-    colorscheme molokai
+    " colorscheme molokai
+    colorscheme desert
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
@@ -335,6 +338,8 @@ cab wQ wq
 cab WQ wq
 cab W w
 cab Q q
+
+nmap <Leader>f :TagbarToggle<CR>
 
 " Conf Avelino
 let g:snips_author = "Thiago Avelino"
