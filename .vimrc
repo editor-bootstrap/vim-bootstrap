@@ -76,19 +76,6 @@ au BufNewFile *.py,*.pyw set fileformat=unix
 autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
 autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-
 " go support
 " ----------
 autocmd BufNewFile,BufRead *.go setlocal ft=go
@@ -315,9 +302,6 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-" gundo
-nnoremap <Leader>u :GundoToggle<CR>
-
 
 " GUI Tab settings
 function! GuiTabLabel()
@@ -336,6 +320,10 @@ function! GuiTabLabel()
     return label
 endfunction
 set guitablabel=%{GuiTabLabel()}
+
+" gundo
+nnoremap <Leader>u :GundoToggle<CR>
+
 
 
 " Include user's local vim config
@@ -379,6 +367,10 @@ nnoremap   :call MatchCaseTag()
 " Rope
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
+
+" GREP
+map <leader>g :Ack <C-R>=""<CR>
+map <leader>b :b <C-R>=""<CR>
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
