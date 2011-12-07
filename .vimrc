@@ -7,6 +7,8 @@ set nocompatible
 set ruler
 set number
 syntax on
+filetype on
+filetype plugin indent on
 set guioptions-=T
 set completeopt-=preview
 set gcr=a:blinkon0
@@ -73,6 +75,18 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 au BufNewFile *.py,*.pyw set fileformat=unix
 autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
 autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 
 " go support
@@ -361,6 +375,10 @@ fun! MatchCaseTag()
     endtry
 endfun
 nnoremap   :call MatchCaseTag()
+
+" Rope
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
