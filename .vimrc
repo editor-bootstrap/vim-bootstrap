@@ -344,6 +344,24 @@ nmap <Leader>f :TagbarToggle<CR>
 " Conf Avelino
 let g:snips_author = "Thiago Avelino"
 
+" FindFile
+nmap <C-f> :FF<CR>
+nmap <C-s> :FS<CR>
+nmap <C-c> :FC .<CR>
+let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
+
+
+fun! MatchCaseTag()
+    let ic = &ic
+    set noic
+    try
+        exe 'tjump ' . expand('')
+    finally
+       let &ic = ic
+    endtry
+endfun
+nnoremap   :call MatchCaseTag()
+
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
 set bomb
