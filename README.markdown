@@ -44,8 +44,8 @@ Here's some tips if you've never used VIM before:
 * `:cd /path` Open folder
 * `tn` Open new tab
 * `te` Open new tab and load file
-* `]]` Next tab
-* `[[` Go to back tab
+* `t]` Next tab
+* `t[` Go to back tab
 * `Ctrl+c` Add all file in cache for vim (recommended to run as an open project)
 * `Ctrl+f` Find file and open active tab (need cache for vim)
 * `Ctrl+s` Find file and open in new tab

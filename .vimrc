@@ -201,9 +201,9 @@ let g:CommandTMaxHeight=20
 map <Leader>z :ZoomWin<CR>
 
 map th :tabnext<CR>
-map ]] :tabnext<CR>
+map t] :tabnext<CR>
 map tl :tabprev<CR>
-map [[ :tabprev<CR>
+map t[ :tabprev<CR>
 map tn :tabnew<CR>
 map tc :tabclose<CR>
 map td :tabclose<CR>
