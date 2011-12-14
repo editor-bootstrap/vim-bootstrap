@@ -254,7 +254,8 @@ if has("gui_running")
 
   set guioptions-=T
   set t_Co=256
-  colorscheme molokai
+  " colorscheme molokai
+  colorscheme desert
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -343,6 +344,9 @@ fun! MatchCaseTag()
     endtry
 endfun
 nnoremap   :call MatchCaseTag()
+
+" Control version file in buffer
+map <leader>c :GundoToggle<CR>
 
 " Rope
 map <leader>j :RopeGotoDefinition<CR>
