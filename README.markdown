@@ -24,7 +24,7 @@ report an issue to the issue tracker.
    done`
 1. `git clone git://github.com/avelino/.vimrc.git ~/.vim`
 2. `cd ~/.vim`
-3. `cp .vimrc ../`
+3. `ln -s .vimrc ../.vimrc`
 
 or
 
@@ -69,6 +69,7 @@ Here's some tips if you've never used VIM before:
 * `\gs` Git status
 * `\gd` Git diff
 * `\gr` Git remove
+* `\S` Remove white space
 
 
 

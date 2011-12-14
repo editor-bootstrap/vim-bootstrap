@@ -12,6 +12,8 @@ filetype plugin indent on
 set guioptions-=T
 set completeopt-=preview
 set gcr=a:blinkon0
+set scrolloff=3
+set backspace=2
 
 
 " No Compatibility. That just sucks
@@ -19,6 +21,8 @@ set gcr=a:blinkon0
 set nocompatible
 set backspace=indent,eol,start
 
+" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
 
 " Menus I like :-)
 " This must happen before the syntax system is enabled
@@ -67,6 +71,7 @@ let python_highlight_exceptions=0
 let python_highlight_builtins=0
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 highlight BadWhitespace ctermbg=red guibg=red
@@ -89,46 +94,16 @@ autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
 " -------
 autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
-" CSS
-" ---
-autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-
-fun! s:SelectHTML()
-let n = 1
-    while n < 50 && n < line("$")
-        " check for jinja
-        if getline(n) =~ '{%\s*\(extends\|block\|macro\|set\|if\|for\|include\|trans\)\>'
-            set ft=htmljinja
-            return
-        endif
-        " check for mako
-        if getline(n) =~ '<%\(def\|inherit\)'
-            set ft=mako
-            return
-        endif
-        " check for genshi
-        if getline(n) =~ 'xmlns:py\|py:\(match\|for\|if\|def\|strip\|xmlns\)'
-            set ft=genshi
-            return
-        endif
-        let n = n + 1
-    endwhile
-    " go with html
-    set ft=html
-endfun
-
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd bufnewfile,bufread *.rhtml setlocal ft=eruby
-autocmd BufNewFile,BufRead *.mako setlocal ft=mako
-autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
+autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
-autocmd BufNewFile,BufRead *.html,*.htm,*.haml,*.daml  call s:SelectHTML()
 let html_no_rendering=1
 
 let g:closetag_default_xml=1
 let g:sparkupNextMapping='<c-l>'
 autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
+
 
 " C/Obj-C/C++
 autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
@@ -276,26 +251,29 @@ set modelines=10
 " Default color scheme
 set background=dark
 if has("gui_running")
-    set guioptions-=T
-    set t_Co=256
-    colorscheme molokai
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions=egmrt
-    set cursorline
 
-    if has("mac")
-        set guifont=Consolas:h10
-        set fuoptions=maxvert,maxhorz
-        " does not work properly on os x
-        " au GUIEnter * set fullscreen
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 10
-    endif
+  set guioptions-=T
+  set t_Co=256
+  colorscheme molokai
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions=egmrt
+  set cursorline
+
+  if has("mac")
+    set guifont=Consolas:h10
+    set fuoptions=maxvert,maxhorz
+    " does not work properly on os x
+    " au GUIEnter * set fullscreen
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  endif
     
-" else
-    " colorscheme peaksea
+else
+
+  colorscheme torte
+
 endif
 
 set title
@@ -352,6 +330,8 @@ nmap <C-s> :FS<CR>
 nmap <C-c> :FC .<CR>
 let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
 
+" Remove trailing whitespace on <leader>S
+nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 
 fun! MatchCaseTag()
     let ic = &ic
@@ -370,9 +350,10 @@ map <leader>r :RopeRename<CR>
 
 " GREP
 map <leader>g :Ack <C-R>=""<CR>
+set grepprg=ack
 map <leader>b :b <C-R>=""<CR>
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 set bomb
 set fileencoding=utf-8
