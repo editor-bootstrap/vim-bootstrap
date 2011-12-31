@@ -1,131 +1,27 @@
+"*****************************************************************************
+"                                Basic Setup
+"*****************************************************************************
+"{{{
+" Unleash all VIM power
 set nocompatible
 
-" activate a permanent ruler and disable Toolbar, and add line
-" highlightng as well as numbers.
-" And disable the sucking pydoc preview window for the omni completion
-" also highlight current line and disable the blinking cursor.
-set ruler
-set number
-syntax on
-filetype on
-filetype plugin indent on
-set guioptions-=T
-set completeopt-=preview
-set gcr=a:blinkon0
-set scrolloff=3
-set backspace=2
-
-
-" No Compatibility. That just sucks
-" especially annoying on redhat/windows/osx
-set nocompatible
+" Fix backspace indent
 set backspace=indent,eol,start
 
-" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
-" Menus I like :-)
-" This must happen before the syntax system is enabled
-aunmenu Help.
-aunmenu Window.
-let no_buffers_menu=1
-set mousemodel=popup
+filetype on
+filetype plugin indent on
 
 " Better modes.  Remeber where we are, support yankring
 set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
 
-
-" cursor line
-
-" Whitespace stuff
-" set nowrap
-
-" tab
+" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-" The PC is fast enough, do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-
-" Remember cursor position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" less comprez
-au BufNewFile,BufRead *.less set filetype=less
-
 " Enable hidden buffers
 set hidden
-
-" python support
-" --------------
-"  don't highlight exceptions and builtins. I love to override them in local
-"  scopes and it sucks ass if it's highlighted then. And for exceptions I
-"  don't really want to have different colors for my own exceptions ;-)
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
-\ formatoptions+=croq softtabstop=4 smartindent
-\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-let python_highlight_all=1
-let python_highlight_exceptions=0
-let python_highlight_builtins=0
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-
-highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
-au BufNewFile *.py,*.pyw set fileformat=unix
-autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
-autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-" go support
-" ----------
-autocmd BufNewFile,BufRead *.go setlocal ft=go
-autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
-
-" php support
-" -----------
-autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
-
-" Verilog
-" -------
-autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-
-autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
-let html_no_rendering=1
-
-let g:closetag_default_xml=1
-let g:sparkupNextMapping='<c-l>'
-autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
-
-
-" C/Obj-C/C++
-autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-let c_no_curly_error=1
-
-" vim
-" ---
-autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-
-" Javascript
-" ----------
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
-autocmd BufNewFile,BufRead *.json setlocal ft=javascript
-let javascript_enable_domhtmlcss=1
-
-
-" cmake support
-" -------------
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
-
 
 " Searching
 set hlsearch
@@ -137,57 +33,173 @@ set smartcase
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
 
+" Remember last location in file
+if has("autocmd")
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal g'\"" | endif
+endif
+
+" GREP
+set grepprg=ack
+
+set bomb
+set fileencoding=utf-8
+
+"Directories for swp files
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+"}}}
+
+
+
+"*****************************************************************************
+"                              Visual Settigns
+"*****************************************************************************
+"{{{
+" colorscheme, fonts, menus and etc
+set background=dark
+syntax on
+set ruler
+set number
+
+" Menus I like :-)
+" This must happen before the syntax system is enabled
+aunmenu Help.
+aunmenu Window.
+let no_buffers_menu=1
+set mousemodel=popup
+highlight BadWhitespace ctermbg=red guibg=red
+
+if has("gui_running")
+    set t_Co=256
+    " colorscheme molokai
+    colorscheme desert
+
+    " Keep only:
+    " * e: GUI Tabs
+    " * g: Gray inactive menu items
+    " * m: Menu bar
+    " * r: Right hand scroll bar
+    " * t: tearoff menu items
+    set guioptions=egmrt
+    set cursorline
+
+    if has("mac")
+        set guifont=Consolas:h10
+        set fuoptions=maxvert,maxhorz
+        " does not work properly on os x
+        " au GUIEnter * set fullscreen
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
+else
+    colorscheme torte
+endif
+
+
+" Disable the pydoc preview window for the omni completion
+set completeopt-=preview
+
+" Disable the blinking cursor.
+set gcr=a:blinkon0
+set scrolloff=3
+
 " Status bar
 set laststatus=2
 
-" Python
-map <C-K> :!python<CR>
-map <C-L> :!python %<CR>
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
-" Screen
-map <Leader>h :split<CR>
-map <Leader>v :vsplit<CR>
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
 
-map <Leader>ga :!git add .<CR>
-map <Leader>gc :!git commit -m '<C-R>="'"<CR>
-map <Leader>gsh :!git push<CR>
-map <Leader>gs :Gstatus<CR>
-map <Leader>gd :Gvdiff<CR>
-map <Leader>gr :Gremove<CR>
+" Use modeline overrides
+set modeline
+set modelines=10
 
-map <Leader>sh :ConqueTerm bash --login<CR>
+set title
+set titleold="Terminal"
+set titlestring=%F
 
-map <Leader>p :Dpaste<CR>
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
+
+"}}}
+
+
+"*****************************************************************************
+"                               Abbreviations
+"*****************************************************************************
+"{{{
+" no one is really happy until you have this shortcuts
+cab W! w!
+cab Q! q!
+cab Wq wq
+cab Wa wa
+cab wQ wq
+cab WQ wq
+cab W w
+cab Q q
+
+"}}}
+
+
+"*****************************************************************************
+"                                 Variables
+"*****************************************************************************
+"{{{
+" Conf Avelino
+let g:snips_author = "Thiago Avelino"
+
+" python support
+" --------------
+"  don't highlight exceptions and builtins. I love to override them in local
+"  scopes and it sucks ass if it's highlighted then. And for exceptions I
+"  don't really want to have different colors for my own exceptions ;-)
+let python_highlight_all=1
+let python_highlight_exceptions=0
+let python_highlight_builtins=0
+
+let html_no_rendering=1
+let javascript_enable_domhtmlcss=1
+let c_no_curly_error=1
+
+let g:closetag_default_xml=1
+let g:sparkupNextMapping='<c-l>'
 
 " NERDTree configuration
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
-map <Leader>n :NERDTreeToggle<CR>
-map <Plug> :NERDTreeToggle<CR>
-nmap <leader>d :NERDTreeToggle<CR>
-map <F3> :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
-" ZoomWin configuration
-map <Leader>z :ZoomWin<CR>
+" FindFile
+let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
 
-map th :tabnext<CR>
-map t] :tabnext<CR>
-map tl :tabprev<CR>
-map t[ :tabprev<CR>
-map tn :tabnew<CR>
-map tc :tabclose<CR>
-map td :tabclose<CR>
+"}}}
 
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
+
+"*****************************************************************************
+"                                  Function
+"*****************************************************************************
+"{{{
+fun! MatchCaseTag()
+    let ic = &ic
+    set noic
+    try
+        exe 'tjump ' . expand('')
+    finally
+       let &ic = ic
+    endtry
+endfun
 
 function s:setupWrapping()
   set wrap
@@ -197,90 +209,8 @@ endfunction
 
 function s:setupMarkup()
   call s:setupWrapping()
-  map <buffer> <Leader>p :Mm <CR>
+  noremap <buffer> <Leader>p :Mm <CR>
 endfunction
-
-" make use real tabs
-au FileType make                                     set noexpandtab
-
-" code completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-
-" Thorfile, Rakefile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
-
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
-
-au BufRead,BufNewFile *.txt call s:setupWrapping()
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
-" Unimpaired configuration
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
-" Use modeline overrides
-set modeline
-set modelines=10
-
-" Default color scheme
-set background=dark
-if has("gui_running")
-
-  set guioptions-=T
-  set t_Co=256
-  " colorscheme molokai
-  colorscheme desert
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-  set guioptions=egmrt
-  set cursorline
-
-  if has("mac")
-    set guifont=Consolas:h10
-    set fuoptions=maxvert,maxhorz
-    " does not work properly on os x
-    " au GUIEnter * set fullscreen
-  else
-    set guifont=DejaVu\ Sans\ Mono\ 10
-  endif
-    
-else
-
-  colorscheme torte
-
-endif
-
-set title
-set titleold="Terminal"
-set titlestring=%F
-
 
 " GUI Tab settings
 function! GuiTabLabel()
@@ -300,68 +230,189 @@ function! GuiTabLabel()
 endfunction
 set guitablabel=%{GuiTabLabel()}
 
-" gundo
+"}}}
+
+
+"*****************************************************************************
+"                               Autocmd Rules
+"*****************************************************************************
+"{{{
+" Some minor or more generic autocmd rules
+" The PC is fast enough, do syntax highlight syncing from start
+autocmd BufEnter * :syntax sync fromstart
+" Remember cursor position
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" less comprez
+autocmd BufNewFile,BufRead *.less set filetype=less
+" txt
+au BufRead,BufNewFile *.txt call s:setupWrapping()
+" make use real tabs
+au FileType make set noexpandtab
+
+
+"********** Python 
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
+      \ formatoptions+=croq softtabstop=4 smartindent
+      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 
+      \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
+autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+autocmd BufNewFile *.py,*.pyw set fileformat=unix
+autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
+autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+" code completion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+"********** Go 
+autocmd BufNewFile,BufRead *.go setlocal ft=go
+autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+
+"********** PHP 
+autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
+
+"********** Verilog 
+autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+
+"********** HTML 
+autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
+" code completion
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+
+"********** C/Obj-C/C++
+autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+
+"********** vim
+autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+autocmd FileType vim setlocal foldenable foldmethod=marker
+
+"********** Javascript
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+autocmd BufNewFile,BufRead *.json setlocal ft=javascript
+" code completion
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+"********** Cmake
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+
+"********** Ruby
+" Thorfile, Rakefile and Gemfile are Ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru}    set ft=ruby
+
+"********** Markdown
+" md, markdown, and mk are markdown and define buffer-local preview
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
+
+
+"}}}
+
+
+
+
+"*****************************************************************************
+"                                  Mappings
+"*****************************************************************************
+"{{{
+
+" Python Execution
+noremap <C-K> :!python<CR>
+noremap <C-L> :!python %<CR>
+
+" Split Screen
+noremap <Leader>h :split<CR>
+noremap <Leader>v :vsplit<CR>
+
+" Git
+noremap <Leader>ga :!git add .<CR>
+noremap <Leader>gc :!git commit -m '<C-R>="'"<CR>
+noremap <Leader>gsh :!git push<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
+" ConqueTerm Shortcut
+noremap <Leader>sh :ConqueTerm bash --login<CR>
+
+" Paste to DPaste: http://dpaste.com/
+noremap <Leader>p :Dpaste<CR>
+
+" NerdTree shortcuts
+noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Plug> :NERDTreeToggle<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+noremap <F3> :NERDTreeToggle<CR>
+
+" ZoomWin configuration
+noremap <Leader>z :ZoomWin<CR>
+
+" Tabs shortcuts
+noremap th :tabnext<CR>
+noremap t] :tabnext<CR>
+noremap tl :tabprev<CR>
+noremap t[ :tabprev<CR>
+noremap tn :tabnew<CR>
+noremap tc :tabclose<CR>
+noremap td :tabclose<CR>
+
+" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+" Inserts the path of the currently edited file into a command
+" Command mode: Ctrl+P
+cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
+" Bubble single lines
+nnoremap <C-Up> [e
+nnoremap <C-Down> ]e
+
+" Bubble multiple lines
+vnoremap <C-Up> [egv
+vnoremap <C-Down> ]egv
+
+" Gundo Toggler
 nnoremap <Leader>u :GundoToggle<CR>
+noremap <leader>c :GundoToggle<CR>
 
+" Tag Code Navigation
+nnoremap <Leader>f :TagbarToggle<CR>
 
-
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
-" no one is really happy until you have this shortcuts
-cab W! w!
-cab Q! q!
-cab Wq wq
-cab Wa wa
-cab wQ wq
-cab WQ wq
-cab W w
-cab Q q
-
-nmap <Leader>f :TagbarToggle<CR>
-
-" Conf Avelino
-let g:snips_author = "Thiago Avelino"
-
-" FindFile
-nmap <C-f> :FF<CR>
-nmap <C-s> :FS<CR>
-nmap <C-c> :FC .<CR>
-let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
+" Find file
+nnoremap <C-f> :FF<CR>
+nnoremap <C-s> :FS<CR>
+nnoremap <C-c> :FC .<CR>
 
 " Remove trailing whitespace on <leader>S
 nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 
-fun! MatchCaseTag()
-    let ic = &ic
-    set noic
-    try
-        exe 'tjump ' . expand('')
-    finally
-       let &ic = ic
-    endtry
-endfun
-nnoremap   :call MatchCaseTag()
-
-" Control version file in buffer
-map <leader>c :GundoToggle<CR>
-
 " Rope
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
+noremap <leader>j :RopeGotoDefinition<CR>
+noremap <leader>r :RopeRename<CR>
 
-" GREP
-map <leader>g :Ack <C-R>=""<CR>
-set grepprg=ack
-map <leader>b :b <C-R>=""<CR>
+" Grep
+noremap <leader>g :Ack <C-R>=""<CR>
+noremap <leader>b :b <C-R>=""<CR>
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
+"}}}
 
-set bomb
-set fileencoding=utf-8
 
-"Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+" TODO: Take a look at this
+nnoremap   :call MatchCaseTag()
