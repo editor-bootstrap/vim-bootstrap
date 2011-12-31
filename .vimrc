@@ -73,8 +73,7 @@ highlight BadWhitespace ctermbg=red guibg=red
 
 if has("gui_running")
     set t_Co=256
-    " colorscheme molokai
-    colorscheme desert
+    colorscheme molokai
 
     " Keep only:
     " * e: GUI Tabs
