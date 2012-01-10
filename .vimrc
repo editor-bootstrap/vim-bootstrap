@@ -71,9 +71,9 @@ let no_buffers_menu=1
 set mousemodel=popup
 highlight BadWhitespace ctermbg=red guibg=red
 
+colorscheme molokai
 if has("gui_running")
     set t_Co=256
-    colorscheme molokai
 
     " Keep only:
     " * e: GUI Tabs
@@ -92,8 +92,6 @@ if has("gui_running")
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
-else
-    colorscheme torte
 endif
 
 
