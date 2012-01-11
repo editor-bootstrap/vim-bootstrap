@@ -70,30 +70,11 @@ aunmenu Window.
 let no_buffers_menu=1
 set mousemodel=popup
 highlight BadWhitespace ctermbg=red guibg=red
-
 colorscheme molokai
-if has("gui_running")
-    set t_Co=256
-
-    " Keep only:
-    " * e: GUI Tabs
-    " * g: Gray inactive menu items
-    " * m: Menu bar
-    " * r: Right hand scroll bar
-    " * t: tearoff menu items
-    set guioptions=egmrt
-    set cursorline
-
-    if has("mac")
-        set guifont=Consolas:h10
-        set fuoptions=maxvert,maxhorz
-        " does not work properly on os x
-        " au GUIEnter * set fullscreen
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 10
-    endif
-endif
-
+set t_Co=256
+set cursorline
+set guioptions=egmrt
+set guifont=Consolas:h10
 
 " Disable the pydoc preview window for the omni completion
 set completeopt-=preview
