@@ -1,4 +1,4 @@
 backup/
 *.swp
 *.pyc
-*.netrwhist
+.netrwhist
