@@ -74,7 +74,6 @@ colorscheme molokai
 set t_Co=256
 set cursorline
 set guioptions=egmrt
-set guifont=Consolas:h10
 
 " Disable the pydoc preview window for the omni completion
 set completeopt-=preview
