@@ -1,4 +1,7 @@
 backup/
 *.swp
+*.swn
+*.swm
+*.swo
 *.pyc
 .netrwhist
