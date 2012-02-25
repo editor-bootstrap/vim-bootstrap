@@ -74,4 +74,4 @@ Here's some tips if you've never used VIM before:
 
 
 
-by github.com/carlhuda/janus
+`by github.com/carlhuda/janus`
