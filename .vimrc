@@ -43,11 +43,13 @@ endif
 set grepprg=ack
 
 set bomb
+set encoding=utf-8
 set fileencoding=utf-8
 
 "Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+set nobackup
+set nowritebackup
+set noswapfile
 
 "}}}
 
