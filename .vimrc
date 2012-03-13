@@ -161,7 +161,7 @@ let NERDTreeShowBookmarks=1
 let g:CommandTMaxHeight=20
 
 " FindFile
-let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*'] 
+let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*']
 
 "}}}
 
@@ -223,17 +223,26 @@ autocmd BufEnter * :syntax sync fromstart
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " less comprez
 autocmd BufNewFile,BufRead *.less set filetype=less
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+  let @*=line(".")
+  %s/\s*$//e
+  ''
+:endfunction
+
+autocmd BufWritePre * :call TrimWhiteSpace()
 " txt
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 " make use real tabs
 au FileType make set noexpandtab
 
 
-"********** Python 
+"********** Python
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 
+autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
       \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
@@ -247,17 +256,17 @@ autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
 " code completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-"********** Go 
+"********** Go
 autocmd BufNewFile,BufRead *.go setlocal ft=go
 autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 
-"********** PHP 
+"********** PHP
 autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
 
-"********** Verilog 
+"********** Verilog
 autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
-"********** HTML 
+"********** HTML
 autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
@@ -383,7 +392,7 @@ nnoremap <C-s> :FS<CR>
 nnoremap <C-c> :FC .<CR>
 
 " Remove trailing whitespace on <leader>S
-nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>:call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 " Rope
 noremap <leader>j :RopeGotoDefinition<CR>
