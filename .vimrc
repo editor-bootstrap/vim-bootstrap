@@ -51,6 +51,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+set sh=/bin/sh
+
 "}}}
 
 
@@ -76,6 +78,7 @@ colorscheme molokai
 set t_Co=256
 set cursorline
 set guioptions=egmrt
+set gfn=Monospace\ 8
 
 " Disable the pydoc preview window for the omni completion
 set completeopt-=preview
