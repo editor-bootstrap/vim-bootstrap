@@ -411,6 +411,15 @@ noremap <leader>r :RopeRename<CR>
 noremap <leader>g :Ack <C-R>=""<CR>
 noremap <leader>b :b <C-R>=""<CR>
 
+" Copy
+noremap YY "+y<CR>
+
+" Paste
+noremap P "+gP<CR>
+
+" Cut
+noremap XX "+x<CR>
+
 
 "}}}
 
