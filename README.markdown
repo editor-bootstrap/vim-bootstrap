@@ -70,6 +70,9 @@ Here's some tips if you've never used VIM before:
 * `\gr` Git remove
 * `\S` Remove white space
 * `\c` Control version file in buffer
+* `YY` Copy to operacional system
+* `P` Paste to operacional system
+* `XX` Cut to operacional system
 
 
 
