@@ -80,26 +80,6 @@ set cursorline
 set guioptions=egmrt
 set gfn=Monospace\ 8
 
-
-if has("gui_running")
-  if has("gui_gtk2")
-    " CTRL-X and SHIFT-Del are Cut
-    vnoremap <C-X> "+x
-    vnoremap <S-Del> "+x
-
-    " CTRL-C and CTRL-Insert are Copy
-    vnoremap <C-C> "+y
-    vnoremap <C-Insert> "+y
-
-    " CTRL-V and SHIFT-Insert are Paste
-    map <C-V> "+gP
-    map <S-Insert> "+gP
-
-    cmap <C-V> <C-R>+
-    cmap <S-Insert> <C-R>+
-  endif
-endif
-
 " Disable the pydoc preview window for the omni completion
 set completeopt-=preview
 
@@ -430,6 +410,7 @@ noremap <leader>r :RopeRename<CR>
 " Grep
 noremap <leader>g :Ack <C-R>=""<CR>
 noremap <leader>b :b <C-R>=""<CR>
+
 
 "}}}
 
