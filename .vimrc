@@ -420,9 +420,7 @@ noremap P "+gP<CR>
 " Cut
 noremap XX "+x<CR>
 
-
-"}}}
-
-
 " TODO: Take a look at this
 nnoremap   :call MatchCaseTag()
+
+"}}}
