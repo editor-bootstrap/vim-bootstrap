@@ -22,6 +22,9 @@
 [submodule "bundles/django.vim"]
     path = bundles/django.vim
     url = git://github.com/vim-scripts/django.vim.git
+[submodule "bundles/london.vim"]
+    path = bundles/london.vim
+    url = git://github.com/avelino/london.vim.git
 [submodule "bundles/pytest.vim"]
     path = bundles/pytest.vim
     url = git://github.com/vim-scripts/pytest.vim.git
