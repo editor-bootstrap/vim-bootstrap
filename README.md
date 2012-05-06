@@ -31,9 +31,12 @@ The distribution is designed to work with Vim >= 7.3.
 or
 
 0. `for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old;
-   done`
-1. `git clone git://github.com/avelino/.vimrc.git ~/.vim`
-2. `ln -s ~/.vim/.vimrc ~/.vimrc`
+    done`
+1. `git clone git@github.com:avelino/.vimrc.git ~/.vim`
+2. `cd ~/.vim`
+3. `git submodule init && git submodule update`
+4. `cd ~/`
+5. `ln -s ~/.vim/vimrc ~/.vimrc`
 
 
 ## Updating to the latest version
