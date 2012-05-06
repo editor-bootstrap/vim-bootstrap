@@ -7,8 +7,8 @@
 [submodule "bundles/command-t"]
     path = bundles/command-t
     url = git://git.wincent.com/command-t.git
-[submodule "bundles/pydoc"]
-    path = bundles/pydoc
+[submodule "bundles/pydoc.vim"]
+    path = bundles/pydoc.vim
     url = git://github.com/fs111/pydoc.vim.git
 [submodule "bundles/ZoomWin"]
     path = bundles/ZoomWin
@@ -16,8 +16,8 @@
 [submodule "bundles/AutoClose"]
     path = bundles/AutoClose
     url = git://github.com/vim-scripts/AutoClose.git
-[submodule "bundles/closetag"]
-    path = bundles/closetag
+[submodule "bundles/closetag.vim"]
+    path = bundles/closetag.vim
     url = git://github.com/vim-scripts/closetag.vim.git
 [submodule "bundles/django.vim"]
     path = bundles/django.vim
@@ -43,6 +43,6 @@
 [submodule "bundles/vim-fugitive"]
     path = bundles/vim-fugitive
     url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundles/color-molokai"]
-    path = bundles/color-molokai
+[submodule "bundles/color-molokai.vim"]
+    path = bundles/color-molokai.vim
     url = git://github.com/mrtazz/molokai.vim.git
