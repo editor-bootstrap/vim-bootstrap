@@ -225,6 +225,13 @@ function! GuiTabLabel()
 endfunction
 set guitablabel=%{GuiTabLabel()}
 
+" Removes trailing spaces
+function TrimWhiteSpace()
+  let @*=line(".")
+  %s/\s*$//e
+  ''
+:endfunction
+
 "}}}
 
 
@@ -240,14 +247,10 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " less comprez
 autocmd BufNewFile,BufRead *.less set filetype=less
 
-" Removes trailing spaces
-function TrimWhiteSpace()
-  let @*=line(".")
-  %s/\s*$//e
-  ''
-:endfunction
+if has("gui_running")
+  autocmd BufWritePre * :call TrimWhiteSpace()
+endif
 
-autocmd BufWritePre * :call TrimWhiteSpace()
 " txt
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 " make use real tabs
