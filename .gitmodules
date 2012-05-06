@@ -1,45 +1,48 @@
 [submodule "bundles/nerdtree"]
-	path = bundles/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+    path = bundles/nerdtree
+    url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundles/nerdcommenter"]
-	path = bundles/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+    path = bundles/nerdcommenter
+    url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "bundles/command-t"]
-	path = bundles/command-t
-	url = git://git.wincent.com/command-t.git
+    path = bundles/command-t
+    url = git://git.wincent.com/command-t.git
 [submodule "bundles/pydoc"]
-        path = bundles/pydoc
-        url = git://github.com/fs111/pydoc.vim.git
+    path = bundles/pydoc
+    url = git://github.com/fs111/pydoc.vim.git
 [submodule "bundles/ZoomWin"]
-        path = bundles/ZoomWin
-        url = git://github.com/vim-scripts/ZoomWin.git
+    path = bundles/ZoomWin
+    url = git://github.com/vim-scripts/ZoomWin.git
 [submodule "bundles/AutoClose"]
-        path = bundles/AutoClose
-        url = git://github.com/vim-scripts/AutoClose.git
+    path = bundles/AutoClose
+    url = git://github.com/vim-scripts/AutoClose.git
 [submodule "bundles/closetag"]
-        path = bundles/closetag
-        url = git://github.com/vim-scripts/closetag.vim.git
+    path = bundles/closetag
+    url = git://github.com/vim-scripts/closetag.vim.git
 [submodule "bundles/django.vim"]
-        path = bundles/django.vim
-        url = git://github.com/vim-scripts/django.vim.git
+    path = bundles/django.vim
+    url = git://github.com/vim-scripts/django.vim.git
 [submodule "bundles/pytest.vim"]
-        path = bundles/pytest.vim
-        url = git://github.com/vim-scripts/pytest.vim.git
+    path = bundles/pytest.vim
+    url = git://github.com/vim-scripts/pytest.vim.git
 [submodule "bundles/python.vim"]
-        path = bundles/python.vim
-        url = git://github.com/Soares/python.vim.git
+    path = bundles/python.vim
+    url = git://github.com/Soares/python.vim.git
 [submodule "bundles/snipmate.vim"]
-        path = bundles/snipmate.vim
-        url = git://github.com/msanders/snipmate.vim.git
+    path = bundles/snipmate.vim
+    url = git://github.com/msanders/snipmate.vim.git
 [submodule "bundles/supertab"]
-        path = bundles/supertab
-        url = git://github.com/ervandew/supertab.git
+    path = bundles/supertab
+    url = git://github.com/ervandew/supertab.git
 [submodule "bundles/tagbar"]
-        path = bundles/tagbar
-        url = git://github.com/majutsushi/tagbar.git
+    path = bundles/tagbar
+    url = git://github.com/majutsushi/tagbar.git
 [submodule "bundles/taglist.vim"]
-        path = bundles/taglist.vim
-        url = git://github.com/mortice/taglist.vim.git
+    path = bundles/taglist.vim
+    url = git://github.com/mortice/taglist.vim.git
+[submodule "bundles/vim-fugitive"]
+    path = bundles/vim-fugitive
+    url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundles/color-molokai"]
-        path = bundles/color-molokai
-        url = git://github.com/mrtazz/molokai.vim.git
+    path = bundles/color-molokai
+    url = git://github.com/mrtazz/molokai.vim.git
