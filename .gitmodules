@@ -13,9 +13,6 @@
 [submodule "bundles/ZoomWin"]
     path = bundles/ZoomWin
     url = git://github.com/vim-scripts/ZoomWin.git
-[submodule "bundles/AutoClose"]
-    path = bundles/AutoClose
-    url = git://github.com/vim-scripts/AutoClose.git
 [submodule "bundles/closetag.vim"]
     path = bundles/closetag.vim
     url = git://github.com/vim-scripts/closetag.vim.git
