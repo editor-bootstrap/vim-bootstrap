@@ -30,7 +30,7 @@
     url = git://github.com/Soares/python.vim.git
 [submodule "bundles/snipmate.vim"]
     path = bundles/snipmate.vim
-    url = git://github.com/msanders/snipmate.vim.git
+    url = git://github.com/avelino/snipmate.vim.git
 [submodule "bundles/supertab"]
     path = bundles/supertab
     url = git://github.com/ervandew/supertab.git
