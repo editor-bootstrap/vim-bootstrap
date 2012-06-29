@@ -89,7 +89,7 @@ aunmenu Window.
 let no_buffers_menu=1
 set mousemodel=popup
 highlight BadWhitespace ctermbg=red guibg=red
-colorscheme molokai
+colorscheme flux
 set t_Co=256
 set cursorline
 set guioptions=egmrt
