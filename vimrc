@@ -55,9 +55,12 @@ endif
 " GREP
 set grepprg=ack
 
-set bomb
 set encoding=utf-8
 set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set ttyfast
+set binary
 
 "Directories for swp files
 set nobackup
@@ -292,9 +295,9 @@ autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 "********** HTML
 autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html,htmldjango,htmljinja,eruby,mako,haml,daml let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,haml,daml source ~/.vim/scripts/closetag.vim
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml source ~/.vim/bundles/closetag.vim/plugin/closetag.vim
 " code completion
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
