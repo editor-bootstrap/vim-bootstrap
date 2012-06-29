@@ -43,6 +43,9 @@
 [submodule "bundles/vim-fugitive"]
     path = bundles/vim-fugitive
     url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundles/color-flux.vim"]
+    path = bundles/color-flux.vim
+    url = git://github.com/avelino/flux.vim.git
 [submodule "bundles/color-molokai.vim"]
     path = bundles/color-molokai.vim
     url = git://github.com/mrtazz/molokai.vim.git
