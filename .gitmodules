@@ -16,3 +16,6 @@
 [submodule "bundle/closetag"]
 	path = bundle/closetag
 	url = https://github.com/vim-scripts/closetag.vim.git
+[submodule "bundle/django"]
+	path = bundle/django
+	url = https://github.com/vim-scripts/django.vim.git
