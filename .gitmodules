@@ -43,3 +43,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/color-flux"]
+	path = bundle/color-flux
+	url = https://github.com/avelino/flux.vim.git
