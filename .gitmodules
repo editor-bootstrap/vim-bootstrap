@@ -49,3 +49,6 @@
 [submodule "bundle/color-molokai"]
 	path = bundle/color-molokai
 	url = https://github.com/mrtazz/molokai.vim.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/vim-scripts/Markdown.git
