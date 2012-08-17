@@ -22,3 +22,6 @@
 [submodule "bundle/london"]
 	path = bundle/london
 	url = https://github.com/avelino/london.vim.git
+[submodule "bundle/pytest"]
+	path = bundle/pytest
+	url = https://github.com/vim-scripts/pytest.vim.git
