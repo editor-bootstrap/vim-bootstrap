@@ -25,3 +25,6 @@
 [submodule "bundle/pytest"]
 	path = bundle/pytest
 	url = https://github.com/vim-scripts/pytest.vim.git
+[submodule "bundle/python"]
+	path = bundle/python
+	url = https://github.com/Soares/python.vim.git
