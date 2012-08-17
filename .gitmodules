@@ -40,3 +40,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = https://github.com/mortice/taglist.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
