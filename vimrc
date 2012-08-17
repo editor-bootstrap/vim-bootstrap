@@ -6,7 +6,7 @@
 runtime! autoload/pathogen.vim
 
 if exists('g:loaded_pathogen')
-    call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundles'))
+    call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundle'))
 end
 "}}}
 
@@ -297,7 +297,7 @@ autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml source ~/.vim/bundles/closetag.vim/plugin/closetag.vim
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml source ~/.vim/bundle/closetag/plugin/closetag.vim
 " code completion
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
