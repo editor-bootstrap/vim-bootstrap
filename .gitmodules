@@ -19,3 +19,6 @@
 [submodule "bundle/django"]
 	path = bundle/django
 	url = https://github.com/vim-scripts/django.vim.git
+[submodule "bundle/london"]
+	path = bundle/london
+	url = https://github.com/avelino/london.vim.git
