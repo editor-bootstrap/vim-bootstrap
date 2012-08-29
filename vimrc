@@ -279,7 +279,7 @@ autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
 autocmd BufNewFile *.py,*.pyw set fileformat=unix
 autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
 autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+autocmd BufNewFile,BufRead *.py_tmpl,*.cover setlocal ft=python
 " code completion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
