@@ -378,6 +378,9 @@ noremap <F3> :NERDTreeToggle<CR>
 " ZoomWin configuration
 noremap <Leader>z :ZoomWin<CR>
 
+" BufExplorer configuration
+nnoremap <leader>b :BufExplorer<cr>
+
 " Tabs shortcuts
 noremap th :tabnext<CR>
 noremap t] :tabnext<CR>

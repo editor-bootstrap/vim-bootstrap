@@ -52,3 +52,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/vim-scripts/Markdown.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = https://github.com/jg/bufexplorer.git
