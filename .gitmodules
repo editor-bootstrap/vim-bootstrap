@@ -58,3 +58,6 @@
 [submodule "bundle/minibufexpl"]
 	path = bundle/minibufexpl
 	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/less"]
+	path = bundle/less
+	url = https://github.com/lunaru/vim-less.git
