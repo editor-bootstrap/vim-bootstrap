@@ -61,3 +61,9 @@
 [submodule "bundle/pyflakes"]
 	path = bundle/pyflakes
 	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/less"]
+	path = bundle/less
+	url = https://github.com/lunaru/vim-less.git
+[submodule "bundle/zencoding"]
+	path = bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim.git
