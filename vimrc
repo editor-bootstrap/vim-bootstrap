@@ -69,6 +69,11 @@ set noswapfile
 
 set sh=/bin/sh
 
+set nocompatible
+set fileformats=unix,dos,mac
+set backspace=indent,eol,start
+set showcmd
+
 "}}}
 
 
@@ -192,6 +197,16 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
+
+" Powerline
+let g:Powerline_symbols = 'compatible'
+
+" Flake8
+let g:flake8_builtins="_,apply"
+let g:flake8_ignore="E501,W293"
+let g:flake8_max_line_length=72
+
+let g:pyflakes_use_quickfix = 0
 
 "}}}
 
