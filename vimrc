@@ -287,7 +287,7 @@ au FileType make set noexpandtab
 
 
 "********** Python
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=110
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
