@@ -28,9 +28,6 @@
 [submodule "bundle/python"]
 	path = bundle/python
 	url = https://github.com/Soares/python.vim.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = https://github.com/avelino/snipmate.vim.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -64,9 +61,6 @@
 [submodule "bundle/zencoding"]
 	path = bundle/zencoding
 	url = https://github.com/mattn/zencoding-vim.git
-[submodule "bundle/pyflakes"]
-	path = bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes.git
 [submodule "bundle/powerline"]
 	path = bundle/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
@@ -79,10 +73,15 @@
 [submodule "bundle/puppet"]
 	path = bundle/puppet
 	url = https://github.com/rodjek/vim-puppet.git
-
 [submodule "bundle/pep8"]
 	path = bundle/pep8
 	url = https://github.com/vim-scripts/pep8.git
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundle/mw-utils"]
+	path = bundle/mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
