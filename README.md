@@ -1,4 +1,13 @@
-# Avelino's vim Distribution
+# VIM Distribution
+
+           _                    
+          (_)                   
+    __   ___ _ __ ___  _ __ ___ 
+    \ \ / / | '_ ` _ \| '__/ __|
+     \ V /| | | | | | | | | (__ 
+    (_)_/ |_|_| |_| |_|_|  \___|
+    
+
 
 This is a basic distribution of vim plugins and tools intended to be run
 on top of the latest MacVIM snapshot.
