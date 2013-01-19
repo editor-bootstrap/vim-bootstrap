@@ -467,4 +467,10 @@ noremap XX "+x<CR>
 " TODO: Take a look at this
 nnoremap   :call MatchCaseTag()
 
+" Termnal nav
+noremap ,z :bp<CR>
+noremap ,x :bn<CR>
+
+
+
 "}}}
