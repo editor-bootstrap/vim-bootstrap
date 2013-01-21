@@ -45,7 +45,7 @@
 	url = https://github.com/avelino/flux.vim.git
 [submodule "bundle/color-molokai"]
 	path = bundle/color-molokai
-	url = https://github.com/mrtazz/molokai.vim.git
+	url = https://github.com/tomasr/molokai.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/vim-scripts/Markdown.git
