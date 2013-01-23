@@ -471,6 +471,7 @@ nnoremap   :call MatchCaseTag()
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
-
+" Clean search (highlight)
+noremap <leader>\ :noh<CR>
 
 "}}}
