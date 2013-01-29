@@ -474,4 +474,8 @@ noremap ,x :bn<CR>
 " Clean search (highlight)
 noremap <leader>\ :noh<CR>
 
+" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
 "}}}
