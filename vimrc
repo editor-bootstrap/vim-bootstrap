@@ -471,6 +471,9 @@ nnoremap   :call MatchCaseTag()
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
+" Close buffer
+noremap ,d :bd<CR>
+
 " Clean search (highlight)
 noremap <leader>\ :noh<CR>
 
