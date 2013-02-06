@@ -480,5 +480,6 @@ vmap > >gv
 
 " ctags
 map <F8> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <leader>] g<c-]>
 
 "}}}
