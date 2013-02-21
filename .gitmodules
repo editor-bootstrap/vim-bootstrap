@@ -100,3 +100,6 @@
 [submodule "bundle/easygrep"]
 	path = bundle/easygrep
 	url = https://github.com/vim-scripts/EasyGrep.git
+[submodule "bundle/gitgutter"]
+	path = bundle/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
