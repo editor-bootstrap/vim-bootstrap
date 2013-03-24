@@ -103,3 +103,9 @@
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "bundle/python-pep8-indent"]
+	path = bundle/python-pep8-indent
+	url = https://github.com/hynek/vim-python-pep8-indent.git
+[submodule "bundle/pylint"]
+	path = bundle/pylint
+	url = https://github.com/vim-scripts/pylint.vim.git
