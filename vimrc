@@ -417,8 +417,10 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
+" ctrlp
 " Command mode: Ctrl+P
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+let g:ctrlp_map = ',e'
 
 " Bubble single lines
 nnoremap <C-Up> [e
