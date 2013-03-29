@@ -420,6 +420,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " ctrlp
 " Command mode: Ctrl+P
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+noremap ,b :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 
 " Bubble single lines
