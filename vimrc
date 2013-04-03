@@ -44,7 +44,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc
+set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
 
 " Remember last location in file
 if has("autocmd")
@@ -103,6 +103,16 @@ if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
     set guifont=Menlo:h12
     set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  if $COLORTERM == 'gnome-terminal'
+    set term=gnome-256color
+  else
+    if $TERM == 'xterm'
+      set term=xterm-256color
+    endif
   endif
 endif
 
@@ -182,7 +192,7 @@ let g:sparkupNextMapping='<c-l>'
 
 " NERDTree configuration
 let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$']
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 
@@ -190,7 +200,7 @@ let NERDTreeShowBookmarks=1
 let g:CommandTMaxHeight=20
 
 " FindFile
-let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*']
+let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*', '__pycache__']
 
 " miniBuf
 let g:miniBufExplMapWindowNavVim = 1
