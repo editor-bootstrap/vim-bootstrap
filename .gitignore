@@ -5,3 +5,4 @@ backup/
 *.swo
 *.pyc
 .netrwhist
+.ropeproject
