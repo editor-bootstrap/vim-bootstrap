@@ -32,28 +32,38 @@ report an issue to the issue tracker.
 
 The distribution is designed to work with Vim >= 7.3.
 
+* Python 2.7.2
+* pyflakes
+
+### OSX cannot import urandom
+
+See: https://groups.google.com/forum/?fromgroups=#!topic/vim_dev/2NXKF6kDONo
+
+The sequence of commands that fixed this:
+
+	brew unlink python
+	brew unlink macvim
+	brew remove macvim
+	brew install -v --force macvim
+	brew link macvim
+	brew link python
+
 
 ## Installation
 
-  `curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh`
+    curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh
 
 or
 
-0. `for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old;
-    done`
-1. `git clone git@github.com:avelino/.vimrc.git ~/.vim`
-2. `cd ~/.vim`
-3. `git submodule init && git submodule update`
-4. `cd ~/`
-5. `ln -s ~/.vim/vimrc ~/.vimrc`
+    for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old; done
+    git clone git@github.com:avelino/.vimrc.git ~/.vim
+    cd ~/.vim
+    git submodule init && git submodule update
+    cd ~/
+    ln -s ~/.vim/vimrc ~/.vimrc
 
 
 ## Updating to the latest version
 
 To update to the latest version of the distribution, just run `git pull`
 again inside your `~/.vim` directory.
-
-
-## Analytics
-
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/avelino/.vimrc)
