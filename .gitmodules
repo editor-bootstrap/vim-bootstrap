@@ -48,7 +48,7 @@
 	url = https://github.com/tomasr/molokai.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
-	url = https://github.com/hallison/vim-markdown.git
+	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/jg/bufexplorer.git
