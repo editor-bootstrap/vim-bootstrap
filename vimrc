@@ -67,6 +67,8 @@ Bundle 'vim-scripts/EasyGrep'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'vim-scripts/pylint.vim'
+Bundle 'pyflakes.vim'
+Bundle 'rson/vim-conque'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
@@ -74,8 +76,11 @@ if iCanHazVundle == 0
   echo ""
   :BundleInstall
 endif
-"}}}
 
+" allow plugins by file type
+filetype plugin on
+filetype indent on
+"}}}
 
 
 "*****************************************************************************
