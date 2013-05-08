@@ -1,14 +1,81 @@
 "*****************************************************************************
-""                                Pathgen Load
+"" Vundle Load
 "*****************************************************************************
 "{{{
-" Load pathgen
-runtime! autoload/pathogen.vim
+" Load vundle
+" no vi-compatible
+set nocompatible
 
-if exists('g:loaded_pathogen')
-    call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundle'))
-end
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+  echo "Installing Vundle..."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+  let iCanHazVundle=0
+endif
+
+" required for vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
 "}}}
+
+"*****************************************************************************
+"" Vundle install packages
+"*****************************************************************************
+"{{{
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'wincent/Command-T'
+Bundle 'fs111/pydoc.vim'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'vim-scripts/closetag.vim'
+Bundle 'vim-scripts/django.vim'
+Bundle 'avelino/london.vim'
+Bundle 'vim-scripts/pytest.vim'
+Bundle 'Soares/python.vim'
+Bundle 'ervandew/supertab'
+Bundle 'majutsushi/tagbar'
+Bundle 'mortice/taglist.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'avelino/flux.vim'
+Bundle 'tomasr/molokai'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'jg/bufexplorer'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'lunaru/vim-less'
+Bundle 'mattn/zencoding-vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'nvie/vim-flake8'
+Bundle 'rodjek/vim-puppet'
+Bundle 'vim-scripts/pep8'
+Bundle 'mileszs/ack.vim'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'avelino/snipmate.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/EasyGrep'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'vim-scripts/pylint.vim'
+
+" Installing plugins the first time
+if iCanHazVundle == 0
+  echo "Installing Bundles, please ignore key map error messages"
+  echo ""
+  :BundleInstall
+endif
+"}}}
+
 
 
 "*****************************************************************************
