@@ -29,6 +29,7 @@ Bundle 'gmarik/vundle'
 
 "}}}
 
+
 "*****************************************************************************
 "" Vundle install packages
 "*****************************************************************************
@@ -60,12 +61,16 @@ Bundle 'rodjek/vim-puppet'
 Bundle 'vim-scripts/pep8'
 Bundle 'mileszs/ack.vim'
 Bundle 'tomtom/tlib_vim'
-Bundle 'avelino/snipmate.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'vim-scripts/pylint.vim'
 Bundle 'pyflakes.vim'
 Bundle 'rson/vim-conque'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/vim-snippets"
+Bundle 'garbas/vim-snipmate'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
