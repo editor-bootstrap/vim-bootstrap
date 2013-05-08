@@ -1,14 +1,5 @@
 # VIM Distribution
 
-           _                    
-          (_)                   
-    __   ___ _ __ ___  _ __ ___ 
-    \ \ / / | '_ ` _ \| '__/ __|
-     \ V /| | | | | | | | | (__ 
-    (_)_/ |_|_| |_| |_|_|  \___|
-    
-
-
 This is a basic distribution of vim plugins and tools intended to be run
 on top of the latest MacVIM snapshot.
 
@@ -35,35 +26,10 @@ The distribution is designed to work with Vim >= 7.3.
 * Python 2.7.2
 * pyflakes
 
-### OSX cannot import urandom
-
-See: https://groups.google.com/forum/?fromgroups=#!topic/vim_dev/2NXKF6kDONo
-
-The sequence of commands that fixed this:
-
-	brew unlink python
-	brew unlink macvim
-	brew remove macvim
-	brew install -v --force macvim
-	brew link macvim
-	brew link python
-
-
 ## Installation
 
     curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh
 
-or
-
-    for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old; done
-    git clone git@github.com:avelino/.vimrc.git ~/.vim
-    cd ~/.vim
-    git submodule init && git submodule update
-    cd ~/
-    ln -s ~/.vim/vimrc ~/.vimrc
-
-
 ## Updating to the latest version
 
-To update to the latest version of the distribution, just run `git pull`
-again inside your `~/.vim` directory.
+    :BundleUpdate
