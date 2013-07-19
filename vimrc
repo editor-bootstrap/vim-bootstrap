@@ -40,7 +40,7 @@ Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/ZoomWin'
-Bundle 'vim-scripts/closetag.vim'
+Bundle 'docunext/closetag.vim'
 Bundle 'vim-scripts/django.vim'
 Bundle 'avelino/london.vim'
 Bundle 'vim-scripts/pytest.vim'
@@ -65,7 +65,11 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'vim-scripts/pylint.vim'
 Bundle 'pyflakes.vim'
+Bundle 'kevinw/pyflakes-vim'
 Bundle 'rson/vim-conque'
+Bundle 'fsouza/go.vim'
+Bundle 'vim-scripts/Conque-Shell'
+Bundle 'davidhalter/jedi-vim'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -148,6 +152,7 @@ set nocompatible
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set showcmd
+set shell=zsh
 
 "}}}
 
@@ -271,6 +276,8 @@ let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache_
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
@@ -287,11 +294,10 @@ let g:miniBufExplModSelTarget = 1
 let g:Powerline_symbols = 'compatible'
 
 " Flake8
+let g:pep8_map='<leader>8'
 let g:flake8_builtins="_,apply"
 let g:flake8_ignore="E501,W293"
 let g:flake8_max_line_length=72
-
-let g:pyflakes_use_quickfix = 0
 
 "}}}
 
@@ -438,6 +444,9 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 "********** Markdown
 au BufNewFile,BufRead *.dartset filetype=dart shiftwidth=2 expandtab
 
+
+" Set auto reload file
+set autoread
 
 "}}}
 
