@@ -70,6 +70,7 @@ Bundle 'rson/vim-conque'
 Bundle 'fsouza/go.vim'
 Bundle 'vim-scripts/Conque-Shell'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'Yggdroot/indentLine'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
