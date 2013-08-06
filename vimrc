@@ -298,7 +298,7 @@ let g:Powerline_symbols = 'compatible'
 let g:pep8_map='<leader>8'
 let g:flake8_builtins="_,apply"
 let g:flake8_ignore="E501,W293"
-let g:flake8_max_line_length=72
+let g:flake8_max_line_length=99
 
 "}}}
 
@@ -320,7 +320,7 @@ endfun
 function s:setupWrapping()
   set wrap
   set wm=2
-  set textwidth=72
+  set textwidth=99
 endfunction
 
 function s:setupMarkup()
@@ -379,7 +379,7 @@ au FileType make set noexpandtab
 
 
 "********** Python
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=99
       \ formatoptions+=croq softtabstop=4 smartindent
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
@@ -417,16 +417,16 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 
 "********** C/Obj-C/C++
-autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
+autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=99
+autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=99
+autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=99
 
 "********** vim
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 autocmd FileType vim setlocal foldenable foldmethod=marker
 
 "********** Javascript
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=99
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 " code completion
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
