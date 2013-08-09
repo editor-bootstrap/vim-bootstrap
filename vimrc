@@ -71,6 +71,7 @@ Bundle 'fsouza/go.vim'
 Bundle 'vim-scripts/Conque-Shell'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Yggdroot/indentLine'
+Bundle 'qstrahl/vim-matchmaker'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -244,6 +245,7 @@ cab wQ wq
 cab WQ wq
 cab W w
 cab Q q
+cab q qa
 
 "}}}
 
@@ -566,6 +568,8 @@ noremap XX "+x<CR>
 nnoremap   :call MatchCaseTag()
 
 " Termnal nav
+noremap <S-h> :bp<CR>
+noremap <S-l> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
