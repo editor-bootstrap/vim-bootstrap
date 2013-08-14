@@ -178,7 +178,7 @@ set mousemodel=popup
 highlight BadWhitespace ctermbg=red guibg=red
 colorscheme molokai
 set t_Co=256
-set cursorline
+set nocursorline
 set guioptions=egmrt
 set gfn=Monospace\ 8
 if has("gui_running")
@@ -586,5 +586,8 @@ vmap > >gv
 " ctags
 map <F8> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <leader>] g<c-]>
+
+" Open current line on GitHub
+noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
 "}}}
