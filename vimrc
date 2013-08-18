@@ -10,11 +10,11 @@ set nocompatible
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
-  echo "Installing Vundle..."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-  let iCanHazVundle=0
+echo "Installing Vundle..."
+echo ""
+silent !mkdir -p ~/.vim/bundle
+silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+let iCanHazVundle=0
 endif
 
 " required for vundle
@@ -66,7 +66,6 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'vim-scripts/pylint.vim'
 Bundle 'pyflakes.vim'
 Bundle 'kevinw/pyflakes-vim'
-Bundle 'rson/vim-conque'
 Bundle 'fsouza/go.vim'
 Bundle 'vim-scripts/Conque-Shell'
 Bundle 'davidhalter/jedi-vim'
@@ -80,9 +79,9 @@ Bundle 'garbas/vim-snipmate'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
-  echo "Installing Bundles, please ignore key map error messages"
-  echo ""
-  :BundleInstall
+echo "Installing Bundles, please ignore key map error messages"
+echo ""
+:BundleInstall
 endif
 
 " allow plugins by file type
@@ -129,8 +128,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Remember last location in file
 if has("autocmd")
-    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal g'\"" | endif
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal g'\"" | endif
 endif
 
 " GREP
@@ -182,20 +181,20 @@ set nocursorline
 set guioptions=egmrt
 set gfn=Monospace\ 8
 if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
+if has("gui_mac") || has("gui_macvim")
+  set guifont=Menlo:h12
+  set transparency=7
+endif
 else
-  let g:CSApprox_loaded = 1
+let g:CSApprox_loaded = 1
 
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
+if $COLORTERM == 'gnome-terminal'
+  set term=gnome-256color
+else
+  if $TERM == 'xterm'
+    set term=xterm-256color
   endif
+endif
 endif
 
 " Disable the pydoc preview window for the omni completion
@@ -224,7 +223,7 @@ set titlestring=%F
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+source ~/.vimrc.local
 endif
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
@@ -245,7 +244,6 @@ cab wQ wq
 cab WQ wq
 cab W w
 cab Q q
-cab q qa
 
 "}}}
 
@@ -310,49 +308,49 @@ let g:flake8_max_line_length=99
 "*****************************************************************************
 "{{{
 fun! MatchCaseTag()
-    let ic = &ic
-    set noic
-    try
-        exe 'tjump ' . expand('')
-    finally
-       let &ic = ic
-    endtry
+  let ic = &ic
+  set noic
+  try
+      exe 'tjump ' . expand('')
+  finally
+     let &ic = ic
+  endtry
 endfun
 
 function s:setupWrapping()
-  set wrap
-  set wm=2
-  set textwidth=99
+set wrap
+set wm=2
+set textwidth=99
 endfunction
 
 function s:setupMarkup()
-  call s:setupWrapping()
-  noremap <buffer> <Leader>p :Mm <CR>
+call s:setupWrapping()
+noremap <buffer> <Leader>p :Mm <CR>
 endfunction
 
 " GUI Tab settings
 function! GuiTabLabel()
-    let label = ''
-    let buflist = tabpagebuflist(v:lnum)
-    if exists('t:title')
-        let label .= t:title . ' '
-    endif
-    let label .= '[' . bufname(buflist[tabpagewinnr(v:lnum) - 1]) . ']'
-    for bufnr in buflist
-        if getbufvar(bufnr, '&modified')
-            let label .= '+'
-            break
-        endif
-    endfor
-    return label
+  let label = ''
+  let buflist = tabpagebuflist(v:lnum)
+  if exists('t:title')
+      let label .= t:title . ' '
+  endif
+  let label .= '[' . bufname(buflist[tabpagewinnr(v:lnum) - 1]) . ']'
+  for bufnr in buflist
+      if getbufvar(bufnr, '&modified')
+          let label .= '+'
+          break
+      endif
+  endfor
+  return label
 endfunction
 set guitablabel=%{GuiTabLabel()}
 
 " Removes trailing spaces
 function TrimWhiteSpace()
-  let @*=line(".")
-  %s/\s*$//e
-  ''
+let @*=line(".")
+%s/\s*$//e
+''
 :endfunction
 
 "}}}
@@ -371,7 +369,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 autocmd BufNewFile,BufRead *.less set filetype=less
 
 if has("gui_running")
-  autocmd BufWritePre * :call TrimWhiteSpace()
+autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
 " txt
@@ -382,10 +380,10 @@ au FileType make set noexpandtab
 
 "********** Python
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=99
-      \ formatoptions+=croq softtabstop=4 smartindent
-      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+    \ formatoptions+=croq softtabstop=4 smartindent
+    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
-      \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+    \smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -568,8 +566,8 @@ noremap XX "+x<CR>
 nnoremap   :call MatchCaseTag()
 
 " Termnal nav
-noremap <S-h> :bp<CR>
-noremap <S-l> :bn<CR>
+nmap <Left> :bp<CR>
+nmap <Right> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
