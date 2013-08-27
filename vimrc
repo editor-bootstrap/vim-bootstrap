@@ -56,6 +56,7 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'lunaru/vim-less'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'rodjek/vim-puppet'
 Bundle 'vim-scripts/pep8'
@@ -227,6 +228,16 @@ source ~/.vimrc.local
 endif
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
+
+
+let g:lightline = {'colorscheme': 'powerline',
+      \ 'active': {
+          \ 'left': [['mode', 'paste'], ['fugitive', 'filename', 'readonly', 'modified']]},
+      \ 'component': {
+          \ 'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+          \ 'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+          \ 'readonly': '%{&readonly?"x":""}',}
+      \ }
 
 "}}}
 
@@ -566,8 +577,8 @@ noremap XX "+x<CR>
 nnoremap   :call MatchCaseTag()
 
 " Termnal nav
-nmap <Left> :bp<CR>
-nmap <Right> :bn<CR>
+nmap <S-p> :bp<CR>
+nmap <S-n> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
