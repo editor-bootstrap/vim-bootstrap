@@ -26,6 +26,32 @@ The distribution is designed to work with Vim >= 7.3.
 * Python 2.7.2
 * pyflakes
 
+## Commands
+
+Commands | Descriptions
+--- | ---
+`:cd <path>` | Open path */path*
+`,x` or `SHIFT+n` | Next buffer navegate
+`,z` or `SHIFT+p` | previous buffer navegate
+`,e` | Find and open files
+`,b` | Find file on buffer (open file)
+`\b <0-9>` | Open buffer number
+`tn` | Create new empty buffer
+`\d`, `\n` or `F3`  | Open/Close three navegate files
+`\f` | List all class and method
+`\j` | Go to the method stated
+`\v` or `Ctrl+w + v` | Split vertical
+`\h` or `Ctrl+w + h` | Split horizontal
+`Ctrl + k` | Open interactive python console
+`\sh` | Open bash in *vim*
+`\ga` | git add **.**
+`\gc` | git commit -m
+`\gsh` | git push
+`\gs` | git status
+`\gd` | git diff
+`\gr` | git remove
+
+
 ## Installation
 
     curl https://raw.github.com/avelino/.vimrc/master/bootstrap.sh -o - | sh
