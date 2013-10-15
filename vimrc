@@ -523,7 +523,7 @@ noremap th :tabnext<CR>
 noremap t] :tabnext<CR>
 noremap tl :tabprev<CR>
 noremap t[ :tabprev<CR>
-noremap tn :tabnew<CR>
+noremap tn :new<CR>
 noremap tc :tabclose<CR>
 noremap td :tabclose<CR>
 
