@@ -35,6 +35,7 @@ Bundle 'gmarik/vundle'
 "*****************************************************************************
 "{{{
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
@@ -68,9 +69,12 @@ Bundle 'pyflakes.vim'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'fsouza/go.vim'
 Bundle 'vim-scripts/Conque-Shell'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'qstrahl/vim-matchmaker'
+Bundle 'juvenn/mustache.vim'
+Bundle 'Shougo/neocomplcache.vim'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -286,6 +290,12 @@ let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeShowBookmarks=1
+
+" NerdTreeTabs
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 20
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
