@@ -44,6 +44,7 @@ Commands | Descriptions
 `\h` or `Ctrl+w + h` | Split horizontal
 `Ctrl + k` | Open interactive python console
 `\sh` | Open bash in *vim*
+`,o` | Open github file/line (website), if used git in **github**
 `\ga` | git add **.**
 `\gc` | git commit -m
 `\gsh` | git push
