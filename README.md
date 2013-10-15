@@ -23,7 +23,7 @@ report an issue to the issue tracker.
 
 The distribution is designed to work with Vim >= 7.3.
 
-* Python 2.7.2
+* Python 2.7
 * pyflakes
 
 ## Commands
