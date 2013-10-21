@@ -30,6 +30,7 @@ The distribution is designed to work with Vim >= 7.3.
 
 Commands | Descriptions
 --- | ---
+`<C-w>, <tab> or ,w` | Navege via viewports
 `:cd <path>` | Open path */path*
 `,x` or `SHIFT+n` | Next buffer navegate
 `,z` or `SHIFT+p` | previous buffer navegate
