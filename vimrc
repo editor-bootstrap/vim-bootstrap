@@ -484,6 +484,11 @@ set autoread
 "*****************************************************************************
 "{{{
 
+" Chrome OS remap <C-w> (command close tab)
+map <tab> <c-w>
+map <tab><tab> <c-w><c-w>
+map ,w <c-w>
+
 " Python Execution
 noremap <C-K> :!python<CR>
 noremap <C-L> :!python %<CR>
