@@ -156,7 +156,6 @@ set noswapfile
 
 set sh=/bin/sh
 
-set nocompatible
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set showcmd
