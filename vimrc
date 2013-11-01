@@ -52,11 +52,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'avelino/flux.vim'
 Bundle 'tomasr/molokai'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'jg/bufexplorer'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'lunaru/vim-less'
 Bundle 'mattn/zencoding-vim'
 Bundle 'itchyny/lightline.vim'
+Bundle 'bling/vim-airline'
 Bundle 'nvie/vim-flake8'
 Bundle 'rodjek/vim-puppet'
 Bundle 'vim-scripts/pep8'
@@ -242,14 +241,12 @@ endif
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 
-let g:lightline = {'colorscheme': 'powerline',
-      \ 'active': {
-          \ 'left': [['mode', 'paste'], ['fugitive', 'filename', 'readonly', 'modified']]},
-      \ 'component': {
-          \ 'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-          \ 'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-          \ 'readonly': '%{&readonly?"x":""}',}
-      \ }
+let g:airline_theme = 'powerlineish'
+let g:airline_enable_branch = 1
+let g:airline_enable_syntastic = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 "}}}
 
@@ -313,15 +310,6 @@ let g:CommandTMaxHeight=20
 
 " FindFile
 let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*', '__pycache__']
-
-" miniBuf
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
-" Powerline
-let g:Powerline_symbols = 'compatible'
 
 " Flake8
 let g:pep8_map='<leader>8'
@@ -521,9 +509,6 @@ noremap <F3> :NERDTreeToggle<CR>
 
 " ZoomWin configuration
 noremap <Leader>z :ZoomWin<CR>
-
-" BufExplorer configuration
-nnoremap <leader>b :BufExplorer<cr>
 
 " Tabs shortcuts
 noremap th :tabnext<CR>
