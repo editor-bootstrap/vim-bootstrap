@@ -32,7 +32,7 @@ Commands | Descriptions
 --- | ---
 `<C-w>, <tab> or ,w` | Navege via viewports
 `:cd <path>` | Open path */path*
-`,x` or `SHIFT+n` | Next buffer navegate
+`,x` or `SHIFT+o` | Next buffer navegate
 `,z` or `SHIFT+p` | previous buffer navegate
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
