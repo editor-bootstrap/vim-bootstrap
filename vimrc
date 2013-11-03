@@ -586,7 +586,7 @@ nnoremap   :call MatchCaseTag()
 
 " Termnal nav
 nmap <S-p> :bp<CR>
-nmap <S-n> :bn<CR>
+nmap <S-o> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,x :bn<CR>
 
