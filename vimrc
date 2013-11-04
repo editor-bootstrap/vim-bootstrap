@@ -81,6 +81,7 @@ Bundle 'garbas/vim-snipmate'
 
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
