@@ -83,6 +83,12 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'terryma/vim-multiple-cursors'
 
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'scrooloose/syntastic'
+Bundle 'mattn/emmet-vim'
+
+
 " Installing plugins the first time
 if iCanHazVundle == 0
 echo "Installing Bundles, please ignore key map error messages"
