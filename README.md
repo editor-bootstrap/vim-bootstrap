@@ -52,6 +52,10 @@ Commands | Descriptions
 `\gs` | git status
 `\gd` | git diff
 `\gr` | git remove
+`\\w` | EasyMotion word mode
+`\\f{char}` | EasyMotion character mode
+`W, E or B` | navigate through words considering case, underscores and others
+`html path then C-Y,` | Emmet html mounting. Examples here: http://mattn.github.io/emmet-vim/#howworkthis
 
 
 ## Installation
