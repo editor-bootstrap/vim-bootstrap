@@ -281,6 +281,15 @@ cab Q q
 " Conf Avelino
 let g:snips_author = "Thiago Avelino"
 
+
+" Plugin: CamelCaseMotion, remove all mappings ',w', ',b' and ',e':
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
+
 " python support
 " --------------
 "  don't highlight exceptions and builtins. I love to override them in local
