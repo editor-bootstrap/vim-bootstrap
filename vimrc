@@ -137,6 +137,8 @@ set smartcase
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_use_caching = 0
 
 " Remember last location in file
 if has("autocmd")
@@ -278,9 +280,6 @@ cab Q q
 "                                 Variables
 "*****************************************************************************
 "{{{
-" Conf Avelino
-let g:snips_author = "Thiago Avelino"
-
 
 " Plugin: CamelCaseMotion, remove all mappings ',w', ',b' and ',e':
 map <silent> w <Plug>CamelCaseMotion_w
@@ -638,7 +637,9 @@ nnoremap   :call MatchCaseTag()
 nmap <S-p> :bp<CR>
 nmap <S-o> :bn<CR>
 noremap ,z :bp<CR>
+noremap ,q :bp<CR>
 noremap ,x :bn<CR>
+noremap ,w :bn<CR>
 
 " Close buffer
 noremap ,d :bd<CR>

@@ -1,0 +1,2 @@
+" MyConf
+let g:snips_author = "You Name"

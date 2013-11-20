@@ -7,3 +7,4 @@ backup/
 .netrwhist
 .ropeproject
 bundle
+vimrc.local
