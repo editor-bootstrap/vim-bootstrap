@@ -36,6 +36,7 @@ Commands | Descriptions
 `,z`, `,q` or `SHIFT+p` | previous buffer navegate
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
+`,d` | Close active buffer (clone file)
 `\b <0-9>` | Open buffer number
 `tn` | Create new empty buffer
 `\d`, `\n` or `F3`  | Open/Close three navegate files
