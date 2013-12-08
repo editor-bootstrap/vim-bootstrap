@@ -66,3 +66,40 @@ Commands | Descriptions
 ## Updating to the latest version
 
     :BundleUpdate
+
+## Make Speller on VIM (ex: pt-br)
+*Recommendad for person who uses vim for text written*
+
+We will use the package translation of truth (lib LibreOffice to Portuguese):
+
+	mkdir /var/tmp/vero
+	cd /var/tmp/vero
+    wget http://extensions.libreoffice.org/extension-center/vero-verificador-ortografico-e-hifenizador-em-portugues-do-brasil/pscreleasefolder.2012-01-04.1563120832/2.1/vero_pt_br_v210aoc.oxt
+	unzip -x vero_pt_br_v210aoc.oxt
+
+Next step is generate dictionary:
+
+	vim
+
+On vim run:
+
+	:mkspell pt pt_BR 
+
+Always press enter to continue!
+
+Add dictionary on core vim:
+
+	sudo cp /var/tmp/vero/pt.utf-8.spl /usr/share/vim/vim*/spell/ 
+
+
+### Commands
+
+Commands | Descriptions
+--- | ---
+`]s` | next word
+`[s` | prev word
+`z=` | open sugestion list
+`zg` | add word on dictionary
+`zug` | undoes add word of dictionary
+`zw` | remove word on dictionary
+`zuw` | undoes remove word on dictionary
