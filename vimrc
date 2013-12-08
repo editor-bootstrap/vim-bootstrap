@@ -168,6 +168,12 @@ set backspace=indent,eol,start
 set showcmd
 set shell=zsh
 
+" Set spell pt-br
+" remove used: set nospell
+set spell spelllang=pt 
+highlight clear SpellBad
+highlight SpellBad term=reverse cterm=underline
+
 "}}}
 
 
