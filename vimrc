@@ -71,13 +71,15 @@ Bundle 'Shougo/vimproc.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'qstrahl/vim-matchmaker'
-Bundle 'juvenn/mustache.vim'
 Bundle 'Shougo/neocomplcache.vim'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "honza/vim-snippets"
 Bundle 'garbas/vim-snipmate'
+Bundle 'juvenn/mustache.vim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
 
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
