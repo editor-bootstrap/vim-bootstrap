@@ -89,6 +89,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
+Bundle 'laurentgoudet/vim-howdoi.git'
 
 
 " Installing plugins the first time
@@ -492,6 +493,9 @@ set autoread
 "                                  Mappings
 "*****************************************************************************
 "{{{
+
+" How do i plugin map
+map <Leader>l <Plug>Howdoi
 
 " Chrome OS remap <C-w> (command close tab)
 map <tab> <c-w>
