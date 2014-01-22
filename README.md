@@ -57,7 +57,7 @@ Commands | Descriptions
 `\\f{char}` | EasyMotion character mode
 `W, E or B` | navigate through words considering case, underscores and others
 `html path then C-Y,` | Emmet html mounting. Examples here: http://mattn.github.io/emmet-vim/#howworkthis
-
+`\l` | Calls [howdoi](https://github.com/laurentgoudet/vim-howdoi) plugin
 
 ## Installation
 
