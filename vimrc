@@ -29,7 +29,7 @@ Bundle 'gmarik/vundle'
 "*****************************************************************************
 "" Vundle install packages
 "*****************************************************************************
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ZoomWin'
@@ -213,18 +213,9 @@ cab WQ wq
 cab W w
 cab Q q
 
-
 "*****************************************************************************
 "" Variables
 "*****************************************************************************
-"" Plugin: CamelCaseMotion, remove all mappings ',w', ',b' and ',e'
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
-
 "" python support
 let python_highlight_all=1
 let python_highlight_exceptions=0
