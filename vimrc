@@ -33,12 +33,12 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'wincent/Command-T'
 Bundle 'vim-scripts/ZoomWin'
+Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Yggdroot/indentLine'
-Bundle 'Shougo/neocomplcache.vim'
 
 "" Snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
