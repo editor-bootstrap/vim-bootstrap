@@ -4,7 +4,7 @@ import json
 import requests
 import jinja2
 from jinja2 import Template
-from bottle import Bottle, request, response
+from bottle import Bottle, request, response, static_file
 from bottle import TEMPLATE_PATH as T
 
 
@@ -49,7 +49,11 @@ def generate():
     return template.render(**langs)
 
 
-# Define an handler for 404 errors.
+@app.route('/assets/<path:path>', name='assets')
+def static(path):
+    yield static_file(path, root=STATIC_PATH)
+
+
 @app.error(404)
 def error_404(error):
     """Return a custom 404 error."""
