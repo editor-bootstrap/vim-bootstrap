@@ -1,7 +1,14 @@
-<form action="/generate.vim" method="post">
-<p>Languages</p>
-{% for l in langs %}
-<input type="checkbox" name="langs" value="{{l}}">{{l}} <br />
-{% endfor %}
-<input type="submit" value="Generate!">
-</form>
+<html>
+<head>
+<title>vim-bootstrap</title>
+</head>
+<body>
+    <form action="/generate.vim" method="post">
+        <p>Languages</p>
+        {% for l in langs %}
+        <input type="checkbox" name="langs" value="{{l}}">{{l}} <br />
+        {% endfor %}
+        <input type="submit" value="Generate!">
+    </form>
+</body>
+</html>
