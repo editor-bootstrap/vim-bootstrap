@@ -46,7 +46,7 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'tomasr/molokai'
 
 {% for b in bundle %}
-{{ b }}
+{{ bundle[b] }}
 {% endfor %}
 
 "" Installing plugins the first time
@@ -306,7 +306,5 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 {% for v in vim %}
-{{ v }}
+{{ vim[v] }}
 {% endfor %}
-
-
