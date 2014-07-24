@@ -1359,7 +1359,7 @@ html[xmlns] .clearfix {
 				}
 
 .input-group {
-	float: left;
+	display: inline-block;
 	margin: 0 1em 1em 0;
 }
 
