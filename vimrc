@@ -45,6 +45,10 @@ Bundle 'garbas/vim-snipmate'
 "" Color
 Bundle 'tomasr/molokai'
 
+{% for b in bundle %}
+{{ b }}
+{% endfor %}
+
 "" Installing plugins the first time
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -300,3 +304,9 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+{% for v in vim %}
+{{ v }}
+{% endfor %}
+
+
