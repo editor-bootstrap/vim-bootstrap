@@ -25,20 +25,16 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-
 "*****************************************************************************
 "" Vundle install packages
 "*****************************************************************************
-"Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'wincent/Command-T'
-Bundle 'vim-scripts/ZoomWin'
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'Yggdroot/indentLine'
+Bundle 'sheerun/vim-polyglot'
 
 "" Snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -56,7 +52,6 @@ if iCanHazVundle == 0
   :BundleInstall
 endif
 
-
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -70,9 +65,6 @@ set backspace=indent,eol,start
 filetype on
 filetype plugin on
 filetype indent on
-
-"" Better modes.  Remeber where we are, support yankring
-set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -89,18 +81,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-"" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
-
-"" Remember last location in file
-if has("autocmd")
-  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-endif
-
 "" Encoding
 set bomb
 set ttyfast
@@ -108,24 +88,16 @@ set binary
 
 "" Directories for swp files
 set nobackup
-set nowritebackup
 set noswapfile
-
-set sh=/bin/sh
 
 set fileformats=unix,dos,mac
 set backspace=indent,eol,start
 set showcmd
-set shell=sh
-
-highlight clear SpellBad
-highlight SpellBad term=reverse cterm=underline
-
+set shell=/bin/sh
 
 "*****************************************************************************
 "" Visual Settigns
 "*****************************************************************************
-set background=dark
 syntax on
 set ruler
 set number
@@ -164,9 +136,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-"" Disable the pydoc preview window for the omni completion
-set completeopt-=preview
-
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=3
@@ -185,20 +154,10 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-"" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 let g:airline_theme = 'powerlineish'
 let g:airline_enable_branch = 1
-let g:airline_enable_syntastic = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 
 "*****************************************************************************
 "" Abbreviations
@@ -213,21 +172,6 @@ cab WQ wq
 cab W w
 cab Q q
 
-"*****************************************************************************
-"" Variables
-"*****************************************************************************
-"" python support
-let python_highlight_all=1
-let python_highlight_exceptions=0
-let python_highlight_builtins=0
-
-let html_no_rendering=1
-let javascript_enable_domhtmlcss=1
-let c_no_curly_error=1
-
-let g:closetag_default_xml=1
-let g:sparkupNextMapping='<c-l>'
-
 "" NERDTree configuration
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
@@ -236,35 +180,11 @@ let NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 20
-
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
-"" Command-T configuration
-let g:CommandTMaxHeight=20
-
-"" FindFile
-let g:FindFileIgnore = ['*.o', '*.pyc', '*.py~', '*.obj', '.git', '*.rbc', '*/tmp/*', '__pycache__']
-
-"" Flake8
-let g:pep8_map='<leader>8'
-let g:flake8_builtins="_,apply"
-let g:flake8_ignore="E501,W293"
-let g:flake8_max_line_length=79
-
-
 "*****************************************************************************
-"" Function
+"" Functions
 "*****************************************************************************
-fun! MatchCaseTag()
-  let ic = &ic
-  set noic
-  try
-    exe 'tjump ' . expand('')
-  finally
-    let &ic = ic
-  endtry
-endfun
-
 function s:setupWrapping()
   set wrap
   set wm=2
@@ -281,7 +201,6 @@ function TrimWhiteSpace()
   %s/\s*$//e
   ''
 :endfunction
-
 
 "*****************************************************************************
 "" Autocmd Rules
@@ -306,78 +225,15 @@ au BufNewFile,BufRead *.dartset filetype=dart shiftwidth=2 expandtab
 au FileType make set noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
-"" Python
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79,99 formatoptions+=croq softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-autocmd BufRead,BufNewFile *.py,*.pyw set expandtab
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-autocmd BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
-autocmd BufNewFile *.py,*.pyw set fileformat=unix
-autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e``
-autocmd BufRead *.py,*.pyw set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufNewFile,BufRead *.py_tmpl,*.cover setlocal ft=python
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-"" Go
-autocmd BufNewFile,BufRead *.go setlocal ft=go
-autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
-
-"" ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
-
-"" php
-autocmd FileType php setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
-
-"" verilog
-autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-
-"" html
-autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml,css,tmpl setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html,htmldjango,htmljinja,londonhtml,eruby,mako,haml,daml let b:closetag_html_style=1
-""autocmd FileType html,xhtml,xml,eruby,mako,haml,daml source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-"" C/Obj-C/C++
-autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-autocmd FileType objc setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab colorcolumn=79
-
-"" vim
-autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-autocmd FileType vim setlocal foldenable foldmethod=marker
-
-"" js
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=79
-autocmd BufNewFile,BufRead *.json setlocal ft=javascript
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
 set autoread
 
-
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
-"" How do i plugin map
-map <Leader>l <Plug>Howdoi
-
-"" Chrome OS remap <C-w> (command close tab)
-map <tab> <c-w>
-map <tab><tab> <c-w><c-w>
-map ,w <c-w>
-
-"" Python
-noremap <C-K> :!python<CR>
-noremap <C-L> :!python %<CR>
-
 "" Split
 noremap <Leader>h :split<CR>
 noremap <Leader>v :vsplit<CR>
@@ -387,23 +243,17 @@ noremap <Leader>ga :!git add .<CR>
 noremap <Leader>gc :!git commit -m '<C-R>="'"<CR>
 noremap <Leader>gsh :!git push<CR>
 noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 "" NerdTree
-noremap <Leader>n :NERDTreeToggle<CR>
-noremap <Plug> :NERDTreeToggle<CR>
-nnoremap <leader>d :NERDTreeToggle<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
 "" Tabs
-noremap th :tabnext<CR>
-noremap t] :tabnext<CR>
-noremap tl :tabprev<CR>
-noremap t[ :tabprev<CR>
-noremap tn :new<CR>
-noremap tc :tabclose<CR>
-noremap td :tabclose<CR>
+nmap <Tab> gt
+nmap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -414,83 +264,25 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-"" ctrlp
+"" ctrlp.vim
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap ,b :CtrlPBuffer<CR>
 noremap ,y <C-y><CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtBS()': ['<bs>', '<c-]>'],
-    \ 'PrtDelete()': ['<del>'],
-    \ 'PrtDeleteWord()': ['<c-w>'],
-    \ 'PrtClear()': ['<c-u>'],
-    \ 'PrtSelectMove("j")': ['<c-j>', '<down>'],
-    \ 'PrtSelectMove("k")': ['<c-k>', '<up>'],
-    \ 'PrtSelectMove("t")': ['<Home>', '<kHome>'],
-    \ 'PrtSelectMove("b")': ['<End>', '<kEnd>'],
-    \ 'PrtSelectMove("u")': ['<PageUp>', '<kPageUp>'],
-    \ 'PrtSelectMove("d")': ['<PageDown>', '<kPageDown>'],
-    \ 'PrtHistory(-1)': ['<c-n>'],
-    \ 'PrtHistory(1)': ['<c-p>'],
-    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-    \ 'AcceptSelection("t")': ['<c-t>'],
-    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-    \ 'ToggleFocus()': ['<s-tab>'],
-    \ 'ToggleRegex()': ['<c-r>'],
-    \ 'ToggleByFname()': ['<c-d>'],
-    \ 'ToggleType(1)': ['<c-f>', '<c-up>'],
-    \ 'ToggleType(-1)': ['<c-b>', '<c-down>'],
-    \ 'PrtExpandDir()': ['<tab>'],
-    \ 'PrtInsert("c")': ['<MiddleMouse>', '<insert>'],
-    \ 'PrtInsert()': ['<c-\>'],
-    \ 'PrtCurStart()': ['<c-a>'],
-    \ 'PrtCurEnd()': ['<c-e>'],
-    \ 'PrtCurLeft()': ['<c-h>', '<left>', '<c-^>'],
-    \ 'PrtCurRight()': ['<c-l>', '<right>'],
-    \ 'PrtClearCache()': ['<F5>'],
-    \ 'PrtDeleteEnt()': ['<F7>'],
-    \ 'CreateNewFile()': ['<c-y>'],
-    \ 'MarkToOpen()': ['<c-z>'],
-    \ 'OpenMulti()': ['<c-o>'],
-    \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>'],
-    \ }
-
-"" Bubble single lines
-nnoremap <C-Up> [e
-nnoremap <C-Down> ]e
-
-"" Bubble multiple lines
-vnoremap <C-Up> [egv
-vnoremap <C-Down> ]egv
-
-"" try to make possible to navigate within lines of wrapped lines
-nmap <Down> gj
-nmap <Up> gk
-
-"" Tag Code Navigation
-nnoremap <Leader>f :TagbarToggle<CR>
-
-"" Find file
-nnoremap <C-f> :FF<CR>
-nnoremap <C-s> :FS<CR>
-nnoremap <C-c> :FC .<CR>
 
 "" Remove trailing whitespace on <leader>S
 nnoremap <leader>:call TrimWhiteSpace()<cr>:let @/=''<CR>
-
-"" Rope
-noremap <leader>j :RopeGotoDefinition<CR>
-noremap <leader>r :RopeRename<CR>
 
 "" Copy/Paste/Cut
 noremap YY "+y<CR>
 noremap P "+gP<CR>
 noremap XX "+x<CR>
-
-"" TODO: Take a look at this
-nnoremap :call MatchCaseTag()
 
 "" Buffer nav
 nmap <S-p> :bp<CR>
@@ -510,9 +302,10 @@ noremap <leader>\ :noh<CR>
 vmap < <gv
 vmap > >gv
 
-"" ctags
-map <F8> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <leader>] g<c-]>
-
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
+
+"" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
