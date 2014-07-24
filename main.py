@@ -25,7 +25,6 @@ app = Bottle()
 def index():
     template = JINJA_ENVIRONMENT.get_template('index.html')
     url = "https://api.github.com/repos/avelino/.vimrc/contents/langs"
-    url += "?ref=clean"
     langs = [g["name"] for g in json.loads(requests.get(url).text)]
 
     return template.render({'langs': langs})
@@ -33,7 +32,7 @@ def index():
 
 @app.route('/generate.vim', method='POST')
 def generate():
-    url = "https://raw.githubusercontent.com/avelino/.vimrc/clean/"
+    url = "https://raw.githubusercontent.com/avelino/.vimrc/"
 
     langs = {"bundle": {}, "vim": {}}
     for l in request.POST.getall('langs'):
