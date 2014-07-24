@@ -1,0 +1,5 @@
+"" Python Bundle
+Bundle "davidhalter/jedi-vim"
+Bundle "scrooloose/syntastic"
+Bundle "majutsushi/tagbar"
+Bundle "Yggdroot/indentLine"
