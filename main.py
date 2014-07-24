@@ -32,7 +32,7 @@ def index():
 
 @app.route('/generate.vim', method='POST')
 def generate():
-    url = "https://raw.githubusercontent.com/avelino/.vimrc/"
+    url = "https://raw.githubusercontent.com/avelino/.vimrc/master/"
 
     langs = {"bundle": {}, "vim": {}}
     for l in request.POST.getall('langs'):
