@@ -191,11 +191,6 @@ function s:setupWrapping()
   set textwidth=79
 endfunction
 
-function s:setupMarkup()
-  call s:setupWrapping()
-  noremap <buffer> <Leader>p :Mm <CR>
-endfunction
-
 function TrimWhiteSpace()
   let @*=line(".")
   %s/\s*$//e
@@ -211,15 +206,8 @@ autocmd BufEnter * :syntax sync fromstart
 "" Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-"" less
-autocmd BufNewFile,BufRead *.less set filetype=less
-
 "" txt
 au BufRead,BufNewFile *.txt call s:setupWrapping()
-
-"" md
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
-au BufNewFile,BufRead *.dartset filetype=dart shiftwidth=2 expandtab
 
 "" make/cmake
 au FileType make set noexpandtab
