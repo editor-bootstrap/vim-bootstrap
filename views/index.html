@@ -17,10 +17,12 @@
 
         <form action="/generate.vim" method="post">
             {% for l in langs %}
-                <span class="button-checkbox">
-                    <button type="button" class="btn" data-color="primary">{{l}}</button>
-                    <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
-                </span>
+                <div class="input-group">
+                    <span class="button-checkbox">
+                        <button type="button" class="btn" data-color="primary">{{l}}</button>
+                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
+                    </span>
+                </div>
             {% endfor %}
             <div class="input-group">
                 <span class="input-group-btn">
