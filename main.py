@@ -23,11 +23,15 @@ app = Bottle()
 
 @app.route('/')
 def index():
+
+    def file_exist(path):
+        return os.path.isfile("{}{}".format(STATIC_PATH, path))
+
     template = JINJA_ENVIRONMENT.get_template('index.html')
     url = "https://api.github.com/repos/avelino/.vimrc/contents/langs"
     langs = [g["name"] for g in json.loads(requests.get(url).text)]
 
-    return template.render({'langs': langs})
+    return template.render({'langs': langs, 'file_exist': file_exist})
 
 
 @app.route('/generate.vim', method='POST')
