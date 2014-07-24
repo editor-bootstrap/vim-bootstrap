@@ -158,6 +158,9 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#sta
 
 let g:airline_theme = 'powerlineish'
 let g:airline_enable_branch = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 "*****************************************************************************
 "" Abbreviations
