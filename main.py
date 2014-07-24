@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
 import requests
@@ -20,6 +19,7 @@ T.insert(0, TEMPLATE_PATH)
 
 app = Bottle()
 
+
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -33,8 +33,10 @@ def generate():
 
     langs = {"bundle": {}, "vim": {}}
     for l in request.POST.getall('langs'):
-        langs["bundle"][l] = requests.get("{0}langs/{1}/{1}.bundle".format(url, l)).text
-        langs["vim"][l] = requests.get("{0}langs/{1}/{1}.vim".format(url, l)).text
+        langs["bundle"][l] = requests.get(
+            "{0}langs/{1}/{1}.bundle".format(url, l)).text
+        langs["vim"][l] = requests.get(
+            "{0}langs/{1}/{1}.vim".format(url, l)).text
 
     template = Template(requests.get("{}vimrc".format(url)).text)
 
