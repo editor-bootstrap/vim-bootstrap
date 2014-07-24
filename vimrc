@@ -297,8 +297,6 @@ noremap <leader>\ :noh<CR>
 vmap < <gv
 vmap > >gv
 
-inoremap <tab> <c-n>
-
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
