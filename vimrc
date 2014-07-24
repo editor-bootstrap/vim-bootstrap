@@ -300,11 +300,13 @@ vmap > >gv
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
+{% for v in vim %}
+{{ vim[v] }}
+{% endfor %}
+
 "" Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-{% for v in vim %}
-{{ vim[v] }}
-{% endfor %}
+
