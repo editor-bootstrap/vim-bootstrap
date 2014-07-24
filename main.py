@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import json
 import requests
 import jinja2
 from jinja2 import Template
@@ -23,8 +24,11 @@ app = Bottle()
 @app.route('/')
 def index():
     template = JINJA_ENVIRONMENT.get_template('index.html')
-    return template.render({
-        'langs': ['python', 'go', 'ruby', 'javascript', 'list', 'php']})
+    url = "https://api.github.com/repos/avelino/.vimrc/contents/langs"
+    url += "?ref=clean"
+    langs = [g["name"] for g in json.loads(requests.get(url).text)]
+
+    return template.render({'langs': langs})
 
 
 @app.route('/generate.vim', method='POST')
