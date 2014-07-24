@@ -24,8 +24,9 @@ app = Bottle()
 @app.route('/')
 def index():
 
-    def file_exist(path):
-        return os.path.isfile("{}{}".format(STATIC_PATH, path))
+    def file_exist(file):
+        return os.path.isfile("{}/images/logo/{}.png".format(
+            STATIC_PATH, file))
 
     template = JINJA_ENVIRONMENT.get_template('index.html')
     url = "https://api.github.com/repos/avelino/.vimrc/contents/langs"
