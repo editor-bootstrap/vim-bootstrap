@@ -47,7 +47,7 @@
 						                <div class="input-group">
 						                    <span class="button-checkbox">
 						                    	<div class="placeholder">
-					                    				<img class="logo-icon" data-value="{{l}}" src="{% if file_exists(l) %}/assets/images/logo/{{l}}.png{% else %}/assets/images/logo/vim.png{% endif %}">
+					                    				<img class="logo-icon" data-value="{{l}}" src="{% if file_exist(l) %}/assets/images/logo/{{l}}.png{% else %}/assets/images/logo/vim.png{% endif %}">
 					                    		</div>
 					                    		<p>{{l}}</p>
 						                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
