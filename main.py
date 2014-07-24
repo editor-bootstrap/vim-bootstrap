@@ -39,7 +39,7 @@ def generate():
     template = Template(requests.get("{}vimrc".format(url)).text)
 
     response.headers['Content-Type'] = 'application/text'
-    response.headers['Content-Disposition'] = 'attachment; filename=file.vim'
+    response.headers['Content-Disposition'] = 'attachment; filename=.vimrc'
     return template.render(**langs)
 
 
