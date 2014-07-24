@@ -1,34 +1,134 @@
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Vim Bootstrap</title>
-        <link rel="icon" href="/assets/favicon.ico" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="/assets/form.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h3>Languages<br />
-            </h3>
-            <br />
-        </div>
+	<head>
+		<title>Vim Bootstrap</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="/assets/css/ie/html5shiv.js"></script><![endif]-->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/skel.min.js"></script>
+		<script src="/assets/js/init.js"></script>
+		<script src="/assets/form.js"></script>
 
-        <form action="/generate.vim" method="post">
-            {% for l in langs %}
-                <div class="input-group">
-                    <span class="button-checkbox">
-                        <button type="button" class="btn" data-color="primary">{{l}}</button>
-                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
-                    </span>
-                </div>
-            {% endfor %}
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">Generate</button>
-                </span>
-            </div>
-        </form>
-    </body>
+		<noscript>
+			<link rel="stylesheet" href="/assets/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/assets/css/style.css" />
+			<link rel="stylesheet" href="/assets/css/style-wide.css" />
+		</noscript>
+
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie/v9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header" class="dark">
+				<header>
+					<h1>Vim Bootstrap</h1>
+					<p>A generator which provides a simple method of generating a .vimrc configuration for vim</p>
+				</header>
+				<footer>
+					<a href="#first" class="button scrolly">Maker your .vimrc now!</a>
+				</footer>
+			</section>
+			
+		<!-- First -->
+			<section id="first" class="main">
+				<header>
+					<div class="container">
+						<h2>Select your languages</h2>
+						<p></p>
+						<form class="clearfix" action="/generate.vim" method="post">
+							<div class="row">
+								<div class="12u">
+									{% for l in langs %}
+						                <div class="input-group">
+						                    <span class="button-checkbox">
+					                    		<img class="logo-icon" data-value="{{l}}" src="/assets/images/logo/{{l}}.png">
+						                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
+						                    </span>
+						                </div>
+						            {% endfor %}
+						         </div>
+					         </div>
+
+				            <div class="row">
+								<div class="12u">
+									<p>Click in the button to create your .vimrc</p><br>
+									<ul class="actions">
+										<li><input type="submit" class="button" value="Generate!"></li>
+										<li><input type="submit" class="button" value="Generate!"></li>
+									</ul>
+								</div>
+							</div>
+			        	</form>
+					</div>
+				</header>
+				<div class="content dark style1 featured">
+					<div class="container">
+						<div class="row">
+							<div class="4u">
+								<section>
+									<span class="feature-icon"><span class="fa fa-clock-o"></span></span>
+									<header>
+										<h3>Help us!</h3>
+									</header>
+									<p>Gravida dis placerat lectus ante vel nunc euismod est turpis sodales. 
+									Diam tempor dui lacinia accumsan vivamus. Gravida dis placerat lectus 
+									ante vel nunc euismod est turpis sodales. Diam tempor dui lacinia 
+									accumsan vivamus.</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<span class="feature-icon"><span class="fa fa-book"></span></span>
+									<header>
+										<h3>Lern more about Vim</h3>
+									</header>
+									<p>Gravida dis placerat lectus ante vel nunc euismod est turpis sodales. 
+									Diam tempor dui lacinia accumsan vivamus. Gravida dis placerat lectus 
+									ante vel nunc euismod est turpis sodales. Diam tempor dui lacinia 
+									accumsan vivamus.</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<span class="feature-icon"><span class="fa fa-edit"></span></span>
+									<header>
+										<h3>Make your plugin</h3>
+									</header>
+									<p>Gravida dis placerat lectus ante vel nunc euismod est turpis sodales. 
+									Diam tempor dui lacinia accumsan vivamus. Gravida dis placerat lectus 
+									ante vel nunc euismod est turpis sodales. Diam tempor dui lacinia 
+									accumsan vivamus.</p>
+								</section>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<footer>
+									<a href="https://github.com/avelino/vim-bootstrap" class="button">Contribute</a>
+								</footer>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<section id="footer">
+				<ul class="icons">
+					<li><a href="https://github.com/avelino/vim-bootstrap" class="fa fa-github solo"><span>GitHub</span></a></li>
+				</ul>
+				<div class="copyright">
+					<ul class="menu">
+						<li>&copy; Vim Generator. All rights reserved.</li>
+						<li><a href="https://github.com/avelino/vim-bootstrap">Vim Generator</a></li>
+					</ul>
+				</div>
+			</section>
+
+	</body>
 </html>

@@ -1,4 +1,20 @@
 $(function () {
+
+    $('.logo-icon').each(function() {
+        $this = $(this);
+
+        $this.on('click', function() {
+            var checkBox = $("input[value="+ $(this).data('value') +"]");
+            checkBox.prop("checked", !checkBox.prop("checked"));
+
+            if (checkBox.prop("checked")) {
+                $(this).addClass('selected');
+            } else {
+                $(this).removeClass('selected');
+            };
+        });
+    });
+
     $('.button-checkbox').each(function () {
 
         // Settings
