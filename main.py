@@ -1,27 +1,46 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from bottle import Bottle, view
+import requests
+import jinja2
+from jinja2 import Template
+from bottle import Bottle, request, response
 from bottle import TEMPLATE_PATH as T
 
 
 PROJECT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'views')
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(TEMPLATE_PATH),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 STATIC_PATH = os.path.join(PROJECT_PATH, 'assets')
 
 T.insert(0, TEMPLATE_PATH)
 
 app = Bottle()
 
-
-# Note: We don't need to call run() since our application is embedded within
-# the App Engine WSGI application server.
-
-
 @app.route('/')
-@view('index.html')
-def hello():
-    return {'hello': 'Thiago Avelino'}
+def index():
+    template = JINJA_ENVIRONMENT.get_template('index.html')
+    return template.render({
+        'langs': ['python', 'go', 'ruby', 'javascript', 'list', 'php']})
+
+
+@app.route('/generate.vim', method='POST')
+def generate():
+    url = "https://raw.githubusercontent.com/avelino/.vimrc/clean/"
+
+    langs = {"bundle": {}, "vim": {}}
+    for l in request.POST.getall('langs'):
+        langs["bundle"][l] = requests.get("{0}langs/{1}/{1}.bundle".format(url, l)).text
+        langs["vim"][l] = requests.get("{0}langs/{1}/{1}.vim".format(url, l)).text
+
+    template = Template(requests.get("{}vimrc".format(url)).text)
+
+    response.headers['Content-Type'] = 'application/text'
+    response.headers['Content-Disposition'] = 'attachment; filename=file.vim'
+    return template.render(**langs)
 
 
 # Define an handler for 404 errors.
