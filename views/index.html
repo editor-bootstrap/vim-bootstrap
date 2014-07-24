@@ -46,7 +46,10 @@
 									{% for l in langs %}
 						                <div class="input-group">
 						                    <span class="button-checkbox">
-					                    		<img class="logo-icon" data-value="{{l}}" src="/assets/images/logo/{{l}}.png">
+						                    	<div class="placeholder">
+					                    				<img class="logo-icon" data-value="{{l}}" src="{% if file_exist(l) %}/assets/images/logo/{{l}}.png{% else %}/assets/images/logo/vim.png{% endif %}">
+					                    		</div>
+					                    		<p>{{l}}</p>
 						                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
 						                    </span>
 						                </div>
@@ -58,7 +61,6 @@
 								<div class="12u">
 									<p>Click in the button to create your .vimrc</p><br>
 									<ul class="actions">
-										<li><input type="submit" class="button" value="Generate!"></li>
 										<li><input type="submit" class="button" value="Generate!"></li>
 									</ul>
 								</div>

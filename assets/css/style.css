@@ -1360,13 +1360,26 @@ html[xmlns] .clearfix {
 
 .input-group {
 	float: left;
+	margin: 0 1em 1em 0;
+}
+
+.input-group p {
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 12px;
+}
+
+.placeholder {
+	width: 124px;
+	height: 124px;
 }
 
 .logo-icon{
-	margin: 0 1em 1em 0;
 	opacity: .3;
+	cursor: pointer;
 }
 
+.logo-icon:hover,
 .logo-icon.selected {
 	opacity: 1;
 }
