@@ -53,6 +53,11 @@ def generate():
     return template.render(**langs)
 
 
+@route('/robots.txt')
+def serve_robots():
+    return static_file('robots.txt', root=STATIC_PATH)
+    
+
 @app.route('/assets/<path:path>', name='assets')
 def static(path):
     yield static_file(path, root=STATIC_PATH)
