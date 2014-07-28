@@ -44,11 +44,10 @@ Bundle 'garbas/vim-snipmate'
 
 "" Color
 Bundle 'tomasr/molokai'
-
+"" Custom bundles
 {% for b in bundle %}
 {{ bundle[b] }}
 {% endfor %}
-
 "" Installing plugins the first time
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -191,8 +190,8 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 20
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <F2> :NERDTreeFind<CR>
+noremap <F3> :NERDTreeToggle<CR>
 
 "*****************************************************************************
 "" Functions
@@ -247,9 +246,6 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
-"" NerdTree
-noremap <F3> :NERDTreeToggle<CR>
-
 "" Tabs
 nmap <Tab> gt
 nmap <S-Tab> gT
@@ -303,14 +299,11 @@ vmap > >gv
 
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
-
+"" Custom configs
 {% for v in vim %}
 {{ vim[v] }}
 {% endfor %}
-
 "" Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-

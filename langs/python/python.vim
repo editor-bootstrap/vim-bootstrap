@@ -24,3 +24,7 @@ let g:syntastic_aggregate_errors = 1
 let g:airline_enable_syntastic = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
