@@ -277,6 +277,18 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
+" syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
+
+" vim-airline
+let g:airline_enable_syntastic = 1
+
 "" Remove trailing whitespace on <leader>S
 nnoremap <leader>:call TrimWhiteSpace()<cr>:let @/=''<CR>
 
