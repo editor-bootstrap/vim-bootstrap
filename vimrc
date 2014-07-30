@@ -35,6 +35,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
+Bundle 'vim-scripts/grep.vim'
 
 "" Snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -192,6 +193,10 @@ let g:NERDTreeWinSize = 20
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
+
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
 
 "*****************************************************************************
 "" Functions
