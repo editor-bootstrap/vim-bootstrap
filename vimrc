@@ -36,6 +36,7 @@ Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'vim-scripts/grep.vim'
+Bundle 'vim-scripts/CSApprox'
 
 "" Snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
