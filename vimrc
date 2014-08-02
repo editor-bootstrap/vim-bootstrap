@@ -1,65 +1,73 @@
 "*****************************************************************************
-"" Vundle core
+"" NeoBundle core
 "*****************************************************************************
-set nocompatible
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+let vundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+
+if !filereadable(vundle_readme)
+  echo "Installing NeoBundle..."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"*****************************************************************************
+"" NeoBundle install packages
+"*****************************************************************************
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'vim-scripts/grep.vim'
+NeoBundle 'vim-scripts/CSApprox'
+
+"" Snippets
+NeoBundle "MarcWeber/vim-addon-mw-utils"
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "honza/vim-snippets"
+NeoBundle 'garbas/vim-snipmate'
+
+"" Color
+NeoBundle 'tomasr/molokai'
+
+"" Custom bundles
+{% for b in bundle %}
+{{ bundle[b] }}
+{% endfor %}
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-  echo "Installing Vundle..."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-  let iCanHazVundle=0
-endif
-
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-"*****************************************************************************
-"" Vundle install packages
-"*****************************************************************************
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'sheerun/vim-polyglot'
-Bundle 'vim-scripts/grep.vim'
-Bundle 'vim-scripts/CSApprox'
-
-"" Snippets
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/vim-snippets"
-Bundle 'garbas/vim-snipmate'
-
-"" Color
-Bundle 'tomasr/molokai'
-"" Custom bundles
-{% for b in bundle %}
-{{ bundle[b] }}
-{% endfor %}
-"" Installing plugins the first time
-if iCanHazVundle == 0
-  echo "Installing Bundles, please ignore key map error messages"
-  echo ""
-  :BundleInstall
-endif
-
-"*****************************************************************************
-"" Basic Setup
-"*****************************************************************************"
 "" Unleash all VIM power
 set nocompatible
 
