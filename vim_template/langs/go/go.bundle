@@ -1,2 +1,2 @@
 "" Go Lang Bundle
-Bundle "majutsushi/tagbar"
+NeoBundle "majutsushi/tagbar"
