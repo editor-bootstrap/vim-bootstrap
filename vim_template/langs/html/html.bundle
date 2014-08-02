@@ -1,5 +1,5 @@
 "" HTML Bundle
-Bundle 'amirh/HTML-AutoCloseTag'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'gorodinskiy/vim-coloresque'
-Bundle 'tpope/vim-haml'
+NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'gorodinskiy/vim-coloresque'
+NeoBundle 'tpope/vim-haml'

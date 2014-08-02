@@ -1,2 +1,2 @@
 "" PHP Bundle
-Bundle 'arnaud-lb/vim-php-namespace'
+NeoBundle 'arnaud-lb/vim-php-namespace'

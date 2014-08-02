@@ -1,2 +1,2 @@
 "" Ruby Bundle
-Bundle "tpope/vim-rails"
+NeoBundle "tpope/vim-rails"

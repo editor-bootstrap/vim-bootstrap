@@ -1,2 +1,2 @@
 "" Lisp Bundle
-Bundle 'vim-scripts/slimv.vim'
+NeoBundle 'vim-scripts/slimv.vim'
