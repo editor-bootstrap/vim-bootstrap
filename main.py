@@ -29,7 +29,8 @@ def index():
             STATIC_PATH, file))
 
     template = JINJA_ENVIRONMENT.get_template('index.html')
-    url = "https://api.github.com/repos/avelino/.vimrc/contents/langs"
+    url = "https://api.github.com/repos/avelino/vim-bootstrap/contents"
+    url += "/vim_template/langs"
     langs = [g["name"] for g in json.loads(requests.get(url).text)]
 
     return template.render({'langs': langs, 'file_exist': file_exist})
@@ -37,23 +38,23 @@ def index():
 
 @app.route('/generate.vim', method='POST')
 def generate():
-    url = "https://raw.githubusercontent.com/avelino/.vimrc/master/"
+    url = "https://raw.githubusercontent.com/avelino/vim-bootstrap/master/"
 
     langs = {"bundle": {}, "vim": {}}
     for l in request.POST.getall('langs'):
         langs["bundle"][l] = requests.get(
-            "{0}langs/{1}/{1}.bundle".format(url, l)).text
+            "{0}vim_template/langs/{1}/{1}.bundle".format(url, l)).text
         langs["vim"][l] = requests.get(
-            "{0}langs/{1}/{1}.vim".format(url, l)).text
+            "{0}vim_template/langs/{1}/{1}.vim".format(url, l)).text
 
-    template = Template(requests.get("{}vimrc".format(url)).text)
+    template = Template(requests.get("{}vim_template/vimrc".format(url)).text)
 
     response.headers['Content-Type'] = 'application/text'
     response.headers['Content-Disposition'] = 'attachment; filename=.vimrc'
     return template.render(**langs)
 
 
-@route('/robots.txt')
+@app.route('/robots.txt')
 def serve_robots():
     return static_file('robots.txt', root=STATIC_PATH)
     
