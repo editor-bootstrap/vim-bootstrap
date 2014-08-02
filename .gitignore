@@ -1,3 +1,13 @@
 *.pyc
 *.egg-info
 *.dist-info
+backup/
+*.swp
+*.swn
+*.swm
+*.swo
+*.pyc
+.netrwhist
+.ropeproject
+bundle
+vimrc.local
