@@ -314,7 +314,7 @@ noremap ,x :bn<CR>
 noremap ,w :bn<CR>
 
 "" Close buffer
-noremap ,d :bd<CR>
+noremap ,c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
