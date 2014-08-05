@@ -118,9 +118,6 @@ syntax on
 set ruler
 set number
 
-"" Menus I like :-)
-aunmenu Help.
-aunmenu Window.
 let no_buffers_menu=1
 highlight BadWhitespace ctermbg=red guibg=red
 colorscheme molokai
