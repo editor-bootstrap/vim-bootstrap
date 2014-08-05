@@ -1,5 +1,4 @@
 # vim-bootstrap
-=============
 
 Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim
 
@@ -26,45 +25,63 @@ report an issue to the issue tracker.
 
 The distribution is designed to work with Vim >= 7.3.
 
-* Python 2.7
-* pyflakes
+* ctags on Mac OSX
+```
+brew install ctags
+```
+* exuberant-ctags on Linux
+```
+apt-get install exuberant-ctags xclip
+```
+* pyflakes (optionally for python bundles)
+```
+pip install flake8
+```
 
 ## Commands
 
 Commands | Descriptions
 --- | ---
-`<C-w>, <tab> or ,w` | Navege via viewports
+`<C-w>+arrows` | Navege via viewports
 `:cd <path>` | Open path */path*
-`,x`, `,w` or `SHIFT+o` | Next buffer navegate
-`,z`, `,q` or `SHIFT+p` | previous buffer navegate
+`SHIFT+o` | Next buffer navegate
+`SHIFT+p` | previous buffer navegate
+`SHIFT+t` | Create a tab
+`TAB` | next tab navegate
+`SHIFT+TAB` | previous tab navegate
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
-`,d` | Close active buffer (clone file)
-`\b <0-9>` | Open buffer number
-`tn` | Create new empty buffer
-`\d`, `\n` or `F3`  | Open/Close three navegate files
-`\f` | List all class and method
-`\j` | Go to the method stated
-`\v` or `Ctrl+w + v` | Split vertical
-`\h` or `Ctrl+w + h` | Split horizontal
-`Ctrl + k` | Open interactive python console
-`\sh` | Open bash in *vim*
+`,c` | Close active buffer (clone file)
+`F2`  | Open three navegate in actual opened file
+`F3`  | Open/Close three navegate files
+`F4` | List all class and method
+`,d` | Go to the method definition
+`,v` | Split vertical
+`,h` | Split horizontal
+`,f` | Search using grep
+`Shit + k` | Open documentation
 `,o` | Open github file/line (website), if used git in **github**
-`\ga` | git add **.**
-`\gc` | git commit -m
-`\gsh` | git push
-`\gs` | git status
-`\gd` | git diff
-`\gr` | git remove
-`\\w` | EasyMotion word mode
-`\\f{char}` | EasyMotion character mode
-`W, E or B` | navigate through words considering case, underscores and others
-`html path then C-Y,` | Emmet html mounting. Examples here: http://mattn.github.io/emmet-vim/#howworkthis
-`\l` | Calls [howdoi](https://github.com/laurentgoudet/vim-howdoi) plugin
+`,ga` | git add **.**
+`,gc` | git commit -m
+`,gsh` | git push
+`,gs` | git status
+`,gb` | git blame
+`,gd` | git diff
+`,gr` | git remove
+`>` | indent to right
+`<` | indent to left
 
 ## Installation
 
-    http://www.vim-bootstrap.com
+* Download your own vimrc file at http://www.vim-bootstrap.com
+* Put your vimrc file into home folder
+```
+mv ~/Downloads/vimrc ~/.vimrc
+```
+* Execute ViM and it will install plugins automatically
+```
+vim +qall
+```
 
 ## Updating to the latest version
 
