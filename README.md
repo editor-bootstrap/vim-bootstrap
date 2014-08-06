@@ -71,7 +71,7 @@ mv ~/Downloads/vimrc ~/.vimrc
 ```
 * Execute ViM and it will install plugins automatically
 ```
-vim +qall
+vim +NeoBundleInstall +qall
 ```
 
 ## Updating to the latest version
