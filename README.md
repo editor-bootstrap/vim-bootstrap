@@ -36,7 +36,7 @@ Commands | Descriptions
 `,c` | Close active buffer (clone file)
 `F2`  | Open three navegate in actual opened file
 `F3`  | Open/Close three navegate files
-`F4` | List all class and method
+`F4` | List all class and method, support for python, go, ruby and php
 `,v` | Split vertical
 `,h` | Split horizontal
 `,f` | Search using grep
