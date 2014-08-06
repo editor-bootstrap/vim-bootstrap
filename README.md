@@ -37,9 +37,6 @@ Commands | Descriptions
 `F2`  | Open three navegate in actual opened file
 `F3`  | Open/Close three navegate files
 `F4` | List all class and method
-`,d` | Go to the Class/Method definition
-`,r` | Rename object definition
-`SHIFT+k` | Open documentation
 `,v` | Split vertical
 `,h` | Split horizontal
 `,f` | Search using grep
@@ -54,6 +51,16 @@ Commands | Descriptions
 `>` | indent to right
 `<` | indent to left
 `gc` | Comment or uncomment lines that {motion} moves over
+
+## Python hotkeys
+
+Commands | Descriptions
+--- | ---
+`SHIFT+k` | Open documentation
+`Control+Space` | Autocomplete
+`,d` | Go to the Class/Method definition
+`,r` | Rename object definition
+`,n` | Show where command is usage
 
 ## Installation
 
