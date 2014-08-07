@@ -1,2 +1,4 @@
 "" Ruby Bundle
 NeoBundle "tpope/vim-rails"
+NeoBundle "scrooloose/syntastic"
+NeoBundle "thoughtbot/vim-rspec"
