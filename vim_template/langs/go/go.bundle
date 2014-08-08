@@ -1,2 +1,3 @@
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
+NeoBundle "fatih/vim-go"
