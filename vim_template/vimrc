@@ -235,6 +235,10 @@ au BufRead,BufNewFile *.txt call s:setupWrapping()
 au FileType make set noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
+" ruby
+au BufNewFile,BufRead *.rb,*.rbw,*.gemspec set filetype=ruby
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
 endif
