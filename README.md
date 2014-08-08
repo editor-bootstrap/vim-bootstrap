@@ -39,6 +39,7 @@ Commands | Descriptions
 `F4` | List all class and method, support for python, go, ruby and php
 `,v` | Split vertical
 `,h` | Split horizontal
+`<Control>+w+w` | Navegate between vim split panes
 `,f` | Search using grep
 `,o` | Open github file/line (website), if used git in **github**
 `,ga` | git add **.**
