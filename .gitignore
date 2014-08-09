@@ -11,3 +11,4 @@ backup/
 .ropeproject
 bundle
 vimrc.local
+.DS_Store
