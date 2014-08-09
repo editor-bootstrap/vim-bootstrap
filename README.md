@@ -23,8 +23,9 @@ pip install flake8
 
 Commands | Descriptions
 --- | ---
-`<Control-w>+arrows` | Navegate via viewports
 `:cd <path>` | Open path */path*
+`<Control+w>+arrows` | Navegate via split panels
+`<Control>+w+w` | Alternative navegate vim split panels
 `,.` | Set path working directory
 `SHIFT+o` | Next buffer navegate
 `SHIFT+p` | previous buffer navegate
@@ -36,11 +37,10 @@ Commands | Descriptions
 `,c` | Close active buffer (clone file)
 `F2`  | Open three navegate in actual opened file
 `F3`  | Open/Close three navegate files
-`F4` | List all class and method, support for python, go, ruby and php
+`F4` | List all class and method, support for python, go, lua, ruby and php
 `,v` | Split vertical
 `,h` | Split horizontal
-`<Control>+w+w` | Navegate between vim split panes
-`,f` | Search using grep
+`,f` | Search in the project
 `,o` | Open github file/line (website), if used git in **github**
 `,ga` | git add **.**
 `,gc` | git commit -m
