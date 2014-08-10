@@ -12,7 +12,7 @@ brew install ctags
 ```
 * exuberant-ctags on Linux
 ```
-apt-get install exuberant-ctags
+apt-get install exuberant-ctags ncurses-term
 ```
 * pyflakes (optionally for python bundles)
 ```
