@@ -12,7 +12,7 @@ brew install ctags
 ```
 * exuberant-ctags on Linux
 ```
-apt-get install exuberant-ctags
+apt-get install exuberant-ctags ncurses-term
 ```
 * pyflakes (optionally for python bundles)
 ```
@@ -24,14 +24,14 @@ pip install flake8
 Commands | Descriptions
 --- | ---
 `:cd <path>` | Open path */path*
-`<Control+w>+arrows` | Navegate via split panels
-`<Control>+w+w` | Alternative navegate vim split panels
+`<Control+w>+arrows` | Navigate via split panels
+`<Control>+w+w` | Alternative navigate vim split panels
 `,.` | Set path working directory
-`SHIFT+o` | Next buffer navegate
-`SHIFT+p` | previous buffer navegate
+`SHIFT+o` | Next buffer navigate
+`SHIFT+p` | previous buffer navigate
 `SHIFT+t` | Create a tab
-`TAB` | next tab navegate
-`SHIFT+TAB` | previous tab navegate
+`TAB` | next tab navigate
+`SHIFT+TAB` | previous tab navigate
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
 `,c` | Close active buffer (clone file)
