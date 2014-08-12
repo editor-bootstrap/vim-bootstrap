@@ -35,8 +35,8 @@ Commands | Descriptions
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
 `,c` | Close active buffer (clone file)
-`F2`  | Open three navegate in actual opened file
-`F3`  | Open/Close three navegate files
+`F2`  | Open three navigate in actual opened file
+`F3`  | Open/Close three navigate files
 `F4` | List all class and method, support for python, go, lua, ruby and php
 `,v` | Split vertical
 `,h` | Split horizontal
