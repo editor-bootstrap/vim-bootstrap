@@ -123,7 +123,7 @@ colorscheme molokai
 set mousemodel=popup
 set t_Co=256
 set nocursorline
-set guioptions=egmrt
+set guioptions=egmrti
 set gfn=Monospace\ 8
 
 if has("gui_running")
