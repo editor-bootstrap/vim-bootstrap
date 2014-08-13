@@ -27,8 +27,8 @@ Commands | Descriptions
 `<Control+w>+arrows` | Navigate via split panels
 `<Control>+w+w` | Alternative navigate vim split panels
 `,.` | Set path working directory
-`SHIFT+o` | Next buffer navigate
-`SHIFT+p` | previous buffer navigate
+`,w or ,x` | Next buffer navigate
+`,q or ,z` | previous buffer navigate
 `SHIFT+t` | Create a tab
 `TAB` | next tab navigate
 `SHIFT+TAB` | previous tab navigate

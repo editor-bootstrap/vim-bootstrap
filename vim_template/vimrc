@@ -311,8 +311,6 @@ vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
 "" Buffer nav
-nmap <S-p> :bp<CR>
-nmap <S-o> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,q :bp<CR>
 noremap ,x :bn<CR>
