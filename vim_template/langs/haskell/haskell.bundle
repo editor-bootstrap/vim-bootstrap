@@ -1,0 +1,3 @@
+NeoBundle "eagletmt/neco-ghc"
+NeoBundle "dag/vim2hs"
+NeoBundle "pbrisbin/vim-syntax-shakespeare"
