@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import requests
+from google.appengine.api import memcache
 from webapp2 import WSGIApplication, RequestHandler, cached_property
 from webapp2_extras import jinja2
 from jinja2 import Template
@@ -34,11 +35,15 @@ class MainHandler(BaseHandler):
         def file_exist(file):
             return "/assets/images/logo/{}.png".format(file)
 
-        url = "https://api.github.com/repos/avelino/vim-bootstrap/contents"
-        url += "/vim_template/langs"
-        langs = [g["name"] for g in json.loads(requests.get(url).text)]
+        langs = memcache.get('langs')
+        if not langs:
+            url = "https://api.github.com/repos/avelino/vim-bootstrap/contents"
+            url += "/vim_template/langs"
+            langs = [g["name"] for g in json.loads(requests.get(url).text)]
+            memcache.add('langs', langs, 3600)
 
         context = {'langs': langs, 'file_exist': file_exist}
+
         self.render_response('index.html', **context)
 
 
@@ -48,12 +53,19 @@ class GenerateHandler(BaseHandler):
         url = "https://raw.githubusercontent.com/avelino/vim-bootstrap/master/"
 
         langs = {"bundle": {}, "vim": {}}
-        print self.request.POST.getall('langs')
         for l in self.request.POST.getall('langs'):
-            langs["bundle"][l] = requests.get(
-                "{0}vim_template/langs/{1}/{1}.bundle".format(url, l)).text
-            langs["vim"][l] = requests.get(
-                "{0}vim_template/langs/{1}/{1}.vim".format(url, l)).text
+            data = memcache.get('vim-{}'.format(l))
+            if not data:
+                langs["bundle"][l] = requests.get(
+                    "{0}vim_template/langs/{1}/{1}.bundle".format(url, l)).text
+                langs["vim"][l] = requests.get(
+                    "{0}vim_template/langs/{1}/{1}.vim".format(url, l)).text
+                memcache.add('vim-{}'.format(l),
+                             {'vim': langs['vim'][l],
+                              'bundle': langs['bundle'][l]}, 3600)
+            else:
+                langs["bundle"][l] = data['bundle']
+                langs["vim"][l] = data['vim']
 
         template = Template(
             requests.get("{}vim_template/vimrc".format(url)).text)
