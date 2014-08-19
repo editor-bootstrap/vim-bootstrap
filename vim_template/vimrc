@@ -38,10 +38,8 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
 
 "" Snippets
-NeoBundle "MarcWeber/vim-addon-mw-utils"
-NeoBundle "tomtom/tlib_vim"
-NeoBundle "honza/vim-snippets"
-NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 
 "" Color
 NeoBundle 'tomasr/molokai'
@@ -125,7 +123,7 @@ colorscheme molokai
 set mousemodel=popup
 set t_Co=256
 set nocursorline
-set guioptions=egmrt
+set guioptions=egmrti
 set gfn=Monospace\ 8
 
 if has("gui_running")
@@ -282,6 +280,12 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
+" snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
+
 " syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -307,8 +311,6 @@ vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
 "" Buffer nav
-nmap <S-p> :bp<CR>
-nmap <S-o> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,q :bp<CR>
 noremap ,x :bn<CR>

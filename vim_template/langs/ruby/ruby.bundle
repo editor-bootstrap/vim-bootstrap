@@ -1,4 +1,6 @@
 "" Ruby Bundle
 NeoBundle "tpope/vim-rails"
-NeoBundle "scrooloose/syntastic"
+NeoBundle "tpope/vim-rake"
+NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
+NeoBundle "majutsushi/tagbar"

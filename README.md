@@ -1,70 +1,79 @@
 # vim-bootstrap
-=============
 
-Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim
-
-This is a basic distribution of vim plugins and tools intended to be run
-on top of the latest MacVIM snapshot.
-
-We (Carl and Yehuda) both use this distribution for our own use, and
-welcome patches and contributions to help make it an effective way to
-get started with vim and then use it productively for years to come.
-
-At present, we are still learning to use vim ourselves, so you should
-anticipate a period of rapid development while we get a handle on the
-best tools for the job. So far, we have mostly integrated existing
-plugins and tools, and we anticipate to continue doing so while also
-writing our own plugins as appropriate.
-
-In general, you can expect that the tools we use work well together and
-that we have given careful thought to the experience of using MacVIM
-with the tools in question. If you run into an issue using it, please
-report an issue to the issue tracker.
-
+Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, MacVim and GVim.
 
 ## Pre-requisites
 
 The distribution is designed to work with Vim >= 7.3.
 
-* Python 2.7
-* pyflakes
+* ctags on Mac OSX
+```
+brew install ctags
+```
+* exuberant-ctags on Linux
+```
+apt-get install exuberant-ctags ncurses-term
+```
+* pyflakes (optionally for python bundles)
+```
+pip install flake8
+```
 
 ## Commands
 
 Commands | Descriptions
 --- | ---
-`<C-w>, <tab> or ,w` | Navege via viewports
 `:cd <path>` | Open path */path*
-`,x`, `,w` or `SHIFT+o` | Next buffer navegate
-`,z`, `,q` or `SHIFT+p` | previous buffer navegate
+`<Control+w>+arrows` | Navigate via split panels
+`<Control>+w+w` | Alternative navigate vim split panels
+`,.` | Set path working directory
+`,w or ,x` | Next buffer navigate
+`,q or ,z` | previous buffer navigate
+`SHIFT+t` | Create a tab
+`TAB` | next tab navigate
+`SHIFT+TAB` | previous tab navigate
 `,e` | Find and open files
 `,b` | Find file on buffer (open file)
-`,d` | Close active buffer (clone file)
-`\b <0-9>` | Open buffer number
-`tn` | Create new empty buffer
-`\d`, `\n` or `F3`  | Open/Close three navegate files
-`\f` | List all class and method
-`\j` | Go to the method stated
-`\v` or `Ctrl+w + v` | Split vertical
-`\h` or `Ctrl+w + h` | Split horizontal
-`Ctrl + k` | Open interactive python console
-`\sh` | Open bash in *vim*
+`,c` | Close active buffer (clone file)
+`F2`  | Open tree navigate in actual opened file
+`F3`  | Open/Close tree navigate files
+`F4` | List all class and method, support for python, go, lua, ruby and php
+`,v` | Split vertical
+`,h` | Split horizontal
+`,f` | Search in the project
 `,o` | Open github file/line (website), if used git in **github**
-`\ga` | git add **.**
-`\gc` | git commit -m
-`\gsh` | git push
-`\gs` | git status
-`\gd` | git diff
-`\gr` | git remove
-`\\w` | EasyMotion word mode
-`\\f{char}` | EasyMotion character mode
-`W, E or B` | navigate through words considering case, underscores and others
-`html path then C-Y,` | Emmet html mounting. Examples here: http://mattn.github.io/emmet-vim/#howworkthis
-`\l` | Calls [howdoi](https://github.com/laurentgoudet/vim-howdoi) plugin
+`,ga` | git add **.**
+`,gc` | git commit -m
+`,gsh` | git push
+`,gs` | git status
+`,gb` | git blame
+`,gd` | git diff
+`,gr` | git remove
+`>` | indent to right
+`<` | indent to left
+`gc` | Comment or uncomment lines that {motion} moves over
+
+## Python hotkeys
+
+Commands | Descriptions
+--- | ---
+`SHIFT+k` | Open documentation
+`Control+Space` | Autocomplete
+`,d` | Go to the Class/Method definition
+`,r` | Rename object definition
+`,n` | Show where command is usage
 
 ## Installation
 
-    http://www.vim-bootstrap.com
+* Download your own vimrc file at http://www.vim-bootstrap.com
+* Put your vimrc file into home folder
+```
+mv ~/Downloads/vimrc ~/.vimrc
+```
+* Execute ViM and it will install plugins automatically
+```
+vim +NeoBundleInstall +qall
+```
 
 ## Updating to the latest version
 

@@ -1,13 +1,18 @@
 application: vim-bootstrap
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: yes
 
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
 handlers:
+- url: /assets/
+  static_dir: assets/
 - url: .*
   script: main.app
 
-libraries:
-- name: jinja2
-  version: latest
