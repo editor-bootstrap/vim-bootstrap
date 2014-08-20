@@ -72,7 +72,6 @@ set backspace=indent,eol,start
 "" allow plugins by file type
 filetype on
 filetype plugin on
-filetype indent on
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
