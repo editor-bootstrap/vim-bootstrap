@@ -299,7 +299,7 @@ let g:syntastic_aggregate_errors = 1
 let g:airline_enable_syntastic = 1
 
 "" Remove trailing whitespace on <leader>S
-nnoremap <leader>:call TrimWhiteSpace()<cr>:let @/=''<CR>
+nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 "" Copy/Paste/Cut
 noremap YY "+y<CR>
