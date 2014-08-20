@@ -8,9 +8,9 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-let vundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 
-if !filereadable(vundle_readme)
+if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
   silent !mkdir -p ~/.vim/bundle
