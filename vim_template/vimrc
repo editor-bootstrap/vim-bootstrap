@@ -215,7 +215,7 @@ function TrimWhiteSpace()
   let @*=line(".")
   %s/\s*$//e
   ''
-:endfunction
+endfunction
 
 "*****************************************************************************
 "" Autocmd Rules
