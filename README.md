@@ -42,6 +42,7 @@ Commands | Descriptions
 `,h` | Split horizontal
 `,f` | Search in the project
 `,o` | Open github file/line (website), if used git in **github**
+`,sh` | Open shell terminal inside Vim
 `,ga` | git add **.**
 `,gc` | git commit -m
 `,gsh` | git push
