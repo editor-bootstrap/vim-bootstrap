@@ -182,14 +182,14 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "" Abbreviations
 "*****************************************************************************
 "" no one is really happy until you have this shortcuts
-cab W! w!
-cab Q! q!
-cab Wq wq
-cab Wa wa
-cab wQ wq
-cab WQ wq
-cab W w
-cab Q q
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
 
 "" NERDTree configuration
 let NERDTreeChDirMode=2
