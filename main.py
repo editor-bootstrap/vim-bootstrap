@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
 import requests
-import logging
 from google.appengine.api import memcache
 from webapp2 import WSGIApplication, RequestHandler, cached_property
 from webapp2_extras import jinja2
@@ -51,10 +50,9 @@ class MainHandler(BaseHandler):
 class GenerateHandler(BaseHandler):
 
     def post(self):
-        url = "https://raw.githubusercontent.com/adimircolen/vim-bootstrap/master/"
-        langs = {"bundle": {}, "vim": {}, "original_langs": ""}
-        logging.info('#########')
-        logging.info(langs)
+        url = "https://raw.githubusercontent.com/avelino/vim-bootstrap/master/"
+
+        langs = {"bundle": {}, "vim": {}}
         for l in self.request.POST.getall('langs'):
             data = memcache.get('vim-{}'.format(l))
             if not data:
@@ -68,10 +66,7 @@ class GenerateHandler(BaseHandler):
             else:
                 langs["bundle"][l] = data['bundle']
                 langs["vim"][l] = data['vim']
-                langs["original_langs"] = langs["original_langs"] + " " + l
 
-        logging.info('##############')
-        logging.info(langs)
         template = Template(
             requests.get("{}vim_template/vimrc".format(url)).text)
 
