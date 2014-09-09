@@ -19,3 +19,4 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
