@@ -1,6 +1,7 @@
 "*****************************************************************************
 "" NeoBundle core
 "*****************************************************************************
+
 if has('vim_starting')
   set nocompatible               " Be iMproved
 
@@ -323,13 +324,13 @@ if has('macunix')
 endif
 
 "" Buffer nav
-noremap ,z :bp<CR>
-noremap ,q :bp<CR>
-noremap ,x :bn<CR>
-noremap ,w :bn<CR>
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
 
 "" Close buffer
-noremap ,c :bd<CR>
+noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
