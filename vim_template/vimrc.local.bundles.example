@@ -2,7 +2,7 @@
 "" NeoBundle user install packages
 "*****************************************************************************
 
-" To add extra packages to vim, add them below\
+" To add extra packages to vim, add them below
 " eg (for github):
 
 " NeoBundle 'user/repository'
