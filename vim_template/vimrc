@@ -59,6 +59,11 @@ NeoBundle 'tomasr/molokai'
 {{ bundle[b] }}
 {% endfor %}
 
+"" Include user's extra bundle
+if filereadable(expand("~/.vimrc.local.bundles"))
+  source ~/.vimrc.local.bundles
+endif
+
 call neobundle#end()
 
 " Required:
