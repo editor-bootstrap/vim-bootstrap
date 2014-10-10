@@ -221,17 +221,21 @@ nnoremap <silent> <leader>sh :VimShellCreate<CR>
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
-function s:setupWrapping()
-  set wrap
-  set wm=2
-  set textwidth=79
-endfunction
+if !exists('*s:setupWrapping')
+	function s:setupWrapping()
+	  set wrap
+	  set wm=2
+	  set textwidth=79
+	endfunction
+endif
 
-function TrimWhiteSpace()
-  let @*=line(".")
-  %s/\s*$//e
-  ''
-endfunction
+if !exists('*TrimWhiteSpace')
+	function TrimWhiteSpace()
+	  let @*=line(".")
+	  %s/\s*$//e
+	  ''
+	endfunction
+endif
 
 "*****************************************************************************
 "" Autocmd Rules
