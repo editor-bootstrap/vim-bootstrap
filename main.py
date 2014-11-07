@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import json
 import requests
 from google.appengine.api import memcache
@@ -37,9 +38,13 @@ class MainHandler(BaseHandler):
 
         langs = memcache.get('langs')
         if not langs:
+            """
             url = "https://api.github.com/repos/avelino/vim-bootstrap/contents"
             url += "/vim_template/langs"
             langs = [g["name"] for g in json.loads(requests.get(url).text)]
+            """
+            url = "https://api.github.com/repos/avelino/vim-bootstrap/contents"
+            langs = os.listdir("./vim_template/langs")
             memcache.add('langs', langs, 3600)
 
         context = {'langs': langs, 'file_exist': file_exist}
