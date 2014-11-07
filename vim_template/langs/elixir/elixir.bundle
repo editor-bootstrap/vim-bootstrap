@@ -1,0 +1,2 @@
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'carlosgaldino/elixir-snippets'

@@ -1,6 +1,7 @@
 "*****************************************************************************
 "" NeoBundle core
 "*****************************************************************************
+
 if has('vim_starting')
   set nocompatible               " Be iMproved
 
@@ -57,6 +58,11 @@ NeoBundle 'tomasr/molokai'
 {% for b in bundle %}
 {{ bundle[b] }}
 {% endfor %}
+
+"" Include user's extra bundle
+if filereadable(expand("~/.vimrc.local.bundles"))
+  source ~/.vimrc.local.bundles
+endif
 
 call neobundle#end()
 
@@ -182,20 +188,20 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "" Abbreviations
 "*****************************************************************************
 "" no one is really happy until you have this shortcuts
-cab W! w!
-cab Q! q!
-cab Wq wq
-cab Wa wa
-cab wQ wq
-cab WQ wq
-cab W w
-cab Q q
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
 
 "" NERDTree configuration
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let NERDTreeShowBookmarks=1
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 20
@@ -210,21 +216,26 @@ let Grep_Default_Options = '-IR'
 " vimshell
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
+nnoremap <silent> <leader>sh :VimShellCreate<CR>
 
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
-function s:setupWrapping()
-  set wrap
-  set wm=2
-  set textwidth=79
-endfunction
+if !exists('*s:setupWrapping')
+  function s:setupWrapping()
+    set wrap
+    set wm=2
+    set textwidth=79
+  endfunction
+endif
 
-function TrimWhiteSpace()
-  let @*=line(".")
-  %s/\s*$//e
-  ''
-endfunction
+if !exists('*TrimWhiteSpace')
+  function TrimWhiteSpace()
+    let @*=line(".")
+    %s/\s*$//e
+    ''
+  endfunction
+endif
 
 "*****************************************************************************
 "" Autocmd Rules
@@ -265,8 +276,8 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 "" Tabs
-nmap <Tab> gt
-nmap <S-Tab> gT
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Set working directory
@@ -280,7 +291,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 "" ctrlp.vim
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 0
@@ -322,13 +333,13 @@ if has('macunix')
 endif
 
 "" Buffer nav
-noremap ,z :bp<CR>
-noremap ,q :bp<CR>
-noremap ,x :bn<CR>
-noremap ,w :bn<CR>
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
 
 "" Close buffer
-noremap ,c :bd<CR>
+noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
