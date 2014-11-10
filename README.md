@@ -5,7 +5,14 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 ## Pre-requisites
 
 The distribution is designed to work with Vim >= 7.3.
-
+* git on Mac OSX
+```
+brew install git
+```
+* git on Linux
+```
+apt-get install git
+```
 * ctags on Mac OSX
 ```
 brew install ctags
