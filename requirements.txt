@@ -5,3 +5,4 @@
 # by `appengine_config.py`.
 bottle
 requests
+jinja2
