@@ -84,10 +84,6 @@ set fileencodings=utf-8
 "" Fix backspace indent
 set backspace=indent,eol,start
 
-"" allow plugins by file type
-filetype on
-filetype plugin on
-
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
