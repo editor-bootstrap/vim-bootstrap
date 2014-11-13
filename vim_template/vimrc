@@ -243,10 +243,10 @@ autocmd BufEnter * :syntax sync fromstart
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 "" txt
-au BufRead,BufNewFile *.txt call s:setupWrapping()
+autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
 
 "" make/cmake
-au FileType make set noexpandtab
+autocmd FileType make set noexpandtab
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 if has("gui_running")
