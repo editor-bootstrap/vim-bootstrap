@@ -246,8 +246,8 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
 
 "" make/cmake
-autocmd FileType make set noexpandtab
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
+autocmd FileType make setlocal noexpandtab
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 
 if has("gui_running")
   autocmd BufWritePre * :call TrimWhiteSpace()
