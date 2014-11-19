@@ -59,11 +59,6 @@ NeoBundle 'tomasr/molokai'
 {{ bundle[b] }}
 {% endfor %}
 
-"" Include user's extra bundle
-if filereadable(expand("~/.{{editor}}rc.local.bundles"))
-  source ~/.{{editor}}rc.local.bundles
-endif
-
 call neobundle#end()
 
 " Required:
