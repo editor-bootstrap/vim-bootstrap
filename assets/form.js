@@ -8,9 +8,19 @@ $(function () {
             checkBox.prop("checked", !checkBox.prop("checked"));
 
             if (checkBox.prop("checked")) {
-                $(this).addClass('selected');
+				if ($(this).data("type") == "radio"){
+					$("input[name=editor]").prop("checked", false);
+					$(".logo-icon[data-type="+ $(this).data('type') +"]").removeClass('selected');
+					var checkBox = $("input[name=editor][value="+ $(this).data('value') +"]");
+					checkBox.prop("checked", true);
+				}
+				$(this).addClass('selected');
             } else {
-                $(this).removeClass('selected');
+				if ($(this).data("type") == "checkbox"){
+					$(this).removeClass('selected');
+				} else {
+					$(".logo-icon[data-type="+ $(this).data('type') +"]").removeClass('selected');
+				}
             };
         });
     });

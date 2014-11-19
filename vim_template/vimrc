@@ -6,20 +6,20 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.{{editor}}/bundle/neobundle.vim/
 endif
 
-let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand('~/.{{editor}}/bundle/neobundle.vim/README.md')
 
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
+  silent !mkdir -p ~/.{{editor}}/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.{{editor}}/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.{{editor}}/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -60,8 +60,8 @@ NeoBundle 'tomasr/molokai'
 {% endfor %}
 
 "" Include user's extra bundle
-if filereadable(expand("~/.vimrc.local.bundles"))
-  source ~/.vimrc.local.bundles
+if filereadable(expand("~/.{{editor}}rc.local.bundles"))
+  source ~/.{{editor}}rc.local.bundles
 endif
 
 call neobundle#end()
@@ -355,6 +355,6 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 {{ vim[v] }}
 {% endfor %}
 "" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+if filereadable(expand("~/.{{editor}}rc.local"))
+  source ~/.{{editor}}rc.local
 endif

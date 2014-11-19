@@ -47,7 +47,7 @@
 						                <div class="input-group">
 						                    <span class="button-checkbox">
 						                    	<div class="placeholder">
-					                    				<img class="logo-icon" data-value="{{l}}" src="/assets/images/logo/{{l}}.png">
+					                    				<img class="logo-icon" data-type="checkbox" data-value="{{l}}" src="/assets/images/logo/{{l}}.png">
 					                    		</div>
 					                    		<p>{{l}}</p>
 						                        <input type="checkbox" name="langs" value="{{l}}" class="hidden" />
@@ -56,6 +56,31 @@
 						            {% endfor %}
 						         </div>
 					         </div>
+
+							<h3>Select your editor</h3>
+				            <div class="row">
+								<div class="12u">
+									<div class="input-group">
+										<span class="button-checkbox">
+											<div class="placeholder">
+												<img class="logo-icon selected" data-type="radio" data-value="vim" src="/assets/images/logo/vim.png">
+											</div>
+											<p>vim</p>
+											<input type="radio" name="editor" value="vim" class="hidden" checked="checked" />
+										</span>
+									</div>
+									<div class="input-group">
+										<span class="button-checkbox">
+											<div class="placeholder">
+												<img class="logo-icon" data-type="radio" data-value="nvim" src="/assets/images/logo/neovim.png">
+											</div>
+											<p>neovim</p>
+											<input type="radio" name="editor" value="nvim" class="hidden" />
+										</span>
+									</div>
+
+								</div>
+							</div>
 
 				            <div class="row">
 								<div class="12u">

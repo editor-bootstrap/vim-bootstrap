@@ -42,7 +42,8 @@ def index():
 def generate():
     url = "https://raw.githubusercontent.com/avelino/vim-bootstrap/master/"
 
-    langs = {"bundle": {}, "vim": {}}
+    editor = request.POST.get("editor", "vim")
+    langs = {"bundle": {}, "vim": {}, "editor": editor}
     for l in request.POST.getall('langs'):
 
         data = memcache.get('vim-{}'.format(l))
@@ -58,10 +59,12 @@ def generate():
             langs["bundle"][l] = data['bundle']
             langs["vim"][l] = data['vim']
 
+
     template = Template(requests.get("{}vim_template/vimrc".format(url)).text)
 
     response.headers['Content-Type'] = 'application/text'
-    response.headers['Content-Disposition'] = 'attachment; filename=.vimrc'
+    response.headers['Content-Disposition'] = 'attachment; \
+            filename=.{}rc'.format(editor)
     return template.render(**langs)
 
 
