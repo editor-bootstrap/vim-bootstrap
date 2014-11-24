@@ -1,4 +1,3 @@
 NeoBundle "eagletmt/neco-ghc"
-NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "dag/vim2hs"
 NeoBundle "pbrisbin/vim-syntax-shakespeare"
