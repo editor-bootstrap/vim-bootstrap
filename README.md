@@ -53,6 +53,7 @@ Commands | Descriptions
 `,ga` | git add **.**
 `,gc` | git commit -m
 `,gsh` | git push
+`,gll` | git pull
 `,gs` | git status
 `,gb` | git blame
 `,gd` | git diff
