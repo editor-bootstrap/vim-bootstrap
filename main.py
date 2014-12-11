@@ -45,7 +45,7 @@ def generate():
     editor = request.POST.get("editor", "vim")
     langs = {"bundle": {}, "vim": {}, "editor": editor}
     select_lang = request.POST.getall('langs')
-    for l in select:
+    for l in select_lang:
 
         data = memcache.get('vim-{}'.format(l))
         if not data:
