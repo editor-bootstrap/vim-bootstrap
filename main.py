@@ -68,6 +68,17 @@ def generate():
     return template.render(**langs)
 
 
+@app.route('/langs')
+def langs():
+
+    langs = memcache.get('langs')
+    if not langs:
+        langs = os.listdir("./vim_template/langs")
+        memcache.add('langs', langs, 3600)
+
+    return ",".join(langs)
+
+
 @app.route('/robots.txt')
 def serve_robots():
     return static_file('robots.txt', root=STATIC_PATH)
