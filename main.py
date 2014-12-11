@@ -44,7 +44,8 @@ def generate():
 
     editor = request.POST.get("editor", "vim")
     langs = {"bundle": {}, "vim": {}, "editor": editor}
-    for l in request.POST.getall('langs'):
+    select_lang = request.POST.getall('langs')
+    for l in select:
 
         data = memcache.get('vim-{}'.format(l))
         if not data:
@@ -65,6 +66,7 @@ def generate():
     response.headers['Content-Type'] = 'application/text'
     response.headers['Content-Disposition'] = 'attachment; \
             filename=.{}rc'.format(editor)
+    langs['select_lang'] = ",".join(select_lang)
     return template.render(**langs)
 
 
