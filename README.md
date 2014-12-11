@@ -61,6 +61,8 @@ Commands | Descriptions
 `>` | indent to right
 `<` | indent to left
 `gc` | Comment or uncomment lines that {motion} moves over
+`YY` | Copy to clipboard
+`P` | Paste
 
 ## Python hotkeys
 
@@ -86,6 +88,7 @@ vim +NeoBundleInstall +qall
 
 ## Updating to the latest version
 
+    :VimBootstrapUpdate (thanks to @sherzberg)
     :NeoBundleUpdate
 
 ## Learn Vim
