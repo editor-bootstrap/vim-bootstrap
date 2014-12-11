@@ -54,6 +54,9 @@ NeoBundle 'honza/vim-snippets'
 "" Color
 NeoBundle 'tomasr/molokai'
 
+"" Vim Bootstrap Update
+g:vim_bootstrap_langs = "{{ select_lang }}"
+
 "" Custom bundles
 {% for b in bundle %}
 {{ bundle[b] }}
