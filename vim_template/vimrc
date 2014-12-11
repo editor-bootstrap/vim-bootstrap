@@ -55,6 +55,8 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'tomasr/molokai'
 
 "" Vim-Bootstrap Updater
+NeoBundle 'sherzberg/vim-bootstrap-updater'
+
 let g:vim_bootstrap_langs = "{{ select_lang }}"
 
 "" Custom bundles
