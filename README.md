@@ -1,6 +1,6 @@
 # vim-bootstrap
 
-Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, MacVim and GVim.
+Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, NeoVim, MacVim and GVim.
 
 ## Pre-requisites
 
@@ -77,7 +77,7 @@ Commands | Descriptions
 ## Installation
 
 * Download your own vimrc file at http://www.vim-bootstrap.com
-* Put your vimrc file into home folder
+* Put your vimrc file (or nvimrc if you use NeoVim) into home folder
 ```
 mv ~/Downloads/vimrc ~/.vimrc
 ```
