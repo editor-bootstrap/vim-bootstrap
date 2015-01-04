@@ -2,8 +2,11 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+augroup vimrc-ruby
+  autocmd!
+  autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
+  autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
