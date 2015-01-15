@@ -5,22 +5,21 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 ## Pre-requisites
 
 The distribution is designed to work with Vim >= 7.3.
-* git on Mac OSX
+
+### MAC
+
 ```
-brew install git
+brew install git ctags
 ```
-* git on Linux
+
+### Linux
+
+* Ubuntu
+
 ```
-apt-get install git
+$ sudo apt-get install git exuberant-ctags ncurses-term
 ```
-* ctags on Mac OSX
-```
-brew install ctags
-```
-* exuberant-ctags on Linux
-```
-apt-get install exuberant-ctags ncurses-term
-```
+
 * pyflakes (optionally for python bundles)
 ```
 pip install flake8
