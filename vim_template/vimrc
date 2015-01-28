@@ -46,7 +46,6 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'mattn/emmet-vim'
 
 "" Snippets
 NeoBundle 'SirVer/ultisnips'
