@@ -6,10 +6,10 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 
 The distribution is designed to work with Vim >= 7.3.
 
-### MAC
+### Mac OSX
 
 ```
-brew install git ctags
+$ brew install git ctags
 ```
 
 ### Linux
@@ -22,7 +22,7 @@ $ sudo apt-get install git exuberant-ctags ncurses-term
 
 * pyflakes (optionally for python bundles)
 ```
-pip install flake8
+$ pip install flake8
 ```
 
 ## Commands
@@ -62,6 +62,7 @@ Commands | Descriptions
 `gc` | Comment or uncomment lines that {motion} moves over
 `YY` | Copy to clipboard
 `P` | Paste
+`<Control+y>,` | Activate Emmet plugin
 
 ## Python hotkeys
 
