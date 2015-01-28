@@ -58,6 +58,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'sherzberg/vim-bootstrap-updater'
 
 let g:vim_bootstrap_langs = "{{ select_lang }}"
+let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
 
 "" Custom bundles
 {% for b in bundle %}
