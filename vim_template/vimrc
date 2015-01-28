@@ -46,6 +46,7 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'mattn/emmet-vim'
 
 "" Snippets
 NeoBundle 'SirVer/ultisnips'
@@ -368,10 +369,12 @@ vmap > >gv
 
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
+
 "" Custom configs
 {% for v in vim %}
 {{ vim[v] }}
 {% endfor %}
+
 "" Include user's local vim config
 if filereadable(expand("~/.{{editor}}rc.local"))
   source ~/.{{editor}}rc.local
