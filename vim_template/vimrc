@@ -57,11 +57,6 @@ NeoBundle 'tomasr/molokai'
 "" Vim-Bootstrap Updater
 NeoBundle 'sherzberg/vim-bootstrap-updater'
 
-"" Include user's extra bundle
-if filereadable(expand("~/.{{editor}}rc.local.bundles"))
-  source ~/.{{editor}}rc.local.bundles
-endif
-
 let g:vim_bootstrap_langs = "{{ select_lang }}"
 let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
 
@@ -69,6 +64,11 @@ let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
 {% for b in bundle %}
 {{ bundle[b] }}
 {% endfor %}
+
+"" Include user's extra bundle
+if filereadable(expand("~/.{{editor}}rc.local.bundles"))
+  source ~/.{{editor}}rc.local.bundles
+endif
 
 call neobundle#end()
 
