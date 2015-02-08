@@ -37,6 +37,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
+NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -129,7 +130,6 @@ set ruler
 set number
 
 let no_buffers_menu=1
-highlight BadWhitespace ctermbg=red guibg=red
 colorscheme molokai
 
 set mousemodel=popup
@@ -233,14 +233,6 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
-if !exists('*TrimWhiteSpace')
-  function TrimWhiteSpace()
-    let @*=line(".")
-    %s/\s*$//e
-    ''
-  endfunction
-endif
-
 "*****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
@@ -268,13 +260,6 @@ augroup vimrc-make-cmake
   autocmd FileType make setlocal noexpandtab
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
-
-if has("gui_running")
-  augroup vimrc-white-space
-    autocmd!
-    autocmd BufWritePre * :call TrimWhiteSpace()
-  augroup END
-endif
 
 set autoread
 
@@ -337,9 +322,6 @@ let g:syntastic_aggregate_errors = 1
 
 " vim-airline
 let g:airline_enable_syntastic = 1
-
-"" Remove trailing whitespace on <leader>S
-nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
