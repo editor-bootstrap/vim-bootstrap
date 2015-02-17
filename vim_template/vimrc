@@ -16,6 +16,7 @@ if !filereadable(neobundle_readme)
   echo ""
   silent !mkdir -p ~/.{{editor}}/bundle
   silent !git clone https://github.com/Shougo/neobundle.vim ~/.{{editor}}/bundle/neobundle.vim/
+  let g:not_set_color = "yes"
 endif
 
 " Required:
@@ -130,7 +131,9 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme molokai
+if !exists('g:not_set_color')
+  colorscheme molokai
+endif
 
 set mousemodel=popup
 set t_Co=256
