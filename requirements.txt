@@ -4,5 +4,4 @@
 # in this project's lib/ directory.  The `lib` directory is added to `sys.path`
 # by `appengine_config.py`.
 bottle
-requests
 jinja2
