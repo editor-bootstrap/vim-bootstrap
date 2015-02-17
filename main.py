@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-import json
-import requests
 import jinja2
 from google.appengine.api import memcache
 from jinja2 import Template
@@ -40,8 +38,6 @@ def index():
 
 @app.route('/generate.vim', method='POST')
 def generate():
-    url = "https://raw.githubusercontent.com/avelino/vim-bootstrap/master/"
-
     editor = request.POST.get("editor", "vim")
     langs = {"bundle": {}, "vim": {}, "editor": editor}
     select_lang = request.POST.getall('langs')
@@ -49,19 +45,22 @@ def generate():
 
         data = memcache.get('vim-{}'.format(l))
         if not data:
-            langs["bundle"][l] = requests.get(
-                "{0}vim_template/langs/{1}/{1}.bundle".format(url, l)).text
-            langs["vim"][l] = requests.get(
-                "{0}vim_template/langs/{1}/{1}.vim".format(url, l)).text
-            memcache.add('vim-{}'.format(l),
-                         {'vim': langs['vim'][l],
-                          'bundle': langs['bundle'][l]}, 3600)
+            cache = {}
+            for ext in ["bundle", "vim"]:
+                with open("./vim_template/langs/{0}/{0}.{1}".format(
+                        l, ext)) as f:
+                    cache[ext] = langs[ext][l] = f.read()
+            memcache.add('vim-{}'.format(l), cache, 3600)
         else:
             langs["bundle"][l] = data['bundle']
             langs["vim"][l] = data['vim']
 
+    template = None
+    with open("./vim_template/vimrc") as f:
+        template = Template(f.read().decode('utf-8'))
 
-    template = Template(requests.get("{}vim_template/vimrc".format(url)).text)
+    if not template:
+        template = Template("")
 
     response.headers['Content-Type'] = 'application/text'
     response.headers['Content-Disposition'] = 'attachment; \
@@ -84,7 +83,7 @@ def langs():
 @app.route('/robots.txt')
 def serve_robots():
     return static_file('robots.txt', root=STATIC_PATH)
-    
+
 
 @app.route('/assets/<path:path>', name='assets')
 def static(path):
