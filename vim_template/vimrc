@@ -16,7 +16,12 @@ if !filereadable(neobundle_readme)
   echo ""
   silent !mkdir -p ~/.{{editor}}/bundle
   silent !git clone https://github.com/Shougo/neobundle.vim ~/.{{editor}}/bundle/neobundle.vim/
-  let g:not_set_color = "yes"
+  let g:not_finsh_neobundle = "yes"
+
+  " Run shell script if exist on custom select language
+  {% for b in bundle %}
+  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/{{ b }}/{{ b }}.sh | bash -s stable
+  {% endfor %}
 endif
 
 " Required:
@@ -131,7 +136,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-if !exists('g:not_set_color')
+if !exists('g:not_finsh_neobundle')
   colorscheme molokai
 endif
 
