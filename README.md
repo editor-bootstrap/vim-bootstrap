@@ -49,8 +49,8 @@ Commands | Descriptions
 `,f` | Search in the project
 `,o` | Open github file/line (website), if used git in **github**
 `,sh` | Open shell terminal inside Vim
-`,ga` | git add **.**
-`,gc` | git commit -m
+`,ga` | Execute *git add* on current file
+`,gc` | git commit (splits window to write commit message)
 `,gsh` | git push
 `,gll` | git pull
 `,gs` | git status
