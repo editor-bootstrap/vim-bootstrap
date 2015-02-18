@@ -112,8 +112,8 @@ set smartcase
 
 "" Encoding
 set bomb
-set ttyfast
 set binary
+{{ 'set ttyfast' if editor != 'neovim' }}
 
 "" Directories for swp files
 set nobackup
