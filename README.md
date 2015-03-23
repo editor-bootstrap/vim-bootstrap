@@ -57,6 +57,10 @@ Commands | Descriptions
 `,gb` | git blame
 `,gd` | git diff
 `,gr` | git remove
+`,so` | Open Session
+`,ss` | Save Session
+`,sd` | Delete Session
+`,sc` | Close Session
 `>` | indent to right
 `<` | indent to left
 `gc` | Comment or uncomment lines that {motion} moves over
