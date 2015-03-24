@@ -135,7 +135,7 @@ set showcmd
 set shell=/bin/sh
 
 " session management
-let g:session_directory = "~/.vim/session"
+let g:session_directory = "~/.{{editor}}/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
