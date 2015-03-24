@@ -56,6 +56,10 @@ if v:version > 702
 	NeoBundle 'Shougo/vimshell.vim'
 endif
 
+"" Vim-Session
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
+
 "" Snippets
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -129,6 +133,12 @@ set noswapfile
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
+
+" session management
+let g:session_directory = "~/.{{editor}}/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
 
 "*****************************************************************************
 "" Visual Settings
@@ -303,6 +313,12 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
+" session management
+nnoremap <leader>so :OpenSession
+nnoremap <leader>ss :SaveSession
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
 "" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -325,7 +341,7 @@ let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore
 let g:ctrlp_use_caching = 0
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_map = ',e'
+let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 
 " snippets
