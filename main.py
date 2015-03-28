@@ -27,6 +27,7 @@ def index():
         return os.path.isfile("{}/images/logo/{}.png".format(
             STATIC_PATH, file))
 
+
     langs = memcache.get('langs')
     if not langs:
         langs = os.listdir("./vim_template/langs")
