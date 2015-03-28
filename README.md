@@ -95,6 +95,10 @@ vim +NeoBundleInstall +qall
     :VimBootstrapUpdate (thanks to @sherzberg)
     :NeoBundleUpdate
 
+## Update using command line
+
+    python ./tools/generate_local --editor nvim --langs php c python
+
 ## Learn Vim
 
 Visit the following sites to learn more about Vim:
