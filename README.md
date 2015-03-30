@@ -106,3 +106,4 @@ Visit the following sites to learn more about Vim:
 * [Why, oh WHY, do those #?@! nutheads use vi?](http://www.viemu.com/a-why-vi-vim.html)
 * [Byte of Vim](http://www.swaroopch.com/notes/Vim)
 * [Screencast "17 tips for Vim" (in portuguese)](http://blog.lucascaton.com.br/?p=1081)
+* [Join the Church of Vim, and you too can be a saint!](http://www.avelino.xxx/2015/03/church-vim)
