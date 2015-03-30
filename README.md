@@ -48,7 +48,7 @@ Commands | Descriptions
 `,h` | Split horizontal
 `,f` | Search in the project
 `,o` | Open github file/line (website), if used git in **github**
-`,sh` | Open shell terminal inside Vim
+`,sh` | Open shell.vim terminal inside Vim or NeoVim built-in terminal
 `,ga` | Execute *git add* on current file
 `,gc` | git commit (splits window to write commit message)
 `,gsh` | git push
