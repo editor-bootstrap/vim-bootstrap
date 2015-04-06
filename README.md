@@ -20,6 +20,11 @@ $ brew install git ctags
 $ sudo apt-get install git exuberant-ctags ncurses-term
 ```
 
+* Gentoo
+```
+$ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes
+```
+
 * pyflakes (optionally for python bundles)
 ```
 $ pip install flake8
