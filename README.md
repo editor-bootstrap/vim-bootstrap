@@ -64,6 +64,13 @@ Commands | Descriptions
 `,r` | Rename object definition
 `,n` | Show where command is usage
 
+## Ruby hotkeys
+Commands | Descriptions
+--- | ---
+`,a` | Run all specs
+`,l` | Run last spec
+`,t` | Run current spec
+
 ## Installation
 
 * Download your own vimrc file at http://www.vim-bootstrap.com
