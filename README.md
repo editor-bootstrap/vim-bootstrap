@@ -25,7 +25,14 @@ $ sudo apt-get install git exuberant-ctags ncurses-term
 $ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes
 ```
 
-* pyflakes (optionally for python bundles)
+* Arch Linux via *pacman* (recomend used *pacaur*)
+```
+$ sudo pacman -S git-core ctags ncurses
+```
+
+### Python bundle (optionally)
+
+* pyflakes
 ```
 $ pip install flake8
 ```
