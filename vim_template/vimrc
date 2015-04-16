@@ -11,6 +11,9 @@ endif
 
 let neobundle_readme=expand('~/.{{editor}}/bundle/neobundle.vim/README.md')
 
+let g:vim_bootstrap_langs = "{{ select_lang }}"
+let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
+
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
@@ -52,9 +55,6 @@ NeoBundle 'Shougo/vimproc.vim', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-if v:version > 702
-  NeoBundle 'Shougo/vimshell.vim'
-endif
 
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
@@ -70,8 +70,13 @@ NeoBundle 'tomasr/molokai'
 "" Vim-Bootstrap Updater
 NeoBundle 'sherzberg/vim-bootstrap-updater'
 
-let g:vim_bootstrap_langs = "{{ select_lang }}"
-let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
+if v:version >= 703
+  NeoBundle 'Shougo/vimshell.vim'
+endif
+
+if v:version >= 704
+  NeoBundle 'FelikZ/ctrlp-py-matcher'
+endif
 
 "" Custom bundles
 {% for b in bundle %}
