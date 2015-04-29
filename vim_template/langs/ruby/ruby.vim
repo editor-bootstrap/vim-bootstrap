@@ -5,7 +5,7 @@ let g:rubycomplete_rails = 1
 augroup vimrc-ruby
   autocmd!
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
 augroup END
 
 " Tagbar
@@ -22,7 +22,6 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
-autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
