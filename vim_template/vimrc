@@ -22,9 +22,9 @@ if !filereadable(neobundle_readme)
   let g:not_finsh_neobundle = "yes"
 
   " Run shell script if exist on custom select language
-  {% for b in bundle %}
+{% for b in bundle %}
   silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/{{ b }}/{{ b }}.sh | bash -s stable
-  {% endfor %}
+{% endfor %}
 endif
 
 " Required:
