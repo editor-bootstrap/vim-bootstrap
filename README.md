@@ -66,7 +66,7 @@ Commands | Descriptions
 
 ## Ruby hotkeys
 Commands | Descriptions
-	------- | -----------
+	------- | -------
 `,a`		| Run all specs
 `,l`		| Run last spec
 `,t`		| Run current spec
