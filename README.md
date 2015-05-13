@@ -66,10 +66,19 @@ Commands | Descriptions
 
 ## Ruby hotkeys
 Commands | Descriptions
---- | ---
-`,a` | Run all specs
-`,l` | Run last spec
-`,t` | Run current spec
+	------- | -------
+`,a`		| Run all specs
+`,l`		| Run last spec
+`,t`		| Run current spec
+`,rap`		| Add Parameter
+`,rcpc` 	| Inline Temp
+`,rel`		| Convert Post Conditional
+`,rec`		| Extract Constant          (visual selection)
+`,rec`   	| Extract to Let (Rspec)
+`,relv` 	| Extract Local Variable    (visual selection)
+`,rrlv` 	| Rename Local Variable     (visual selection/variable under the cursor)
+`,rriv` 	| Rename Instance Variable  (visual selection)
+`,rem`  	| Extract Method            (visual selection)
 
 ## Installation
 
