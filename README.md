@@ -42,7 +42,7 @@ $ pip install flake8
 Commands | Descriptions
 --- | ---
 `:cd <path>` | Open path */path*
-`<Control+w>+arrows` | Navigate via split panels
+`<Control+w>+<hjkl>` | Navigate via split panels
 `<Control>+w+w` | Alternative navigate vim split panels
 `,.` | Set path working directory
 `,w or ,x` | Next buffer navigate
