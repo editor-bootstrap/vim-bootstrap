@@ -159,7 +159,7 @@ endif
 
 set mousemodel=popup
 set t_Co=256
-set nocursorline
+set cursorline
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
