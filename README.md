@@ -4,7 +4,7 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 
 ## Pre-requisites
 
-The distribution is designed to work with Vim >= 7.3.
+The distribution is designed to work with Vim >= 7.2.
 
 ### Mac OSX
 
@@ -42,7 +42,7 @@ $ pip install flake8
 Commands | Descriptions
 --- | ---
 `:cd <path>` | Open path */path*
-`<Control+w>+arrows` | Navigate via split panels
+`<Control+w>+<hjkl>` | Navigate via split panels
 `<Control>+w+w` | Alternative navigate vim split panels
 `,.` | Set path working directory
 `,w or ,x` | Next buffer navigate
@@ -92,10 +92,19 @@ Commands | Descriptions
 
 ## Ruby hotkeys
 Commands | Descriptions
---- | ---
-`,a` | Run all specs
-`,l` | Run last spec
-`,t` | Run current spec
+	------- | -------
+`,a`		| Run all specs
+`,l`		| Run last spec
+`,t`		| Run current spec
+`,rap`		| Add Parameter
+`,rcpc` 	| Inline Temp
+`,rel`		| Convert Post Conditional
+`,rec`		| Extract Constant          (visual selection)
+`,rec`   	| Extract to Let (Rspec)
+`,relv` 	| Extract Local Variable    (visual selection)
+`,rrlv` 	| Rename Local Variable     (visual selection/variable under the cursor)
+`,rriv` 	| Rename Instance Variable  (visual selection)
+`,rem`  	| Extract Method            (visual selection)
 
 ## Installation
 
@@ -125,4 +134,5 @@ Visit the following sites to learn more about Vim:
 * [Why, oh WHY, do those #?@! nutheads use vi?](http://www.viemu.com/a-why-vi-vim.html)
 * [Byte of Vim](http://www.swaroopch.com/notes/Vim)
 * [Screencast "17 tips for Vim" (in portuguese)](http://blog.lucascaton.com.br/?p=1081)
+* [MinuteVim Tricks](https://www.youtube.com/user/MinuteVimTricks)
 * [Join the Church of Vim, and you too can be a saint!](http://www.avelino.xxx/2015/03/church-vim)
