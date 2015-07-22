@@ -61,7 +61,10 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
 "" Snippets
-NeoBundle 'SirVer/ultisnips'
+if v:version >= 704
+  NeoBundle 'SirVer/ultisnips'
+endif
+
 NeoBundle 'honza/vim-snippets'
 
 "" Color
