@@ -66,6 +66,11 @@ def generate():
     response.headers['Content-Disposition'] = 'attachment; \
             filename=.{}rc'.format(editor)
     langs['select_lang'] = ",".join(select_lang)
+
+    def sh_exist(lang):
+        return os.path.isfile("./vim_template/langs/{0}/{0}.sh".format(lang))
+    langs['sh_exist'] = sh_exist
+
     return template.render(**langs)
 
 
