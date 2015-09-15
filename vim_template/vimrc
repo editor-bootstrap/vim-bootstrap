@@ -63,9 +63,14 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
-"" Snippets
+if v:version >= 703
+  NeoBundle 'Shougo/vimshell.vim'
+endif
+
 if v:version >= 704
+  "" Snippets
   NeoBundle 'SirVer/ultisnips'
+  NeoBundle 'FelikZ/ctrlp-py-matcher'
 endif
 
 NeoBundle 'honza/vim-snippets'
@@ -75,14 +80,6 @@ NeoBundle 'tomasr/molokai'
 
 "" Vim-Bootstrap Updater
 NeoBundle 'sherzberg/vim-bootstrap-updater'
-
-if v:version >= 703
-  NeoBundle 'Shougo/vimshell.vim'
-endif
-
-if v:version >= 704
-  NeoBundle 'FelikZ/ctrlp-py-matcher'
-endif
 
 "" Custom bundles
 {% for b in bundle %}
