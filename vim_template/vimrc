@@ -412,7 +412,7 @@ if has('unnamedplus')
 endif
 
 noremap YY "+y<CR>
-noremap P "+gP<CR>
+noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 
 if has('macunix')

@@ -77,7 +77,7 @@ Commands | Descriptions
 `<` | indent to left
 `gc` | Comment or uncomment lines that {motion} moves over
 `YY` | Copy to clipboard
-`P` | Paste
+`,p` | Paste
 `<Control+y>,` | Activate Emmet plugin
 
 ## Python hotkeys
