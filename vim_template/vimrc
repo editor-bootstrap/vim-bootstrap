@@ -191,12 +191,6 @@ endif
 set gcr=a:blinkon0
 set scrolloff=3
 
-"" Map cursor for insert mode
-if &term =~ "xterm\\|rxvt"
-  let &t_SI .= "\<Esc>[5 q"
-  let &t_EI .= "\<Esc>[0 q"
-endif
-
 "" Status bar
 set laststatus=2
 
