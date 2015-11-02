@@ -447,16 +447,16 @@ if !exists('g:airline_powerline_fonts')
   let g:airline_symbols.paste     = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
 else
-  let g:airline#extensions#tabline#left_sep = '<U+E0B0>'
-  let g:airline#extensions#tabline#left_alt_sep = '<U+E0B1>'
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
 
   " powerline symbols
-  let g:airline_left_sep = '<U+E0B0>'
-  let g:airline_left_alt_sep = '<U+E0B1>'
-  let g:airline_right_sep = '<U+E0B2>'
-  let g:airline_right_alt_sep = '<U+E0B3>'
-  let g:airline_symbols.branch = '<U+E0A0>'
-  let g:airline_symbols.readonly = '<U+E0A2>'
-  let g:airline_symbols.linenr = '<U+E0A1>'
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
 endif
 
