@@ -1,24 +1,23 @@
 "*****************************************************************************
 "" NeoBundle core
 "*****************************************************************************
-
 if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=~/.{{editor}}/bundle/neobundle.vim/
+  set runtimepath+={{editor.basedir}}/bundle/neobundle.vim/
 endif
 
-let neobundle_readme=expand('~/.{{editor}}/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand('{{editor.basedir}}/bundle/neobundle.vim/README.md')
 
 let g:vim_bootstrap_langs = "{{ select_lang }}"
-let g:vim_bootstrap_editor = "{{editor}}"				" nvim or vim
+let g:vim_bootstrap_editor = "{{editor.name}}"				" nvim or vim
 
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
-  silent !mkdir -p ~/.{{editor}}/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.{{editor}}/bundle/neobundle.vim/
+  silent !mkdir -p {{editor.basedir}}/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim {{editor.basedir}}/bundle/neobundle.vim/
   let g:not_finsh_neobundle = "yes"
 
   " Run shell script if exist on custom select language
@@ -30,7 +29,7 @@ if !filereadable(neobundle_readme)
 endif
 
 " Required:
-call neobundle#begin(expand('~/.{{editor}}/bundle/'))
+call neobundle#begin(expand('{{editor.basedir}}/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -87,8 +86,8 @@ NeoBundle 'sherzberg/vim-bootstrap-updater'
 {% endfor %}
 
 "" Include user's extra bundle
-if filereadable(expand("~/.{{editor}}rc.local.bundles"))
-  source ~/.{{editor}}rc.local.bundles
+if filereadable(expand("{{editor.localbundlerc}}"))
+  source {{editor.localbundlerc}}
 endif
 
 call neobundle#end()
@@ -132,7 +131,7 @@ set smartcase
 "" Encoding
 set bomb
 set binary
-{{ 'set ttyfast' if editor != 'nvim' }}
+{{ 'set ttyfast' if editor.name != 'nvim' }}
 
 "" Directories for swp files
 set nobackup
@@ -143,7 +142,7 @@ set showcmd
 set shell=/bin/sh
 
 " session management
-let g:session_directory = "~/.{{editor}}/session"
+let g:session_directory = "{{editor.basedir}}/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
@@ -416,8 +415,8 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 {% endfor %}
 
 "" Include user's local vim config
-if filereadable(expand("~/.{{editor}}rc.local"))
-  source ~/.{{editor}}rc.local
+if filereadable(expand("{{editor.localrc}}"))
+  source {{editor.localrc}}
 endif
 
 "*****************************************************************************

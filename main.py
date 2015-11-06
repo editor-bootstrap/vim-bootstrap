@@ -3,9 +3,10 @@ import os
 import jinja2
 from google.appengine.api import memcache
 from jinja2 import Template
-from bottle import Bottle, request, response, static_file
+from bottle import Bottle, request, response, static_file, debug
 from bottle import TEMPLATE_PATH as T
 
+import editors
 
 PROJECT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
@@ -18,6 +19,9 @@ STATIC_PATH = os.path.join(PROJECT_PATH, 'assets')
 T.insert(0, TEMPLATE_PATH)
 
 app = Bottle()
+
+if os.environ.get('SERVER_SOFTWARE','').startswith('Development'):
+    debug(True)
 
 
 @app.route('/')
@@ -38,22 +42,23 @@ def index():
 
 @app.route('/generate.vim', method='POST')
 def generate():
-    editor = request.POST.get("editor", "vim")
-    langs = {"bundle": {}, "vim": {}, "editor": editor}
+    editor_name = request.POST.get("editor", "vim")
+    editor = editors.get_editor(editor_name)
+    ctx = {"bundle": {}, "vim": {}, "editor": editor}
     select_lang = request.POST.getall('langs')
-    for l in select_lang:
 
+    for l in select_lang:
         data = memcache.get('vim-{}'.format(l))
         if not data:
             cache = {}
             for ext in ["bundle", "vim"]:
                 with open("./vim_template/langs/{0}/{0}.{1}".format(
                         l, ext)) as f:
-                    cache[ext] = langs[ext][l] = f.read()
+                    cache[ext] = ctx[ext][l] = f.read()
             memcache.add('vim-{}'.format(l), cache, 3600)
         else:
-            langs["bundle"][l] = data['bundle']
-            langs["vim"][l] = data['vim']
+            ctx["bundle"][l] = data['bundle']
+            ctx["vim"][l] = data['vim']
 
     template = None
     with open("./vim_template/vimrc") as f:
@@ -64,14 +69,14 @@ def generate():
 
     response.headers['Content-Type'] = 'application/text'
     response.headers['Content-Disposition'] = 'attachment; \
-            filename=.{}rc'.format(editor)
-    langs['select_lang'] = ",".join(select_lang)
+            filename='.format(os.path.basename(editor.name))
+    ctx['select_lang'] = ",".join(select_lang)
 
     def sh_exist(lang):
         return os.path.isfile("./vim_template/langs/{0}/{0}.sh".format(lang))
-    langs['sh_exist'] = sh_exist
+    ctx['sh_exist'] = sh_exist
 
-    return template.render(**langs)
+    return template.render(**ctx)
 
 
 @app.route('/langs')
