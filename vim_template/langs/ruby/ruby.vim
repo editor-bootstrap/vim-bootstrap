@@ -8,10 +8,6 @@ augroup vimrc-ruby
   autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
 augroup END
 
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
         \ 'm:modules',
