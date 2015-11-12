@@ -49,6 +49,8 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -212,6 +214,7 @@ let g:airline_theme = 'powerlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -361,6 +364,9 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
 " Disable visualbell
 set visualbell t_vb=

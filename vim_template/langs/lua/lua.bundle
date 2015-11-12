@@ -1,5 +1,3 @@
-NeoBundle "scrooloose/syntastic"
-NeoBundle "majutsushi/tagbar"
-
+"" Lua Bundle
 NeoBundle 'xolox/vim-lua-ftplugin'
 NeoBundle 'xolox/vim-lua-inspect'

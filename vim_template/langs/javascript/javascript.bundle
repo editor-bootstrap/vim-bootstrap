@@ -1,2 +1,2 @@
 "" Javascript Bundle
-NeoBundle "scrooloose/syntastic"
+NeoBundle 'jelera/vim-javascript-syntax'

@@ -1,7 +1,3 @@
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [  'p:package', 'i:imports:1', 'c:constants', 'v:variables',
