@@ -21,11 +21,11 @@ if !filereadable(neobundle_readme)
   let g:not_finsh_neobundle = "yes"
 
   " Run shell script if exist on custom select language
-  {% for b in bundle %}
-  {% if sh_exist(b) %}
+  {%- for b in bundle %}
+  {%- if sh_exist(b) %}
   silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/{{ b }}/{{ b }}.sh | bash -s stable
-  {% endif %}
-  {% endfor %}
+  {%- endif %}
+  {%- endfor %}
 endif
 
 " Required:
@@ -83,9 +83,10 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'sherzberg/vim-bootstrap-updater'
 
 "" Custom bundles
-{% for b in bundle %}
+
+{% for b in bundle -%}
 {{ bundle[b] }}
-{% endfor %}
+{% endfor -%}
 
 "" Include user's extra bundle
 if filereadable(expand("{{editor.localbundlerc}}"))
@@ -416,10 +417,11 @@ vnoremap K :m '<-2<CR>gv=gv
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
 "" Custom configs
-{% for v in vim %}
+{% for v in vim -%}
+{%- if vim[v] != '' %}
 {{ vim[v] }}
-{% endfor %}
-
+{%- endif %}
+{% endfor -%}
 "" Include user's local vim config
 if filereadable(expand("{{editor.localrc}}"))
   source {{editor.localrc}}
