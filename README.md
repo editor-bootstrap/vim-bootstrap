@@ -123,6 +123,18 @@ vim +NeoBundleInstall +qall
     :VimBootstrapUpdate (thanks to @sherzberg)
     :NeoBundleUpdate
 
+## Offline usage
+
+You can run vim-bootstrap python module to generate a vimrc file, just download it:
+
+	git clone git@github.com:avelino/vim-bootstrap.git
+
+Inside vim-bootrap folder `cd vim-bootstrap` use generate.py module like this example:
+
+	python generate.py --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
+
+For more instructions run `python generate.py -h`
+
 ## Learn Vim
 
 Visit the following sites to learn more about Vim:
