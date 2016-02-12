@@ -125,6 +125,14 @@ vim +NeoBundleInstall +qall
     :VimBootstrapUpdate (thanks to @sherzberg)
     :NeoBundleUpdate
 
+
+## Usage by URL parameters
+
+Vim-bootstrap generator can accept URL params via request.
+
+	curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim'
+
+
 ## Offline usage
 
 You can run vim-bootstrap python module to generate a vimrc file, just download it:
