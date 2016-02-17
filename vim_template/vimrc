@@ -178,6 +178,7 @@ if has("gui_running")
 else
   let g:CSApprox_loaded = 1
 
+{% if editor.name == "vim" %}
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -185,6 +186,7 @@ else
       set term=xterm-256color
     endif
   endif
+{% endif %}
 endif
 
 if &term =~ '256color'
