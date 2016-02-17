@@ -111,10 +111,12 @@ Commands | Descriptions
 ## Installation
 
 * Download your own vimrc file at http://www.vim-bootstrap.com
-* Put your vimrc file (or nvimrc if you use NeoVim) into home folder
-```
-mv ~/Downloads/vimrc ~/.vimrc
-```
+* Put your vimrc file into home folder or `$XDG_CONFIG_HOME/nvim/init.vim` if you use NeoVim
+
+**vim:** `mv ~/Downloads/generate.vim ~/.vimrc`
+
+**neovim:** `mv ~/Downloads/generate.vim $XDG_CONFIG_HOME/nvim/init.vim`
+
 * Execute ViM and it will install plugins automatically
 ```
 vim +NeoBundleInstall +qall
