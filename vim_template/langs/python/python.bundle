@@ -1,3 +1,2 @@
 "" Python Bundle
 NeoBundle "davidhalter/jedi-vim"
-NeoBundle "Yggdroot/indentLine"
