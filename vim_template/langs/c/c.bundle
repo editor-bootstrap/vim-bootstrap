@@ -1,1 +1,1 @@
-NeoBundle 'vim-scripts/c.vim'
+Plug 'vim-scripts/c.vim'
