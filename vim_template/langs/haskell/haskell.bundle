@@ -1,4 +1,4 @@
 "" Haskell Bundle
-NeoBundle "eagletmt/neco-ghc"
-NeoBundle "dag/vim2hs"
-NeoBundle "pbrisbin/vim-syntax-shakespeare"
+Plug 'eagletmt/neco-ghc'
+Plug 'dag/vim2hs'
+Plug 'pbrisbin/vim-syntax-shakespeare'

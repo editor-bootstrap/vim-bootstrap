@@ -1,2 +1,2 @@
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'carlosgaldino/elixir-snippets'
+Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'

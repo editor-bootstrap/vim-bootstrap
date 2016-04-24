@@ -1,2 +1,2 @@
 "" OCaml Bundle
-NeoBundle "def-lkb/ocp-indent-vim"
+Plug 'def-lkb/ocp-indent-vim'

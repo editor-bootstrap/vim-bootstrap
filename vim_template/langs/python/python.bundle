@@ -1,2 +1,2 @@
 "" Python Bundle
-NeoBundle "davidhalter/jedi-vim"
+Plug 'davidhalter/jedi-vim'
