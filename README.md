@@ -16,7 +16,7 @@ $ brew install git ctags
 
 ### Linux
 
-* Ubuntu
+* Ubuntu\Debian
 
 ```
 $ sudo apt-get install git exuberant-ctags ncurses-term
