@@ -388,7 +388,7 @@ let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 
 " Disable visualbell
-set visualbell t_vb=
+set novisualbell t_vb=
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
