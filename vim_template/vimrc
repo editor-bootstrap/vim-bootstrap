@@ -48,6 +48,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
+Plug 'avelino/vim-bootstrap-updater'
 
 let g:make = 'gmake'
 if system('uname -o') =~ '^GNU/'
