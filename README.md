@@ -119,7 +119,7 @@ Commands | Descriptions
 
 * Execute ViM and it will install plugins automatically
 ```
-vim +NeoBundleInstall +qall
+vim +PlugInstall +qall
 ```
 
 ### Fast-installation by URL parameters
@@ -132,7 +132,7 @@ Vim-bootstrap generator can accept URL params via request as example below.
 ### Updating to the latest version
 
     :VimBootstrapUpdate (thanks to @sherzberg)
-    :NeoBundleUpdate
+    :PlugInstall
 
 
 ### Offline usage
