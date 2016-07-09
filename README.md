@@ -94,19 +94,19 @@ Commands | Descriptions
 
 ## Ruby hotkeys
 Commands | Descriptions
-	------- | -------
-`,a`		| Run all specs
-`,l`		| Run last spec
-`,t`		| Run current spec
-`,rap`		| Add Parameter
-`,rcpc` 	| Inline Temp
-`,rel`		| Convert Post Conditional
-`,rec`		| Extract Constant          (visual selection)
-`,rec`   	| Extract to Let (Rspec)
-`,relv` 	| Extract Local Variable    (visual selection)
-`,rrlv` 	| Rename Local Variable     (visual selection/variable under the cursor)
-`,rriv` 	| Rename Instance Variable  (visual selection)
-`,rem`  	| Extract Method            (visual selection)
+    ------- | -------
+`,a`        | Run all specs
+`,l`        | Run last spec
+`,t`        | Run current spec
+`,rap`        | Add Parameter
+`,rcpc`     | Inline Temp
+`,rel`        | Convert Post Conditional
+`,rec`        | Extract Constant          (visual selection)
+`,rec`       | Extract to Let (Rspec)
+`,relv`     | Extract Local Variable    (visual selection)
+`,rrlv`     | Rename Local Variable     (visual selection/variable under the cursor)
+`,rriv`     | Rename Instance Variable  (visual selection)
+`,rem`      | Extract Method            (visual selection)
 
 ## Installation
 
@@ -126,7 +126,7 @@ vim +PlugInstall +qall
 
 Vim-bootstrap generator can accept URL params via request as example below.
 
-	curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim' > ~/.vimrc
+    curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim' > ~/.vimrc
 
 
 ### Updating to the latest version
@@ -139,11 +139,11 @@ Vim-bootstrap generator can accept URL params via request as example below.
 
 You can run vim-bootstrap python module to generate a vimrc file, just download it:
 
-	git clone git@github.com:avelino/vim-bootstrap.git
+    git clone git@github.com:avelino/vim-bootstrap.git
 
 Inside vim-bootrap folder `cd vim-bootstrap` use generate.py module like this example:
 
-	python generate.py --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
+    python generate.py --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
 
 For more instructions run `python generate.py -h`
 
