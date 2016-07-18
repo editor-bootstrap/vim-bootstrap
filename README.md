@@ -31,6 +31,11 @@ $ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes
 ```
 $ sudo pacman -S git-core ctags ncurses
 ```
+* Fedora
+
+```
+$ sudo dnf install ncurses-devel git ctags-etags
+```
 
 ### Python bundle (optionally)
 
