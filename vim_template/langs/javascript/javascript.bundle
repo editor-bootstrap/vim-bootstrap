@@ -1,2 +1,2 @@
 "" Javascript Bundle
-NeoBundle 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'

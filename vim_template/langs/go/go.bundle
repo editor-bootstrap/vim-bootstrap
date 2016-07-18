@@ -1,2 +1,2 @@
 "" Go Lang Bundle
-NeoBundle "fatih/vim-go"
+Plug 'fatih/vim-go'
