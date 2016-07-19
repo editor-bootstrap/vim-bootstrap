@@ -40,8 +40,9 @@ $ sudo dnf install ncurses-devel git ctags-etags
 ### Python bundle (optionally)
 
 * pyflakes
+* jedi
 ```
-$ pip install flake8
+$ pip install flake8 jedi
 ```
 
 ## Commands
