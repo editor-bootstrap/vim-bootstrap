@@ -147,11 +147,11 @@ You can run vim-bootstrap python module to generate a vimrc file, just download 
 
     git clone git@github.com:avelino/vim-bootstrap.git
 
-Inside vim-bootrap folder `cd vim-bootstrap` use generate.py module like this example:
+Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
 
-    python generate.py --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
+    ./vim-bootstrap --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
 
-For more instructions run `python generate.py -h`
+For more instructions run `vim-bootstrap -h`
 
 ## Learn Vim
 

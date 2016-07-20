@@ -37,7 +37,7 @@ def generate(editor, selected_langs):
     def sh_exist(lang):
         return os.path.isfile("./vim_template/langs/{0}/{0}.sh".format(lang))
     ctx['sh_exist'] = sh_exist
-    print template.render(**ctx).encode('utf-8')
+    print(template.render(**ctx).encode('utf-8'))
 
 def main():
     parser = argparse.ArgumentParser(description="Vim boostrap generator")
