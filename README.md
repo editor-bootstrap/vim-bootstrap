@@ -19,23 +19,25 @@ $ brew install git ctags
 * Ubuntu\Debian
 
 ```
-$ sudo apt-get install git exuberant-ctags ncurses-term
+$ sudo apt-get install git exuberant-ctags ncurses-term python-jinja2
 ```
 
 * Gentoo
 ```
-$ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes
+$ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes dev-python/jinja
 ```
 
 * Arch Linux via *pacman* (recomend used *pacaur*)
 ```
-$ sudo pacman -S git-core ctags ncurses
+$ sudo pacman -S git-core ctags ncurses python-jinja
 ```
 * Fedora
 
 ```
 $ sudo dnf install ncurses-devel git ctags-etags
 ```
+
+Warning: Using the *vim-bootstrap* binary is necessary have the jinja2 (Python package) installed.
 
 ### Python bundle (optionally)
 
