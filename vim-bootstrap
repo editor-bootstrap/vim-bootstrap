@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 import argparse
 import os
-import sys
-import jinja2
-from jinja2 import Template
 
 import editors
+import jinja2
+from jinja2 import Template
 
 PROJECT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
@@ -34,10 +33,12 @@ def generate(editor, selected_langs):
         template = Template("")
 
     ctx['select_lang'] = ",".join(selected_langs)
+
     def sh_exist(lang):
         return os.path.isfile("./vim_template/langs/{0}/{0}.sh".format(lang))
     ctx['sh_exist'] = sh_exist
     print(template.render(**ctx).encode('utf-8'))
+
 
 def main():
     parser = argparse.ArgumentParser(description="Vim boostrap generator")

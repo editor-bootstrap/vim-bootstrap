@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-import jinja2
+
 from google.appengine.api import memcache
-from jinja2 import Template
-from bottle import Bottle, request, response, static_file, debug
-from bottle import TEMPLATE_PATH as T
 
 import editors
+import jinja2
+from bottle import TEMPLATE_PATH as T
+from bottle import Bottle, debug, request, response, static_file
+from jinja2 import Template
 
 PROJECT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
@@ -20,7 +21,7 @@ T.insert(0, TEMPLATE_PATH)
 
 app = Bottle()
 
-if os.environ.get('SERVER_SOFTWARE','').startswith('Development'):
+if os.environ.get('SERVER_SOFTWARE', '').startswith('Development'):
     debug(True)
 
 
