@@ -34,7 +34,7 @@ $ sudo pacman -S git-core ctags ncurses python-jinja
 * Fedora
 
 ```
-$ sudo dnf install ncurses-devel git ctags-etags
+$ sudo dnf install ncurses-devel git ctags-etags python-jinja2
 ```
 
 Warning: Using the *vim-bootstrap* binary is necessary have the jinja2 (Python package) installed.
