@@ -1,2 +1,2 @@
 "" Go Lang Bundle
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
