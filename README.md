@@ -24,7 +24,7 @@ $ sudo apt-get install git exuberant-ctags ncurses-term python-jinja2 curl
 
 * Gentoo
 ```
-$ sudo emerge dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes dev-python/jinja net-misc/curl
+$ sudo emerge --ask dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes dev-python/jinja net-misc/curl
 ```
 
 * Arch Linux via *pacman* (recomend used *pacaur*)
