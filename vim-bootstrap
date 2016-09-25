@@ -26,7 +26,7 @@ def generate(editor, selected_langs):
                 ctx[ext][l] = f.read()
 
     template = None
-    with open("./vim_template/vimrc") as f:
+    with open('./vim_template/vimrc', 'rb') as f:
         template = Template(f.read().decode('utf-8'))
 
     if not template:
@@ -37,7 +37,7 @@ def generate(editor, selected_langs):
     def sh_exist(lang):
         return os.path.isfile("./vim_template/langs/{0}/{0}.sh".format(lang))
     ctx['sh_exist'] = sh_exist
-    print(template.render(**ctx).encode('utf-8'))
+    print(template.render(**ctx))
 
 
 def main():
