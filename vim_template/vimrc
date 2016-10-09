@@ -98,6 +98,9 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
+set bomb
+set binary
+{{ 'set ttyfast' if editor.name != 'nvim' }}
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -119,11 +122,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-"" Encoding
-set bomb
-set binary
-{{ 'set ttyfast' if editor.name != 'nvim' }}
 
 "" Directories for swp files
 set nobackup
