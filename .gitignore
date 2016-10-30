@@ -12,3 +12,4 @@ backup/
 bundle
 vimrc.local
 .DS_Store
+vim-bootstrap
