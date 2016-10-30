@@ -13,9 +13,9 @@ import (
 )
 
 func main() {
-	langs := flag.String("langs", "", "an string")
-	editor := flag.String("editor", "vim", "an string")
-	server := flag.Bool("server", false, "a bool")
+	langs := flag.String("langs", "", "Set languages used: go,python,c")
+	editor := flag.String("editor", "vim", "Set editor: vim or nvim")
+	server := flag.Bool("server", false, "Up http server")
 	flag.Parse()
 
 	if *server {
