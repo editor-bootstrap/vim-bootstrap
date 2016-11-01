@@ -149,8 +149,8 @@ You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
     go get github.com/avelino/vim-bootstrap
     cd $GOPATH/src/github.com/avelino/vim-bootstrap
-	git submodule init
-	git submodule update
+    git submodule init
+    git submodule update
     go build
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
