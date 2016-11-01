@@ -23,6 +23,7 @@ func main() {
 		r := mux.NewRouter()
 		r.HandleFunc("/", web.HandleHome).Methods("GET")
 		r.HandleFunc("/generate.vim", web.HandleGenerate).Methods("POST")
+		r.HandleFunc("/hook", web.HandleGenerate).Methods("POST")
 		r.PathPrefix("/assets").Handler(
 			http.StripPrefix("/assets", http.FileServer(http.Dir("./assets/"))))
 

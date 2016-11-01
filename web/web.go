@@ -3,10 +3,27 @@ package web
 import (
 	"io/ioutil"
 	"net/http"
+	"os/exec"
 	"text/template"
 
 	"github.com/avelino/vim-bootstrap/generate"
 )
+
+const (
+	emtyStr  = ""
+	git      = "git"
+	checkout = "checkout"
+	force    = "-f"
+	pull     = "pull"
+)
+
+func HandleHook(w http.ResponseWriter, r *http.Request) {
+	// Update repo
+	exec.Command(git, checkout, force).Output()
+	exec.Command(git, pull).Output()
+
+	w.Write([]byte("Done!\n"))
+}
 
 func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
