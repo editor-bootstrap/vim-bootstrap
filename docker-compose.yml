@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  caddy:
+    image: abiosoft/caddy
+    volumes:
+      - .//Caddyfile:/etc/Caddyfile
+      - ./assets:/srv/assets
+    links:
+      - go:go
+    ports:
+      - 80:2015
+  go:
+    build: ./
+    ports:
+      - 3000:3000
