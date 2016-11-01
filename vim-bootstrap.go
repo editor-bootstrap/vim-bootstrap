@@ -25,7 +25,7 @@ func main() {
 		r.HandleFunc("/generate.vim", web.HandleGenerate).Methods("POST")
 		r.HandleFunc("/hook", web.HandleHook).Methods("POST")
 		r.PathPrefix("/assets").Handler(
-			http.StripPrefix("/assets", http.FileServer(http.Dir("./assets/"))))
+			http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
 
 		n.UseHandler(r)
 		n.Run(":3000")
