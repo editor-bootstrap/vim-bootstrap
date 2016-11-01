@@ -1,0 +1,61 @@
+package generate
+
+import (
+	"bytes"
+	"fmt"
+	"io/ioutil"
+	"text/template"
+)
+
+type Config struct {
+	BaseDir     string
+	Rc          string
+	LocalRc     string
+	LocalBundle string
+}
+type Object struct {
+	Language     []string
+	BufferLang   map[string]string
+	BufferBundle map[string]string
+	Editor       string
+	Config       *Config
+}
+
+var VimBuffer bytes.Buffer
+
+func Generate(obj *Object) (buffer string) {
+	config := Config{}
+	switch obj.Editor {
+	case "nvim":
+		config.BaseDir = "~/.config/" + obj.Editor
+	default:
+		config.BaseDir = "~/." + obj.Editor
+	}
+	config.Rc = config.BaseDir + "rc"
+	config.LocalRc = config.Rc + ".local"
+	config.LocalBundle = config.Rc + ".local.bundles"
+
+	obj.Config = &config
+
+	mLang := make(map[string]string)
+	mBundle := make(map[string]string)
+	for _, lang := range obj.Language {
+		for _, ext := range []string{"bundle", "vim"} {
+			filePath := fmt.Sprintf("./vim_template/langs/%s/%s.%s", lang, lang, ext)
+			read, _ := ioutil.ReadFile(filePath)
+			if ext == "vim" {
+				mLang[lang] = string(read)
+			} else {
+				mBundle[lang] = string(read)
+			}
+		}
+	}
+	obj.BufferLang = mLang
+	obj.BufferBundle = mBundle
+
+	t := template.Must(template.ParseFiles("./vim_template/vimrc"))
+	t.Execute(&VimBuffer, obj)
+
+	buffer = VimBuffer.String()
+	return
+}

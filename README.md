@@ -145,13 +145,15 @@ Vim-bootstrap generator can accept URL params via request as example below.
 
 ### Offline usage
 
-You can run vim-bootstrap python module to generate a vimrc file, just download it:
+You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
-    git clone git@github.com:avelino/vim-bootstrap.git
+    go get github.com/avelino/vim-bootstrap
+    cd $GOPATH/src/github.com/avelino/vim-bootstrap
+    go build
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
 
-    ./vim-bootstrap --langs python,lua,ruby,javascript,haskell vim > ~/.vimrc
+    ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -editor=vim > ~/.vimrc
 
 For more instructions run `vim-bootstrap -h`
 
