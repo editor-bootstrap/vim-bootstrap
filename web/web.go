@@ -28,7 +28,7 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
 	langs := []string{}
-	t := template.Must(template.ParseFiles("./templates/index.html"))
+	t := template.Must(template.ParseFiles("./template/index.html"))
 
 	files, _ := ioutil.ReadDir("./vim_template/langs")
 	for _, f := range files {

@@ -4,8 +4,8 @@ services:
   caddy:
     image: abiosoft/caddy
     volumes:
-      - .//Caddyfile:/etc/Caddyfile
-      - ./assets:/srv/assets
+      - ./Caddyfile:/etc/Caddyfile
+      - ./template/assets:/srv/assets
     links:
       - go:go
     ports:

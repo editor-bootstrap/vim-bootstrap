@@ -1,0 +1,3 @@
+[submodule "template"]
+	path = template
+	url = https://github.com/avelino/vim-bootstrap-template.git
