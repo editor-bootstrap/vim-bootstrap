@@ -80,7 +80,7 @@ Plug 'tomasr/molokai'
 
 "" Include user's extra bundle
 if filereadable(expand("{{.Config.LocalBundle}}"))
-  source "{{.Config.LocalBundle}}"
+  source {{.Config.LocalBundle}}
 endif
 
 call plug#end()
@@ -431,7 +431,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 
 "" Include user's local vim config
 if filereadable(expand("{{.Config.LocalRc}}"))
-  source "{{.Config.LocalRc}}"
+  source {{.Config.LocalRc}}
 endif
 
 "*****************************************************************************
