@@ -19,30 +19,29 @@ $ brew install git ctags
 * Ubuntu\Debian
 
 ```
-$ sudo apt-get install git exuberant-ctags ncurses-term python-jinja2 curl
+$ sudo apt-get install git exuberant-ctags ncurses-term curl
 ```
 
 * Gentoo
 ```
-$ sudo emerge --ask dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes dev-python/jinja net-misc/curl
+$ sudo emerge --ask dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes net-misc/curl
 ```
 
 * Arch Linux via *pacman* (recomend used *pacaur*)
 ```
-$ sudo pacman -S git-core ctags ncurses python-jinja curl
+$ sudo pacman -S git-core ctags ncurses curl
 ```
 * Fedora
 
 ```
-$ sudo dnf install ncurses-devel git ctags-etags python-jinja2 curl
+$ sudo dnf install ncurses-devel git ctags-etags curl
 ```
-
-Warning: Using the *vim-bootstrap* binary is necessary have the jinja2 (Python package) installed.
 
 ### Python bundle (optionally)
 
 * pyflakes
 * jedi
+
 ```
 $ pip install flake8 jedi
 ```
@@ -149,8 +148,8 @@ You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
     go get github.com/avelino/vim-bootstrap
     cd $GOPATH/src/github.com/avelino/vim-bootstrap
-	git submodule init
-	git submodule update
+    git submodule init
+    git submodule update
     go build
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
