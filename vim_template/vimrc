@@ -166,6 +166,7 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
+  {{if ne .Editor "nvim"}}
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -173,11 +174,14 @@ else
       set term=xterm-256color
     endif
   endif
+  {{end}}
 endif
 
+{{if ne .Editor "nvim"}}
 if &term =~ '256color'
   set t_ut=
 endif
+{{end}}
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
