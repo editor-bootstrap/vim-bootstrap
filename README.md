@@ -41,9 +41,11 @@ $ sudo dnf install ncurses-devel git ctags-etags curl
 
 * pyflakes
 * jedi
+* neovim (neovim only) 
 
 ```
 $ pip install flake8 jedi
+$ pip install --user --upgrade neovim
 ```
 
 ## Installation
