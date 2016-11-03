@@ -24,6 +24,9 @@ type Object struct {
 var VimBuffer bytes.Buffer
 
 func Generate(obj *Object) (buffer string) {
+	// Clean VimBuffer, not append old result
+	VimBuffer.Reset()
+
 	config := Config{}
 	switch obj.Editor {
 	case "nvim":
