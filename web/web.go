@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os/exec"
+	"strings"
 	"text/template"
 
 	"github.com/avelino/vim-bootstrap/generate"
@@ -55,4 +56,9 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte(gen))
 	return
+}
+
+func HandleLangs(w http.ResponseWriter, r *http.Request) {
+	langs := strings.Join(listLangs(), ",")
+	w.Write([]byte(langs))
 }
