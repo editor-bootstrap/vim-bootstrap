@@ -41,79 +41,12 @@ $ sudo dnf install ncurses-devel git ctags-etags curl
 
 * pyflakes
 * jedi
+* neovim (neovim only) 
 
 ```
 $ pip install flake8 jedi
+$ pip install --user --upgrade neovim
 ```
-
-## Commands
-
-Commands | Descriptions
---- | ---
-`:cd <path>` | Open path */path*
-`<Control+w>+<hjkl>` | Navigate via split panels
-`<Control>+w+w` | Alternative navigate vim split panels
-`,.` | Set path working directory
-`,w or ,x` | Next buffer navigate
-`,q or ,z` | previous buffer navigate
-`SHIFT+t` | Create a tab
-`TAB` | next tab navigate
-`SHIFT+TAB` | previous tab navigate
-`,e` | Find and open files
-`,b` | Find file on buffer (open file)
-`,c` | Close active buffer (clone file)
-`F2`  | Open tree navigate in actual opened file
-`F3`  | Open/Close tree navigate files
-`F4` | List all class and method, support for python, go, lua, ruby and php
-`,v` | Split vertical
-`,h` | Split horizontal
-`,f` | Search in the project
-`,o` | Open github file/line (website), if used git in **github**
-`,sh` | Open shell.vim terminal inside Vim or NeoVim built-in terminal
-`,ga` | Execute *git add* on current file
-`,gc` | git commit (splits window to write commit message)
-`,gsh` | git push
-`,gll` | git pull
-`,gs` | git status
-`,gb` | git blame
-`,gd` | git diff
-`,gr` | git remove
-`,so` | Open Session
-`,ss` | Save Session
-`,sd` | Delete Session
-`,sc` | Close Session
-`>` | indent to right
-`<` | indent to left
-`gc` | Comment or uncomment lines that {motion} moves over
-`YY` | Copy to clipboard
-`,p` | Paste
-`<Control+y>,` | Activate Emmet plugin
-
-## Python hotkeys
-
-Commands | Descriptions
---- | ---
-`SHIFT+k` | Open documentation
-`Control+Space` | Autocomplete
-`,d` | Go to the Class/Method definition
-`,r` | Rename object definition
-`,n` | Show where command is usage
-
-## Ruby hotkeys
-Commands | Descriptions
-    ------- | -------
-`,a`        | Run all specs
-`,l`        | Run last spec
-`,t`        | Run current spec
-`,rap`        | Add Parameter
-`,rcpc`     | Inline Temp
-`,rel`        | Convert Post Conditional
-`,rec`        | Extract Constant          (visual selection)
-`,rec`       | Extract to Let (Rspec)
-`,relv`     | Extract Local Variable    (visual selection)
-`,rrlv`     | Rename Local Variable     (visual selection/variable under the cursor)
-`,rriv`     | Rename Instance Variable  (visual selection)
-`,rem`      | Extract Method            (visual selection)
 
 ## Installation
 
@@ -157,6 +90,85 @@ Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) l
     ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -editor=vim > ~/.vimrc
 
 For more instructions run `vim-bootstrap -h`
+
+
+## Commands
+</summary>
+<details>
+<summary>Basic Commands</summary>
+
+Commands | Descriptions
+--- | ---
+`:cd <path>` | Open path */path*
+`<Control+w>+<hjkl>` | Navigate via split panels
+`<Control>+w+w` | Alternative navigate vim split panels
+`,.` | Set path working directory
+`,w or ,x` | Next buffer navigate
+`,q or ,z` | previous buffer navigate
+`SHIFT+t` | Create a tab
+`TAB` | next tab navigate
+`SHIFT+TAB` | previous tab navigate
+`,e` | Find and open files
+`,b` | Find file on buffer (open file)
+`,c` | Close active buffer (clone file)
+`F2`  | Open tree navigate in actual opened file
+`F3`  | Open/Close tree navigate files
+`F4` | List all class and method, support for python, go, lua, ruby and php
+`,v` | Split vertical
+`,h` | Split horizontal
+`,f` | Search in the project
+`,o` | Open github file/line (website), if used git in **github**
+`,sh` | Open shell.vim terminal inside Vim or NeoVim built-in terminal
+`,ga` | Execute *git add* on current file
+`,gc` | git commit (splits window to write commit message)
+`,gsh` | git push
+`,gll` | git pull
+`,gs` | git status
+`,gb` | git blame
+`,gd` | git diff
+`,gr` | git remove
+`,so` | Open Session
+`,ss` | Save Session
+`,sd` | Delete Session
+`,sc` | Close Session
+`>` | indent to right
+`<` | indent to left
+`gc` | Comment or uncomment lines that {motion} moves over
+`YY` | Copy to clipboard
+`,p` | Paste
+`<Control+y>,` | Activate Emmet plugin
+</details>
+
+<details>
+<summary>Python hotkeys</summary>
+
+Commands | Descriptions
+--- | ---
+`SHIFT+k` | Open documentation
+`Control+Space` | Autocomplete
+`,d` | Go to the Class/Method definition
+`,r` | Rename object definition
+`,n` | Show where command is usage
+</details>
+
+<details>
+<summary>Ruby hotkeys</summary>
+
+Commands | Descriptions
+    ------- | -------
+`,a`        | Run all specs
+`,l`        | Run last spec
+`,t`        | Run current spec
+`,rap`        | Add Parameter
+`,rcpc`     | Inline Temp
+`,rel`        | Convert Post Conditional
+`,rec`        | Extract Constant          (visual selection)
+`,rec`       | Extract to Let (Rspec)
+`,relv`     | Extract Local Variable    (visual selection)
+`,rrlv`     | Rename Local Variable     (visual selection/variable under the cursor)
+`,rriv`     | Rename Instance Variable  (visual selection)
+`,rem`      | Extract Method            (visual selection)
+</details>
 
 ## Learn Vim
 
