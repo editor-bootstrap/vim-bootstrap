@@ -6,7 +6,7 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 
 ## Pre-requisites
 
-The distribution is designed to work with Vim >= 7.2.
+The distribution is designed to work with Vim >= 7.4.
 
 ### Mac OSX
 
