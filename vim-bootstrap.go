@@ -8,7 +8,7 @@ import (
 
 	"github.com/avelino/vim-bootstrap/generate"
 	"github.com/avelino/vim-bootstrap/web"
-	"github.com/codegangsta/negroni"
+	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
 )
 
