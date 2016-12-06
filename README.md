@@ -95,7 +95,7 @@ For more instructions run `vim-bootstrap -h`
 ## Commands
 </summary>
 <details>
-<summary>Basic Commands</summary>
+<summary>:black_small_square: Basic Commands</summary>
 
 Commands | Descriptions
 --- | ---
@@ -140,7 +140,7 @@ Commands | Descriptions
 </details>
 
 <details>
-<summary>Python hotkeys</summary>
+<summary>:black_small_square: Python hotkeys</summary>
 
 Commands | Descriptions
 --- | ---
@@ -152,7 +152,7 @@ Commands | Descriptions
 </details>
 
 <details>
-<summary>Ruby hotkeys</summary>
+<summary>:black_small_square: Ruby hotkeys</summary>
 
 Commands | Descriptions
     ------- | -------
