@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"text/template"
 )
 
@@ -30,13 +31,16 @@ func Generate(obj *Object) (buffer string) {
 	config := Config{}
 	switch obj.Editor {
 	case "nvim":
-		config.BaseDir = "~/.config/" + obj.Editor
+		config.BaseDir = "~/.config/nvim"
+		config.Rc = filepath.Join(config.BaseDir, "init.vim")
+		config.LocalRc = filepath.Join(config.BaseDir, "local_init.vim")
+		config.LocalBundle = filepath.Join(config.BaseDir, "local_bundles.vim")
 	default:
 		config.BaseDir = "~/." + obj.Editor
+		config.Rc = config.BaseDir + "rc"
+		config.LocalRc = config.Rc + ".local"
+		config.LocalBundle = config.Rc + ".local.bundles"
 	}
-	config.Rc = config.BaseDir + "rc"
-	config.LocalRc = config.Rc + ".local"
-	config.LocalBundle = config.Rc + ".local.bundles"
 
 	obj.Config = &config
 
