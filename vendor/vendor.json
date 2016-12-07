@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "urMd7A9QPAJYY0GZJL9qBhlUmD8=",
+			"path": "github.com/gorilla/mux",
+			"revision": "757bef944d0f21880861c2dd9c871ca543023cba",
+			"revisionTime": "2016-09-20T23:08:13Z"
+		},
+		{
+			"checksumSHA1": "MJw194u4PprQAabBORjIp1tPUwM=",
+			"path": "github.com/urfave/negroni",
+			"revision": "cd9734011043904139c24dbad9a71b21f1586f36",
+			"revisionTime": "2016-11-27T19:24:14Z"
+		}
+	],
+	"rootPath": "github.com/avelino/vim-bootstrap"
+}
