@@ -25,8 +25,8 @@ call plug#begin(expand('{{.Config.BaseDir}}/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
-Plug 'jistr/vim-nerdtree-tabs', {'on':  'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
