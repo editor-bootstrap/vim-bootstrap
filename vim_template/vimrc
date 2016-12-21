@@ -41,6 +41,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
+Plug 'sheerun/vim-polyglot'
 
 let g:make = 'gmake'
 if exists('make')
