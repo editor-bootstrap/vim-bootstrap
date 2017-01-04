@@ -8,8 +8,8 @@ import (
 
 	"github.com/avelino/vim-bootstrap/generate"
 	"github.com/avelino/vim-bootstrap/web"
-	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
+	"github.com/urfave/negroni"
 )
 
 func main() {
