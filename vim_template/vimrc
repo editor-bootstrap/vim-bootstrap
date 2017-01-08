@@ -300,58 +300,6 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
-"" Location list and Quickfix navigation
-function! <SID>LocationPrevious()
-  try
-    lprev
-  catch /^Vim\%((\a\+)\)\=:E553/
-    llast
-  catch /^Vim\%((\a\+)\)\=:E[42|776]/
-    echo "impossible navigate"
-  endtry
-endfunction
-
-function! <SID>LocationNext()
-  try
-    lnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    lfirst
-  catch /^Vim\%((\a\+)\)\=:E[42|776]/
-    echo "impossible navigate"
-  endtry
-endfunction
-
-nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>
-nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
-nmap <silent> <leader>lp    <Plug>LocationPrevious
-nmap <silent> <leader>ll    <Plug>LocationNext
-nmap <silent> <leader>lc    :lclose<CR>
-
-function! <SID>QuickfixPrevious()
-  try
-    cprev
-  catch /^Vim\%((\a\+)\)\=:E553/
-    clast
-  catch /^Vim\%((\a\+)\)\=:E[42|776]/
-    echo "impossible navigate"
-  endtry
-endfunction
-
-function! <SID>QuickfixNext()
-  try
-    cnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    cfirst
-  catch /^Vim\%((\a\+)\)\=:E[42|776]/
-    echo "impossible navigate"
-  endtry
-endfunction
-
-nnoremap <silent> <Plug>QuickfixPrevious    :<C-u>exe 'call <SID>QuickfixPrevious()'<CR>
-nnoremap <silent> <Plug>QuickfixNext        :<C-u>exe 'call <SID>QuickfixNext()'<CR>
-nmap <silent> <C-m>    <Plug>QuickfixPrevious
-nmap <silent> <C-n>    <Plug>QuickfixNext
-nmap <silent> <leader>a :cclose<CR>
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
