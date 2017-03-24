@@ -156,7 +156,7 @@ Commands | Descriptions
 <summary>:black_small_square: Ruby hotkeys</summary>
 
 Commands | Descriptions
-    ------- | -------
+------- | -------
 `,a`        | Run all specs
 `,l`        | Run last spec
 `,t`        | Run current spec
@@ -169,6 +169,7 @@ Commands | Descriptions
 `,rrlv`     | Rename Local Variable     (visual selection/variable under the cursor)
 `,rriv`     | Rename Instance Variable  (visual selection)
 `,rem`      | Extract Method            (visual selection)
+
 </details>
 
 ## Learn Vim
