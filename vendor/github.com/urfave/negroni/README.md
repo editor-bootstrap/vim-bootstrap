@@ -2,6 +2,7 @@
 [![GoDoc](https://godoc.org/github.com/urfave/negroni?status.svg)](http://godoc.org/github.com/urfave/negroni)
 [![Build Status](https://travis-ci.org/urfave/negroni.svg?branch=master)](https://travis-ci.org/urfave/negroni)
 [![codebeat](https://codebeat.co/badges/47d320b1-209e-45e8-bd99-9094bc5111e2)](https://codebeat.co/projects/github-com-urfave-negroni)
+[![codecov](https://codecov.io/gh/urfave/negroni/branch/master/graph/badge.svg)](https://codecov.io/gh/urfave/negroni)
 
 **Notice:** This is the library formerly known as
 `github.com/codegangsta/negroni` -- Github will automatically redirect requests
@@ -151,6 +152,26 @@ n.UseHandler(mux)
 http.ListenAndServe(":3000", n)
 ```
 
+## `With()`
+
+Negroni has a convenience function called `With`. `With` takes one or more
+`Handler` instances and returns a new `Negroni` with the combination of the
+receiver's handlers and the new handlers.
+
+```go
+// middleware we want to reuse
+common := negroni.New()
+common.Use(MyMiddleware1)
+common.Use(MyMiddleware2)
+
+// `specific` is a new negroni with the handlers from `common` combined with the
+// the handlers passed in
+specific := common.With(
+	SpecificMiddleware1,
+	SpecificMiddleware2
+)
+```
+
 ## `Run()`
 
 Negroni has a convenience function called `Run`. `Run` takes an addr string
@@ -238,6 +259,36 @@ router.PathPrefix("/subpath").Handler(negroni.New(
   Middleware1,
   Middleware2,
   negroni.Wrap(subRouter),
+))
+```
+
+`With()` can be used to eliminate redundancy for middlewares shared across
+routes.
+
+``` go
+router := mux.NewRouter()
+apiRoutes := mux.NewRouter()
+// add api routes here
+webRoutes := mux.NewRouter()
+// add web routes here
+
+// create common middleware to be shared across routes
+common := negroni.New(
+	Middleware1,
+	Middleware2,
+)
+
+// create a new negroni for the api middleware
+// using the common middleware as a base
+router.PathPrefix("/api").Handler(common.With(
+  APIMiddleware1,
+  negroni.Wrap(apiRoutes),
+))
+// create a new negroni for the web middleware
+// using the common middleware as a base
+router.PathPrefix("/web").Handler(common.With(
+  WebMiddleware1,
+  negroni.Wrap(webRoutes),
 ))
 ```
 
