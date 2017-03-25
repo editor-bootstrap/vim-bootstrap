@@ -23,6 +23,8 @@ const (
 	commit    = "commit"
 	message   = "-m \"update template \""
 	push      = "push"
+	origin    = "origin"
+	master    = "master"
 )
 
 func listLangs() (list []string) {
@@ -41,7 +43,7 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 	exec.Command(git, submodule, update, remote, merge).Output()
 	exec.Command(git, add, template).Output()
 	exec.Command(git, commit, message).Output()
-	exec.Command(git, push)
+	exec.Command(git, push, origin, master).Output()
 
 	w.Write([]byte("Done!\n"))
 }
