@@ -5,17 +5,24 @@ import (
 	"net/http"
 	"os/exec"
 	"strings"
-	"text/template"
 
 	"github.com/avelino/vim-bootstrap/generate"
 )
 
 const (
-	emtyStr  = ""
-	git      = "git"
-	checkout = "checkout"
-	force    = "-f"
-	pull     = "pull"
+	git       = "git"
+	checkout  = "checkout"
+	force     = "-f"
+	pull      = "pull"
+	submodule = "submodule"
+	update    = "update"
+	remote    = "--remote"
+	merge     = "--merge"
+	add       = "add"
+	template  = "template"
+	commit    = "commit"
+	message   = "-m \"update template \""
+	push      = "push"
 )
 
 func listLangs() (list []string) {
@@ -31,6 +38,10 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 	// Update repo
 	exec.Command(git, checkout, force).Output()
 	exec.Command(git, pull).Output()
+	exec.Command(git, submodule, update, remote, merge).Output()
+	exec.Command(git, add, template).Output()
+	exec.Command(git, commit, message).Output()
+	exec.Command(git, push)
 
 	w.Write([]byte("Done!\n"))
 }
