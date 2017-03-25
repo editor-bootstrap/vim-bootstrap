@@ -1,6 +1,7 @@
 package web
 
 import (
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os/exec"
@@ -19,7 +20,7 @@ const (
 	remote    = "--remote"
 	merge     = "--merge"
 	add       = "add"
-	template  = "template"
+	tmpl      = "template"
 	commit    = "commit"
 	message   = "-m \"update template \""
 	push      = "push"
@@ -41,7 +42,7 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 	exec.Command(git, checkout, force).Output()
 	exec.Command(git, pull).Output()
 	exec.Command(git, submodule, update, remote, merge).Output()
-	exec.Command(git, add, template).Output()
+	exec.Command(git, add, tmpl).Output()
 	exec.Command(git, commit, message).Output()
 	exec.Command(git, push, origin, master).Output()
 
