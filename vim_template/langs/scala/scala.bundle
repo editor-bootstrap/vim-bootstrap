@@ -1,0 +1,4 @@
+" sbt-vim
+Plug 'ktvoelker/sbt-vim'
+" vim-scala
+Plug 'derekwyatt/vim-scala'
