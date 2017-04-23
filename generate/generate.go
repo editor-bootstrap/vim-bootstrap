@@ -14,12 +14,14 @@ type Config struct {
 	LocalRc     string
 	LocalBundle string
 }
+
 type Object struct {
 	Language     []string
 	BufferLang   map[string]string
 	BufferBundle map[string]string
 	Editor       string
 	Config       *Config
+	Version      string
 }
 
 var VimBuffer bytes.Buffer
