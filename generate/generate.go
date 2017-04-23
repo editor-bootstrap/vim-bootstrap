@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os/exec"
 	"path/filepath"
 	"text/template"
@@ -35,7 +36,7 @@ func Generate(obj *Object) (buffer string) {
 	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
 	config.Version = string(out)
 	if err != nil {
-		config.Version = fmt.Sprintf("generate: %q occurs while getting vim-bootstrap version", err)
+		log.Printf("generate: %q occurs while getting vim-bootstrap version\n", err)
 	}
 
 	switch obj.Editor {
