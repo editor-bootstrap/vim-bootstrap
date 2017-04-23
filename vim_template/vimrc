@@ -1,4 +1,4 @@
-" vim-bootstrap {{.Config.Version}}
+" vim-bootstrap {{.Version}}
 
 "*****************************************************************************
 "" Vim-PLug core

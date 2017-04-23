@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"log"
-	"os/exec"
 	"path/filepath"
 	"text/template"
 )
@@ -15,7 +13,6 @@ type Config struct {
 	Rc          string
 	LocalRc     string
 	LocalBundle string
-	Version     string
 }
 
 type Object struct {
@@ -24,6 +21,7 @@ type Object struct {
 	BufferBundle map[string]string
 	Editor       string
 	Config       *Config
+	Version      string
 }
 
 var VimBuffer bytes.Buffer
@@ -33,12 +31,6 @@ func Generate(obj *Object) (buffer string) {
 	VimBuffer.Reset()
 
 	config := Config{}
-	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
-	config.Version = string(out)
-	if err != nil {
-		log.Printf("generate: %q occurs while getting vim-bootstrap version\n", err)
-	}
-
 	switch obj.Editor {
 	case "nvim":
 		config.BaseDir = "~/.config/nvim"

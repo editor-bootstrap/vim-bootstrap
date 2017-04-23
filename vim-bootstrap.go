@@ -35,6 +35,7 @@ func main() {
 	obj := generate.Object{
 		Language: strings.Split(*langs, ","),
 		Editor:   *editor,
+		Version:  web.HashCommit(),
 	}
 	gen := generate.Generate(&obj)
 	fmt.Println(gen)

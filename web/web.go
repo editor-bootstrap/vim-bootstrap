@@ -3,6 +3,7 @@ package web
 import (
 	"html/template"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os/exec"
 	"strings"
@@ -37,6 +38,14 @@ func listLangs() (list []string) {
 	return
 }
 
+func HashCommit() string {
+	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
+	if err != nil {
+		log.Printf("generate: %q occurs while getting vim-bootstrap version\n", err)
+	}
+	return strings.TrimSpace(string(out))
+}
+
 func HandleHook(w http.ResponseWriter, r *http.Request) {
 	// Update repo
 	exec.Command(git, checkout, force).Output()
@@ -52,6 +61,7 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
 	Body["Langs"] = listLangs()
+	Body["Version"] = HashCommit()
 
 	t := template.Must(template.ParseFiles("./template/index.html"))
 	t.Execute(w, Body)
@@ -65,6 +75,7 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	obj := generate.Object{
 		Language: langs,
 		Editor:   editor,
+		Version:  HashCommit(),
 	}
 	gen := generate.Generate(&obj)
 
