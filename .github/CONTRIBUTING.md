@@ -34,13 +34,13 @@ Please try to make your pull request easy to review for us. Please read the "[Ho
 
 ## Maintainers
 
-To make sure every PR is checked, we have [team maintainers](MAINTAINERS). Every PR **MUST** be reviewed by at least two maintainers (or owners) before it can get merged. A maintainer should be a contributor of Vim Boostrap and contributed at least 4 accepted PRs. A contributor should apply as a maintainer in the [Gitter develop channel](https://gitter.im/avelino/vim-bootstrap). The owners or the team maintainers may invite the contributor. A maintainer should spend some time on code reviews. If a maintainer has no time to do that, they should apply to leave the maintainers team and we will give them the honor of being a member of the **advisors team**. Of course, if an advisor has time to code review, we will gladly welcome them back to the maintainers team. If a maintainer is inactive for more than 3 months and forgets to leave the maintainers team, the owners may move him or her from the maintainers team to the advisors team.
+To make sure every PR is checked, we have [team maintainers](../MAINTAINERS). Every PR **MUST** be reviewed by at least two maintainers (or owners) before it can get merged. A maintainer should be a contributor of Vim Boostrap and contributed at least 4 accepted PRs. A contributor should apply as a maintainer in the [Gitter develop channel](https://gitter.im/avelino/vim-bootstrap). The owners or the team maintainers may invite the contributor. A maintainer should spend some time on code reviews. If a maintainer has no time to do that, they should apply to leave the maintainers team and we will give them the honor of being a member of the **advisors team**. Of course, if an advisor has time to code review, we will gladly welcome them back to the maintainers team. If a maintainer is inactive for more than 3 months and forgets to leave the maintainers team, the owners may move him or her from the maintainers team to the advisors team.
 
 ## Owners
 
 Vim Bootstrap in mantained by community and to keep the development healthy we will elect three owners every year. All contributors may vote to elect up to three candidates, one of which will be the main owner, and the other two the assistant owners. When the new owners have been elected, the old owners will give up ownership to the newly elected owners. If an owner is unable to do so, the other owners will assist in ceding ownership to the newly elected owners.
 
-After the election, the new owners should proactively agree with our [CONTRIBUTING](CONTRIBUTING.md) requirements on the [Gitter main channel](https://gitter.im/avelino/vim-boostrap). Below are the words to speak:
+After the election, the new owners should proactively agree with our [CONTRIBUTING](CONTRIBUTING.md) requirements on the [Gitter main channel](https://gitter.im/avelino/vim-bootstrap). Below are the words to speak:
 
 ```
 I'm honored to having been elected an owner of Vim Bootstrap, I agree with [CONTRIBUTING](CONTRIBUTING.md). I will spend part of my time on Vim Bootstrap and lead the development of Vim Bootstrap.
