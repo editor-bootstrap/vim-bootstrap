@@ -37,6 +37,13 @@ $ sudo pacman -S git-core ctags ncurses curl
 $ sudo dnf install ncurses-devel git ctags-etags curl
 ```
 
+* FreeBSD port or binary version
+
+```
+# cd /usr/ports/editors/neovim/ && make install clean
+# pkg install neovim
+```
+
 ### Python bundle (optionally)
 
 * pyflakes
