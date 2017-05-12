@@ -13,6 +13,10 @@ let g:vim_bootstrap_langs = "{{ range $key, $value := .Language}}{{if $key}},{{e
 let g:vim_bootstrap_editor = "{{.Editor}}"				" nvim or vim
 
 if !filereadable(vimplug_exists)
+  if !executable("curl")
+    echo "You have to install curl or first install plug yourself!"
+    execute "q!"
+  endif
   echo "Installing Vim-Plug..."
   echo ""
   silent !\curl -fLo {{.Config.BaseDir}}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -495,4 +499,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
