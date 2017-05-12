@@ -14,7 +14,7 @@ let g:vim_bootstrap_editor = "{{.Editor}}"				" nvim or vim
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
-    echo "You have to install curl or first install plug yourself!"
+    echoerr "You have to install curl or first install vim-plug yourself!"
     execute "q!"
   endif
   echo "Installing Vim-Plug..."
