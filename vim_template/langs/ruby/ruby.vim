@@ -26,7 +26,11 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " For ruby refactory
-packadd! matchit
+if has('nvim')
+  runtime! macros/matchit.vim
+else
+  packadd! matchit
+endif
 
 " Ruby refactory
 nnoremap <leader>rap  :RAddParameter<cr>
