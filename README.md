@@ -49,6 +49,19 @@ $ pip2 install --user --upgrade neovim
 $ pip3 install --user --upgrade neovim
 ```
 
+### Elm bundle (optionally)
+
+* elm-test
+* elm-oracle
+* elm-format
+
+```
+$ npm install -g elm-test
+$ npm install -g elm-oracle
+$ npm install -g elm-format@exp
+
+```
+
 ## Installation
 
 * Download your own vimrc file at http://www.vim-bootstrap.com
