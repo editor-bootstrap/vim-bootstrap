@@ -12,20 +12,7 @@ endfunction
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
-let g:go_auto_type_info = 1
 let g:syntastic_go_checkers = ['golint', 'govet']
-let g:go_metalinter_enabled = [
-    \ 'deadcode',
-    \ 'errcheck',
-    \ 'gas',
-    \ 'goconst',
-    \ 'gocyclo',
-    \ 'golint',
-    \ 'gosimple',
-    \ 'ineffassign',
-    \ 'vet',
-    \ 'vetshadow'
-\]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 let g:go_highlight_types = 1
