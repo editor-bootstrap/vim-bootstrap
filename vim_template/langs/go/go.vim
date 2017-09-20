@@ -9,6 +9,7 @@ function! s:build_go_files()
   endif
 endfunction
 
+let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:syntastic_go_checkers = ['golint', 'govet']
