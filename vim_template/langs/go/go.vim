@@ -55,7 +55,9 @@ augroup go
   au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <C-g> :GoDecls<cr>
+  au FileType go nmap <C-f> :GoDeclsDir<cr>
   au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
+  au FileType go imap <C-f> <esc>:<C-u>GoDeclsDir<cr>
   au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
 
 augroup END
