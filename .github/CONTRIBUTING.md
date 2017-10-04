@@ -6,7 +6,7 @@ This document explains how to contribute changes to the Vim Bootstrap project.
 
 ## Bug reports
 
-Please search the issues on the issue tracker with a variety of keywords to ensure your bug is not already reported.
+Please search for issues on the issue tracker with a variety of keywords to ensure your bug is not already reported.
 
 If unique, [open an issue](https://github.com/avelino/vim-bootstrap/issues/new) and answer the questions so we can understand and reproduce the problematic behavior.
 
