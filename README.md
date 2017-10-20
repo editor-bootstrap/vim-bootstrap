@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/avelino/vim-bootstrap](https://badges.gitter.im/avelino/vim-bootstrap.svg)](https://gitter.im/avelino/vim-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, NeoVim, MacVim and GVim.
+Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, NeoVim, NeoVim-Qt, MacVim and GVim.
 
 ## Pre-requisites
 
@@ -105,6 +105,14 @@ Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) l
 
 For more instructions run `vim-bootstrap -h`
 
+
+## Customization
+
+It's highly recommended to add customizations in a separate file. This way, you can maintain the original vim-bootstrap generated vimrc file and subsequent updates.
+
+For Vim users, the files available for customization are `~/.vimrc.local` and `~/.vimrc.local.bundles`. The former handles general configuration while the latter handle external Vim plugins through `vim-plug`.
+
+NeoVim users can also customize their configuration by using `$XDG_CONFIG_HOME/nvim/local_init.vim` and `$XDG_CONFIG_HOME/nvim/local_bundles.vim`.
 
 ## Commands
 </summary>
