@@ -106,6 +106,14 @@ Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) l
 For more instructions run `vim-bootstrap -h`
 
 
+## Customization
+
+It's highly recommended to add customizations in a separate file. This way, you can maintain the original vim-bootstrap generated vimrc file and subsequent updates.
+
+For Vim users, the files available for customization are `~/.vimrc.local` and `~/.vimrc.local.bundles`. The former handles general configuration while the latter handle external Vim plugins through `vim-plug`.
+
+NeoVim users can also customize their configuration by using `$XDG_CONFIG_HOME/nvim/local_init.vim` and `$XDG_CONFIG_HOME/nvim/local_bundles.vim`.
+
 ## Commands
 </summary>
 <details>
