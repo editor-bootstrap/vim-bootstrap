@@ -114,6 +114,39 @@ For Vim users, the files available for customization are `~/.vimrc.local` and `~
 
 NeoVim users can also customize their configuration by using `$XDG_CONFIG_HOME/nvim/local_init.vim` and `$XDG_CONFIG_HOME/nvim/local_bundles.vim`.
 
+## Plugins
+
+Plugin | Description | Usage | Documentation
+------------ | ------------- | ------------- | -------------
+[NERDTree](https://github.com/scrooloose/nerdtree) | Tree explorer (think sidebar in Sublime) | F3 |
+[NERDTree tabs](https://github.com/jistr/vim-nerdtree-tabs) | Allow NERDtree with tabs? See nerd tree page | | 
+[vim-commentary](https://github.com/tpope/vim-commentary) | (Un)Comment lines | `gcc` (can do 3gcc to comment 3 lines) | 
+[vim-fugitive](https://github.com/tpope/vim-fugitive) | a Git wrapper so awesome, it should be illegal | |
+[vim-airline](https://github.com/vim-airline/vim-airline) | lean & mean status/tabline for vim that's light as air | |
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter) | shows a git diff in the 'gutter' (sign column) | |
+[grep.vim](https://github.com/vim-scripts/grep.vim) | grep search tools integration with vim | :Grep <pattern> | 
+[CSApprox](https://github.com/vim-scripts/CSApprox) | Make gvim-only colorschemes work transparently in terminal vim | |
+[vim-trailing-whitespace](https://github.com/bronson/vim-trailing-whitespace) | Highlights trailing whitespace in red and provides :FixWhitespace to fix it.| :FixWhitespace |
+[delimitMate](https://github.com/Raimondi/delimitMate) | provides insert mode auto-completion for quotes, parens, brackets, etc. | |
+[tagbar](https://github.com/majutsushi/tagbar) | provides an easy way to browse the tags [i.e. ctags] of the current file and get an overview of its structure. | F4 |
+[syntastic](https://github.com/vim-syntastic/syntastic) | Syntax checking hacks for vim | |
+[indentLine](https://github.com/Yggdroot/indentLine) | displays thin vertical lines at each indentation level | |
+[vim-bootstrap-updater](https://github.com/avelino/vim-bootstrap-updater) | Work in Progress? | |
+[vim-polyglot](https://github.com/sheerun/vim-polyglot) | A solid language pack for Vim. (Is this syntax highlighting?) | |
+[fzf](https://github.com/junegunn/fzf) | A command line fuzzy finder | |
+[vimproc.vim](https://github.com/Shougo/vimproc.vim) | Interactive command execution in vim (used for other plugins? https://github.com/Shougo/vimproc.vim/issues/83) | |
+[vim-misc](https://github.com/xolox/vim-misc) | Miscellaneous auto-load Vim scripts | |
+[vim-session](https://github.com/xolox/vim-session) | Extended session management for Vim (:mksession on steroids) | :SaveSession [name], :OpenSession |
+[vimshell.vim](https://github.com/Shougo/vimshell.vim) | Powerful shell implemented by vim | :VimShell | https://github.com/Shougo/vimshell.vim/blob/master/doc/vimshell.txt
+[ultisnips](https://github.com/SirVer/ultisnips) | The ultimate snippet solution for Vim | tab to autocomplete and jump forward, ctrl+b to jump back | https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+[vim-snippets](https://github.com/honza/vim-snippets) | Snippets for ultisnips | |
+[molokai](https://github.com/tomasr/molokai) | Molokai color scheme for Vim | |
+[c.vim](https://github.com/vim-scripts/c.vim) | C/C++ IDE -- Write and run programs. Insert statements, idioms, comments etc.. | https://github.com/vim-scripts/c.vim/blob/master/doc/c-hotkeys.pdf
+[split-manpage.vim](https://github.com/ludwig/split-manpage.vim) | View any man page in a split vim window (seems redundant with jedi-vim) | <Leader>+K while cursor is over a word |
+[jedi-vim](https://github.com/davidhalter/jedi-vim) | Using the jedi autocompletion library for VIM | Ctrl+space |
+[requirements.txt.vim](https://github.com/raimon49/requirements.txt.vim) | the Requirements File Format syntax support for Vim | |
+
+
 ## Commands
 </summary>
 <details>
