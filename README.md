@@ -119,7 +119,7 @@ NeoVim users can also customize their configuration by using `$XDG_CONFIG_HOME/n
 Plugin | Description | Usage | Documentation
 ------------ | ------------- | ------------- | -------------
 [NERDTree](https://github.com/scrooloose/nerdtree) | Tree explorer (think sidebar in Sublime) | F3 |
-[NERDTree tabs](https://github.com/jistr/vim-nerdtree-tabs) | Allow NERDtree with tabs? See nerd tree page | | 
+[NERDTree tabs](https://github.com/jistr/vim-nerdtree-tabs) | Allow NERDtree with tabs | | 
 [vim-commentary](https://github.com/tpope/vim-commentary) | (Un)Comment lines | `gcc` (can do 3gcc to comment 3 lines) | 
 [vim-fugitive](https://github.com/tpope/vim-fugitive) | a Git wrapper so awesome, it should be illegal | |
 [vim-airline](https://github.com/vim-airline/vim-airline) | lean & mean status/tabline for vim that's light as air | |
@@ -132,8 +132,8 @@ Plugin | Description | Usage | Documentation
 [syntastic](https://github.com/vim-syntastic/syntastic) | Syntax checking hacks for vim | |
 [indentLine](https://github.com/Yggdroot/indentLine) | displays thin vertical lines at each indentation level | |
 [vim-bootstrap-updater](https://github.com/avelino/vim-bootstrap-updater) | Work in Progress? | |
-[vim-polyglot](https://github.com/sheerun/vim-polyglot) | A solid language pack for Vim. (Is this syntax highlighting?) | |
-[fzf](https://github.com/junegunn/fzf) | A command line fuzzy finder | |
+[vim-polyglot](https://github.com/sheerun/vim-polyglot) | A solid language pack for Vim. (syntax highlighting) | |
+[fzf](https://github.com/junegunn/fzf.vim) | A command line fuzzy finder | :FZF |
 [vimproc.vim](https://github.com/Shougo/vimproc.vim) | Interactive command execution in vim (used for other plugins? https://github.com/Shougo/vimproc.vim/issues/83) | |
 [vim-misc](https://github.com/xolox/vim-misc) | Miscellaneous auto-load Vim scripts | |
 [vim-session](https://github.com/xolox/vim-session) | Extended session management for Vim (:mksession on steroids) | :SaveSession [name], :OpenSession |
