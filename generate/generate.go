@@ -3,11 +3,12 @@ package generate
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"log"
 	"path/filepath"
 	"text/template"
 )
 
+// Config ...
 type Config struct {
 	BaseDir     string
 	Rc          string
@@ -15,6 +16,7 @@ type Config struct {
 	LocalBundle string
 }
 
+// Object ...
 type Object struct {
 	Language     []string
 	BufferLang   map[string]string
@@ -24,8 +26,10 @@ type Object struct {
 	Version      string
 }
 
+// VimBuffer ...
 var VimBuffer bytes.Buffer
 
+// Generate ...
 func Generate(obj *Object) (buffer string) {
 	// Clean VimBuffer, not append old result
 	VimBuffer.Reset()
@@ -50,8 +54,8 @@ func Generate(obj *Object) (buffer string) {
 	mBundle := make(map[string]string)
 	for _, lang := range obj.Language {
 		for _, ext := range []string{"bundle", "vim"} {
-			filePath := fmt.Sprintf("./vim_template/langs/%s/%s.%s", lang, lang, ext)
-			read, _ := ioutil.ReadFile(filePath)
+			filePath := fmt.Sprintf("vim_template/langs/%s/%s.%s", lang, lang, ext)
+			read, _ := Asset(filePath)
 			if ext == "vim" {
 				mLang[lang] = string(read)
 			} else {
@@ -62,7 +66,11 @@ func Generate(obj *Object) (buffer string) {
 	obj.BufferLang = mLang
 	obj.BufferBundle = mBundle
 
-	t := template.Must(template.ParseFiles("./vim_template/vimrc"))
+	vimrc, err := Asset("vim_template/vimrc")
+	if err != nil {
+		log.Fatal(err)
+	}
+	t := template.Must(template.New("vimrc").Parse(string(vimrc)))
 	t.Execute(&VimBuffer, obj)
 
 	buffer = VimBuffer.String()
