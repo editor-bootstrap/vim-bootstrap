@@ -1,5 +1,5 @@
----
-engines:
+version: "2"
+plugins:
   golint:
     enabled: true
   gofmt:
@@ -8,13 +8,7 @@ engines:
     enabled: true
   fixme:
     enabled: true
-  duplication:
-    enabled: true
-    config:
-      languages:
-      - go
-ratings:
-  paths:
-  - "**.go"
-exclude_paths:
-- vendor/
+exclude_patterns:
+  - ".vendor"
+  - "vendor"
+  - "bindata.go"
