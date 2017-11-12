@@ -9,16 +9,16 @@
 			"revisionTime": "2016-08-17T18:46:32Z"
 		},
 		{
-			"checksumSHA1": "zmCk+lgIeiOf0Ng9aFP9aFy8ksE=",
+			"checksumSHA1": "3HFUqdhX43kNPJe18WJWCVkthKI=",
 			"path": "github.com/gorilla/mux",
-			"revision": "599cba5e7b6137d46ddf58fb1765f5d928e69604",
-			"revisionTime": "2017-02-28T22:43:54Z"
+			"revision": "2d5fef06b891c971b14aa6f71ca5ab6c03a36e0e",
+			"revisionTime": "2017-11-09T03:54:02Z"
 		},
 		{
-			"checksumSHA1": "ezZyPBDiKHM5y+YmlIhrWIzgbfw=",
+			"checksumSHA1": "Gn2T3orI/72CXLJr4yk7aZu1Dag=",
 			"path": "github.com/urfave/negroni",
-			"revision": "c0db5feaa33826cd5117930c8f4ee5c0f565eec6",
-			"revisionTime": "2017-02-26T00:53:33Z"
+			"revision": "b3305fa14f9db02f7e474f2d91a9819efc3536ea",
+			"revisionTime": "2017-11-10T18:00:32Z"
 		}
 	],
 	"rootPath": "github.com/avelino/vim-bootstrap"
