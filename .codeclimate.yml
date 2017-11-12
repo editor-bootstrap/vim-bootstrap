@@ -18,3 +18,4 @@ ratings:
   - "**.go"
 exclude_paths:
 - vendor/
+- "generate/bindata.go"
