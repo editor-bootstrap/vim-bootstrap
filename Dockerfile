@@ -1,13 +1,14 @@
-FROM golang:latest
-MAINTAINER Avelino <thiago@avelino.xxx>
+FROM golang:alpine
+LABEL mantainer="thiago@avelino.xxx"
+LABEL mantainer="cassiobotaro@gmail.com"
 
-RUN mkdir /usr/local/go/src/github.com/avelino/vim-bootstrap -p
-ADD . /usr/local/go/src/github.com/avelino/vim-bootstrap
+RUN apk --no-cache add git
+WORKDIR /go/src/github.com/avelino/vim-bootstrap
+COPY . /go/src/github.com/avelino/vim-bootstrap
 
-WORKDIR /usr/local/go/src/github.com/avelino/vim-bootstrap
+# Go dep!
+RUN go get -u github.com/golang/dep/...
+RUN dep ensure
 
-RUN go get -u github.com/kardianos/govendor
-RUN govendor sync
-
-RUN go build
-CMD ["/usr/local/go/src/github.com/avelino/vim-bootstrap/vim-bootstrap", "-server"]
+RUN go install
+CMD ["vim-bootstrap", "-server"]
