@@ -37,6 +37,11 @@ $ sudo pacman -S git-core ctags ncurses curl
 $ sudo dnf install ncurses-devel git ctags-etags curl
 ```
 
+* openSUSE
+```
+$ sudo zypper in ncurses-devel git ctags curl
+```
+
 ### Python bundle (optionally)
 
 * pyflakes
@@ -104,6 +109,31 @@ Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) l
     ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -editor=vim > ~/.vimrc
 
 For more instructions run `vim-bootstrap -h`
+
+### openSUSE repo
+
+vim-bootstrap is also available on openSUSE on both Leap 42.2/42.3 and Tumbleweed. Leap versions must add devel:tools repository before, while Tumbleweed users should have vim-bootstrap in the default repository without the need to add any extra repository.
+
+* Leap 42.2
+```
+$ sudo zypper ar -f http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.2/ devel:tools
+$ sudo zypper ref
+$ sudo zypper in vim-bootstrap
+```
+
+* Leap 42.3
+```
+$ sudo zypper ar -f http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.3/ devel:tools
+$ sudo zypper ref
+$ sudo zypper in vim-bootstrap
+```
+
+* Tumbleweed
+```
+$ sudo zypper ref
+$ sudo zypper in vim-bootstrap
+```
+
 
 
 ## Customization
