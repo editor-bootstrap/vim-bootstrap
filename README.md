@@ -30,7 +30,7 @@ $ sudo emerge --ask dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyfla
 
 * Arch Linux via *pacman* (recomend used *pacaur*)
 ```
-$ sudo pacman -S git-core ctags ncurses curl
+$ sudo pacman -S ctags ncurses curl
 ```
 * Fedora
 
