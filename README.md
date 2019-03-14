@@ -28,9 +28,9 @@ $ sudo apt-get install git exuberant-ctags ncurses-term curl
 $ sudo emerge --ask dev-util/ctags sys-libs/ncurses dev-vcs/git dev-python/pyflakes net-misc/curl
 ```
 
-* Arch Linux via *pacman* (recomend used *pacaur*)
+* Arch Linux via *pacman*
 ```
-$ sudo pacman -S git-core ctags ncurses curl
+$ sudo pacman -S git ctags ncurses curl
 ```
 * Fedora
 
