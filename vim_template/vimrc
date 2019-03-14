@@ -3,10 +3,6 @@
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-endif
-
 let vimplug_exists=expand('{{.Config.BaseDir}}/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "{{ range $key, $value := .Language}}{{if $key}},{{end}}{{$value}}{{end}}"
@@ -105,8 +101,6 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set bomb
-set binary
 {{if ne .Editor "nvim"}}set ttyfast{{end}}
 
 "" Fix backspace indent
@@ -129,10 +123,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-"" Directories for swp files
-set nobackup
-set noswapfile
 
 set fileformats=unix,dos,mac
 
