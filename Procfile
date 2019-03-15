@@ -1,1 +1,1 @@
-web: vim-bootstrap
+web: vim-bootstrap -server
