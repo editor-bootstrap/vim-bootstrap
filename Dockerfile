@@ -13,4 +13,6 @@ LABEL mantainer="cassiobotaro@gmail.com"
 RUN apk add --no-cache ca-certificates git
 WORKDIR /vim-bootstrap/
 COPY --from=builder /vim-bootstrap/vim-bootstrap vimbootstrap
+COPY ./template template
+COPY ./vim_template/ vim_template
 CMD ["./vimbootstrap", "-server"]
