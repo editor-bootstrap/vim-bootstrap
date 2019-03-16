@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/avelino/vim-bootstrap/generate"
@@ -17,6 +18,10 @@ func main() {
 	editor := flag.String("editor", "vim", "Set editor: vim or nvim")
 	server := flag.Bool("server", false, "Up http server")
 	flag.Parse()
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
 
 	if *server {
 		n := negroni.Classic()
@@ -29,7 +34,7 @@ func main() {
 			http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
 
 		n.UseHandler(r)
-		n.Run(":3000")
+		n.Run(fmt.Sprintf(":%s", port))
 	}
 
 	obj := generate.Object{
