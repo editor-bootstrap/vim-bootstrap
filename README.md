@@ -70,7 +70,7 @@ $ npm install -g elm-format@exp
 
 ## Installation
 
-* Download your own vimrc file at http://www.vim-bootstrap.com
+* Download your own vimrc file at https://www.vim-bootstrap.com
 * Put your vimrc file into home folder or `$XDG_CONFIG_HOME/nvim/init.vim` if you use NeoVim
 
 **vim:** `mv ~/Downloads/generate.vim ~/.vimrc`
@@ -86,7 +86,7 @@ vim +PlugInstall +qall
 
 Vim-bootstrap generator can accept URL params via request as example below.
 
-    curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim' > ~/.vimrc
+    curl 'https://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim' > ~/.vimrc
 
 
 ### Updating to the latest version
