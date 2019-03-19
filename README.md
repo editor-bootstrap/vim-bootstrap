@@ -190,7 +190,7 @@ Commands | Descriptions
 <kbd>Y</kbd><kbd>Y</kbd> | Copy to clipboard
 <kbd>,</kbd><kbd>p</kbd> | Paste
 <kbd>Ctrl</kbd><kbd>y</kbd> + <kbd>,</kbd> | Activate Emmet plugin
-<kbd>Ctrl</kbd><kbd>r</kbd> | Does a fuzzy search in your command mode history
+<kbd>Ctrl</kbd><kbd>h</kbd> | Does a fuzzy search in your command mode history
 </details>
 
 <details>
