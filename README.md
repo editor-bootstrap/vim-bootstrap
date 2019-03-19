@@ -7,7 +7,7 @@ Vim Bootstrap is generator provides a simple method of generating a .vimrc confi
 
 ## Pre-requisites
 
-The distribution is designed to work with Vim >= 7.4.
+The distribution is designed to work with Vim >= 8 and neovim.
 
 ### Mac OSX
 
@@ -47,7 +47,7 @@ $ sudo zypper in ncurses-devel git ctags curl
 
 * pyflakes
 * jedi
-* neovim (neovim only) 
+* neovim (neovim only)
 
 ```
 $ pip install flake8 jedi
@@ -79,7 +79,7 @@ $ npm install -g elm-format@exp
 
 * Execute ViM and it will install plugins automatically
 ```
-vim +PlugInstall +qall
+`vim`
 ```
 
 ### Fast-installation by URL parameters
@@ -101,8 +101,6 @@ You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
     go get github.com/avelino/vim-bootstrap
     cd $GOPATH/src/github.com/avelino/vim-bootstrap
-    git submodule init
-    git submodule update
     go build
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
