@@ -70,7 +70,7 @@ $ npm install -g elm-format@exp
 
 ## Installation
 
-* Download your own vimrc file at https://www.vim-bootstrap.com
+* Download your own vimrc file at https://vim-bootstrap.com
 * Put your vimrc file into home folder or `$XDG_CONFIG_HOME/nvim/init.vim` if you use NeoVim
 
 **vim:** `mv ~/Downloads/generate.vim ~/.vimrc`
