@@ -97,10 +97,16 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 
 func HandleLangs(w http.ResponseWriter, r *http.Request) {
 	langs := strings.Join(listLangs(), ",")
-	w.Write([]byte(langs))
+	_, err := w.Write([]byte(langs))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
 func HandleFrameworks(w http.ResponseWriter, r *http.Request) {
 	frameworks := strings.Join(listFrameworks(), ",")
-	w.Write([]byte(frameworks))
+	_, err := w.Write([]byte(frameworks))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
