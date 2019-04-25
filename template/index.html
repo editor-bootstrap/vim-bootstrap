@@ -57,7 +57,22 @@
                   {{end}}
                      </div>
                    </div>
-
+              <h3>Select your frameworks</h3>
+              <div class="row">
+                <div class="12u">
+                  {{ range $framework := .Frameworks}}
+                            <div class="input-group">
+                                <span class="button-checkbox">
+                                  <div class="placeholder">
+                                      <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" src="/assets/images/logo/{{$framework}}.png">
+                                  </div>
+                                  <p>{{$framework}}</p>
+                                    <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden" />
+                                </span>
+                            </div>
+                  {{end}}
+                     </div>
+                   </div>
               <h3>Select your editor</h3>
                     <div class="row">
                 <div class="12u">

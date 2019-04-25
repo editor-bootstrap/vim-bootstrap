@@ -18,12 +18,14 @@ type Config struct {
 
 // Object ...
 type Object struct {
-	Language     []string
-	BufferLang   map[string]string
-	BufferBundle map[string]string
-	Editor       string
-	Config       *Config
-	Version      string
+	Language        []string
+	Frameworks      []string
+	BufferLang      map[string]string
+	BufferFramework map[string]string
+	BufferBundle    map[string]string
+	Editor          string
+	Config          *Config
+	Version         string
 }
 
 // VimBuffer ...
@@ -64,6 +66,21 @@ func Generate(obj *Object) (buffer string) {
 		}
 	}
 	obj.BufferLang = mLang
+
+	mFrameworks := make(map[string]string)
+	for _, framework := range obj.Frameworks {
+		for _, ext := range []string{"bundle", "vim"} {
+			filePath := fmt.Sprintf("vim_template/frameworks/%s/%s.%s", framework, framework, ext)
+			read, _ := Asset(filePath)
+			if ext == "vim" {
+				mFrameworks[framework] = string(read)
+			} else {
+				mBundle[framework] = string(read)
+			}
+		}
+	}
+	obj.BufferFramework = mFrameworks
+
 	obj.BufferBundle = mBundle
 
 	vimrc, err := Asset("vim_template/vimrc")

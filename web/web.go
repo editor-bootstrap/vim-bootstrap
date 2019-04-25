@@ -38,6 +38,15 @@ func listLangs() (list []string) {
 	return
 }
 
+func listFrameworks() (list []string) {
+	// List all frameworks on folder
+	files, _ := ioutil.ReadDir("./vim_template/frameworks")
+	for _, f := range files {
+		list = append(list, f.Name())
+	}
+	return
+}
+
 func HashCommit() string {
 	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
 	if err != nil {
@@ -61,6 +70,7 @@ func HandleHook(w http.ResponseWriter, r *http.Request) {
 func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
 	Body["Langs"] = listLangs()
+	Body["Frameworks"] = listFrameworks()
 	Body["Version"] = HashCommit()
 
 	t := template.Must(template.ParseFiles("./template/index.html"))
@@ -72,10 +82,12 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	editor := r.FormValue("editor")
 	langs := r.Form["langs"]
+	frameworks := r.Form["frameworks"]
 	obj := generate.Object{
-		Language: langs,
-		Editor:   editor,
-		Version:  HashCommit(),
+		Frameworks: frameworks,
+		Language:   langs,
+		Editor:     editor,
+		Version:    HashCommit(),
 	}
 	gen := generate.Generate(&obj)
 
@@ -86,4 +98,9 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 func HandleLangs(w http.ResponseWriter, r *http.Request) {
 	langs := strings.Join(listLangs(), ",")
 	w.Write([]byte(langs))
+}
+
+func HandleFrameworks(w http.ResponseWriter, r *http.Request) {
+	frameworks := strings.Join(listFrameworks(), ",")
+	w.Write([]byte(frameworks))
 }

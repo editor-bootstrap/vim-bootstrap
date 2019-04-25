@@ -86,7 +86,7 @@ $ npm install -g elm-format@exp
 
 Vim-bootstrap generator can accept URL params via request as example below.
 
-    curl 'https://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim' > ~/.vimrc
+    curl 'https://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim&frameworks=vuejs' > ~/.vimrc
 
 
 ### Updating to the latest version
@@ -105,7 +105,7 @@ You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
 
-    ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -editor=vim > ~/.vimrc
+    ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -frameworks vuejs -editor=vim > ~/.vimrc
 
 For more instructions run `vim-bootstrap -h`
 
