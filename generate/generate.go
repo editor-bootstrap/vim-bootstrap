@@ -31,6 +31,23 @@ type Object struct {
 // VimBuffer ...
 var VimBuffer bytes.Buffer
 
+func buff(list []string, t string) (mList, mBundle map[string]string) {
+	mList = make(map[string]string)
+	mBundle = make(map[string]string)
+	for _, name := range list {
+		for _, ext := range []string{"bundle", "vim"} {
+			filePath := fmt.Sprintf("vim_template/%s/%s/%s.%s", t, name, name, ext)
+			read, _ := Asset(filePath)
+			if ext == "vim" {
+				mList[name] = string(read)
+			} else {
+				mBundle[name] = string(read)
+			}
+		}
+	}
+	return
+}
+
 // Generate ...
 func Generate(obj *Object) (buffer string) {
 	// Clean VimBuffer, not append old result
@@ -52,35 +69,15 @@ func Generate(obj *Object) (buffer string) {
 
 	obj.Config = &config
 
-	mLang := make(map[string]string)
-	mBundle := make(map[string]string)
-	for _, lang := range obj.Language {
-		for _, ext := range []string{"bundle", "vim"} {
-			filePath := fmt.Sprintf("vim_template/langs/%s/%s.%s", lang, lang, ext)
-			read, _ := Asset(filePath)
-			if ext == "vim" {
-				mLang[lang] = string(read)
-			} else {
-				mBundle[lang] = string(read)
-			}
-		}
-	}
+	mLang, mBundle := buff(obj.Language, "langs")
 	obj.BufferLang = mLang
 
-	mFrameworks := make(map[string]string)
-	for _, framework := range obj.Frameworks {
-		for _, ext := range []string{"bundle", "vim"} {
-			filePath := fmt.Sprintf("vim_template/frameworks/%s/%s.%s", framework, framework, ext)
-			read, _ := Asset(filePath)
-			if ext == "vim" {
-				mFrameworks[framework] = string(read)
-			} else {
-				mBundle[framework] = string(read)
-			}
-		}
-	}
+	mFrameworks, bundles := buff(obj.Frameworks, "frameworks")
 	obj.BufferFramework = mFrameworks
 
+	for k, v := range bundles {
+		mBundle[k] = v
+	}
 	obj.BufferBundle = mBundle
 
 	vimrc, err := Asset("vim_template/vimrc")

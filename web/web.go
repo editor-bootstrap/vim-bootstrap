@@ -95,17 +95,19 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func HandleLangs(w http.ResponseWriter, r *http.Request) {
-	langs := strings.Join(listLangs(), ",")
-	_, err := w.Write([]byte(langs))
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+// HandleFrameworks is an endpoint to list availables frameworks
+func HandleFrameworks(w http.ResponseWriter, r *http.Request) {
+	handleList(w, listFrameworks)
 }
 
-func HandleFrameworks(w http.ResponseWriter, r *http.Request) {
-	frameworks := strings.Join(listFrameworks(), ",")
-	_, err := w.Write([]byte(frameworks))
+// HandleLangs is an endpoint to list availables frameworks
+func HandleLangs(w http.ResponseWriter, r *http.Request) {
+	handleList(w, listLangs)
+}
+
+func handleList(w http.ResponseWriter, function func() []string) {
+	langs := strings.Join(function(), ",")
+	_, err := w.Write([]byte(langs))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
