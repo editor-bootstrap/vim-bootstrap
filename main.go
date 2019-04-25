@@ -15,6 +15,7 @@ import (
 
 func main() {
 	langs := flag.String("langs", "", "Set languages used: go,python,c")
+	frameworks := flag.String("frameworks", "", "Set frameworks used: vue,react,django")
 	editor := flag.String("editor", "vim", "Set editor: vim or nvim")
 	server := flag.Bool("server", false, "Up http server")
 	flag.Parse()
@@ -29,6 +30,7 @@ func main() {
 		r.HandleFunc("/", web.HandleHome).Methods("GET")
 		r.HandleFunc("/generate.vim", web.HandleGenerate).Methods("POST")
 		r.HandleFunc("/langs", web.HandleLangs)
+		r.HandleFunc("/frameworks", web.HandleFrameworks)
 		r.HandleFunc("/hook", web.HandleHook).Methods("POST")
 		r.PathPrefix("/assets").Handler(
 			http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
@@ -38,9 +40,10 @@ func main() {
 	}
 
 	obj := generate.Object{
-		Language: strings.Split(*langs, ","),
-		Editor:   *editor,
-		Version:  web.HashCommit(),
+		Frameworks: strings.Split(*frameworks, ","),
+		Language:   strings.Split(*langs, ","),
+		Editor:     *editor,
+		Version:    web.HashCommit(),
 	}
 	gen := generate.Generate(&obj)
 	fmt.Println(gen)
