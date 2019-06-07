@@ -1,3 +1,4 @@
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
+Plug 'python/black'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
