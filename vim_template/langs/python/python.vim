@@ -17,6 +17,9 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
 
+" black
+autocmd BufWritePre *.py execute ':Black'
+
 " ale
 :call extend(g:ale_linters, {
     \'python': ['flake8'], })
