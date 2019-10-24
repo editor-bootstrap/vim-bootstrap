@@ -3,7 +3,7 @@
 [![Join the chat at https://gitter.im/avelino/vim-bootstrap](https://badges.gitter.im/avelino/vim-bootstrap.svg)](https://gitter.im/avelino/vim-bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Open Source Helpers](https://www.codetriage.com/avelino/vim-bootstrap/badges/users.svg)](https://www.codetriage.com/avelino/vim-bootstrap)
 
-Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, NeoVim, NeoVim-Qt, MacVim and GVim.
+Vim Bootstrap provides a simple method for generating .vimrc configuration files for Vim, NeoVim, NeoVim-Qt, MacVim and GVim.
 
 ## Pre-requisites
 
