@@ -55,7 +55,7 @@ func Generate(obj *Object) (buffer string) {
 
 	config := Config{}
 	switch obj.Editor {
-	case "nvim":
+	case "nvim", "neovim":
 		config.BaseDir = "~/.config/nvim"
 		config.Rc = filepath.Join(config.BaseDir, "init.vim")
 		config.LocalRc = filepath.Join(config.BaseDir, "local_init.vim")
