@@ -180,7 +180,12 @@ endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
+{{if .Editor "nvim"}}
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=3
+{{else}}
 set scrolloff=3
+{{end}}
 
 "" Status bar
 set laststatus=2
