@@ -86,7 +86,7 @@ $ npm install -g elm-format@exp
 
 Vim-bootstrap generator can accept URL params via request as example below.
 
-    curl 'https://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=php&langs=html&langs=ruby&editor=vim&frameworks=vuejs' > ~/.vimrc
+    curl 'https://vim-bootstrap.com/generate.vim' --data 'editor=vim&frameworks=vuejs&langs=javascript&langs=php&langs=html&langs=ruby' > ~/.vimrc
 
 
 ### Updating to the latest version
