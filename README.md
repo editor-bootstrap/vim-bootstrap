@@ -223,6 +223,29 @@ Commands | Descriptions
 
 </details>
 
+<details>
+<summary>:black_small_square: Php hotkeys</summary>
+
+Commands | Descriptions
+-------- | -------
+`,u`     | Include use statement
+`,mm`    | Invoke the context menu
+`,nn`    | Invoke the navigation menu
+`,oo`    | Goto definition
+`,oh`    | Goto definition on horizontal split
+`,ov`    | Goto definition on vertical split
+`,ot`    | Goto definition on tab
+`,K`     | Show brief information about the symbol under the cursor
+`,tt`    | Transform the classes in the current file
+`,cc`    | Generate a new class (replacing the current file)
+`,ee`    | Extract expression (normal mode)
+`,ee`    | Extract expression (visual selection)
+`,em`    | Extract method (visual selection)
+`,pcd`   | cs-fixer fix directory
+`,pcf`   | cs-fixer fix file
+
+</details>
+
 ## Learn Vim
 
 Visit the following sites to learn more about Vim:
