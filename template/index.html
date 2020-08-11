@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Vim Bootstrap</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="version" content="{{.Version}}">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 8]><script src="/assets/css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/init.js"></script>
+    <script src="/assets/form.js"></script>
+
+    <noscript>
+      <link rel="stylesheet" href="/assets/css/skel-noscript.css" />
+      <link rel="stylesheet" href="/assets/css/style.css" />
+      <link rel="stylesheet" href="/assets/css/style-wide.css" />
+    </noscript>
+
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie/v8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie/v9.css" /><![endif]-->
+  </head>
+  <body>
+
+    <!-- Header -->
+      <section id="header" class="dark">
+        <header>
+          <h1>Vim Bootstrap</h1>
+          <p>A generator which provides a simple method of generating a .vimrc configuration for vim</p>
+          <p>
+          <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CE7IV5QW&placement=vim-bootstrapcom" id="_carbonads_js"></script>
+          </p>
+        </header>
+        <footer>
+          <a href="#first" class="button scrolly">Make your .vimrc now!</a>
+        </footer>
+      </section>
+
+    <!-- First -->
+      <section id="first" class="main">
+        <header>
+          <div class="container">
+            <h2>Select your languages</h2>
+            <p></p>
+            <form class="clearfix" action="/generate.vim" method="post">
+              <div class="row">
+                <div class="12u">
+                  {{ range $lang := .Langs}}
+                            <div class="input-group">
+                                <span class="button-checkbox">
+                                  <div class="placeholder">
+                                      <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" src="/assets/images/logo/{{$lang}}.png">
+                                  </div>
+                                  <p>{{$lang}}</p>
+                                    <input type="checkbox" name="langs" value="{{$lang}}" class="hidden" />
+                                </span>
+                            </div>
+                  {{end}}
+                     </div>
+                   </div>
+              <h3>Select your frameworks</h3>
+              <div class="row">
+                <div class="12u">
+                  {{ range $framework := .Frameworks}}
+                            <div class="input-group">
+                                <span class="button-checkbox">
+                                  <div class="placeholder">
+                                      <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" src="/assets/images/logo/{{$framework}}.png">
+                                  </div>
+                                  <p>{{$framework}}</p>
+                                    <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden" />
+                                </span>
+                            </div>
+                  {{end}}
+                     </div>
+                   </div>
+              <h3>Select your editor</h3>
+                    <div class="row">
+                <div class="12u">
+                  <div class="input-group">
+                    <span class="button-checkbox">
+                      <div class="placeholder">
+                        <img class="logo-icon selected" data-type="radio" data-value="vim" src="/assets/images/logo/vim.png">
+                      </div>
+                      <p>vim</p>
+                      <input type="radio" name="editor" value="vim" class="hidden" checked="checked" />
+                    </span>
+                  </div>
+                  <div class="input-group">
+                    <span class="button-checkbox">
+                      <div class="placeholder">
+                        <img class="logo-icon" data-type="radio" data-value="nvim" src="/assets/images/logo/neovim.png">
+                      </div>
+                      <p>neovim</p>
+                      <input type="radio" name="editor" value="nvim" class="hidden" />
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+                    <div class="row">
+                <div class="12u">
+                  <p>Click in the button to create your .vimrc</p><br>
+                  <ul class="actions">
+                    <li><input type="submit" class="button" value="Generate!"></li>
+                  </ul>
+                </div>
+              </div>
+                </form>
+          </div>
+        </header>
+        <div class="content dark style1 featured">
+          <div class="container">
+            <div class="row">
+              <div class="4u">
+                <section>
+                  <span class="feature-icon"><span class="fa fa-clock-o"></span></span>
+                  <header>
+                    <h3>Fast Installation</h3>
+                  </header>
+                  <p>Use your generated vimrc file following <a href="https://github.com/avelino/vim-bootstrap#installation">this instructions</a>.</p>
+                </section>
+              </div>
+              <div class="4u">
+                <section>
+                  <span class="feature-icon"><span class="fa fa-book"></span></span>
+                  <header>
+                    <h3>Learn more about Vim</h3>
+                  </header>
+                  <p>See the <a href="https://github.com/avelino/vim-bootstrap#commands">commands list</a>.</p>
+                </section>
+              </div>
+              <div class="4u">
+                <section>
+                  <span class="feature-icon"><span class="fa fa-edit"></span></span>
+                  <header>
+                    <h3>Customize your ViM</h3>
+                  </header>
+                  <p>Create a <a href="https://github.com/avelino/vim-bootstrap/blob/master/vim_template/vimrc.local.example">~/.vimrc.local</a> and customize your own configuration.</p>
+                </section>
+              </div>
+            </div>
+            <div class="row">
+              <div class="12u">
+                <footer>
+                  <a href="https://github.com/avelino/vim-bootstrap" class="button">Contribute</a>
+                  <a href="http://www.avelino.run/church-vim" class="button">Church Vim</a>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Footer -->
+      <section id="footer">
+        <ul class="icons">
+          <li><a href="https://github.com/avelino/vim-bootstrap" class="fa fa-github solo"><span>GitHub</span></a></li>
+        </ul>
+        <div class="copyright">
+          <ul class="menu">
+            <li>&copy; Vim Bootstrap. All rights reserved.</li>
+            <li><a href="https://github.com/avelino/vim-bootstrap">Vim Bootstrap</a></li>
+          </ul>
+        </div>
+      </section>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-53567832-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+  </body>
+</html>

@@ -18,16 +18,35 @@ type Config struct {
 
 // Object ...
 type Object struct {
-	Language     []string
-	BufferLang   map[string]string
-	BufferBundle map[string]string
-	Editor       string
-	Config       *Config
-	Version      string
+	Language        []string
+	Frameworks      []string
+	BufferLang      map[string]string
+	BufferFramework map[string]string
+	BufferBundle    map[string]string
+	Editor          string
+	Config          *Config
+	Version         string
 }
 
 // VimBuffer ...
 var VimBuffer bytes.Buffer
+
+func buff(list []string, t string) (mList, mBundle map[string]string) {
+	mList = make(map[string]string)
+	mBundle = make(map[string]string)
+	for _, name := range list {
+		for _, ext := range []string{"bundle", "vim"} {
+			filePath := fmt.Sprintf("vim_template/%s/%s/%s.%s", t, name, name, ext)
+			read, _ := Asset(filePath)
+			if ext == "vim" {
+				mList[name] = string(read)
+			} else {
+				mBundle[name] = string(read)
+			}
+		}
+	}
+	return
+}
 
 // Generate ...
 func Generate(obj *Object) (buffer string) {
@@ -36,7 +55,7 @@ func Generate(obj *Object) (buffer string) {
 
 	config := Config{}
 	switch obj.Editor {
-	case "nvim":
+	case "nvim", "neovim":
 		config.BaseDir = "~/.config/nvim"
 		config.Rc = filepath.Join(config.BaseDir, "init.vim")
 		config.LocalRc = filepath.Join(config.BaseDir, "local_init.vim")
@@ -50,20 +69,15 @@ func Generate(obj *Object) (buffer string) {
 
 	obj.Config = &config
 
-	mLang := make(map[string]string)
-	mBundle := make(map[string]string)
-	for _, lang := range obj.Language {
-		for _, ext := range []string{"bundle", "vim"} {
-			filePath := fmt.Sprintf("vim_template/langs/%s/%s.%s", lang, lang, ext)
-			read, _ := Asset(filePath)
-			if ext == "vim" {
-				mLang[lang] = string(read)
-			} else {
-				mBundle[lang] = string(read)
-			}
-		}
-	}
+	mLang, mBundle := buff(obj.Language, "langs")
 	obj.BufferLang = mLang
+
+	mFrameworks, bundles := buff(obj.Frameworks, "frameworks")
+	obj.BufferFramework = mFrameworks
+
+	for k, v := range bundles {
+		mBundle[k] = v
+	}
 	obj.BufferBundle = mBundle
 
 	vimrc, err := Asset("vim_template/vimrc")

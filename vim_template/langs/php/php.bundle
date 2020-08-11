@@ -1,2 +1,3 @@
 "" PHP Bundle
-Plug 'arnaud-lb/vim-php-namespace'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'stephpy/vim-php-cs-fixer'

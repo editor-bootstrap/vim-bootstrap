@@ -6,8 +6,6 @@ services:
     volumes:
       - ./Caddyfile:/etc/Caddyfile
       - ./template/assets:/srv/assets
-    links:
-      - go:go
     ports:
       - 80:2015
   go:
