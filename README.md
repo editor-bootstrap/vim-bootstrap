@@ -255,6 +255,6 @@ Visit the following sites to learn more about Vim:
 * [Vimcasts](https://vimcasts.org)
 * [Byte of Vim](https://www.swaroopch.com/notes/Vim)
 * [MinuteVim Tricks](https://www.youtube.com/user/MinuteVimTricks)
-* [Join the Church of Vim, and you too can be a saint!](https://www.avelino.xxx/2015/03/church-vim)
+* [Join the Church of Vim, and you too can be a saint!](https://www.avelino.run/church-vim)
 * [Vim para noobs (in portuguese)](https://woliveiras.com.br/vimparanoobs/)
 * [Vimbook (in portuguese)](https://cassiobotaro.gitbooks.io/vimbook/content/)
