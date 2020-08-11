@@ -65,7 +65,14 @@ $ pip3 install --user --upgrade neovim
 $ npm install -g elm-test
 $ npm install -g elm-oracle
 $ npm install -g elm-format@exp
+```
 
+### Rust
+
+* [rls](https://github.com/rust-lang/rls#setup)
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ## Installation
