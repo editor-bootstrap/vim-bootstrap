@@ -6,12 +6,11 @@ $(function () {
         $this.on('click', function() {
             var checkBox = $("input[value="+ $(this).data('value') +"]");
             checkBox.prop("checked", !checkBox.prop("checked"));
-
             if (checkBox.prop("checked")) {
 				if ($(this).data("type") == "radio"){
-					$("input[name=editor]").prop("checked", false);
-					$(".logo-icon[data-type="+ $(this).data('type') +"]").removeClass('selected');
-					var checkBox = $("input[name=editor][value="+ $(this).data('value') +"]");
+					$("input[name=" + $(this).data('name') + "]").prop("checked", false);
+					$(".logo-icon[data-type="+ $(this).data('type') +"][data-name="+ $(this).data('name') +"]").removeClass('selected');
+					var checkBox = $("input[name=" + $(this).data('name') + "][value="+ $(this).data('value') +"]");
 					checkBox.prop("checked", true);
 				}
 				$(this).addClass('selected');
@@ -19,7 +18,7 @@ $(function () {
 				if ($(this).data("type") == "checkbox"){
 					$(this).removeClass('selected');
 				} else {
-					$(".logo-icon[data-type="+ $(this).data('type') +"]").removeClass('selected');
+					$(".logo-icon[data-type="+ $(this).data('type') +"][data-name="+ $(this).data('name') +"]").removeClass('selected');
 				}
             };
         });

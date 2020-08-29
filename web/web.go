@@ -47,6 +47,15 @@ func listFrameworks() (list []string) {
 	return
 }
 
+func listThemes() (list []string) {
+	// List all themes on folder
+	files, _ := ioutil.ReadDir("./vim_template/themes")
+	for _, f := range files {
+		list = append(list, f.Name())
+	}
+	return
+}
+
 func HashCommit() string {
 	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
 	if err != nil {
@@ -71,6 +80,7 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
 	Body["Langs"] = listLangs()
 	Body["Frameworks"] = listFrameworks()
+	Body["Themes"] = listThemes()
 	Body["Version"] = HashCommit()
 
 	t := template.Must(template.ParseFiles("./template/index.html"))
@@ -81,18 +91,25 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Disposition", "attachment; filename=generate.vim")
 	r.ParseForm()
 	editor := r.FormValue("editor")
+	theme := r.FormValue("theme")
 	langs := r.Form["langs"]
 	frameworks := r.Form["frameworks"]
 	obj := generate.Object{
 		Frameworks: frameworks,
 		Language:   langs,
 		Editor:     editor,
+		Theme:      theme,
 		Version:    HashCommit(),
 	}
 	gen := generate.Generate(&obj)
 
 	w.Write([]byte(gen))
 	return
+}
+
+// HandleThemes is an endpoint to list availables frameworks
+func HandleThemes(w http.ResponseWriter, r *http.Request) {
+	handleList(w, listThemes)
 }
 
 // HandleFrameworks is an endpoint to list availables frameworks

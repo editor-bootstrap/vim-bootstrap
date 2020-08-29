@@ -76,13 +76,29 @@
                   {{end}}
                      </div>
                    </div>
+              <h3>Select your theme</h3>
+              <div class="row">
+                <div class="12u">
+                  {{ range $theme := .Themes}}
+                            <div class="input-group">
+                                <span class="button-checkbox">
+                                  <div class="placeholder">
+                                      <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}}" data-name="theme" data-type="radio" data-value="{{$theme}}" src="/assets/images/logo/color-scheme.png">
+                                  </div>
+                                  <p>{{$theme}}</p>
+                                  <input type="radio" name="theme" value="{{$theme}}" class="hidden" />
+                                </span>
+                            </div>
+                  {{end}}
+                     </div>
+                   </div>
               <h3>Select your editor</h3>
                     <div class="row">
                 <div class="12u">
                   <div class="input-group">
                     <span class="button-checkbox">
                       <div class="placeholder">
-                        <img class="logo-icon selected" data-type="radio" data-value="vim" src="/assets/images/logo/vim.png">
+                        <img class="logo-icon selected" data-name="editor" data-name="editor" data-type="radio" data-value="vim" src="/assets/images/logo/vim.png">
                       </div>
                       <p>vim</p>
                       <input type="radio" name="editor" value="vim" class="hidden" checked="checked" />
@@ -91,7 +107,7 @@
                   <div class="input-group">
                     <span class="button-checkbox">
                       <div class="placeholder">
-                        <img class="logo-icon" data-type="radio" data-value="nvim" src="/assets/images/logo/neovim.png">
+                        <img class="logo-icon" data-type="radio" data-name="editor" data-value="nvim" src="/assets/images/logo/neovim.png">
                       </div>
                       <p>neovim</p>
                       <input type="radio" name="editor" value="nvim" class="hidden" />

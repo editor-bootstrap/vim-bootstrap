@@ -16,12 +16,20 @@ type Config struct {
 	LocalBundle string
 }
 
+// Theme ...
+type Theme struct {
+	Bundle     string
+	Coloscheme string
+}
+
 // Object ...
 type Object struct {
 	Language        []string
 	Frameworks      []string
+	Theme           string
 	BufferLang      map[string]string
 	BufferFramework map[string]string
+	BufferTheme     Theme
 	BufferBundle    map[string]string
 	Editor          string
 	Config          *Config
@@ -74,6 +82,11 @@ func Generate(obj *Object) (buffer string) {
 
 	mFrameworks, bundles := buff(obj.Frameworks, "frameworks")
 	obj.BufferFramework = mFrameworks
+
+	themes := []string{obj.Theme}
+	mThemes, tBundles := buff(themes, "themes")
+	obj.BufferTheme.Bundle = tBundles[obj.Theme]
+	obj.BufferTheme.Coloscheme = mThemes[obj.Theme]
 
 	for k, v := range bundles {
 		mBundle[k] = v
