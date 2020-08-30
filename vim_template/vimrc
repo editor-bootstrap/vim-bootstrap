@@ -12,6 +12,8 @@ endif
 
 let g:vim_bootstrap_langs = "{{ range $key, $value := .Language}}{{if $key}},{{end}}{{$value}}{{end}}"
 let g:vim_bootstrap_editor = "{{.Editor}}"				" nvim or vim
+let g:vim_bootstrap_theme = "{{.Theme}}"
+let g:vim_bootstrap_frams = "{{ range $key, $value := .Frameworks}}{{if $key}},{{end}}{{$value}}{{end}}"
 
 if !filereadable(vimplug_exists)
   if !executable(curl_exists)
