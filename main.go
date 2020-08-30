@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/editor-bootsrap/vim-bootstrap/web"
-	"github.com/editor-bootstrap/vim-bootstrap/generate"
+	"github.com/avelino/vim-bootstrap/generate"
+	"github.com/avelino/vim-bootstrap/web"
 	"github.com/gorilla/mux"
 	"github.com/urfave/negroni"
 )
