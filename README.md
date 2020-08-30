@@ -106,8 +106,8 @@ Vim-bootstrap generator can accept URL params via request as example below.
 
 You can run vim-bootstrap Go package to generate a vimrc file, just download it:
 
-    go get github.com/avelino/vim-bootstrap
-    cd $GOPATH/src/github.com/avelino/vim-bootstrap
+    go get github.com/editor-bootstrap/vim-bootstrap
+    cd $GOPATH/src/github.com/editor-bootstrap/vim-bootstrap
     go build
 
 Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:

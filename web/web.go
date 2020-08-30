@@ -8,7 +8,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/avelino/vim-bootstrap/generate"
+	"github.com/editor-bootstrap/vim-bootstrap/generate"
 )
 
 const (
