@@ -1497,7 +1497,7 @@ func bindataVimtemplateVimrc() (*asset, error) {
 		size: 13412,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1598739466, 0),
+		modTime: time.Unix(1598744136, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}

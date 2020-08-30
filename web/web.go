@@ -92,6 +92,9 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	editor := r.FormValue("editor")
 	theme := r.FormValue("theme")
+	if theme == "" {
+		theme = "molokai"
+	}
 	langs := r.Form["langs"]
 	frameworks := r.Form["frameworks"]
 	obj := generate.Object{
