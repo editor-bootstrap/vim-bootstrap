@@ -147,7 +147,7 @@ func bindataVimtemplateFrameworksVuejsVuejsBundle() (*asset, error) {
 		size: 55,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -177,7 +177,7 @@ func bindataVimtemplateFrameworksVuejsVuejsVim() (*asset, error) {
 		size: 104,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -207,7 +207,7 @@ func bindataVimtemplateLangsCCBundle() (*asset, error) {
 		size: 80,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -237,7 +237,7 @@ func bindataVimtemplateLangsCCVim() (*asset, error) {
 		size: 124,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -267,7 +267,7 @@ func bindataVimtemplateLangsElixirElixirBundle() (*asset, error) {
 		size: 67,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -297,7 +297,7 @@ func bindataVimtemplateLangsElixirElixirVim() (*asset, error) {
 		size: 0,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -327,7 +327,7 @@ func bindataVimtemplateLangsElmElmBundle() (*asset, error) {
 		size: 37,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -357,7 +357,7 @@ func bindataVimtemplateLangsElmElmVim() (*asset, error) {
 		size: 122,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -387,7 +387,7 @@ func bindataVimtemplateLangsErlangErlangBundle() (*asset, error) {
 		size: 26,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -417,7 +417,7 @@ func bindataVimtemplateLangsErlangErlangVim() (*asset, error) {
 		size: 50,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -447,7 +447,7 @@ func bindataVimtemplateLangsGoGoBundle() (*asset, error) {
 		size: 68,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -477,7 +477,7 @@ func bindataVimtemplateLangsGoGoVim() (*asset, error) {
 		size: 2234,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -507,7 +507,7 @@ func bindataVimtemplateLangsHaskellHaskellBundle() (*asset, error) {
 		size: 100,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -537,7 +537,7 @@ func bindataVimtemplateLangsHaskellHaskellSh() (*asset, error) {
 		size: 20,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -567,7 +567,7 @@ func bindataVimtemplateLangsHaskellHaskellVim() (*asset, error) {
 		size: 168,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -597,7 +597,7 @@ func bindataVimtemplateLangsHtmlHtmlBundle() (*asset, error) {
 		size: 116,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -627,7 +627,7 @@ func bindataVimtemplateLangsHtmlHtmlVim() (*asset, error) {
 		size: 78,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -657,7 +657,7 @@ func bindataVimtemplateLangsJavascriptJavascriptBundle() (*asset, error) {
 		size: 57,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -687,7 +687,7 @@ func bindataVimtemplateLangsJavascriptJavascriptVim() (*asset, error) {
 		size: 197,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -717,7 +717,7 @@ func bindataVimtemplateLangsLispLispBundle() (*asset, error) {
 		size: 44,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -747,7 +747,7 @@ func bindataVimtemplateLangsLispLispVim() (*asset, error) {
 		size: 0,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -777,7 +777,7 @@ func bindataVimtemplateLangsLuaLuaBundle() (*asset, error) {
 		size: 73,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -807,7 +807,7 @@ func bindataVimtemplateLangsLuaLuaVim() (*asset, error) {
 		size: 0,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -837,7 +837,7 @@ func bindataVimtemplateLangsOcamlOcamlBundle() (*asset, error) {
 		size: 46,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -867,7 +867,7 @@ func bindataVimtemplateLangsOcamlOcamlVim() (*asset, error) {
 		size: 212,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -897,7 +897,7 @@ func bindataVimtemplateLangsPerlPerlBundle() (*asset, error) {
 		size: 64,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -927,7 +927,7 @@ func bindataVimtemplateLangsPerlPerlVim() (*asset, error) {
 		size: 0,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -957,7 +957,7 @@ func bindataVimtemplateLangsPhpPhpBundle() (*asset, error) {
 		size: 125,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -987,7 +987,7 @@ func bindataVimtemplateLangsPhpPhpVim() (*asset, error) {
 		size: 1119,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1017,7 +1017,7 @@ func bindataVimtemplateLangsPythonPythonBundle() (*asset, error) {
 		size: 107,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1047,7 +1047,7 @@ func bindataVimtemplateLangsPythonPythonVim() (*asset, error) {
 		size: 893,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1077,7 +1077,7 @@ func bindataVimtemplateLangsRubyRubyBundle() (*asset, error) {
 		size: 156,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1107,7 +1107,7 @@ func bindataVimtemplateLangsRubyRubyVim() (*asset, error) {
 		size: 1218,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1137,7 +1137,7 @@ func bindataVimtemplateLangsRustRustBundle() (*asset, error) {
 		size: 290,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1167,7 +1167,7 @@ func bindataVimtemplateLangsRustRustVim() (*asset, error) {
 		size: 203,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1197,7 +1197,7 @@ func bindataVimtemplateLangsScalaScalaBundle() (*asset, error) {
 		size: 106,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1227,7 +1227,7 @@ func bindataVimtemplateLangsScalaScalaVim() (*asset, error) {
 		size: 0,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1257,7 +1257,7 @@ func bindataVimtemplateLangsTypescriptTypescriptBundle() (*asset, error) {
 		size: 70,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1287,7 +1287,7 @@ func bindataVimtemplateLangsTypescriptTypescriptVim() (*asset, error) {
 		size: 28,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1317,7 +1317,7 @@ func bindataVimtemplateThemesCodedarkCodedarkBundle() (*asset, error) {
 		size: 31,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1347,7 +1347,7 @@ func bindataVimtemplateThemesCodedarkCodedarkVim() (*asset, error) {
 		size: 21,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1377,7 +1377,7 @@ func bindataVimtemplateThemesDraculaDraculaBundle() (*asset, error) {
 		size: 40,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1407,7 +1407,7 @@ func bindataVimtemplateThemesDraculaDraculaVim() (*asset, error) {
 		size: 20,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1437,7 +1437,7 @@ func bindataVimtemplateThemesMolokaiMolokaiBundle() (*asset, error) {
 		size: 22,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1467,7 +1467,7 @@ func bindataVimtemplateThemesMolokaiMolokaiVim() (*asset, error) {
 		size: 20,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1497,7 +1497,7 @@ func bindataVimtemplateVimrc() (*asset, error) {
 		size: 13567,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599088003, 0),
+		modTime: time.Unix(1599089343, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1527,7 +1527,7 @@ func bindataVimtemplateVimrcLocalBundlesExample() (*asset, error) {
 		size: 322,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}
@@ -1557,7 +1557,7 @@ func bindataVimtemplateVimrcLocalExample() (*asset, error) {
 		size: 41,
 		md5checksum: "",
 		mode: os.FileMode(436),
-		modTime: time.Unix(1599087699, 0),
+		modTime: time.Unix(1599087643, 0),
 	}
 
 	a := &asset{bytes: bytes, info: info}

@@ -7,3 +7,5 @@ require (
 	github.com/shuLhan/go-bindata v4.0.0+incompatible // indirect
 	github.com/urfave/negroni v1.0.0
 )
+
+// +heroku install ./cmd/...
