@@ -13,3 +13,4 @@ bundle
 vimrc.local
 .DS_Store
 vim-bootstrap
+vim-bootstrap-server

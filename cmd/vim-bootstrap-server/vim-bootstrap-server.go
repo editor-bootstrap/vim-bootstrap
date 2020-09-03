@@ -26,7 +26,7 @@ func main() {
 	r.HandleFunc("/themes", web.HandleThemes)
 	r.HandleFunc("/hook", web.HandleHook).Methods("POST")
 	r.PathPrefix("/assets").Handler(
-		http.StripPrefix("/assets", http.FileServer(http.Dir("../template/assets/"))))
+		http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
 	n.UseHandler(r)
 	n.Run(fmt.Sprintf(":%s", port))
 }
