@@ -31,7 +31,7 @@ const (
 
 func listLangs() (list []string) {
 	// List all languages on folder
-	files, _ := ioutil.ReadDir("./vim_template/langs")
+	files, _ := ioutil.ReadDir("../vim_template/langs")
 	for _, f := range files {
 		list = append(list, f.Name())
 	}
@@ -83,7 +83,7 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body["Themes"] = listThemes()
 	Body["Version"] = HashCommit()
 
-	t := template.Must(template.ParseFiles("./template/index.html"))
+	t := template.Must(template.ParseFiles("../template/index.html"))
 	t.Execute(w, Body)
 }
 
