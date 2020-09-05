@@ -1,4 +1,4 @@
-FROM golang:1.12-alpine as builder
+FROM golang:1.15-alpine as builder
 RUN apk add --no-cache git
 WORKDIR /vim-bootstrap
 COPY go.mod .
@@ -8,7 +8,7 @@ COPY ./ /vim-bootstrap
 RUN go build -ldflags "-s -w"
 
 FROM alpine:3.9
-LABEL mantainer="thiago@avelino.xxx"
+LABEL mantainer="t@avelino.xxx"
 LABEL mantainer="cassiobotaro@gmail.com"
 RUN apk add --no-cache ca-certificates git
 WORKDIR /vim-bootstrap/
