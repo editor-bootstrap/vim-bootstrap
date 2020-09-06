@@ -5,14 +5,15 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY ./ /vim-bootstrap
-RUN go build -ldflags "-s -w"
+RUN go install -ldflags "-s -s" ./...
 
 FROM alpine:3.9
 LABEL mantainer="t@avelino.xxx"
 LABEL mantainer="cassiobotaro@gmail.com"
 RUN apk add --no-cache ca-certificates git
 WORKDIR /vim-bootstrap/
-COPY --from=builder /vim-bootstrap/vim-bootstrap vimbootstrap
+COPY --from=builder /go/bin/vim-bootstrap vim-bootstrap
+COPY --from=builder /go/bin/vim-bootstrap-server vim-bootstrap-server
 COPY ./template template
 COPY ./vim_template/ vim_template
-CMD ["./vimbootstrap", "-server"]
+CMD ["./vim-bootstrap-server"]
