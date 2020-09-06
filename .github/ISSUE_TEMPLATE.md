@@ -1,5 +1,5 @@
 1. Please speak English, this is the language all of us can speak and write.
-2. Please ask questions or config/deploy problems on our Vim Bootstrap channel: https://gitter.im/avelino/vim-bootstrap
+2. Please ask questions or config/deploy problems on our Vim Bootstrap channel: https://gitter.im/editor-bootstrap/vim
 3. Please take a moment to search for an issue that doesn't already exist.
 4. Please give all relevant information below on bug reports, incomplete details will be handled as an invalid report.
 5. Please verify if you followed the dependencies instructions on README
