@@ -9,6 +9,9 @@ function! s:build_go_files()
   endif
 endfunction
 
+let g:go_def_mode = "gopls"
+let g:deoplete#enable_at_startup = 1
+
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1

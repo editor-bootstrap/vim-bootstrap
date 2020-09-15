@@ -50,6 +50,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 {{.BufferTheme.Bundle}}
 
 if isdirectory('/usr/local/opt/fzf')
