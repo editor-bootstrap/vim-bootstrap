@@ -3,10 +3,10 @@ package web
 import (
 	"html/template"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os/exec"
 	"strings"
+	"time"
 
 	"github.com/editor-bootstrap/vim-bootstrap/generate"
 )
@@ -56,12 +56,11 @@ func listThemes() (list []string) {
 	return
 }
 
+// HashCommit returns timestamp
 func HashCommit() string {
-	out, err := exec.Command("git", "rev-parse", "--short", "HEAD").Output()
-	if err != nil {
-		log.Printf("generate: %q occurs while getting vim-bootstrap version\n", err)
-	}
-	return strings.TrimSpace(string(out))
+	t := time.Now()
+	// yearmonthdayhourminutesseconds
+	return t.Format("2006-01-02 15:04:05")
 }
 
 func HandleHook(w http.ResponseWriter, r *http.Request) {
