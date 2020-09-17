@@ -131,3 +131,9 @@ func handleList(w http.ResponseWriter, function func() []string) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+// HandleFavicon just serve favicon.ico
+func HandleFavicon(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./template/assets/favicon.ico")
+	// http.FileServer(http.Dir("./template/assets/"))
+}
