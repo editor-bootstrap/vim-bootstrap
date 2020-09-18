@@ -4,7 +4,6 @@ import (
 	"html/template"
 	"io/ioutil"
 	"net/http"
-	"os/exec"
 	"strings"
 	"time"
 
@@ -61,18 +60,6 @@ func HashCommit() string {
 	t := time.Now()
 	// yearmonthdayhourminutesseconds
 	return t.Format("2006-01-02 15:04:05")
-}
-
-func HandleHook(w http.ResponseWriter, r *http.Request) {
-	// Update repo
-	exec.Command(git, checkout, force).Output()
-	exec.Command(git, pull).Output()
-	exec.Command(git, submodule, update, remote, merge).Output()
-	exec.Command(git, add, tmpl).Output()
-	exec.Command(git, commit, message).Output()
-	exec.Command(git, push, origin, master).Output()
-
-	w.Write([]byte("Done!\n"))
 }
 
 func HandleHome(w http.ResponseWriter, r *http.Request) {
