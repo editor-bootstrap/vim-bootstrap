@@ -42,6 +42,13 @@ $ sudo dnf install ncurses-devel git ctags-etags curl
 $ sudo zypper in ncurses-devel git ctags curl
 ```
 
+### BSD
+
+* FreeBSD via *packages collection*
+```
+# pkg install git p5-Parse-ExuberantCTags ncurses curl
+```
+
 ### Python bundle (optionally)
 
 * pyflakes
