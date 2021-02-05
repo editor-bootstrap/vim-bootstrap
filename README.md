@@ -174,7 +174,7 @@ Commands | Descriptions
 <kbd>shift</kbd><kbd>tab</kbd> | previous tab navigate
 <kbd>,</kbd><kbd>e</kbd> | Find and open files
 <kbd>,</kbd><kbd>b</kbd> | Find file on buffer (open file)
-<kbd>,</kbd><kbd>c</kbd> | Close active buffer (clone file)
+<kbd>,</kbd><kbd>c</kbd> | Close active buffer (close file)
 <kbd>F2</kbd>  | Open tree navigate in actual opened file
 <kbd>F3</kbd>  | Open/Close tree navigate files
 <kbd>F4</kbd> | List all class and method, support for python, go, lua, ruby and php
