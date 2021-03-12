@@ -2,8 +2,8 @@ package generate
 
 import (
 	"bytes"
+	"embed"
 	"fmt"
-	"log"
 	"path/filepath"
 	"text/template"
 )
@@ -39,13 +39,25 @@ type Object struct {
 // VimBuffer ...
 var VimBuffer bytes.Buffer
 
-func buff(list []string, t string) (mList, mBundle map[string]string) {
+//go:embed vim_template/vimrc
+var vimrc string
+
+//go:embed vim_template/langs
+var langs embed.FS
+
+//go:embed vim_template/frameworks
+var frameworks embed.FS
+
+//go:embed vim_template/themes
+var themes embed.FS
+
+func buff(list []string, t string, fs embed.FS) (mList, mBundle map[string]string) {
 	mList = make(map[string]string)
 	mBundle = make(map[string]string)
 	for _, name := range list {
 		for _, ext := range []string{"bundle", "vim"} {
 			filePath := fmt.Sprintf("vim_template/%s/%s/%s.%s", t, name, name, ext)
-			read, _ := Asset(filePath)
+			read, _ := fs.ReadFile(filePath)
 			if ext == "vim" {
 				mList[name] = string(read)
 			} else {
@@ -77,14 +89,14 @@ func Generate(obj *Object) (buffer string) {
 
 	obj.Config = &config
 
-	mLang, mBundle := buff(obj.Language, "langs")
+	mLang, mBundle := buff(obj.Language, "langs", langs)
 	obj.BufferLang = mLang
 
-	mFrameworks, bundles := buff(obj.Frameworks, "frameworks")
+	mFrameworks, bundles := buff(obj.Frameworks, "frameworks", frameworks)
 	obj.BufferFramework = mFrameworks
 
-	themes := []string{obj.Theme}
-	mThemes, tBundles := buff(themes, "themes")
+	choosenThemes := []string{obj.Theme}
+	mThemes, tBundles := buff(choosenThemes, "themes", themes)
 	obj.BufferTheme.Bundle = tBundles[obj.Theme]
 	obj.BufferTheme.Coloscheme = mThemes[obj.Theme]
 
@@ -93,11 +105,7 @@ func Generate(obj *Object) (buffer string) {
 	}
 	obj.BufferBundle = mBundle
 
-	vimrc, err := Asset("vim_template/vimrc")
-	if err != nil {
-		log.Fatal(err)
-	}
-	t := template.Must(template.New("vimrc").Parse(string(vimrc)))
+	t := template.Must(template.New("vimrc").Parse(vimrc))
 	t.Execute(&VimBuffer, obj)
 
 	buffer = VimBuffer.String()
