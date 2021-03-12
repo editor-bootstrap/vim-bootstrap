@@ -8,3 +8,4 @@ require (
 )
 
 // +heroku install ./cmd/...
+// +heroku goVersion go1.16
