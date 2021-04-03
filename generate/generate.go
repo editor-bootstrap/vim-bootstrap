@@ -62,7 +62,34 @@ func buff(list []string, t string) (mList, mBundle map[string]string) {
 	return
 }
 
-// Generate ...
+// ListLangs on folder langs
+func ListLangs() (list []string) {
+	files, _ := vimTemplate.ReadDir("vim_template/langs")
+	for _, f := range files {
+		list = append(list, f.Name())
+	}
+	return
+}
+
+// ListFrameworks on folder frameworks
+func ListFrameworks() (list []string) {
+	files, _ := vimTemplate.ReadDir("vim_template/frameworks")
+	for _, f := range files {
+		list = append(list, f.Name())
+	}
+	return
+}
+
+// ListThemes on folder themes
+func ListThemes() (list []string) {
+	files, _ := vimTemplate.ReadDir("vim_template/themes")
+	for _, f := range files {
+		list = append(list, f.Name())
+	}
+	return
+}
+
+// Generate file from configurations
 func Generate(obj *Object) (buffer string) {
 	// Clean VimBuffer, not append old result
 	VimBuffer.Reset()

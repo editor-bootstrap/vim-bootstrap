@@ -2,58 +2,12 @@ package web
 
 import (
 	"html/template"
-	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/editor-bootstrap/vim-bootstrap/generate"
 )
-
-const (
-	git       = "git"
-	checkout  = "checkout"
-	force     = "-f"
-	pull      = "pull"
-	submodule = "submodule"
-	update    = "update"
-	remote    = "--remote"
-	merge     = "--merge"
-	add       = "add"
-	tmpl      = "template"
-	commit    = "commit"
-	message   = "-m \"update template \""
-	push      = "push"
-	origin    = "origin"
-	master    = "master"
-)
-
-func listLangs() (list []string) {
-	// List all languages on folder
-	files, _ := ioutil.ReadDir("./vim_template/langs")
-	for _, f := range files {
-		list = append(list, f.Name())
-	}
-	return
-}
-
-func listFrameworks() (list []string) {
-	// List all frameworks on folder
-	files, _ := ioutil.ReadDir("./vim_template/frameworks")
-	for _, f := range files {
-		list = append(list, f.Name())
-	}
-	return
-}
-
-func listThemes() (list []string) {
-	// List all themes on folder
-	files, _ := ioutil.ReadDir("./vim_template/themes")
-	for _, f := range files {
-		list = append(list, f.Name())
-	}
-	return
-}
 
 // HashCommit returns timestamp
 func HashCommit() string {
@@ -62,17 +16,19 @@ func HashCommit() string {
 	return t.Format("2006-01-02 15:04:05")
 }
 
+// HandleHome is a handler to expose main page configurations
 func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body := make(map[string]interface{})
-	Body["Langs"] = listLangs()
-	Body["Frameworks"] = listFrameworks()
-	Body["Themes"] = listThemes()
+	Body["Langs"] = generate.ListLangs()
+	Body["Frameworks"] = generate.ListFrameworks()
+	Body["Themes"] = generate.ListThemes()
 	Body["Version"] = HashCommit()
 
 	t := template.Must(template.ParseFiles("./template/index.html"))
 	t.Execute(w, Body)
 }
 
+// HandleGenerate receives a post request with configurations and returns a config file.
 func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Disposition", "attachment; filename=generate.vim")
 	r.ParseForm()
@@ -98,17 +54,17 @@ func HandleGenerate(w http.ResponseWriter, r *http.Request) {
 
 // HandleThemes is an endpoint to list availables frameworks
 func HandleThemes(w http.ResponseWriter, r *http.Request) {
-	handleList(w, listThemes)
+	handleList(w, generate.ListThemes)
 }
 
 // HandleFrameworks is an endpoint to list availables frameworks
 func HandleFrameworks(w http.ResponseWriter, r *http.Request) {
-	handleList(w, listFrameworks)
+	handleList(w, generate.ListFrameworks)
 }
 
 // HandleLangs is an endpoint to list availables frameworks
 func HandleLangs(w http.ResponseWriter, r *http.Request) {
-	handleList(w, listLangs)
+	handleList(w, generate.ListLangs)
 }
 
 func handleList(w http.ResponseWriter, function func() []string) {
