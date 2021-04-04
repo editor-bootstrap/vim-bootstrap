@@ -36,9 +36,6 @@ type Object struct {
 	Version         string
 }
 
-// VimBuffer ...
-var VimBuffer bytes.Buffer
-
 //go:embed vim_template/vimrc
 var vimrc string
 
@@ -91,9 +88,6 @@ func ListThemes() (list []string) {
 
 // Generate file from configurations
 func Generate(obj *Object) (buffer string) {
-	// Clean VimBuffer, not append old result
-	VimBuffer.Reset()
-
 	config := Config{}
 	switch obj.Editor {
 	case "nvim", "neovim":
@@ -126,9 +120,10 @@ func Generate(obj *Object) (buffer string) {
 	}
 	obj.BufferBundle = mBundle
 
+	var vimBuffer bytes.Buffer
 	t := template.Must(template.New("vimrc").Parse(vimrc))
-	t.Execute(&VimBuffer, obj)
+	t.Execute(&vimBuffer, obj)
 
-	buffer = VimBuffer.String()
+	buffer = vimBuffer.String()
 	return
 }
