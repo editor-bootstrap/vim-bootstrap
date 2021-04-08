@@ -5,7 +5,7 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY ./ /vim-bootstrap
-RUN go install -ldflags "-s -s" ./...
+RUN go install -ldflags "-w -s" ./...
 
 FROM alpine:3.9
 LABEL mantainer="t@avelino.xxx"
