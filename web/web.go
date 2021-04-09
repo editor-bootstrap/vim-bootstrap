@@ -1,13 +1,25 @@
 package web
 
 import (
+	"embed"
 	"html/template"
+	"io/fs"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/editor-bootstrap/vim-bootstrap/generate"
 )
+
+//go:embed template/assets template/index.html
+var content embed.FS
+
+// AssetsHandler is a handler to expose embed assets
+func AssetsHandler() http.Handler {
+	fsys := fs.FS(content)
+	contentStatic, _ := fs.Sub(fsys, "template/assets")
+	return http.FileServer(http.FS(contentStatic))
+}
 
 // HashCommit returns timestamp
 func HashCommit() string {
@@ -24,7 +36,7 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 	Body["Themes"] = generate.ListThemes()
 	Body["Version"] = HashCommit()
 
-	t := template.Must(template.ParseFiles("./template/index.html"))
+	t := template.Must(template.ParseFS(content, "template/index.html"))
 	t.Execute(w, Body)
 }
 
@@ -77,6 +89,10 @@ func handleList(w http.ResponseWriter, function func() []string) {
 
 // HandleFavicon just serve favicon.ico
 func HandleFavicon(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./template/assets/favicon.ico")
-	// http.FileServer(http.Dir("./template/assets/"))
+	w.Header().Add("Content-type", "image/x-icon")
+	file, err := content.ReadFile("template/assets/favicon.ico")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusNotFound)
+	}
+	w.Write(file)
 }

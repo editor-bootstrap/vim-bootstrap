@@ -26,7 +26,7 @@ func main() {
 	r.HandleFunc("/frameworks", web.HandleFrameworks)
 	r.HandleFunc("/themes", web.HandleThemes)
 	r.PathPrefix("/assets").Handler(
-		http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
+		http.StripPrefix("/assets", web.AssetsHandler()))
 	n.UseHandler(r)
 	n.Run(fmt.Sprintf(":%s", port))
 }
