@@ -154,10 +154,15 @@
                 <div class="drac-box">
                     <div class="input-group">
                         <span class="button-checkbox">
-                            <div class="drac-box Highlights_cardBackground__2Fr7t">
+                            <div class="drac-box Highlights_cardBackground__2Fr7t theme-grid">
                                 <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
                                     <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}}" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="Click to select theme {{$theme}}" src="/assets/images/logo/color-scheme.png">
                                     <input type="radio" name="theme" value="{{$theme}}" class="hidden" />
+                                </div>
+                                <div class="drac-box">
+                                  <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
+                                    {{$theme}}
+                                  </p>
                                 </div>
                             </div>
                         </span>
