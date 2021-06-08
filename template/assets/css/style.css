@@ -863,3 +863,9 @@
     font-size: 22px;
     cursor: pointer;
 }
+
+.theme-grid {
+    -webkit-column-count: 4;
+    column-count: 4;
+    display: grid;
+}
