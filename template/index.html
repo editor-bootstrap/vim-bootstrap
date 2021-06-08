@@ -1,199 +1,376 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Vim Bootstrap</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<html data-lt-installed="true">
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:type" content="website">
+    <meta content="summary_large_image" name="twitter:card">
+    <link rel="icon" type="image/x-icon" href="/assets/images/editor-bootstrap-icon.png">
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+
+    <!--
+    <base href="https://vim-bootstrap.com" />
+    <link rel="canonical" href=" https://vim-bootstrap.com" />
+    -->
+
     <meta name="version" content="{{.Version}}">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic" rel="stylesheet" type="text/css" />
-    <!--[if lte IE 8]><script src="/assets/css/ie/html5shiv.js"></script><![endif]-->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/skel.min.js"></script>
-    <script src="/assets/js/init.js"></script>
-    <script src="/assets/form.js"></script>
+    <title>Your configuration generator for NeoVim and Vim - Vim Bootstrap</title>
+    <meta content="Vim Bootstrap" property="og:title">
+    <meta content="Your configuration generator for Neovim and Vim" name="description">
+    <meta content="Your configuration generator for Neovim and Vim" property="og:description">
+    <meta content="https://vim-bootstrap.com" property="og:url">
+    <meta content="/assets/images/editor-bootstrap-icon.png" property="og:image">
+    <meta name="twitter:image" content="/assets/images/editor-bootstrap-icon.png">
+    <meta name="viewport" content="width=device-width">
 
-    <noscript>
-      <link rel="stylesheet" href="/assets/css/skel-noscript.css" />
-      <link rel="stylesheet" href="/assets/css/style.css" />
-      <link rel="stylesheet" href="/assets/css/style-wide.css" />
-    </noscript>
+    <link rel="preload" href="/assets/css/dracula-ui.css" as="style" />
+    <link rel="stylesheet" href="/assets/css/dracula-ui.css" />
+    <link rel="preload" href="/assets/css/style.css" as="style" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
 
-    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie/v8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie/v9.css" /><![endif]-->
-  </head>
-  <body>
-    <!-- Header -->
-      <section id="header" class="dark">
-    <div>
-      <a href="https://github.com/editor-bootstrap/vim-bootstrap">
-        <img style="position: absolute; top: 0; right: 0; border: 0; z-index:1000;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
-      </a>
+<body class="drac-bg-black drac-text-white">
+    <!-- Topbar -->
+    <div id="topbar" class="drac-box">
+        <a class="drac-text drac-text-white drac-text-white title logo" href="/">
+            Vim
+            <span class="drac-text drac-line-height drac-text-cyan-green title">
+                Bootstrap
+            </span>
+        </a>
+        <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-white--hover drac-mx-xs" href="#tagline">
+            Get Early Access
+        </a>
     </div>
-        <header>
-          <h1>Vim Bootstrap</h1>
-          <p>A generator which provides a simple method of generating a .vimrc configuration for vim</p>
-        </header>
-        <footer>
-          <a href="#first" class="button scrolly">Make your .vimrc now!</a>
-        </footer>
-      </section>
 
-    <!-- First -->
-      <section id="first" class="main">
-        <header>
-          <div class="container">
-            <h2>Select your languages</h2>
-            <p></p>
-            <form class="clearfix" action="/generate.vim" method="post">
-              <div class="row">
-                <div class="12u">
-                  {{ range $lang := .Langs}}
-                            <div class="input-group">
-                                <span class="button-checkbox">
-                                  <div class="placeholder">
-                                      <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" src="/assets/images/logo/{{$lang}}.png">
-                                  </div>
-                                  <p>{{$lang}}</p>
-                                    <input type="checkbox" name="langs" value="{{$lang}}" class="hidden" />
-                                </span>
-                            </div>
-                  {{end}}
-                     </div>
-                   </div>
-              <h3>Select your frameworks</h3>
-              <div class="row">
-                <div class="12u">
-                  {{ range $framework := .Frameworks}}
-                            <div class="input-group">
-                                <span class="button-checkbox">
-                                  <div class="placeholder">
-                                      <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" src="/assets/images/logo/{{$framework}}.png">
-                                  </div>
-                                  <p>{{$framework}}</p>
-                                    <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden" />
-                                </span>
-                            </div>
-                  {{end}}
-                     </div>
-                   </div>
-              <h3>Select your theme</h3>
-              <div class="row">
-                <div class="12u">
-                  {{ range $theme := .Themes}}
-                            <div class="input-group">
-                                <span class="button-checkbox">
-                                  <div class="placeholder">
-                                      <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}}" data-name="theme" data-type="radio" data-value="{{$theme}}" src="/assets/images/logo/color-scheme.png">
-                                  </div>
-                                  <p>{{$theme}}</p>
-                                  <input type="radio" name="theme" value="{{$theme}}" class="hidden" />
-                                </span>
-                            </div>
-                  {{end}}
-                     </div>
-                   </div>
-              <h3>Select your editor</h3>
-                    <div class="row">
-                <div class="12u">
-                  <div class="input-group">
-                    <span class="button-checkbox">
-                      <div class="placeholder">
-                        <img class="logo-icon selected" data-name="editor" data-name="editor" data-type="radio" data-value="vim" src="/assets/images/logo/vim.png">
-                      </div>
-                      <p>vim</p>
-                      <input type="radio" name="editor" value="vim" class="hidden" checked="checked" />
-                    </span>
-                  </div>
-                  <div class="input-group">
-                    <span class="button-checkbox">
-                      <div class="placeholder">
-                        <img class="logo-icon" data-type="radio" data-name="editor" data-value="nvim" src="/assets/images/logo/neovim.png">
-                      </div>
-                      <p>neovim</p>
-                      <input type="radio" name="editor" value="nvim" class="hidden" />
-                    </span>
-                  </div>
-
-                </div>
-              </div>
-
-                    <div class="row">
-                <div class="12u">
-                  <p>Click in the button to create your .vimrc</p><br>
-                  <ul class="actions">
-                    <li><input type="submit" class="button" value="Generate!"></li>
-                  </ul>
-                </div>
-              </div>
-                </form>
-          </div>
-        </header>
-        <div class="content dark style1 featured">
-          <div class="container">
-            <div class="row">
-              <div class="4u">
-                <section>
-                  <span class="feature-icon"><span class="fa fa-clock-o"></span></span>
-                  <header>
-                    <h3>Fast Installation</h3>
-                  </header>
-                  <p>Use your generated vimrc file following <a href="https://github.com/editor-bootstrap/vim-bootstrap#installation">this instructions</a>.</p>
-                </section>
-              </div>
-              <div class="4u">
-                <section>
-                  <span class="feature-icon"><span class="fa fa-book"></span></span>
-                  <header>
-                    <h3>Learn more about Vim</h3>
-                  </header>
-                  <p>See the <a href="https://github.com/editor-bootstrap/vim-bootstrap#commands">commands list</a>.</p>
-                </section>
-              </div>
-              <div class="4u">
-                <section>
-                  <span class="feature-icon"><span class="fa fa-edit"></span></span>
-                  <header>
-                    <h3>Customize your ViM</h3>
-                  </header>
-                  <p>Create a <a href="https://github.com/editor-bootstrap/vim-bootstrap/blob/master/vim_template/vimrc.local.example">~/.vimrc.local</a> and customize your own configuration.</p>
-                </section>
-              </div>
-            </div>
-            <div class="row">
-              <div class="12u">
-                <footer>
-                  <a href="https://github.com/editor-bootstrap/vim-bootstrap" class="button">Contribute</a>
-                  <a href="http://www.avelino.run/church-vim" class="button">Church Vim</a>
-                </footer>
-              </div>
-            </div>
-          </div>
+    <!-- Header -->
+    <div id="header" class="drac-box">
+        <h1 class="drac-heading title drac-heading-xl drac-text-white logo">Vim <span class="drac-text title drac-line-height drac-text-cyan-green">Bootstrap</span>
+        </h1>
+        <div class="drac-box subtitle drac-mt-sm drac-mb-md">
+            <span class="drac-text bodytext drac-line-height drac-text-white">
+                Your configuration generator for
+                <span class="drac-text bodytext drac-line-height drac-text-cyan-green">
+                    Neovim/Vim</span>
+            </span>
         </div>
-      </section>
-
-    <!-- Footer -->
-      <section id="footer">
-        <ul class="icons">
-          <li><a href="https://github.com/editor-bootstrap/vim-bootstrap" class="fa fa-github solo"><span>GitHub</span></a></li>
-        </ul>
-        <div class="copyright">
-          <ul class="menu">
-            <li>&copy; Vim Bootstrap. All rights reserved.</li>
-            <li><a href="https://github.com/editor-bootstrap/vim-bootstrap">Vim Bootstrap</a></li>
-          </ul>
+        <div style="margin-top:20px" class="drac-box">
+            <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover" href="#tagline">
+                Make your .vimrc <strong>now</strong>!
+            </a>
         </div>
-      </section>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </div>
 
-      ga('create', 'UA-53567832-1', 'auto');
-      ga('send', 'pageview');
+    <!-- Tagline -->
+    <div id="tagline" class="drac-box">
+        <div class="drac-box container-top">
+            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)"
+                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
+                </path>
+            </svg>
+        </div>
 
+        <div class="drac-box container">
+            <h2 class="drac-heading title drac-heading-xl drac-text-pink-purple">
+                Modern config NeoVim/Vim
+            </h2>
+            <p class="drac-text description drac-line-height drac-text-white drac-mt-sm">
+                Vim Bootstrap makes it easy to learn a new editor, focus on learning how to use it and leave the configuration to us
+            </p>
+        </div>
+
+        <div class="drac-box container-bottom">
+            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)"
+                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Editors -->
+    <div id="editors" class="drac-box">
+        <form class="clearfix" action="/generate.vim" method="post">
+            <!-- languages -->
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+                Select your languages
+            </h3>
+            <div class="langs_grid drac-box container Highlights_container__1kvqi">
+                {{ range $lang := .Langs}}
+                <!-- lang:{{$lang}} -->
+                <div class="drac-box langs_item">
+                    <div class="input-group">
+                        <span class="button-checkbox">
+                            <div class="drac-box Highlights_cardBackground__2Fr7t">
+                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                    <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" alt="Click to select programming language {{$lang}}" src="/assets/images/logo/{{$lang}}.png" />
+                                    <input type="checkbox" name="langs" value="{{$lang}}" class="hidden">
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            <!-- frameworks -->
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+                Select your frameworks
+            </h3>
+            <div class="drac-box container Highlights_container__1kvqi">
+                {{ range $framework := .Frameworks}}
+                <!-- framework:{{$framework}} -->
+                <div class="drac-box">
+                    <div class="input-group">
+                        <span class="button-checkbox">
+                            <div class="drac-box Highlights_cardBackground__2Fr7t">
+                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                    <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" alt="Click to select framework {{$framework}}" src="/assets/images/logo/{{$framework}}.png" />
+                                    <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden">
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            <!-- themes -->
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+                Select your theme
+            </h3>
+            <div class="drac-box container Highlights_container__1kvqi">
+                {{ range $theme := .Themes}}
+                <!-- theme:{{$theme}} -->
+                <div class="drac-box">
+                    <div class="input-group">
+                        <span class="button-checkbox">
+                            <div class="drac-box Highlights_cardBackground__2Fr7t">
+                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                    <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}}" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="Click to select theme {{$theme}}" src="/assets/images/logo/color-scheme.png">
+                                    <input type="radio" name="theme" value="{{$theme}}" class="hidden" />
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            <!-- editors -->
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+                Select your editor
+            </h3>
+            <div class="drac-box  Highlights_container__1kvqi editors_grid">
+                <!-- Editor: neovim -->
+                <div class="drac-box">
+                    <div class="drac-box Highlights_card__34b3J">
+                        <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
+                            <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                <img class="logo-icon selected" data-name="editor" data-type="radio" data-value="neovim" alt="Click to select editor neovim" src="/assets/images/logo/neovim.png" />
+                                <input type="radio" name="editor" value="neovim" class="hidden" checked="checked">
+                            </div>
+                        </div>
+                        <div class="drac-box drac-p-md">
+                            <h2 class="drac-heading drac-heading-lg drac-text-purple-cyan">Neovim</h2>
+                            <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
+                                Is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie). It is not a rewrite but a continuation and extension of Vim. Many clones and derivatives exist, some very clever—but none are Vim. Neovim is built for users
+                                who want the good parts of Vim, and more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editor: vim -->
+                <div class="drac-box">
+                    <div class="drac-box Highlights_card__34b3J">
+                        <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
+                            <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                <img class="logo-icon" data-name="editor" data-type="radio" data-value="vim" alt="Click to select editor vim" src="/assets/images/logo/vim.png" />
+                                <input type="radio" name="editor" value="vim" class="hidden">
+                            </div>
+                        </div>
+                        <div class="drac-box drac-p-md">
+                            <h2 class="drac-heading drac-heading-lg drac-text-purple-cyan">Vim</h2>
+                            <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
+                                Vim is a highly configurable text editor built to enable efficient text editing. It is an improved version of the vi editor distributed with most UNIX systems. Vim is often called a "programmer's editor," and so useful for programming that many consider
+                                it an entire IDE.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="generate-btn" class="drac-box container Highlights_container__1kvqi">
+                <div class="drac-box">
+                    <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">Click in the button to create your .vimrc</p>
+                    <input type="submit" value="Generate!" class="drac-btn drac-bg-cyan-green" />
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="drac-box container-bottom">
+            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)"
+                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" class="drac-box">
+        <div class="drac-box Faq_container__26-En">
+            <h2 class="drac-heading title drac-heading-2xl drac-text-yellow-pink drac-px-sm drac-pb-lg">
+                Why use the Vim Bootstrap Distributions
+            </h2>
+
+            <div class="drac-box Faq_grid__2zjq3">
+                <div class="drac-box drac-mx-sm drac-mb-lg">
+                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
+                        Learn to use then configure
+                    </p>
+                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
+                        Put your focus on one thing at a time, when we focus on studying a single thing we accelerate our learning.
+                    </p>
+                </div>
+                <div class="drac-box drac-mx-sm drac-mb-lg">
+                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
+                        Maintained by the community
+                    </p>
+                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
+                        Created and maintained by a community that uses the Neovim/Vim on a daily basis.
+                    </p>
+                </div>
+                <div class="drac-box drac-mx-sm drac-mb-lg">
+                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
+                        We demystify the complexity of the Neovim/Vim configuration
+                    </p>
+                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
+                        Setting up the Neovim/Vim is not complicated, as long as you have a good configuration reference. Vim Bootstrap provides a great reference for setting up your configuration.
+                    </p>
+                </div>
+                <div class="drac-box drac-mx-sm drac-mb-lg">
+                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
+                        Open Source, point the finger at the problems
+                    </p>
+                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
+                        Feel like you own the projects, report problems, propose improvements and the evolution of the projects. Welcome to the team.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div id="newsletter" class="drac-box">
+        <h2 class="drac-heading title drac-text-pink-purple drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            Be the first to receive news!
+        </h2>
+        <div class="drac-box bodytext">
+            <span class="drac-text drac-line-height drac-text-white">
+                Stay up to date with our latest features and releases
+            </span>
+        </div>
+
+        <div class="drac-box bodyform">
+            <form class="form" action="https://buttondown.email/api/emails/embed-subscribe/editor-bootstrap" method="post" target="popupwindow" onsubmit="window.open( 'https://buttondown.email/editor-bootstrap', 'popupwindow')" class="embeddable-buttondown-form">
+                <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
+                <input type="hidden" value="1" name="embed" />
+                <input type="submit" value="Subscribe" />
+            </form>
+        </div>
+    </div>
+
+    <div id="authors" class="drac-box Authors_authors__22hBU">
+        <div class="drac-box Authors_svgContainerTop__3tlwu"><svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
+                    stroke-width="0"></path>
+                <path fill="rgba(34, 33, 44, 1)"
+                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
+                </path>
+            </svg></div>
+
+        <div id="github-members" class=" Faq_grid__2zjq3 drac-box drac-mx-sm drac-mb-lg members">
+            <!--Load members via JS-->
+        </div>
+    </div>
+    </div>
+
+    <div class="drac-box Footer_footer__108BV">
+        <p class="drac-text credits drac-text-lg drac-line-height drac-text-white">
+            Made with
+            <span class="drac-text love drac-text-lg drac-line-height drac-text-white">♥</span> by
+            <a href="https://github.com/editor-bootstrap" target="blank" class="drac-anchor drac-text drac-text-lg drac-text-purple-cyan drac-text-purple--hover">Editor
+                Bootstrap</a> Community
+        </p>
+    </div>
+
+    <a href='https://github.com/editor-bootstrap/vim-bootstrap' target="_blank" style='position:fixed;padding:5px 45px;width:128px;bottom:50px;right:-50px;-webkit-transform:rotate(315deg);-moz-transform:rotate(315deg);-ms-transform:rotate(315deg);transform:rotate(315deg);box-shadow:0 0 0 3px #9580FF, 0 0 20px -3px rgba(0, 0, 0, 0.5);text-shadow:0 0 0 #F8F8F2, 0 0 5px rgba(0, 0, 0, 0.3);background-color:#9580FF;color:#F8F8F2;font-size:13px;font-family:sans-serif;text-decoration:none;font-weight:bold;border:2px dotted #F8F8F2;-webkit-backface-visibility:hidden;letter-spacing:.5px;'>
+        Contrib on GitHub
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js" integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg==" crossorigin=" anonymous"></script>
+    <script id="github-members-tmpl" type="text/html">
+        <div class="drac-box Authors_author__1KlsQ" data-animation="fadeInUp" data-animation-delay="1s">
+            <a data-href="html_url" target="_blank">
+                <img class="Authors_photo__2_WNn" data-src="avatar_url" data-alt="login" />
+            </a>
+            <div class="drac-box Authors_content__3xCx2">
+                <h2 class="drac-heading drac-heading-lg drac-my-none">
+                    I'm
+                    <a data-href="html_url" target="_blank" data-content="login" class="drac-text-white"></a>
+                </h2>
+            </div>
+        </div>
     </script>
 
-  </body>
+    <script src="/assets/js/members.js"></script>
+    <script src="/assets/js/form.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHKYBES60K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-RHKYBES60K');
+    </script>
+</body>
+
 </html>
