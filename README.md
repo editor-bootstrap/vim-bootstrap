@@ -1,7 +1,5 @@
 # vim-bootstrap
 
-[![Join the chat at https://gitter.im/editor-bootstrap/vim](https://badges.gitter.im/editor-bootstrap/vim.svg)](https://gitter.im/editor-bootstrap/vim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Vim Bootstrap provides a simple method for generating .vimrc configuration files for Vim, NeoVim, NeoVim-Qt, MacVim and GVim.
 
 ## Pre-requisites
