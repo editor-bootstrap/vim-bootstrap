@@ -31,7 +31,6 @@ Please try to make your pull request easy to review for us. Please read the "[Ho
 * Make small pull requests. The smaller, the faster to review and the more likely it will be merged soon.
 * Don't make changes unrelated to your PR. Maybe there are typos on some comments, maybe refactoring would be welcome on a function... but if that is not related to your PR, please make *another* PR for that.
 * Split big pull requests into multiple small ones. An incremental change will be faster to review than a huge PR.
-* Don't forget to generate a new bindata.go using `make generate-bindata`.
 
 ## Maintainers
 
