@@ -436,10 +436,6 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
-"" Code folding options
-" You can also do set nofoldenable to prevent folding
-set foldmethod=indent
-
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
