@@ -2,6 +2,8 @@
 
 Vim Bootstrap provides a simple method for generating .vimrc configuration files for Vim, NeoVim, NeoVim-Qt, MacVim and GVim.
 
+Want to generate your vim/neovim file? Access [here](https://vim-bootstrap.com/)!
+
 <a href="https://www.producthunt.com/posts/vim-bootstrap?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-vim-bootstrap" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303760&theme=light" alt="vim-bootstrap - Your configuration generator for Neovim/Vim | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 ## Pre-requisites
