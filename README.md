@@ -146,7 +146,21 @@ $ sudo zypper ref
 $ sudo zypper in vim-bootstrap
 ```
 
+## Adding a new Theme
 
+Create a folder inside `generate/vim_template/themes/` with the name of your theme.
+
+    mkdir generate/vim_template/themes/my_theme
+
+Inside this folder, add a file called `mytheme.vim` with colorscheme instruction (optionally other configs).
+
+    echo "colorscheme mytheme" > generate/vim_template/themes/my_theme/mytheme.vim
+
+Add a `.bundle` extension file with instructions of how to install theme.
+
+    echo "Plug username/mytheme" > generate/vim_template/themes/my_theme/mytheme.vim.bundle
+
+Submit a PR and when approved new theme was added.
 
 ## Customization
 
