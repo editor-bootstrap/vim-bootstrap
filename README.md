@@ -94,7 +94,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 * Execute ViM and it will install plugins automatically
 ```
-`vim`
+vim
 ```
 
 ### Fast-installation by URL parameters
@@ -118,7 +118,7 @@ You can run vim-bootstrap Go package to generate a vimrc file, just download it:
     cd $GOPATH/src/github.com/editor-bootstrap/vim-bootstrap
     go build
 
-Inside vim-bootrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
+Inside vim-bootstrap folder `cd vim-bootstrap` use `vim-bootstrap` module (file) like this example:
 
     ./vim-bootstrap -langs=python,lua,ruby,javascript,haskell -frameworks vuejs -editor=vim > ~/.vimrc
 
@@ -168,7 +168,7 @@ Submit a PR and when approved new theme was added.
 
 It's highly recommended to add customizations in a separate file. This way, you can maintain the original vim-bootstrap generated vimrc file and subsequent updates.
 
-For Vim users, the files available for customization are `~/.vimrc.local` and `~/.vimrc.local.bundles`. The former handles general configuration while the latter handle external Vim plugins through `vim-plug`.
+For Vim users, the files available for customization are `~/.vimrc.local` and `~/.vimrc.local.bundles`. The former handles general configuration while the latter handles external Vim plugins through `vim-plug`.
 
 NeoVim users can also customize their configuration by using `$XDG_CONFIG_HOME/nvim/local_init.vim` and `$XDG_CONFIG_HOME/nvim/local_bundles.vim`.
 
@@ -281,8 +281,8 @@ Visit the following sites to learn more about Vim:
 
 * [Learn Vim Progressively](https://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/)
 * [Vim Adventures](https://vim-adventures.com/)
-* [Vimcasts](https://vimcasts.org)
-* [Byte of Vim](https://www.swaroopch.com/notes/Vim)
+* [Vimcasts](http://vimcasts.org)
+* [Byte of Vim](https://vim.swaroopch.com/)
 * [MinuteVim Tricks](https://www.youtube.com/user/MinuteVimTricks)
 * [Join the Church of Vim, and you too can be a saint!](https://www.avelino.run/church-vim)
 * [Vim para noobs (in portuguese)](https://woliveiras.com.br/vimparanoobs/)
