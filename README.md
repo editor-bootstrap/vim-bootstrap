@@ -36,7 +36,7 @@ $ sudo pacman -S git ctags ncurses curl
 * Fedora
 
 ```
-$ sudo dnf install ncurses-devel git ctags-etags curl
+$ sudo dnf install ncurses-devel git ctags curl
 ```
 
 * openSUSE
