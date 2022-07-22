@@ -869,4 +869,5 @@
     -webkit-column-count: 4;
     column-count: 4;
     display: grid;
+    text-align: center;
 }
