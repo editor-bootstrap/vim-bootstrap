@@ -571,7 +571,7 @@
 
 .Highlights_cardBackground__2Fr7t {
     width: 100%;
-    height: 200px;
+    height: 220px;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     display: flex;
@@ -587,7 +587,7 @@
 .Highlights_cardDetails__v4Cip,
 .Highlights_cardDetailsContainer__8lpMI {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
