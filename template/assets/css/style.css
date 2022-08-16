@@ -152,6 +152,17 @@
     }
 }
 
+.combo-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.combo-btn-container > * {
+    margin: 5px;
+}
+
 #newsletter {
     background: #22212c;
     text-align: center;
