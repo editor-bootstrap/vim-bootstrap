@@ -571,6 +571,8 @@
     justify-content: space-around;
     max-width: 82em;
     margin: 0 auto;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 .Highlights_card__34b3J {
