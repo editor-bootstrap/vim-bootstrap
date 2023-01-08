@@ -14,6 +14,7 @@ type Config struct {
 	Rc          string
 	LocalRc     string
 	LocalBundle string
+	Template    string
 }
 
 // Theme ...
@@ -38,6 +39,12 @@ type Object struct {
 
 //go:embed vim_template/vimrc
 var vimrc string
+
+//go:embed vim_template/nvimrc
+var nvimrc string
+
+//go:embed vim_template/nvimlua.lua
+var nvimlua string
 
 //go:embed vim_template
 var vimTemplate embed.FS
@@ -95,11 +102,15 @@ func Generate(obj *Object) (buffer string) {
 		config.Rc = filepath.Join(config.BaseDir, "init.vim")
 		config.LocalRc = filepath.Join(config.BaseDir, "local_init.vim")
 		config.LocalBundle = filepath.Join(config.BaseDir, "local_bundles.vim")
+		config.Template = nvimrc
+	case "neovim-lua", "nvim-lua":
+		config.Template = nvimlua
 	default:
 		config.BaseDir = "~/." + obj.Editor
 		config.Rc = config.BaseDir + "rc"
 		config.LocalRc = config.Rc + ".local"
 		config.LocalBundle = config.Rc + ".local.bundles"
+		config.Template = vimrc
 	}
 
 	obj.Config = &config
@@ -121,7 +132,7 @@ func Generate(obj *Object) (buffer string) {
 	obj.BufferBundle = mBundle
 
 	var vimBuffer bytes.Buffer
-	t := template.Must(template.New("vimrc").Parse(vimrc))
+	t := template.Must(template.New("vimrc").Parse(config.Template))
 	t.Execute(&vimBuffer, obj)
 
 	buffer = vimBuffer.String()

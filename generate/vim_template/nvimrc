@@ -99,7 +99,6 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set ttyfast
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -171,22 +170,12 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-endif
-
-if &term =~ '256color'
-  set t_ut=
 endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=3
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=3
 
 "" Status bar
 set laststatus=2
