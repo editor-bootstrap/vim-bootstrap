@@ -580,6 +580,7 @@
     border-radius: var(--rounded-2xl);
     background: #1d1e26;
     margin: 0 15px 40px;
+    height: calc(100% - 40px);
 }
 
 .Highlights_cardBackground__2Fr7t {
