@@ -116,6 +116,7 @@
                         <span class="button-checkbox">
                             <div class="drac-box Highlights_cardBackground__2Fr7t">
                                 <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                    <button type="button" class="lang-expand" data-lang="{{$lang}}" title="Show {{$lang}} plugins" aria-label="Show {{$lang}} plugins">▾</button>
                                     <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" alt="image for language {{$lang}}" title="Click to select programming language {{$lang}}" src="/assets/images/logo/{{$lang}}.png" />
                                     <div class="drac-box drac-mt-sm">
                                         <span class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">{{$lang}}</span>
@@ -179,6 +180,48 @@
                     </div>
                 </div>
                 {{end}}
+            </div>
+
+            <!-- additional plugins -->
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+                Additional Plugins (Advanced)
+            </h3>
+            <div class="drac-box container">
+                <p class="drac-text drac-line-height drac-text-white drac-mb-md">
+                    Select additional plugins to enhance your Vim/NeoVim experience. These plugins will be added to your configuration.
+                </p>
+                <div id="plugin-categories-container">
+                    {{ range $category := .PluginCategories}}
+                    <div class="plugin-category drac-box drac-mb-lg {{if (or (eq $category.Name "Go Language") (eq $category.Name "Python Language") (eq $category.Name "JavaScript/TypeScript") (eq $category.Name "Rust Language") (eq $category.Name "Ruby Language") (eq $category.Name "PHP Language") (eq $category.Name "Lua Language") (eq $category.Name "C/C++ Language") (eq $category.Name "Haskell Language") (eq $category.Name "Elixir Language") (eq $category.Name "Elm Language") (eq $category.Name "Erlang Language") (eq $category.Name "OCaml Language") (eq $category.Name "Perl Language") (eq $category.Name "Scala Language") (eq $category.Name "Lisp Language") (eq $category.Name "HTML/CSS"))}}collapsible collapsed{{end}}" data-category-name="{{$category.Name}}">
+                        <h4 class="drac-heading drac-heading-lg drac-text-yellow-pink drac-mb-sm"><span class="category-toggle">▾</span>{{$category.Name}}</h4>
+                        <p class="drac-text drac-text-gray drac-mb-md">{{$category.Description}}</p>
+                        <div class="plugins-grid drac-box">
+                            {{ range $plugin := $category.Plugins}}
+                            <div class="plugin-item drac-box drac-mb-sm">
+                                <div class="drac-box Highlights_cardBackground__2Fr7t">
+                                    <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
+                                        <div class="drac-box drac-flex drac-align-center drac-mb-xs">
+                                            <input type="checkbox" name="additional_plugins" value="{{$plugin.Name}}" id="plugin-{{$plugin.Name}}" class="drac-mr-sm" data-category="{{$category.Name}}">
+                                            <label for="plugin-{{$plugin.Name}}" class="drac-text drac-text-white drac-text-bold">{{$plugin.Name}}</label>
+                                        </div>
+                                        <p class="drac-text drac-text-gray drac-text-sm drac-mb-xs">{{$plugin.Description}}</p>
+                                        <div class="plugin-tags drac-box">
+                                            {{ range $tag := $plugin.Tags}}
+                                            <span class="drac-text drac-text-xs drac-text-purple-cyan drac-bg-purple-cyan drac-text-black drac-px-xs drac-rounded drac-mr-xs">{{$tag}}</span>
+                                            {{end}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{end}}
+                        </div>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="plugin-validation" class="drac-box drac-mt-md" style="display: none;">
+                    <div id="plugin-warnings" class="drac-text drac-text-yellow-pink drac-mb-sm"></div>
+                    <div id="plugin-errors" class="drac-text drac-text-red drac-mb-sm"></div>
+                </div>
             </div>
 
             <!-- editors -->
@@ -374,6 +417,135 @@
 
     <script src="/assets/js/members.js"></script>
     <script src="/assets/js/form.js"></script>
+    <script>
+        // Plugin validation functionality
+        function validatePlugins() {
+            const selectedPlugins = Array.from(document.querySelectorAll('input[name="additional_plugins"]:checked'))
+                .map(input => input.value);
+
+            if (selectedPlugins.length === 0) {
+                document.getElementById('plugin-validation').style.display = 'none';
+                return;
+            }
+
+            fetch('/validate-plugins', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: selectedPlugins.map(plugin => `plugins=${encodeURIComponent(plugin)}`).join('&')
+            })
+            .then(response => response.json())
+            .then(data => {
+                const validationDiv = document.getElementById('plugin-validation');
+                const warningsDiv = document.getElementById('plugin-warnings');
+                const errorsDiv = document.getElementById('plugin-errors');
+
+                warningsDiv.innerHTML = '';
+                errorsDiv.innerHTML = '';
+
+                if (data.warnings && data.warnings.length > 0) {
+                    warningsDiv.innerHTML = '<strong>Warnings:</strong><br>' + data.warnings.join('<br>');
+                }
+
+                if (data.errors && data.errors.length > 0) {
+                    errorsDiv.innerHTML = '<strong>Errors:</strong><br>' + data.errors.join('<br>');
+                }
+
+                validationDiv.style.display = (data.warnings.length > 0 || data.errors.length > 0) ? 'block' : 'none';
+            })
+            .catch(error => {
+                console.error('Error validating plugins:', error);
+            });
+        }
+
+        // Helpers to (un)check plugins by category
+        function setPluginsByCategory(categoryName, checked) {
+            const target = (categoryName || '').toLowerCase();
+            const inputs = document.querySelectorAll('input[name="additional_plugins"]');
+            inputs.forEach(input => {
+                const cat = (input.dataset.category || '').toLowerCase();
+                if (cat === target) {
+                    input.checked = checked;
+                    // fire change so any listeners react (e.g., validation)
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+        }
+
+        // Map language -> plugin category name(s)
+        const langToCategories = {
+            'go': ['Go Language'],
+            'python': ['Python Language'],
+            'javascript': ['JavaScript/TypeScript'],
+            'typescript': ['JavaScript/TypeScript'],
+            'vuejs': ['Vue.js Framework'],
+            'react': ['React Framework'],
+            'rust': ['Rust Language'],
+            'ruby': ['Ruby Language'],
+            'php': ['PHP Language'],
+            'lua': ['Lua Language'],
+            'c': ['C/C++ Language'],
+            'cpp': ['C/C++ Language'],
+            'c++': ['C/C++ Language'],
+            'haskell': ['Haskell Language'],
+            'elixir': ['Elixir Language'],
+            'elm': ['Elm Language'],
+            'erlang': ['Erlang Language'],
+            'ocaml': ['OCaml Language'],
+            'perl': ['Perl Language'],
+            'scala': ['Scala Language'],
+            'lisp': ['Lisp Language'],
+            'html': ['HTML/CSS'],
+            'css': ['HTML/CSS']
+        };
+
+        // Wire up interactions on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Validate on plugin toggle
+            const pluginCheckboxes = document.querySelectorAll('input[name="additional_plugins"]');
+            pluginCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', validatePlugins);
+            });
+
+            // Sync languages -> plugin categories
+            const langCheckboxes = document.querySelectorAll('input[name="langs"]');
+            langCheckboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const lang = (cb.value || '').toLowerCase();
+                    const categories = langToCategories[lang] || [];
+                    categories.forEach(cat => setPluginsByCategory(cat, cb.checked));
+                    validatePlugins();
+                });
+            });
+
+            // Collapsible categories: only for language categories (marked with class 'collapsible')
+            document.querySelectorAll('.plugin-category.collapsible > h4').forEach(header => {
+                header.addEventListener('click', function() {
+                    const box = this.parentElement;
+                    box.classList.toggle('collapsed');
+                });
+            });
+
+            // Language expand buttons: open corresponding plugin categories and scroll into view
+            document.querySelectorAll('.lang-expand').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const lang = (this.dataset.lang || '').toLowerCase();
+                    const categories = langToCategories[lang] || [];
+                    categories.forEach(cat => {
+                        const box = Array.from(document.querySelectorAll('.plugin-category'))
+                            .find(el => (el.dataset.categoryName || '').toLowerCase() === cat.toLowerCase());
+                        if (box) {
+                            box.classList.remove('collapsed');
+                            // Smooth scroll to the category
+                            box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
     <script>
         (function(i, s, o, g, r, a, m) {

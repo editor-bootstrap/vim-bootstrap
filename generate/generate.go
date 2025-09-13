@@ -24,16 +24,18 @@ type Theme struct {
 
 // Object ...
 type Object struct {
-	Language        []string
-	Frameworks      []string
-	Theme           string
-	BufferLang      map[string]string
-	BufferFramework map[string]string
-	BufferTheme     Theme
-	BufferBundle    map[string]string
-	Editor          string
-	Config          *Config
-	Version         string
+	Language          []string
+	Frameworks        []string
+	Theme             string
+	AdditionalPlugins []string
+	BufferLang        map[string]string
+	BufferFramework   map[string]string
+	BufferTheme       Theme
+	BufferBundle      map[string]string
+	BufferAdditional  map[string]Plugin
+	Editor            string
+	Config            *Config
+	Version           string
 }
 
 //go:embed vim_template/vimrc
@@ -119,6 +121,10 @@ func Generate(obj *Object) (buffer string) {
 		mBundle[k] = v
 	}
 	obj.BufferBundle = mBundle
+
+	// Load additional plugins
+	additionalPlugins, _ := GetAdditionalPluginsConfig(obj.AdditionalPlugins)
+	obj.BufferAdditional = additionalPlugins
 
 	var vimBuffer bytes.Buffer
 	t := template.Must(template.New("vimrc").Parse(vimrc))

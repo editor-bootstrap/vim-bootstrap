@@ -78,6 +78,17 @@ Plug 'honza/vim-snippets'
 " {{ $key }}
 {{$value}}
 {{end}}
+
+"*****************************************************************************
+"" Additional Plugins (Advanced)
+"*****************************************************************************
+{{ range $key, $plugin := .BufferAdditional}}
+" {{ $plugin.Name }} - {{ $plugin.Description }}
+{{ $plugin.Bundle }}
+{{ if ne $plugin.Config "" }}
+{{ $plugin.Config }}
+{{ end }}
+{{end}}
 "*****************************************************************************
 "*****************************************************************************
 
@@ -146,7 +157,7 @@ set number
 let no_buffers_menu=1
 {{.BufferTheme.Coloscheme}}
 
-" Better command line completion 
+" Better command line completion
 set wildmenu
 
 " mouse support

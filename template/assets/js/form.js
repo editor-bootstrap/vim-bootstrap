@@ -4,14 +4,25 @@ $(function () {
         $this = $(this);
 
         $this.on('click', function() {
-            var checkBox = $("input[value="+ $(this).data('value') +"]");
+            var value = $(this).data('value');
+            // Prefer targeting language inputs specifically when present
+            var checkBox = $("input[name='langs'][value='" + value + "']");
+            if (checkBox.length === 0) {
+                // Fallback: original generic lookup
+                checkBox = $("input[value="+ value +"]");
+            }
             checkBox.prop("checked", !checkBox.prop("checked"));
+            // Ensure downstream listeners react to programmatic toggles
+            try { checkBox[0].dispatchEvent(new Event('change', { bubbles: true })); } catch(e) {}
+            checkBox.trigger('change');
             if (checkBox.prop("checked")) {
 				if ($(this).data("type") == "radio"){
 					$("input[name=" + $(this).data('name') + "]").prop("checked", false);
 					$(".logo-icon[data-type="+ $(this).data('type') +"][data-name="+ $(this).data('name') +"]").removeClass('selected');
 					var checkBox = $("input[name=" + $(this).data('name') + "][value="+ $(this).data('value') +"]");
 					checkBox.prop("checked", true);
+                    try { checkBox[0].dispatchEvent(new Event('change', { bubbles: true })); } catch(e) {}
+                    checkBox.trigger('change');
 				}
 				$(this).addClass('selected');
             } else {

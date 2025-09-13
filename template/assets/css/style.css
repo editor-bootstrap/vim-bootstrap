@@ -565,6 +565,22 @@
     padding: 0 15px;
 }
 
+.lang-expand {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(34,33,44,0.8);
+    border: 1px solid #44475a;
+    color: #f8f8f2;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
 .Highlights_container__1kvqi {
     display: flex;
     flex-direction: row;
@@ -884,4 +900,66 @@
     column-count: 4;
     display: grid;
     text-align: center;
+}
+
+/* Additional Plugins (Advanced) Styles */
+.plugins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.plugin-item {
+    transition: transform 0.2s ease;
+}
+
+.plugin-item:hover {
+    transform: translateY(-2px);
+}
+
+.plugin-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.plugin-category {
+    border: 1px solid #44475a;
+    border-radius: 8px;
+    padding: 1rem;
+    background: rgba(40, 42, 54, 0.5);
+    /* ensure anchor scroll considers fixed topbar height */
+    scroll-margin-top: 90px;
+}
+
+#plugin-validation {
+    border: 1px solid #44475a;
+    border-radius: 8px;
+    padding: 1rem;
+    background: rgba(40, 42, 54, 0.8);
+}
+
+.plugin-item input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* Collapsible language categories */
+.plugin-category.collapsible > h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.plugin-category .category-toggle {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.plugin-category.collapsible.collapsed .category-toggle {
+    transform: rotate(-90deg);
+}
+
+.plugin-category.collapsible.collapsed .plugins-grid {
+    display: none;
 }

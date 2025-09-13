@@ -25,6 +25,9 @@ func main() {
 	r.HandleFunc("/langs", web.HandleLangs)
 	r.HandleFunc("/frameworks", web.HandleFrameworks)
 	r.HandleFunc("/themes", web.HandleThemes)
+	r.HandleFunc("/plugins", web.HandlePlugins)
+	r.HandleFunc("/plugin-categories", web.HandlePluginCategories)
+	r.HandleFunc("/validate-plugins", web.HandleValidatePlugins).Methods("POST")
 	r.PathPrefix("/assets").Handler(
 		http.StripPrefix("/assets", http.FileServer(http.Dir("./template/assets/"))))
 	n.UseHandler(r)
