@@ -1,0 +1,472 @@
+{
+  "categories": [
+    {
+      "name": "File Management",
+      "description": "Plugins for file and buffer management",
+      "plugins": [
+        {
+          "name": "fzf",
+          "description": "Fuzzy finder for files, buffers, and more",
+          "category": "File Management",
+          "bundle": "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }\nPlug 'junegunn/fzf.vim'",
+          "config": "let g:fzf_layout = { 'down': '~40%' }\nlet g:fzf_preview_window = 'right:60%'\nlet g:fzf_action = {\n  \\ 'ctrl-t': 'tab split',\n  \\ 'ctrl-x': 'split',\n  \\ 'ctrl-v': 'vsplit'\n  \\ }",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["fuzzy", "search", "files", "buffers"]
+        },
+        {
+          "name": "vim-easymotion",
+          "description": "Vim motions on speed!",
+          "category": "File Management",
+          "bundle": "Plug 'easymotion/vim-easymotion'",
+          "config": "let g:EasyMotion_do_mapping = 0\nlet g:EasyMotion_smartcase = 1\nmap <Leader>j <Plug>(easymotion-j)\nmap <Leader>k <Plug>(easymotion-k)",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["motion", "navigation", "jump"]
+        },
+        {
+          "name": "vim-sneak",
+          "description": "Jump to any location specified by two characters",
+          "category": "File Management",
+          "bundle": "Plug 'justinmk/vim-sneak'",
+          "config": "let g:sneak#label = 1\nlet g:sneak#use_ic_scs = 1",
+          "dependencies": [],
+          "conflicts": ["vim-easymotion"],
+          "tags": ["motion", "navigation", "jump"]
+        },
+        {
+          "name": "vim-startify",
+          "description": "A fancy start screen for Vim",
+          "category": "File Management",
+          "bundle": "Plug 'mhinz/vim-startify'",
+          "config": "let g:startify_session_dir = '~/.vim/session'\nlet g:startify_lists = [\n  \\ { 'type': 'files',     'header': ['   MRU']            },\n  \\ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },\n  \\ { 'type': 'sessions',  'header': ['   Sessions']       },\n  \\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },\n  \\ { 'type': 'commands',  'header': ['   Commands']       },\n  \\ ]",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["startup", "dashboard", "mru", "sessions"]
+        }
+      ]
+    },
+    {
+      "name": "Git Integration",
+      "description": "Git-related plugins and tools",
+      "plugins": [
+        {
+          "name": "vim-gitgutter",
+          "description": "Shows a git diff in the gutter and stages/reverts hunks",
+          "category": "Git Integration",
+          "bundle": "Plug 'airblade/vim-gitgutter'",
+          "config": "let g:gitgutter_enabled = 1\nlet g:gitgutter_map_keys = 0\nnmap ]h <Plug>(GitGutterNextHunk)\nnmap [h <Plug>(GitGutterPrevHunk)",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["git", "diff", "gutter", "hunks"]
+        },
+        {
+          "name": "vim-signify",
+          "description": "Show a diff via Vim's sign column",
+          "category": "Git Integration",
+          "bundle": "Plug 'mhinz/vim-signify'",
+          "config": "let g:signify_vcs_list = ['git', 'hg', 'svn']\nlet g:signify_sign_add = '+'\nlet g:signify_sign_change = '~'\nlet g:signify_sign_delete = '-'",
+          "dependencies": [],
+          "conflicts": ["vim-gitgutter"],
+          "tags": ["git", "diff", "signify", "vcs"]
+        },
+        {
+          "name": "vim-fugitive",
+          "description": "A Git wrapper so awesome, it should be illegal",
+          "category": "Git Integration",
+          "bundle": "Plug 'tpope/vim-fugitive'",
+          "config": "nmap <leader>gs :Gstatus<CR>\nnmap <leader>gc :Gcommit<CR>\nnmap <leader>gp :Git push<CR>\nnmap <leader>gl :Git pull<CR>",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["git", "wrapper", "status", "commit"]
+        },
+        {
+          "name": "vim-rhubarb",
+          "description": "GitHub extension for fugitive.vim",
+          "category": "Git Integration",
+          "bundle": "Plug 'tpope/vim-rhubarb'",
+          "config": "",
+          "dependencies": ["vim-fugitive"],
+          "conflicts": [],
+          "tags": ["git", "github", "fugitive", "browse"]
+        }
+      ]
+    },
+    {
+      "name": "Syntax & Linting",
+      "description": "Syntax highlighting and code linting plugins",
+      "plugins": [
+        {
+          "name": "ale",
+          "description": "Asynchronous Lint Engine",
+          "category": "Syntax & Linting",
+          "bundle": "Plug 'dense-analysis/ale'",
+          "config": "let g:ale_lint_on_enter = 1\nlet g:ale_lint_on_save = 1\nlet g:ale_fix_on_save = 1\nlet g:ale_sign_error = '✗'\nlet g:ale_sign_warning = '⚠'",
+          "dependencies": [],
+          "conflicts": ["syntastic"],
+          "tags": ["linting", "async", "error", "warning"]
+        },
+        {
+          "name": "syntastic",
+          "description": "Syntax checking hacks for vim",
+          "category": "Syntax & Linting",
+          "bundle": "Plug 'vim-syntastic/syntastic'",
+          "config": "let g:syntastic_always_populate_loc_list = 1\nlet g:syntastic_auto_loc_list = 1\nlet g:syntastic_check_on_open = 1\nlet g:syntastic_check_on_wq = 0",
+          "dependencies": [],
+          "conflicts": ["ale"],
+          "tags": ["linting", "syntax", "checking"]
+        },
+        {
+          "name": "vim-polyglot",
+          "description": "A solid language pack for Vim",
+          "category": "Syntax & Linting",
+          "bundle": "Plug 'sheerun/vim-polyglot'",
+          "config": "let g:polyglot_disabled = []",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["syntax", "language", "pack", "highlighting"]
+        }
+      ]
+    },
+    {
+      "name": "UI & Appearance",
+      "description": "User interface and visual enhancements",
+      "plugins": [
+        {
+          "name": "vim-airline",
+          "description": "Lean & mean status/tabline for vim that's light as air",
+          "category": "UI & Appearance",
+          "bundle": "Plug 'vim-airline/vim-airline'\nPlug 'vim-airline/vim-airline-themes'",
+          "config": "let g:airline_theme = 'powerlineish'\nlet g:airline_powerline_fonts = 1\nlet g:airline#extensions#tabline#enabled = 1",
+          "dependencies": [],
+          "conflicts": ["lightline"],
+          "tags": ["statusline", "tabline", "theme", "powerline"]
+        },
+        {
+          "name": "lightline",
+          "description": "A light and configurable statusline/tabline plugin for Vim",
+          "category": "UI & Appearance",
+          "bundle": "Plug 'itchyny/lightline.vim'",
+          "config": "let g:lightline = {\n  \\ 'colorscheme': 'wombat',\n  \\ 'active': {\n  \\   'left': [ [ 'mode', 'paste' ],\n  \\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]\n  \\ }\n  \\ }",
+          "dependencies": [],
+          "conflicts": ["vim-airline"],
+          "tags": ["statusline", "light", "configurable"]
+        },
+        {
+          "name": "indentline",
+          "description": "A vim plugin to display the indention levels with thin vertical lines",
+          "category": "UI & Appearance",
+          "bundle": "Plug 'Yggdroot/indentLine'",
+          "config": "let g:indentLine_enabled = 1\nlet g:indentLine_char = '┆'\nlet g:indentLine_faster = 1",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["indent", "lines", "visual", "guide"]
+        },
+        {
+          "name": "vim-devicons",
+          "description": "Adds file type icons to Vim plugins",
+          "category": "UI & Appearance",
+          "bundle": "Plug 'ryanoasis/vim-devicons'",
+          "config": "let g:airline_powerline_fonts = 1",
+          "dependencies": ["vim-airline"],
+          "conflicts": [],
+          "tags": ["icons", "filetype", "nerdtree", "airline"]
+        }
+      ]
+    },
+    {
+      "name": "Code Completion",
+      "description": "Auto-completion and IntelliSense plugins",
+      "plugins": [
+        {
+          "name": "coc",
+          "description": "Make your Vim/Neovim as smart as VSCode",
+          "category": "Code Completion",
+          "bundle": "Plug 'neoclide/coc.nvim', {'branch': 'release'}",
+          "config": "let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-python', 'coc-go']\nlet g:coc_disable_startup_warning = 1",
+          "dependencies": [],
+          "conflicts": ["deoplete", "asyncomplete"],
+          "tags": ["completion", "lsp", "intellisense", "coc"]
+        },
+        {
+          "name": "deoplete",
+          "description": "Dark powered asynchronous completion framework",
+          "category": "Code Completion",
+          "bundle": "Plug 'Shougo/deoplete.nvim'\nPlug 'roxma/nvim-yarp'\nPlug 'roxma/vim-hug-neovim-rpc'",
+          "config": "let g:deoplete#enable_at_startup = 1\nlet g:deoplete#enable_smart_case = 1",
+          "dependencies": [],
+          "conflicts": ["coc", "asyncomplete"],
+          "tags": ["completion", "async", "framework"]
+        },
+        {
+          "name": "asyncomplete",
+          "description": "Async autocompletion for Vim 8 and Neovim",
+          "category": "Code Completion",
+          "bundle": "Plug 'prabirshrestha/asyncomplete.vim'",
+          "config": "let g:asyncomplete_auto_popup = 1\nlet g:asyncomplete_popup_delay = 200",
+          "dependencies": [],
+          "conflicts": ["coc", "deoplete"],
+          "tags": ["completion", "async", "autocomplete"]
+        }
+      ]
+    },
+    {
+      "name": "Snippets & Templates",
+      "description": "Code snippets and template plugins",
+      "plugins": [
+        {
+          "name": "ultisnips",
+          "description": "UltiSnips - The ultimate snippet solution for Vim",
+          "category": "Snippets & Templates",
+          "bundle": "Plug 'SirVer/ultisnips'\nPlug 'honza/vim-snippets'",
+          "config": "let g:UltiSnipsExpandTrigger = '<tab>'\nlet g:UltiSnipsJumpForwardTrigger = '<tab>'\nlet g:UltiSnipsJumpBackwardTrigger = '<s-tab>'",
+          "dependencies": [],
+          "conflicts": ["neosnippet"],
+          "tags": ["snippets", "templates", "ultisnips"]
+        },
+        {
+          "name": "neosnippet",
+          "description": "Neosnippet - The code snippet engine for Vim",
+          "category": "Snippets & Templates",
+          "bundle": "Plug 'Shougo/neosnippet.vim'\nPlug 'Shougo/neosnippet-snippets'",
+          "config": "let g:neosnippet#enable_snipmate_compatibility = 1\nlet g:neosnippet#snippets_directory = '~/.vim/snippets'",
+          "dependencies": [],
+          "conflicts": ["ultisnips"],
+          "tags": ["snippets", "neosnippet", "engine"]
+        }
+      ]
+    },
+    {
+      "name": "Search & Navigation",
+      "description": "Enhanced search and navigation capabilities",
+      "plugins": [
+        {
+          "name": "ack",
+          "description": "Vim plugin for the Perl module / CLI script 'ack'",
+          "category": "Search & Navigation",
+          "bundle": "Plug 'mileszs/ack.vim'",
+          "config": "let g:ackprg = 'ag --vimgrep --smart-case'\ncnoreabbrev Ack Ack!\nnmap <leader>a :Ack!<space>",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["search", "ack", "ag", "grep"]
+        },
+        {
+          "name": "vim-ripgrep",
+          "description": "Use Ripgrep in Vim and display results in a quickfix list",
+          "category": "Search & Navigation",
+          "bundle": "Plug 'jremmen/vim-ripgrep'",
+          "config": "let g:rg_derive_root = 'true'\nlet g:rg_command = 'rg --vimgrep -S'",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["search", "ripgrep", "rg", "grep"]
+        },
+        {
+          "name": "vim-bookmarks",
+          "description": "Bookmark lines and jump to them",
+          "category": "Search & Navigation",
+          "bundle": "Plug 'MattesGroeger/vim-bookmarks'",
+          "config": "let g:bookmark_sign = '♥'\nlet g:bookmark_highlight_lines = 1\nnmap <leader>bm <Plug>BookmarkToggle",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["bookmarks", "marks", "navigation"]
+        }
+      ]
+    },
+    {
+      "name": "Productivity",
+      "description": "General productivity and workflow plugins",
+      "plugins": [
+        {
+          "name": "vim-surround",
+          "description": "Delete/change/add parentheses/quotes/XML-tags/much more with ease",
+          "category": "Productivity",
+          "bundle": "Plug 'tpope/vim-surround'",
+          "config": "",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["surround", "brackets", "quotes", "xml"]
+        },
+        {
+          "name": "vim-repeat",
+          "description": "Enable repeating supported plugin maps with '.'",
+          "category": "Productivity",
+          "bundle": "Plug 'tpope/vim-repeat'",
+          "config": "",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["repeat", "dot", "command"]
+        },
+        {
+          "name": "vim-commentary",
+          "description": "Comment stuff out",
+          "category": "Productivity",
+          "bundle": "Plug 'tpope/vim-commentary'",
+          "config": "nmap <leader>/ gcc\nvmap <leader>/ gc",
+          "dependencies": [],
+          "conflicts": ["nerdcommenter"],
+          "tags": ["comment", "commentary", "toggle"]
+        },
+        {
+          "name": "nerdcommenter",
+          "description": "Vim plugin for intensely orgasmic commenting",
+          "category": "Productivity",
+          "bundle": "Plug 'scrooloose/nerdcommenter'",
+          "config": "let g:NERDSpaceDelims = 1\nlet g:NERDCompactSexyComs = 1\nlet g:NERDDefaultAlign = 'left'",
+          "dependencies": [],
+          "conflicts": ["vim-commentary"],
+          "tags": ["comment", "nerd", "commenter"]
+        }
+      ]
+    },
+    {
+      "name": "Go Language",
+      "description": "Plugins specifically for Go development",
+      "plugins": [
+        {
+          "name": "vim-go",
+          "description": "Go development plugin for Vim",
+          "category": "Go Language",
+          "bundle": "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }",
+          "config": "let g:go_fmt_command = 'goimports'\nlet g:go_autodetect_gopath = 1\nlet g:go_list_type = 'quickfix'\nlet g:go_highlight_types = 1\nlet g:go_highlight_fields = 1\nlet g:go_highlight_functions = 1\nlet g:go_highlight_function_calls = 1",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["go", "golang", "development", "lsp"]
+        },
+        {
+          "name": "vim-go-extra",
+          "description": "Extra Go utilities for Vim",
+          "category": "Go Language",
+          "bundle": "Plug 'fatih/vim-go-extra'",
+          "config": "",
+          "dependencies": ["vim-go"],
+          "conflicts": [],
+          "tags": ["go", "golang", "utilities", "extra"]
+        }
+      ]
+    },
+    {
+      "name": "Python Language",
+      "description": "Plugins specifically for Python development",
+      "plugins": [
+        {
+          "name": "python-mode",
+          "description": "Python mode for Vim",
+          "category": "Python Language",
+          "bundle": "Plug 'python-mode/python-mode'",
+          "config": "let g:pymode_python = 'python3'\nlet g:pymode_virtualenv = 1\nlet g:pymode_rope = 1\nlet g:pymode_rope_completion = 1",
+          "dependencies": [],
+          "conflicts": ["jedi-vim"],
+          "tags": ["python", "development", "rope", "completion"]
+        },
+        {
+          "name": "jedi-vim",
+          "description": "Using the jedi autocompletion library for VIM",
+          "category": "Python Language",
+          "bundle": "Plug 'davidhalter/jedi-vim'",
+          "config": "let g:jedi#completions_enabled = 1\nlet g:jedi#auto_vim_configuration = 1\nlet g:jedi#use_splits_not_buffers = 'right'",
+          "dependencies": [],
+          "conflicts": ["python-mode"],
+          "tags": ["python", "jedi", "completion", "autocomplete"]
+        },
+        {
+          "name": "vim-python-pep8-indent",
+          "description": "A nicer Python indentation style for vim",
+          "category": "Python Language",
+          "bundle": "Plug 'Vimjas/vim-python-pep8-indent'",
+          "config": "",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["python", "indent", "pep8", "style"]
+        }
+      ]
+    },
+    {
+      "name": "JavaScript/TypeScript",
+      "description": "Plugins for JavaScript and TypeScript development",
+      "plugins": [
+        {
+          "name": "vim-javascript",
+          "description": "Enhanced JavaScript support for Vim",
+          "category": "JavaScript/TypeScript",
+          "bundle": "Plug 'pangloss/vim-javascript'",
+          "config": "let g:javascript_plugin_jsdoc = 1\nlet g:javascript_plugin_ngdoc = 1\nlet g:javascript_plugin_flow = 1",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["javascript", "js", "syntax", "highlighting"]
+        },
+        {
+          "name": "vim-jsx-pretty",
+          "description": "JSX and TSX syntax highlighting for vim",
+          "category": "JavaScript/TypeScript",
+          "bundle": "Plug 'MaxMEllon/vim-jsx-pretty'",
+          "config": "let g:vim_jsx_pretty_colorful_config = 1",
+          "dependencies": ["vim-javascript"],
+          "conflicts": [],
+          "tags": ["javascript", "jsx", "tsx", "react", "syntax"]
+        },
+        {
+          "name": "typescript-vim",
+          "description": "TypeScript syntax files for Vim",
+          "category": "JavaScript/TypeScript",
+          "bundle": "Plug 'leafgarland/typescript-vim'",
+          "config": "let g:typescript_indent_disable = 1",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["typescript", "ts", "syntax", "highlighting"]
+        }
+      ]
+    },
+    {
+      "name": "Vue.js Framework",
+      "description": "Plugins specifically for Vue.js development",
+      "plugins": [
+        {
+          "name": "vim-vue",
+          "description": "Vue.js syntax highlighting for Vim",
+          "category": "Vue.js Framework",
+          "bundle": "Plug 'posva/vim-vue'",
+          "config": "let g:vue_disable_pre_processors = 1",
+          "dependencies": [],
+          "conflicts": [],
+          "tags": ["vue", "vuejs", "syntax", "highlighting"]
+        },
+        {
+          "name": "vim-vue-plugin",
+          "description": "Vue.js plugin for Vim",
+          "category": "Vue.js Framework",
+          "bundle": "Plug 'leafOfTree/vim-vue-plugin'",
+          "config": "",
+          "dependencies": ["vim-vue"],
+          "conflicts": [],
+          "tags": ["vue", "vuejs", "plugin", "development"]
+        }
+      ]
+    },
+    {
+      "name": "React Framework",
+      "description": "Plugins specifically for React development",
+      "plugins": [
+        {
+          "name": "vim-jsx",
+          "description": "JSX syntax highlighting for Vim",
+          "category": "React Framework",
+          "bundle": "Plug 'mxw/vim-jsx'",
+          "config": "let g:jsx_ext_required = 0",
+          "dependencies": ["vim-javascript"],
+          "conflicts": [],
+          "tags": ["react", "jsx", "syntax", "highlighting"]
+        },
+        {
+          "name": "vim-react-snippets",
+          "description": "React snippets for Vim",
+          "category": "React Framework",
+          "bundle": "Plug 'epilande/vim-react-snippets'",
+          "config": "",
+          "dependencies": ["ultisnips"],
+          "conflicts": [],
+          "tags": ["react", "snippets", "templates", "ultisnips"]
+        }
+      ]
+    }
+  ]
+}
