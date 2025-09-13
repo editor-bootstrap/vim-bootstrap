@@ -1,0 +1,111 @@
+/* Tailwind theme + minimal Dracula UI compatibility layer */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors inspired by current palette used in style.css and dracula-ui.css */
+  --black: #14141b;         /* page background */
+  --blackSecondary: #1d1e26; /* cards */
+  --blackTernary: #2a2c37;   /* sections */
+  --white: #f8f8f2;
+
+  --purple: #9580ff;
+  --purpleSecondary: #bcaaff;
+  --purple-transparent: rgba(149, 128, 255, 0.10);
+
+  --green: #50fa7b;
+  --greenSecondary: #93ffb2;
+  --green-transparent: rgba(80, 250, 123, 0.10);
+
+  --yellow: #f1fa8c;
+  --red: #ff5555;
+
+  --disabled: #8a8f98;
+
+  --gradientDegree: 135deg;
+  --yellow-pink: linear-gradient(var(--gradientDegree), var(--yellow) 0%, #ff79c6 100%);
+  --purple-cyan: linear-gradient(var(--gradientDegree), var(--purple) 0%, #8be9fd 100%);
+  --cyan-green: linear-gradient(var(--gradientDegree), #8be9fd 0%, var(--green) 100%);
+
+  /* radius tokens used by custom style.css */
+  --rounded-none: 0;
+  --rounded-sm: 0.125rem;
+  --rounded-md: 0.375rem;
+  --rounded-lg: 0.5rem;
+  --rounded-xl: 0.75rem;
+  --rounded-2xl: 1rem;
+  --rounded-3xl: 1.5rem;
+  --rounded-full: 9999px;
+}
+
+/* Base page colors to align with existing custom CSS */
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+/* Minimal compatibility for classes used in template/index.html */
+.drac-box { box-sizing: border-box; }
+.drac-text { color: var(--white); }
+.drac-heading { color: var(--white); }
+.drac-text-white { color: var(--white); }
+.drac-text-gray { color: #8a8fa8; }
+.drac-text-bold { font-weight: 700; }
+.drac-text-sm { font-size: 0.875rem; }
+.drac-text-lg { font-size: 1.125rem; }
+.drac-text-xs { font-size: 0.75rem; }
+.drac-line-height { line-height: 1.5; }
+.drac-line-height-lg { line-height: 1.75; }
+.drac-heading-xl { font-size: 2.25rem; }
+.drac-heading-2xl { font-size: 3rem; }
+.drac-heading-lg { font-size: 1.5rem; }
+
+.drac-bg-black { background: var(--black); }
+.drac-bg-purple-cyan { background: var(--purple-cyan); }
+.drac-bg-cyan-green { background: var(--cyan-green); }
+.drac-text-purple-cyan { background-image: var(--purple-cyan); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.drac-text-yellow-pink { background-image: var(--yellow-pink); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.drac-text-blue { color: #8be9fd; }
+.drac-text-cyan-green { color: #50fa7b; }
+.drac-text-red { color: var(--red); }
+
+.drac-rounded-xl { border-radius: var(--rounded-xl); }
+
+.drac-mt-sm { margin-top: 1rem; }
+.drac-mb-sm { margin-bottom: 1rem; }
+.drac-mb-md { margin-bottom: 2rem; }
+.drac-mb-lg { margin-bottom: 4rem; }
+.drac-mx-sm { margin-left: 1rem; margin-right: 1rem; }
+.drac-mx-xs { margin-left: 0.5rem; margin-right: 0.5rem; }
+.drac-p-md { padding: 2rem; }
+.drac-px-sm { padding-left: 1rem; padding-right: 1rem; }
+.drac-pb-lg { padding-bottom: 4rem; }
+
+/* Buttons */
+.drac-btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; border-radius: 0.5rem; padding: 0.5rem 0.75rem; text-decoration: none; }
+.drac-btn-sm { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+.drac-btn-lg { padding: 0.75rem 1rem; font-size: 1.125rem; }
+.drac-text-white--hover:hover { color: var(--white); }
+.drac-text-purple--hover:hover { color: var(--purple); }
+
+/* Form controls spacing mimic */
+.drac-mr-sm { margin-right: 1rem; }
+.drac-align-center { align-items: center; }
+.drac-flex { display: flex; }
+
+/* Anchors */
+.drac-anchor { text-decoration: none; }
+
+/* Tags/pills */
+.drac-bg-purple-cyan { background: var(--purple-cyan); }
+.drac-text-black { color: #111827; }
+.drac-px-xs { padding-left: 0.5rem; padding-right: 0.5rem; }
+.drac-rounded { border-radius: 0.25rem; }
+
+/* Containers/cards used in custom style.css */
+.Highlights_cardBackground__2Fr7t { background: var(--purple-transparent); }
+.Highlights_cardDetailsContainer__8lpMI { background: #22212c; }
+.Highlights_card__34b3J { background: var(--blackSecondary); }
+.Authors_content__3xCx2 { background: var(--blackSecondary); }
+.Footer_footer__108BV { background: #22212c; }
+

@@ -24,44 +24,71 @@
     <meta name="twitter:image" content="/assets/images/editor-bootstrap-icon.png">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="preload" href="/assets/css/dracula-ui.css" as="style">
-    <link rel="stylesheet" href="/assets/css/dracula-ui.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                bg: '#0b0f19',
+                primary: '#00A3FF',
+                accent: '#8B5CF6'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preload" href="/assets/css/tailwind-theme.css" as="style">
+    <link rel="stylesheet" href="/assets/css/tailwind-theme.css">
     <link rel="preload" href="/assets/css/style.css" as="style">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-<body class="drac-bg-black drac-text-white">
+<body class="bg-brand-bg text-white antialiased">
+    <!-- Background decorations -->
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(59,130,246,0.15),transparent),radial-gradient(600px_300px_at_10%_20%,rgba(139,92,246,0.15),transparent),radial-gradient(800px_400px_at_90%_10%,rgba(16,185,129,0.12),transparent)]"></div>
+    <div class="fixed inset-0 -z-10 [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)] bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
     <!-- Topbar -->
-    <div id="topbar" class="drac-box">
-        <a class="drac-text drac-text-white drac-text-white title logo" href="/">
-            Vim
-            <span class="drac-text drac-line-height drac-text-blue title">
-                Bootstrap
-            </span>
-        </a>
-        <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-gray--hover drac-mx-xs" href="#tagline">
-          Generate your configuration now!
-        </a>
+    <div id="topbar" class="drac-box bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/20 border-b border-white/5">
+        <div class="mx-auto w-full max-w-7xl px-4 flex items-center justify-between h-[60px]">
+            <a class="drac-text drac-text-white title logo flex items-center gap-2 text-white font-semibold text-xl" href="/">
+                Vim
+                <span class="drac-text title bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
+                    Bootstrap
+                </span>
+            </a>
+            <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-gray--hover drac-mx-xs inline-flex items-center rounded-lg bg-gradient-to-r from-brand-primary to-cyan-300 px-3 py-1.5 text-gray-900 font-semibold shadow hover:shadow-lg transition" href="#tagline">
+              Generate your configuration now!
+            </a>
+        </div>
     </div>
 
     <!-- Header -->
-    <div id="header" class="drac-box">
-        <h1 class="drac-heading title drac-heading-xl drac-text-white logo">Vim <span class="drac-text title drac-line-height drac-text-cyan-green">Bootstrap</span>
-        </h1>
-        <div class="drac-box subtitle drac-mt-sm drac-mb-md">
-            <span class="drac-text bodytext drac-line-height drac-text-white">
-                Your configuration generator for
-                <span class="drac-text bodytext drac-line-height drac-text-cyan-green">
-                    Neovim/Vim</span>
-            </span>
+    <div id="header" class="drac-box relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 opacity-30 [mask-image:radial-gradient(closest-side,black,transparent)]">
+            <div class="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 h-[40rem] w-[80rem] bg-gradient-to-tr from-brand-accent/50 via-brand-primary/30 to-cyan-300/20 blur-3xl"></div>
         </div>
-        <div style="margin-top:25px" class="drac-box combo-btn-container">
-            <a href="https://www.producthunt.com/posts/vim-bootstrap?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-vim-bootstrap" target="_blank">
-                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303760&theme=light" alt="vim-bootstrap - Your configuration generator for Neovim/Vim | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
-            </a>
-            <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover" href="#tagline">
-                Make your .vimrc <strong>now</strong>!
-            </a>
+        <div class="mx-auto max-w-7xl px-4 py-28 md:py-36 text-center">
+            <h1 class="drac-heading title drac-heading-xl drac-text-white logo text-5xl md:text-6xl font-extrabold tracking-tight">
+                Vim <span class="drac-text title bg-gradient-to-r from-brand-primary via-cyan-300 to-brand-accent bg-clip-text text-transparent">Bootstrap</span>
+            </h1>
+            <div class="drac-box subtitle drac-mt-sm drac-mb-md mt-4">
+                <span class="drac-text bodytext drac-line-height drac-text-white text-lg md:text-xl text-white/80">
+                    Your configuration generator for
+                    <span class="drac-text bodytext drac-line-height drac-text-cyan-green text-brand-primary">
+                        Neovim/Vim</span>
+                </span>
+            </div>
+            <div class="drac-box combo-btn-container mt-8 flex items-center justify-center gap-4">
+                <a href="https://www.producthunt.com/posts/vim-bootstrap?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-vim-bootstrap" target="_blank" class="inline-flex">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303760&theme=light" alt="vim-bootstrap - Your configuration generator for Neovim/Vim | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+                <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover inline-flex items-center rounded-xl bg-gradient-to-r from-brand-primary to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" href="#tagline">
+                    Make your .vimrc <strong>now</strong>!
+                </a>
+            </div>
         </div>
     </div>
 
@@ -105,10 +132,10 @@
     <div id="editors" class="drac-box">
         <form class="clearfix" action="/generate.vim" method="post">
             <!-- languages -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your languages
             </h3>
-            <div class="langs_grid drac-box container Highlights_container__1kvqi">
+            <div class="langs_grid drac-box container Highlights_container__1kvqi gap-6">
                 {{ range $lang := .Langs}}
                 <!-- lang:{{$lang}} -->
                 <div class="drac-box langs_item">
@@ -131,10 +158,10 @@
             </div>
 
             <!-- frameworks -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your frameworks
             </h3>
-            <div class="drac-box container Highlights_container__1kvqi">
+            <div class="drac-box container Highlights_container__1kvqi gap-6">
                 {{ range $framework := .Frameworks}}
                 <!-- framework:{{$framework}} -->
                 <div class="drac-box">
@@ -156,10 +183,10 @@
             </div>
 
             <!-- themes -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your theme
             </h3>
-            <div class="drac-box container Highlights_container__1kvqi">
+            <div class="drac-box container Highlights_container__1kvqi gap-6">
                 {{ range $theme := .Themes}}
                 <!-- theme:{{$theme}} -->
                 <div class="drac-box">
@@ -183,7 +210,7 @@
             </div>
 
             <!-- additional plugins -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Additional Plugins (Advanced)
             </h3>
             <div class="drac-box container">
@@ -198,7 +225,7 @@
                         <div class="plugins-grid drac-box">
                             {{ range $plugin := $category.Plugins}}
                             <div class="plugin-item drac-box drac-mb-sm">
-                                <div class="drac-box Highlights_cardBackground__2Fr7t">
+                                <div class="drac-box Highlights_cardBackground__2Fr7t rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
                                     <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
                                         <div class="drac-box drac-flex drac-align-center drac-mb-xs">
                                             <input type="checkbox" name="additional_plugins" value="{{$plugin.Name}}" id="plugin-{{$plugin.Name}}" class="drac-mr-sm" data-category="{{$category.Name}}">
@@ -225,13 +252,13 @@
             </div>
 
             <!-- editors -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your editor
             </h3>
             <div class="drac-box  Highlights_container__1kvqi editors_grid">
                 <!-- Editor: neovim -->
                 <div class="drac-box">
-                    <div class="drac-box Highlights_card__34b3J">
+                    <div class="drac-box Highlights_card__34b3J rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
                         <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
                             <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
                                 <img class="logo-icon selected" data-name="editor" data-type="radio" data-value="nvim" alt="Click to select editor neovim" src="/assets/images/logo/neovim.png" />
@@ -250,7 +277,7 @@
 
                 <!-- Editor: vim -->
                 <div class="drac-box">
-                    <div class="drac-box Highlights_card__34b3J">
+                    <div class="drac-box Highlights_card__34b3J rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
                         <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
                             <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
                                 <img class="logo-icon" data-name="editor" data-type="radio" data-value="vim" alt="Click to select editor vim" src="/assets/images/logo/vim.png" />
@@ -271,7 +298,7 @@
             <div id="generate-btn" class="drac-box container Highlights_container__1kvqi">
                 <div class="drac-box">
                     <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">Click in the button to create your .vimrc</p>
-                    <input type="submit" value="Generate!" class="drac-btn drac-bg-cyan-green" />
+                    <input type="submit" value="Generate!" class="drac-btn drac-bg-cyan-green inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" />
                 </div>
 
             </div>
@@ -351,7 +378,7 @@
 
     <!-- Newsletter -->
     <div id="newsletter" class="drac-box">
-        <h2 class="drac-heading title drac-text-pink-purple drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg">
+        <h2 class="drac-heading title drac-text-pink-purple drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
             Be the first to receive news!
         </h2>
         <div class="drac-box bodytext">
@@ -362,9 +389,9 @@
 
         <div class="drac-box bodyform">
             <form action="https://buttondown.email/api/emails/embed-subscribe/editor-bootstrap" method="post" target="popupwindow" onsubmit="window.open( 'https://buttondown.email/editor-bootstrap', 'popupwindow')" class="form embeddable-buttondown-form">
-                <input type="email" name="email" id="bd-email" placeholder="your@email.com" required />
+                <input type="email" name="email" id="bd-email" placeholder="your@email.com" required class="w-[320px] max-w-full rounded-md bg-black/40 border border-white/10 px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/60" />
                 <input type="hidden" value="1" name="embed" />
-                <input type="submit" value="Subscribe" />
+                <input type="submit" value="Subscribe" class="ml-3 inline-flex items-center rounded-md bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 text-gray-900 font-semibold shadow hover:shadow-lg transition cursor-pointer" />
             </form>
         </div>
     </div>
@@ -386,8 +413,8 @@
     </div>
     </div>
 
-    <div class="drac-box Footer_footer__108BV">
-        <p class="drac-text credits drac-text-lg drac-line-height drac-text-white">
+    <div class="drac-box Footer_footer__108BV border-t border-white/10">
+        <p class="drac-text credits drac-text-lg drac-line-height drac-text-white text-white/80">
             Made with
             <span class="drac-text love drac-text-lg drac-line-height drac-text-white">♥</span> by
             <a href="https://github.com/editor-bootstrap" target="blank" class="drac-anchor drac-text drac-text-lg drac-text-purple-cyan drac-text-purple--hover">Editor
