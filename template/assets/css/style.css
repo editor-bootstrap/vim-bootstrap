@@ -81,7 +81,7 @@
 }
 
 #header {
-    background: #22212c;
+    background: transparent;
     text-align: center;
     padding: 150px 10px 30px;
 }
@@ -108,7 +108,7 @@
 }
 
 #tagline {
-    background: #14141b;
+    background: transparent;
 }
 
 #tagline .container {
@@ -164,7 +164,7 @@
 }
 
 #newsletter {
-    background: #22212c;
+    background: transparent;
     text-align: center;
     padding: 0 15px;
 }
@@ -521,7 +521,7 @@
 }
 
 #editors {
-    background: #2a2c37;
+    background: transparent;
 }
 
 #editors .container-top,
@@ -682,7 +682,7 @@
 }
 
 #faq {
-    background: #22212c;
+    background: transparent;
 }
 
 .Faq_container__26-En {
@@ -714,7 +714,7 @@
 }
 
 .Authors_authors__22hBU {
-    background: #2a2c37;
+    background: transparent;
 }
 
 .Authors_author__1KlsQ {
@@ -777,7 +777,7 @@
 }
 
 .Testimonial_testimonial__1719P {
-    background: #22212c;
+    background: transparent;
 }
 
 .Testimonial_container__3abSh {
@@ -847,7 +847,7 @@
 }
 
 .Footer_footer__108BV {
-    background: #22212c;
+    background: transparent;
     padding: 50px 10px;
     flex: 1 1;
     display: flex;
