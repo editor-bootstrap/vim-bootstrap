@@ -44,6 +44,49 @@
     <link rel="stylesheet" href="/assets/css/tailwind-theme.css">
     <link rel="preload" href="/assets/css/style.css" as="style">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      /* Theme cards visual states */
+      .theme-card:has(.logo-icon.selected) { outline: 2px solid rgba(34,211,238,.7); box-shadow: 0 0 0 6px rgba(34,211,238,.12); }
+      .theme-card .check-badge { display: none; }
+      .theme-card:has(.logo-icon.selected) .check-badge { display: flex; }
+      /* Corner ribbon */
+      .corner-ribbon {
+        position: fixed;
+        top: 16px;
+        right: -44px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        z-index: 60;
+        padding: 6px 56px;
+        background-color: #9580FF;
+        color: #F8F8F2;
+        font-size: 13px;
+        font-family: sans-serif;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px dotted #F8F8F2;
+        box-shadow: 0 0 0 3px #9580FF, 0 0 20px -3px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 0 #F8F8F2, 0 0 5px rgba(0, 0, 0, 0.3);
+        letter-spacing: .5px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      @media (max-width: 768px) {
+        .corner-ribbon {
+          transform: none;
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          top: auto;
+          right: 16px;
+          bottom: 16px;
+          padding: 8px 12px;
+          border-radius: 8px;
+        }
+      }
+    </style>
 </head>
 
 <body class="bg-brand-bg text-white antialiased">
@@ -51,16 +94,22 @@
     <div class="fixed inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(59,130,246,0.15),transparent),radial-gradient(600px_300px_at_10%_20%,rgba(139,92,246,0.15),transparent),radial-gradient(800px_400px_at_90%_10%,rgba(16,185,129,0.12),transparent)]"></div>
     <div class="fixed inset-0 -z-10 [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)] bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
     <!-- Topbar -->
-    <div id="topbar" class="drac-box bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/20 border-b border-white/5">
-        <div class="mx-auto w-full max-w-7xl px-4 flex items-center justify-between h-[60px]">
+    <div id="topbar" class="drac-box sticky top-0 z-50 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/20 border-b border-white/5">
+        <div class="mx-auto w-full max-w-7xl px-4 flex items-center justify-between h-[64px]">
             <a class="drac-text drac-text-white title logo flex items-center gap-2 text-white font-semibold text-xl" href="/">
                 Vim
                 <span class="drac-text title bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
                     Bootstrap
                 </span>
             </a>
-            <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-gray--hover drac-mx-xs inline-flex items-center rounded-lg bg-gradient-to-r from-brand-primary to-cyan-300 px-3 py-1.5 text-gray-900 font-semibold shadow hover:shadow-lg transition" href="#tagline">
-              Generate your configuration now!
+            <nav class="hidden md:flex items-center gap-6 text-sm text-white/70">
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#faq" class="hover:text-white transition">FAQ</a>
+                <a href="#newsletter" class="hover:text-white transition">Newsletter</a>
+                <a href="https://github.com/editor-bootstrap/vim-bootstrap" target="_blank" class="hover:text-white transition">GitHub</a>
+            </nav>
+            <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-gray--hover drac-mx-xs inline-flex items-center rounded-lg bg-gradient-to-r from-brand-primary to-cyan-300 px-3 py-1.5 text-gray-900 font-semibold shadow hover:shadow-lg transition" href="#generator" aria-label="Generate configuration">
+              Generate
             </a>
         </div>
     </div>
@@ -85,52 +134,118 @@
                 <a href="https://www.producthunt.com/posts/vim-bootstrap?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-vim-bootstrap" target="_blank" class="inline-flex">
                     <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303760&theme=light" alt="vim-bootstrap - Your configuration generator for Neovim/Vim | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
                 </a>
-                <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover inline-flex items-center rounded-xl bg-gradient-to-r from-brand-primary to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" href="#tagline">
+                <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover inline-flex items-center rounded-xl bg-gradient-to-r from-brand-primary to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" href="#generator">
                     Make your .vimrc <strong>now</strong>!
                 </a>
+            </div>
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
+                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">✓</span>
+                    <div>
+                        <p class="font-semibold">Start in minutes</p>
+                        <p class="text-white/70 text-sm">Preconfigured NeoVim/Vim with modern defaults.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">✓</span>
+                    <div>
+                        <p class="font-semibold">Plugins curated</p>
+                        <p class="text-white/70 text-sm">Choose languages, frameworks and extras.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-violet-400/20 text-violet-300">✓</span>
+                    <div>
+                        <p class="font-semibold">Community driven</p>
+                        <p class="text-white/70 text-sm">Open source and maintained by the community.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Tagline -->
+    <!-- Tagline replaced by onboarding and stats -->
     <div id="tagline" class="drac-box">
-        <div class="drac-box container-top">
-            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)"
-                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
-                </path>
-            </svg>
-        </div>
-
-        <div class="drac-box container">
-            <h2 class="drac-heading title drac-heading-xl drac-text-pink-purple">
-                Modern config NeoVim/Vim
-            </h2>
-            <p class="drac-text description drac-line-height drac-text-white drac-mt-sm">
-                Vim Bootstrap makes it easy to learn a new editor, focus on learning how to use it and leave the configuration to us
-            </p>
-        </div>
-
-        <div class="drac-box container-bottom">
-            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)"
-                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
-                </path>
-            </svg>
+        <div class="mx-auto w-full max-w-7xl px-4 py-16">
+            <div class="text-center mb-12">
+                <h2 class="drac-heading title drac-heading-2xl drac-text-white">Everything you need to start fast</h2>
+                <p class="drac-text drac-text-gray mt-2">Pick, customize and generate your NeoVim/Vim config in minutes.</p>
+            </div>
+            <div id="how-it-works" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <div class="h-8 w-8 rounded-full bg-emerald-400/20 text-emerald-300 flex items-center justify-center font-semibold mb-4">1</div>
+                    <h3 class="font-semibold text-white mb-1">Choose</h3>
+                    <p class="text-white/70 text-sm">Select your languages, frameworks and theme.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <div class="h-8 w-8 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center font-semibold mb-4">2</div>
+                    <h3 class="font-semibold text-white mb-1">Customize</h3>
+                    <p class="text-white/70 text-sm">Add optional plugins from curated categories.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+                    <div class="h-8 w-8 rounded-full bg-violet-400/20 text-violet-300 flex items-center justify-center font-semibold mb-4">3</div>
+                    <h3 class="font-semibold text-white mb-1">Generate</h3>
+                    <p class="text-white/70 text-sm">Download your config and follow simple install steps.</p>
+                </div>
+            </div>
+            <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <p class="text-3xl font-extrabold text-white">{{len .Langs}}</p>
+                    <p class="text-white/60 text-sm">Languages</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <p class="text-3xl font-extrabold text-white">{{len .Frameworks}}</p>
+                    <p class="text-white/60 text-sm">Frameworks</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <p class="text-3xl font-extrabold text-white">{{len .Themes}}</p>
+                    <p class="text-white/60 text-sm">Themes</p>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <p class="text-3xl font-extrabold text-white">{{len .PluginCategories}}</p>
+                    <p class="text-white/60 text-sm">Plugin Categories</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Editors -->
+    <!-- Features -->
+    <div id="features" class="drac-box">
+        <div class="mx-auto w-full max-w-7xl px-4 py-16">
+            <div class="text-center mb-10">
+                <h2 class="drac-heading title drac-heading-2xl drac-text-white">Why you'll love it</h2>
+                <p class="drac-text drac-text-gray mt-2">Friendly, fast and flexible. Inspired by modern landing pages.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
+                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-primary to-brand-accent mb-4"></div>
+                    <h3 class="font-semibold text-white mb-2">Guided generator</h3>
+                    <p class="text-white/70 text-sm">Pick your languages, frameworks and theme with visual cards.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
+                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-400 mb-4"></div>
+                    <h3 class="font-semibold text-white mb-2">Best practices by default</h3>
+                    <p class="text-white/70 text-sm">Linters, LSPs and essential plugins preconfigured.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
+                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-500 mb-4"></div>
+                    <h3 class="font-semibold text-white mb-2">No lock-in</h3>
+                    <p class="text-white/70 text-sm">Everything is editable and exportable to your dotfiles.</p>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#generator" class="inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition">Generate now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generator -->
     <div id="editors" class="drac-box">
-        <form class="clearfix" action="/generate.vim" method="post">
+        <div class="mx-auto w-full max-w-7xl px-4 text-center mb-4">
+            <h2 class="drac-heading title drac-heading-2xl drac-text-white">Generate your configuration</h2>
+            <p class="drac-text drac-text-gray mt-2">Visual, friendly and flexible. Choose below and click Generate.</p>
+        </div>
+        <form id="generator" class="clearfix" action="/generate.vim" method="post">
             <!-- languages -->
             <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your languages
@@ -186,41 +301,62 @@
             <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Select your theme
             </h3>
-            <div class="drac-box container Highlights_container__1kvqi gap-6">
-                {{ range $theme := .Themes}}
-                <!-- theme:{{$theme}} -->
-                <div class="drac-box">
-                    <div class="input-group">
-                        <span class="button-checkbox">
-                            <div class="drac-box Highlights_cardBackground__2Fr7t theme-grid">
-                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                    <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}}" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="Click to select theme {{$theme}}" src="/assets/images/logo/color-scheme.png">
-                                    <input type="radio" name="theme" value="{{$theme}}" class="hidden" />
-                                </div>
-                                <div class="drac-box">
-                                  <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
-                                    {{$theme}}
-                                  </p>
+            <div class="mx-auto w-full max-w-7xl px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {{ range $theme := .Themes}}
+                    <!-- theme:{{$theme}} -->
+                    <label class="theme-card group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-4 hover:from-white/10 hover:shadow-lg transition cursor-pointer relative overflow-hidden">
+                        <div class="absolute -right-14 -top-14 h-28 w-28 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 blur-2xl"></div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="h-10 w-10 rounded-lg bg-[url('/assets/images/logo/color-scheme.png')] bg-cover bg-center ring-1 ring-white/10"></div>
+                                <div>
+                                    <p class="font-semibold text-white">{{$theme}}</p>
+                                    <p class="text-xs text-white/60">Color scheme</p>
                                 </div>
                             </div>
-                        </span>
-                    </div>
+                            <span class="check-badge h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">✓</span>
+                        </div>
+                        <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}} hidden" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="Click to select theme {{$theme}}" src="/assets/images/logo/color-scheme.png">
+                        <input type="radio" name="theme" value="{{$theme}}" class="hidden theme-input" />
+                    </label>
+                    {{end}}
                 </div>
-                {{end}}
             </div>
 
             <!-- additional plugins -->
             <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
                 Additional Plugins (Advanced)
             </h3>
-            <div class="drac-box container">
+            <div class="drac-box container mx-auto w-full max-w-7xl px-4">
                 <p class="drac-text drac-line-height drac-text-white drac-mb-md">
                     Select additional plugins to enhance your Vim/NeoVim experience. These plugins will be added to your configuration.
                 </p>
+                <div id="plugin-toolbar" class="drac-box drac-mb-md">
+                    <div class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div class="flex items-center gap-3 w-full md:w-auto">
+                            <input id="plugin-search" type="search" placeholder="Search plugins..." class="w-full md:w-80 rounded-md bg-black/40 border border-white/10 px-3 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-400/60" />
+                            <label class="inline-flex items-center gap-2 text-sm text-white/80 cursor-pointer select-none">
+                                <input id="plugin-selected-only" type="checkbox" class="rounded border-white/20 bg-black/40">
+                                Show only selected
+                            </label>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" id="plugin-expand-all" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-3 py-1.5 text-sm">Expand all</button>
+                            <button type="button" id="plugin-collapse-all" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-3 py-1.5 text-sm">Collapse all</button>
+                        </div>
+                    </div>
+                </div>
                 <div id="plugin-categories-container">
                     {{ range $category := .PluginCategories}}
                     <div class="plugin-category drac-box drac-mb-lg {{if (or (eq $category.Name "Go Language") (eq $category.Name "Python Language") (eq $category.Name "JavaScript/TypeScript") (eq $category.Name "Rust Language") (eq $category.Name "Ruby Language") (eq $category.Name "PHP Language") (eq $category.Name "Lua Language") (eq $category.Name "C/C++ Language") (eq $category.Name "Haskell Language") (eq $category.Name "Elixir Language") (eq $category.Name "Elm Language") (eq $category.Name "Erlang Language") (eq $category.Name "OCaml Language") (eq $category.Name "Perl Language") (eq $category.Name "Scala Language") (eq $category.Name "Lisp Language") (eq $category.Name "HTML/CSS"))}}collapsible collapsed{{end}}" data-category-name="{{$category.Name}}">
-                        <h4 class="drac-heading drac-heading-lg drac-text-yellow-pink drac-mb-sm"><span class="category-toggle">▾</span>{{$category.Name}}</h4>
+                        <h4 class="drac-heading drac-heading-lg drac-text-yellow-pink drac-mb-sm flex items-center justify-between">
+                            <span><span class="category-toggle">▾</span>{{$category.Name}} <span class="category-count drac-text drac-text-gray text-xs"></span></span>
+                            <span class="inline-flex items-center gap-2">
+                                <button type="button" class="cat-select-all inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-2 py-1 text-xs" data-category="{{$category.Name}}">Select all</button>
+                                <button type="button" class="cat-clear inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-2 py-1 text-xs" data-category="{{$category.Name}}">Clear</button>
+                            </span>
+                        </h4>
                         <p class="drac-text drac-text-gray drac-mb-md">{{$category.Description}}</p>
                         <div class="plugins-grid drac-box">
                             {{ range $plugin := $category.Plugins}}
@@ -305,31 +441,6 @@
 
         </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="drac-box container-bottom">
-            <svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)"
-                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
-                </path>
-            </svg>
-        </div>
     </div>
 
     <!-- FAQ -->
@@ -396,21 +507,14 @@
         </div>
     </div>
 
-    <div id="authors" class="drac-box Authors_authors__22hBU">
-        <div class="drac-box Authors_svgContainerTop__3tlwu"><svg viewBox="0 0 1792 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path fill="rgba(34, 33, 44, 1)" d="M 0 50 C 259 50 259 209 518 209 L 518 209 L 518 0 L 0 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)" d="M 517 209 C 800 209 800 96 1083 96 L 1083 96 L 1083 0 L 517 0 Z"
-                    stroke-width="0"></path>
-                <path fill="rgba(34, 33, 44, 1)"
-                    d="M 1082 96 C 1437 96 1437 189 1792 189 L 1792 189 L 1792 0 L 1082 0 Z" stroke-width="0">
-                </path>
-            </svg></div>
-
-        <div id="github-members" class=" Faq_grid__2zjq3 drac-box drac-mx-sm drac-mb-lg members">
-            <!--Load members via JS-->
+    <div id="authors" class="drac-box">
+        <div class="mx-auto w-full max-w-7xl px-4 py-16 text-center">
+            <h2 class="drac-heading title drac-heading-2xl drac-text-white">Our Contributors</h2>
+            <p class="drac-text drac-text-gray mt-2">Thanks to everyone building Vim Bootstrap.</p>
+            <div id="github-members" class="members mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!--Load members via JS-->
+            </div>
         </div>
-    </div>
     </div>
 
     <div class="drac-box Footer_footer__108BV border-t border-white/10">
@@ -422,29 +526,41 @@
         </p>
     </div>
 
-    <a href='https://github.com/editor-bootstrap/vim-bootstrap' target="_blank" style='position:fixed;padding:5px 45px;width:128px;bottom:50px;right:-50px;-webkit-transform:rotate(315deg);-moz-transform:rotate(315deg);-ms-transform:rotate(315deg);transform:rotate(315deg);box-shadow:0 0 0 3px #9580FF, 0 0 20px -3px rgba(0, 0, 0, 0.5);text-shadow:0 0 0 #F8F8F2, 0 0 5px rgba(0, 0, 0, 0.3);background-color:#9580FF;color:#F8F8F2;font-size:13px;font-family:sans-serif;text-decoration:none;font-weight:bold;border:2px dotted #F8F8F2;-webkit-backface-visibility:hidden;letter-spacing:.5px;'>
+    <a href='https://github.com/editor-bootstrap/vim-bootstrap' target="_blank" class="corner-ribbon">
         Contrib on GitHub
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js" integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg==" crossorigin=" anonymous"></script>
     <script id="github-members-tmpl" type="text/html">
-        <div class="drac-box Authors_author__1KlsQ" data-animation="fadeInUp" data-animation-delay="1s">
-            <a data-href="html_url" target="_blank">
-                <img class="Authors_photo__2_WNn" data-src="avatar_url" data-alt="login" />
+        <div class="drac-box" data-animation="fadeInUp" data-animation-delay="1s">
+            <a data-href="html_url" target="_blank" class="block group rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-4">
+                <img class="mx-auto h-16 w-16 rounded-full ring-1 ring-white/10" data-src="avatar_url" data-alt="login" />
+                <div class="mt-3">
+                    <h3 class="text-sm font-semibold text-white text-center" data-content="login"></h3>
+                </div>
             </a>
-            <div class="drac-box Authors_content__3xCx2">
-                <h2 class="drac-heading drac-heading-lg drac-my-none">
-                    I'm
-                    <a data-href="html_url" target="_blank" data-content="login" class="drac-text-white"></a>
-                </h2>
-            </div>
         </div>
     </script>
 
     <script src="/assets/js/members.js"></script>
     <script src="/assets/js/form.js"></script>
     <script>
+        // Enhance theme selection UX without breaking existing .logo-icon handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeCards = document.querySelectorAll('.theme-card');
+            themeCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const input = this.querySelector('input.theme-input');
+                    const img = this.querySelector('img.logo-icon');
+                    if (!input || !img) return;
+                    document.querySelectorAll('img.logo-icon[data-name="theme"]').forEach(i => i.classList.remove('selected'));
+                    img.classList.add('selected');
+                    input.checked = true;
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                });
+            });
+        });
         // Plugin validation functionality
         function validatePlugins() {
             const selectedPlugins = Array.from(document.querySelectorAll('input[name="additional_plugins"]:checked'))
@@ -529,10 +645,66 @@
 
         // Wire up interactions on load
         document.addEventListener('DOMContentLoaded', function() {
+            // Toolbar handlers
+            const categoriesContainer = document.getElementById('plugin-categories-container');
+            const searchInput = document.getElementById('plugin-search');
+            const selectedOnly = document.getElementById('plugin-selected-only');
+            const expandAllBtn = document.getElementById('plugin-expand-all');
+            const collapseAllBtn = document.getElementById('plugin-collapse-all');
+
+            function applyFilters() {
+                const term = (searchInput?.value || '').toLowerCase();
+                const onlySel = !!selectedOnly?.checked;
+                const items = categoriesContainer?.querySelectorAll('.plugin-item') || [];
+                items.forEach(item => {
+                    const label = item.querySelector('label');
+                    const name = (label?.textContent || '').toLowerCase();
+                    const checkbox = item.querySelector('input[type="checkbox"][name="additional_plugins"]');
+                    const matchesText = term === '' || name.includes(term);
+                    const matchesSel = !onlySel || (checkbox?.checked === true);
+                    item.style.display = (matchesText && matchesSel) ? '' : 'none';
+                });
+                // Update per-category counts
+                categoriesContainer?.querySelectorAll('.plugin-category').forEach(cat => {
+                    const count = cat.querySelectorAll('.plugin-item').length;
+                    const visible = cat.querySelectorAll('.plugin-item:not([style*="display: none"])').length;
+                    const badge = cat.querySelector('.category-count');
+                    if (badge) badge.textContent = `(${visible}/${count})`;
+                });
+            }
+
+            searchInput?.addEventListener('input', () => { applyFilters(); });
+            selectedOnly?.addEventListener('change', () => { applyFilters(); });
+            expandAllBtn?.addEventListener('click', () => {
+                document.querySelectorAll('.plugin-category.collapsible').forEach(c => c.classList.remove('collapsed'));
+            });
+            collapseAllBtn?.addEventListener('click', () => {
+                document.querySelectorAll('.plugin-category.collapsible').forEach(c => c.classList.add('collapsed'));
+            });
+
+            // Per-category select/clear
+            categoriesContainer?.addEventListener('click', function(e) {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                if (target.classList.contains('cat-select-all') || target.classList.contains('cat-clear')) {
+                    const catName = target.getAttribute('data-category') || '';
+                    const checked = target.classList.contains('cat-select-all');
+                    setPluginsByCategory(catName, checked);
+                    validatePlugins();
+                    applyFilters();
+                }
+            });
+
+            // Initial count and filter state
+            applyFilters();
+
             // Validate on plugin toggle
             const pluginCheckboxes = document.querySelectorAll('input[name="additional_plugins"]');
             pluginCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', validatePlugins);
+                checkbox.addEventListener('change', function() {
+                    validatePlugins();
+                    applyFilters();
+                });
             });
 
             // Sync languages -> plugin categories
