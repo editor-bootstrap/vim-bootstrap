@@ -20,6 +20,8 @@ func main() {
 	}
 
 	r.HandleFunc("/", web.HandleHome).Methods("GET")
+	r.HandleFunc("/robots.txt", web.HandleRobots).Methods("GET")
+	r.HandleFunc("/sitemap.xml", web.HandleSitemap).Methods("GET")
 	r.HandleFunc("/favicon.ico", web.HandleFavicon)
 	r.HandleFunc("/generate.vim", web.HandleGenerate).Methods("POST")
 	r.HandleFunc("/langs", web.HandleLangs)

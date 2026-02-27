@@ -72,6 +72,7 @@ func HandleLangs(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleList(w http.ResponseWriter, function func() []string) {
+	w.Header().Set("X-Robots-Tag", "noindex")
 	langs := strings.Join(function(), ",")
 	_, err := w.Write([]byte(langs))
 	if err != nil {
@@ -81,6 +82,7 @@ func handleList(w http.ResponseWriter, function func() []string) {
 
 // HandlePlugins is an endpoint to list available plugins
 func HandlePlugins(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("X-Robots-Tag", "noindex")
 	plugins := generate.ListPlugins()
 	jsonData, err := json.Marshal(plugins)
 	if err != nil {
@@ -93,6 +95,7 @@ func HandlePlugins(w http.ResponseWriter, r *http.Request) {
 
 // HandlePluginCategories is an endpoint to list available plugin categories
 func HandlePluginCategories(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("X-Robots-Tag", "noindex")
 	categories := generate.ListPluginCategories()
 	jsonData, err := json.Marshal(categories)
 	if err != nil {
@@ -135,8 +138,18 @@ func HandleValidatePlugins(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonData)
 }
 
+// HandleRobots serves robots.txt at the root path for search engine crawlers.
+func HandleRobots(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./template/robots.txt")
+}
+
+// HandleSitemap serves sitemap.xml at the root path for search engine crawlers.
+func HandleSitemap(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+	http.ServeFile(w, r, "./template/sitemap.xml")
+}
+
 // HandleFavicon just serve favicon.ico
 func HandleFavicon(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./template/assets/favicon.ico")
-	// http.FileServer(http.Dir("./template/assets/"))
 }

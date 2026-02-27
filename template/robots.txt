@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /generate.vim
+Disallow: /langs
+Disallow: /frameworks
+Disallow: /themes
+Disallow: /plugins
+Disallow: /plugin-categories
+Disallow: /validate-plugins
+
+Sitemap: https://vim-bootstrap.com/sitemap.xml

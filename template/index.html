@@ -5,19 +5,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta property="og:type" content="website">
-    <meta content="summary_large_image" name="twitter:card">
+
+    <!-- SEO: Primary -->
+    <title>Vim Bootstrap — Configuration Generator for Neovim &amp; Vim</title>
+    <meta name="description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.">
+    <meta name="keywords" content="vim, neovim, vimrc, nvim, configuration generator, vim plugins, vim bootstrap, dotfiles, vim setup, neovim config">
+    <meta name="author" content="Editor Bootstrap">
+    <meta name="version" content="{{.Version}}">
+    <link rel="canonical" href="https://vim-bootstrap.com/">
     <link rel="icon" type="image/x-icon" href="/assets/images/editor-bootstrap-icon.png">
 
-    <meta name="version" content="{{.Version}}">
-    <title>Vim Bootstrap — Configuration Generator for Neovim &amp; Vim</title>
-    <meta content="Vim Bootstrap" property="og:title">
-    <meta content="Your configuration generator for Neovim and Vim" name="description">
-    <meta content="Your configuration generator for Neovim and Vim" property="og:description">
-    <meta content="https://vim-bootstrap.com" property="og:url">
-    <meta content="/assets/images/editor-bootstrap-icon.png" property="og:image">
-    <meta name="twitter:image" content="/assets/images/editor-bootstrap-icon.png">
+    <!-- SEO: Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vim Bootstrap">
+    <meta property="og:title" content="Vim Bootstrap — Configuration Generator for Neovim &amp; Vim">
+    <meta property="og:description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.">
+    <meta property="og:url" content="https://vim-bootstrap.com/">
+    <meta property="og:image" content="https://vim-bootstrap.com/assets/images/editor-bootstrap-icon.png">
+    <meta property="og:image:alt" content="Vim Bootstrap logo">
+    <meta property="og:locale" content="en_US">
 
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vim Bootstrap — Configuration Generator for Neovim &amp; Vim">
+    <meta name="twitter:description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins.">
+    <meta name="twitter:image" content="https://vim-bootstrap.com/assets/images/editor-bootstrap-icon.png">
+    <meta name="twitter:image:alt" content="Vim Bootstrap logo">
+
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Vim Bootstrap",
+      "url": "https://vim-bootstrap.com",
+      "description": "Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Editor Bootstrap",
+        "url": "https://github.com/editor-bootstrap"
+      },
+      "sourceOrganization": {
+        "@type": "Organization",
+        "name": "Editor Bootstrap",
+        "url": "https://github.com/editor-bootstrap"
+      }
+    }
+    </script>
+
+    <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -40,6 +83,7 @@
 <body class="font-sans antialiased">
 
     <!-- ─── Navigation ──────────────────────────────────────────────── -->
+    <a href="#generator" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded">Skip to generator</a>
     <header id="topbar">
         <div class="mx-auto w-full max-w-6xl px-5 flex items-center justify-between h-full">
             <a href="/" class="flex items-center gap-2 font-semibold text-lg" style="color:var(--c-text); text-decoration:none;">
@@ -58,6 +102,7 @@
         </div>
     </header>
 
+    <main>
     <!-- ─── Hero ────────────────────────────────────────────────────── -->
     <section class="relative overflow-hidden">
         <div class="hero-glow"></div>
@@ -380,6 +425,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- ─── Footer ──────────────────────────────────────────────────── -->
     <footer class="site-footer">
