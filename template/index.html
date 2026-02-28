@@ -1,40 +1,74 @@
 <!DOCTYPE html>
-
-<html data-lt-installed="true">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta property="og:type" content="website">
-    <meta content="summary_large_image" name="twitter:card">
-    <link rel="icon" type="image/x-icon" href="/assets/images/editor-bootstrap-icon.png">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
 
-    <!--
-    <base href="https://vim-bootstrap.com" />
-    <link rel="canonical" href=" https://vim-bootstrap.com" />
-    -->
-
+    <!-- SEO: Primary -->
+    <title>Vim Bootstrap — Configuration Generator for Neovim &amp; Vim</title>
+    <meta name="description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.">
+    <meta name="keywords" content="vim, neovim, vimrc, nvim, configuration generator, vim plugins, vim bootstrap, dotfiles, vim setup, neovim config">
+    <meta name="author" content="Editor Bootstrap">
     <meta name="version" content="{{.Version}}">
-    <title>Your configuration generator for NeoVim and Vim - Vim Bootstrap</title>
-    <meta content="Vim Bootstrap" property="og:title">
-    <meta content="Your configuration generator for Neovim and Vim" name="description">
-    <meta content="Your configuration generator for Neovim and Vim" property="og:description">
-    <meta content="https://vim-bootstrap.com" property="og:url">
-    <meta content="/assets/images/editor-bootstrap-icon.png" property="og:image">
-    <meta name="twitter:image" content="/assets/images/editor-bootstrap-icon.png">
-    <meta name="viewport" content="width=device-width">
+    <link rel="canonical" href="https://vim-bootstrap.com/">
+    <link rel="icon" type="image/x-icon" href="/assets/images/editor-bootstrap-icon.png">
 
+    <!-- SEO: Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vim Bootstrap">
+    <meta property="og:title" content="Vim Bootstrap — Configuration Generator for Neovim &amp; Vim">
+    <meta property="og:description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.">
+    <meta property="og:url" content="https://vim-bootstrap.com/">
+    <meta property="og:image" content="https://vim-bootstrap.com/assets/images/editor-bootstrap-icon.png">
+    <meta property="og:image:alt" content="Vim Bootstrap logo">
+    <meta property="og:locale" content="en_US">
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vim Bootstrap — Configuration Generator for Neovim &amp; Vim">
+    <meta name="twitter:description" content="Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins.">
+    <meta name="twitter:image" content="https://vim-bootstrap.com/assets/images/editor-bootstrap-icon.png">
+    <meta name="twitter:image:alt" content="Vim Bootstrap logo">
+
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Vim Bootstrap",
+      "url": "https://vim-bootstrap.com",
+      "description": "Generate a fully configured .vimrc for Neovim or Vim in seconds. Select languages, frameworks, themes and plugins — download a production-ready configuration.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Editor Bootstrap",
+        "url": "https://github.com/editor-bootstrap"
+      },
+      "sourceOrganization": {
+        "@type": "Organization",
+        "name": "Editor Bootstrap",
+        "url": "https://github.com/editor-bootstrap"
+      }
+    }
+    </script>
+
+    <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            colors: {
-              brand: {
-                bg: '#0b0f19',
-                primary: '#00A3FF',
-                accent: '#8B5CF6'
-              }
+            fontFamily: {
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['"Fira Code"', 'monospace'],
             }
           }
         }
@@ -44,702 +78,523 @@
     <link rel="stylesheet" href="/assets/css/tailwind-theme.css">
     <link rel="preload" href="/assets/css/style.css" as="style">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <style>
-      /* Theme cards visual states */
-      .theme-card:has(.logo-icon.selected) { outline: 2px solid rgba(34,211,238,.7); box-shadow: 0 0 0 6px rgba(34,211,238,.12); }
-      .theme-card .check-badge { display: none; }
-      .theme-card:has(.logo-icon.selected) .check-badge { display: flex; }
-      /* Corner ribbon */
-      .corner-ribbon {
-        position: fixed;
-        top: 16px;
-        right: -44px;
-        transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        z-index: 60;
-        padding: 6px 56px;
-        background-color: #9580FF;
-        color: #F8F8F2;
-        font-size: 13px;
-        font-family: sans-serif;
-        text-decoration: none;
-        font-weight: bold;
-        border: 2px dotted #F8F8F2;
-        box-shadow: 0 0 0 3px #9580FF, 0 0 20px -3px rgba(0, 0, 0, 0.5);
-        text-shadow: 0 0 0 #F8F8F2, 0 0 5px rgba(0, 0, 0, 0.3);
-        letter-spacing: .5px;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-      }
-      @media (max-width: 768px) {
-        .corner-ribbon {
-          transform: none;
-          -webkit-transform: none;
-          -moz-transform: none;
-          -ms-transform: none;
-          top: auto;
-          right: 16px;
-          bottom: 16px;
-          padding: 8px 12px;
-          border-radius: 8px;
-        }
-      }
-    </style>
 </head>
 
-<body class="bg-brand-bg text-white antialiased">
-    <!-- Background decorations -->
-    <div class="fixed inset-0 -z-10 bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(59,130,246,0.15),transparent),radial-gradient(600px_300px_at_10%_20%,rgba(139,92,246,0.15),transparent),radial-gradient(800px_400px_at_90%_10%,rgba(16,185,129,0.12),transparent)]"></div>
-    <div class="fixed inset-0 -z-10 [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)] bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-    <!-- Topbar -->
-    <div id="topbar" class="drac-box sticky top-0 z-50 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/20 border-b border-white/5">
-        <div class="mx-auto w-full max-w-7xl px-4 flex items-center justify-between h-[64px]">
-            <a class="drac-text drac-text-white title logo flex items-center gap-2 text-white font-semibold text-xl" href="/">
+<body class="font-sans antialiased">
+
+    <!-- ─── Navigation ──────────────────────────────────────────────── -->
+    <a href="#generator" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded">Skip to generator</a>
+    <header id="topbar">
+        <div class="mx-auto w-full max-w-6xl px-5 flex items-center justify-between h-full">
+            <a href="/" class="flex items-center gap-2 font-semibold text-lg" style="color:var(--c-text); text-decoration:none;">
                 Vim
-                <span class="drac-text title bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
-                    Bootstrap
-                </span>
+                <span style="color:var(--c-brand);">Bootstrap</span>
             </a>
-            <nav class="hidden md:flex items-center gap-6 text-sm text-white/70">
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#faq" class="hover:text-white transition">FAQ</a>
-                <a href="#newsletter" class="hover:text-white transition">Newsletter</a>
-                <a href="https://github.com/editor-bootstrap/vim-bootstrap" target="_blank" class="hover:text-white transition">GitHub</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium" style="color:var(--c-text-2);">
+                <a href="#features" style="color:inherit;" class="hover:opacity-80 transition-opacity">Features</a>
+                <a href="#generator" style="color:inherit;" class="hover:opacity-80 transition-opacity">Generator</a>
+                <a href="#faq" style="color:inherit;" class="hover:opacity-80 transition-opacity">FAQ</a>
+                <a href="https://github.com/editor-bootstrap/vim-bootstrap" target="_blank" style="color:inherit;" class="hover:opacity-80 transition-opacity">GitHub</a>
             </nav>
-            <a class="drac-btn drac-bg-cyan-green drac-btn-sm drac-text-black drac-text-gray--hover drac-mx-xs inline-flex items-center rounded-lg bg-gradient-to-r from-brand-primary to-cyan-300 px-3 py-1.5 text-gray-900 font-semibold shadow hover:shadow-lg transition" href="#generator" aria-label="Generate configuration">
-              Generate
+            <a class="btn-primary btn-sm" href="#generator">
+                Generate
             </a>
         </div>
-    </div>
+    </header>
 
-    <!-- Header -->
-    <div id="header" class="drac-box relative overflow-hidden">
-        <div class="absolute inset-0 -z-10 opacity-30 [mask-image:radial-gradient(closest-side,black,transparent)]">
-            <div class="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 h-[40rem] w-[80rem] bg-gradient-to-tr from-brand-accent/50 via-brand-primary/30 to-cyan-300/20 blur-3xl"></div>
-        </div>
-        <div class="mx-auto max-w-7xl px-4 py-28 md:py-36 text-center">
-            <h1 class="drac-heading title drac-heading-xl drac-text-white logo text-5xl md:text-6xl font-extrabold tracking-tight">
-                Vim <span class="drac-text title bg-gradient-to-r from-brand-primary via-cyan-300 to-brand-accent bg-clip-text text-transparent">Bootstrap</span>
+    <main>
+    <!-- ─── Hero ────────────────────────────────────────────────────── -->
+    <section class="relative overflow-hidden">
+        <div class="hero-glow"></div>
+        <div class="mx-auto max-w-6xl px-5 pt-24 pb-16 md:pt-32 md:pb-20 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight" style="color:var(--c-text); line-height:1.1;">
+                Configuration generator<br>
+                for <span style="color:var(--c-brand);">Neovim</span> &amp; <span style="color:var(--c-brand);">Vim</span>
             </h1>
-            <div class="drac-box subtitle drac-mt-sm drac-mb-md mt-4">
-                <span class="drac-text bodytext drac-line-height drac-text-white text-lg md:text-xl text-white/80">
-                    Your configuration generator for
-                    <span class="drac-text bodytext drac-line-height drac-text-cyan-green text-brand-primary">
-                        Neovim/Vim</span>
-                </span>
-            </div>
-            <div class="drac-box combo-btn-container mt-8 flex items-center justify-center gap-4">
-                <a href="https://www.producthunt.com/posts/vim-bootstrap?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-vim-bootstrap" target="_blank" class="inline-flex">
-                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=303760&theme=light" alt="vim-bootstrap - Your configuration generator for Neovim/Vim | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+            <p class="mt-5 text-lg md:text-xl max-w-2xl mx-auto" style="color:var(--c-text-2); line-height:1.7;">
+                Select your languages, frameworks and plugins. We generate a
+                production-ready <code class="font-mono text-sm px-1.5 py-0.5 rounded" style="background:var(--c-tag-bg); color:var(--c-tag-text);">.vimrc</code>
+                for you in seconds.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a href="#generator" class="btn-primary btn-lg">
+                    Generate your config
                 </a>
-                <a class="drac-btn drac-bg-cyan-green drac-btn-lg drac-text-black drac-text-white--hover inline-flex items-center rounded-xl bg-gradient-to-r from-brand-primary to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" href="#generator">
-                    Make your .vimrc <strong>now</strong>!
+                <a href="https://github.com/editor-bootstrap/vim-bootstrap" target="_blank" class="btn-secondary btn-lg">
+                    View on GitHub
                 </a>
             </div>
-            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
-                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
-                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">✓</span>
-                    <div>
-                        <p class="font-semibold">Start in minutes</p>
-                        <p class="text-white/70 text-sm">Preconfigured NeoVim/Vim with modern defaults.</p>
-                    </div>
+
+            <!-- Stats -->
+            <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="card-sm text-center">
+                    <p class="stat-value">{{len .Langs}}</p>
+                    <p class="stat-label">Languages</p>
                 </div>
-                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
-                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">✓</span>
-                    <div>
-                        <p class="font-semibold">Plugins curated</p>
-                        <p class="text-white/70 text-sm">Choose languages, frameworks and extras.</p>
-                    </div>
+                <div class="card-sm text-center">
+                    <p class="stat-value">{{len .Frameworks}}</p>
+                    <p class="stat-label">Frameworks</p>
                 </div>
-                <div class="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
-                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-violet-400/20 text-violet-300">✓</span>
-                    <div>
-                        <p class="font-semibold">Community driven</p>
-                        <p class="text-white/70 text-sm">Open source and maintained by the community.</p>
-                    </div>
+                <div class="card-sm text-center">
+                    <p class="stat-value">{{len .Themes}}</p>
+                    <p class="stat-label">Themes</p>
+                </div>
+                <div class="card-sm text-center">
+                    <p class="stat-value">{{len .PluginCategories}}</p>
+                    <p class="stat-label">Plugin categories</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Tagline replaced by onboarding and stats -->
-    <div id="tagline" class="drac-box">
-        <div class="mx-auto w-full max-w-7xl px-4 py-16">
+    <!-- ─── How it works ────────────────────────────────────────────── -->
+    <section style="background:var(--c-bg-subtle); border-top:1px solid var(--c-border); border-bottom:1px solid var(--c-border);">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
             <div class="text-center mb-12">
-                <h2 class="drac-heading title drac-heading-2xl drac-text-white">Everything you need to start fast</h2>
-                <p class="drac-text drac-text-gray mt-2">Pick, customize and generate your NeoVim/Vim config in minutes.</p>
-            </div>
-            <div id="how-it-works" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                    <div class="h-8 w-8 rounded-full bg-emerald-400/20 text-emerald-300 flex items-center justify-center font-semibold mb-4">1</div>
-                    <h3 class="font-semibold text-white mb-1">Choose</h3>
-                    <p class="text-white/70 text-sm">Select your languages, frameworks and theme.</p>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                    <div class="h-8 w-8 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center font-semibold mb-4">2</div>
-                    <h3 class="font-semibold text-white mb-1">Customize</h3>
-                    <p class="text-white/70 text-sm">Add optional plugins from curated categories.</p>
-                </div>
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-                    <div class="h-8 w-8 rounded-full bg-violet-400/20 text-violet-300 flex items-center justify-center font-semibold mb-4">3</div>
-                    <h3 class="font-semibold text-white mb-1">Generate</h3>
-                    <p class="text-white/70 text-sm">Download your config and follow simple install steps.</p>
-                </div>
-            </div>
-            <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                    <p class="text-3xl font-extrabold text-white">{{len .Langs}}</p>
-                    <p class="text-white/60 text-sm">Languages</p>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                    <p class="text-3xl font-extrabold text-white">{{len .Frameworks}}</p>
-                    <p class="text-white/60 text-sm">Frameworks</p>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                    <p class="text-3xl font-extrabold text-white">{{len .Themes}}</p>
-                    <p class="text-white/60 text-sm">Themes</p>
-                </div>
-                <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
-                    <p class="text-3xl font-extrabold text-white">{{len .PluginCategories}}</p>
-                    <p class="text-white/60 text-sm">Plugin Categories</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features -->
-    <div id="features" class="drac-box">
-        <div class="mx-auto w-full max-w-7xl px-4 py-16">
-            <div class="text-center mb-10">
-                <h2 class="drac-heading title drac-heading-2xl drac-text-white">Why you'll love it</h2>
-                <p class="drac-text drac-text-gray mt-2">Friendly, fast and flexible. Inspired by modern landing pages.</p>
+                <p class="section-label">How it works</p>
+                <h2 class="section-title">Three steps to your perfect config</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
-                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-brand-primary to-brand-accent mb-4"></div>
-                    <h3 class="font-semibold text-white mb-2">Guided generator</h3>
-                    <p class="text-white/70 text-sm">Pick your languages, frameworks and theme with visual cards.</p>
+                <div class="card text-center">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-sm mb-4" style="background:var(--c-brand-subtle); color:var(--c-brand);">1</div>
+                    <h3 class="font-semibold text-base mb-1" style="color:var(--c-text);">Choose</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Select your programming languages, frameworks and color theme.</p>
                 </div>
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
-                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-400 mb-4"></div>
-                    <h3 class="font-semibold text-white mb-2">Best practices by default</h3>
-                    <p class="text-white/70 text-sm">Linters, LSPs and essential plugins preconfigured.</p>
+                <div class="card text-center">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-sm mb-4" style="background:var(--c-accent-subtle); color:var(--c-accent);">2</div>
+                    <h3 class="font-semibold text-base mb-1" style="color:var(--c-text);">Customize</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Fine-tune with additional plugins from curated categories.</p>
                 </div>
-                <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow hover:shadow-lg transition">
-                    <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-500 mb-4"></div>
-                    <h3 class="font-semibold text-white mb-2">No lock-in</h3>
-                    <p class="text-white/70 text-sm">Everything is editable and exportable to your dotfiles.</p>
+                <div class="card text-center">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full font-bold text-sm mb-4" style="background:var(--c-success-subtle); color:var(--c-success);">3</div>
+                    <h3 class="font-semibold text-base mb-1" style="color:var(--c-text);">Generate</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Download your configuration and follow the simple install instructions.</p>
                 </div>
-            </div>
-            <div class="text-center mt-10">
-                <a href="#generator" class="inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition">Generate now</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Generator -->
-    <div id="editors" class="drac-box">
-        <div class="mx-auto w-full max-w-7xl px-4 text-center mb-4">
-            <h2 class="drac-heading title drac-heading-2xl drac-text-white">Generate your configuration</h2>
-            <p class="drac-text drac-text-gray mt-2">Visual, friendly and flexible. Choose below and click Generate.</p>
+    <!-- ─── Features ────────────────────────────────────────────────── -->
+    <section id="features">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+            <div class="text-center mb-12">
+                <p class="section-label">Features</p>
+                <h2 class="section-title">Why developers love it</h2>
+                <p class="section-subtitle mx-auto mt-3">A friendly, fast and flexible way to bootstrap your editor configuration.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-4 text-lg" style="background:var(--c-brand-subtle); color:var(--c-brand);">&#9881;</div>
+                    <h3 class="font-semibold mb-1" style="color:var(--c-text);">Visual generator</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Pick languages, frameworks and themes with visual cards instead of editing config files by hand.</p>
+                </div>
+                <div class="card">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-4 text-lg" style="background:var(--c-success-subtle); color:var(--c-success);">&#10003;</div>
+                    <h3 class="font-semibold mb-1" style="color:var(--c-text);">Best practices built in</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Linters, LSP integrations and essential plugins are preconfigured with sensible defaults.</p>
+                </div>
+                <div class="card">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-4 text-lg" style="background:var(--c-accent-subtle); color:var(--c-accent);">&#128268;</div>
+                    <h3 class="font-semibold mb-1" style="color:var(--c-text);">No lock-in</h3>
+                    <p class="text-sm" style="color:var(--c-text-2);">Everything is editable. Export to your dotfiles repository and evolve your setup over time.</p>
+                </div>
+            </div>
         </div>
-        <form id="generator" class="clearfix" action="/generate.vim" method="post">
-            <!-- languages -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-                Select your languages
-            </h3>
-            <div class="langs_grid drac-box container Highlights_container__1kvqi gap-6">
-                {{ range $lang := .Langs}}
-                <!-- lang:{{$lang}} -->
-                <div class="drac-box langs_item">
-                    <div class="input-group">
-                        <span class="button-checkbox">
-                            <div class="drac-box Highlights_cardBackground__2Fr7t">
-                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                    <button type="button" class="lang-expand" data-lang="{{$lang}}" title="Show {{$lang}} plugins" aria-label="Show {{$lang}} plugins">▾</button>
-                                    <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" alt="image for language {{$lang}}" title="Click to select programming language {{$lang}}" src="/assets/images/logo/{{$lang}}.png" />
-                                    <div class="drac-box drac-mt-sm">
-                                        <span class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">{{$lang}}</span>
-                                      </div>
-                                    <input type="checkbox" name="langs" value="{{$lang}}" class="hidden">
-                                </div>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-                {{end}}
+    </section>
+
+    <!-- ─── Generator form ──────────────────────────────────────────── -->
+    <section id="generator-section" style="background:var(--c-bg-subtle); border-top:1px solid var(--c-border);">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+            <div class="text-center mb-12">
+                <p class="section-label">Generator</p>
+                <h2 class="section-title">Build your configuration</h2>
+                <p class="section-subtitle mx-auto mt-3">Select your preferences below and click Generate.</p>
             </div>
 
-            <!-- frameworks -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-                Select your frameworks
-            </h3>
-            <div class="drac-box container Highlights_container__1kvqi gap-6">
-                {{ range $framework := .Frameworks}}
-                <!-- framework:{{$framework}} -->
-                <div class="drac-box">
-                    <div class="input-group">
-                        <span class="button-checkbox">
-                            <div class="drac-box Highlights_cardBackground__2Fr7t">
-                                <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                    <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" alt="Click to select framework {{$framework}}" src="/assets/images/logo/{{$framework}}.png" />
-                                    <div class="drac-box drac-mt-sm">
-                                        <span class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">{{$framework}}</span>
-                                      </div>
-                                    <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden">
-                                </div>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-                {{end}}
-            </div>
+            <form id="generator" action="/generate.vim" method="post">
 
-            <!-- themes -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-                Select your theme
-            </h3>
-            <div class="mx-auto w-full max-w-7xl px-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {{ range $theme := .Themes}}
-                    <!-- theme:{{$theme}} -->
-                    <label class="theme-card group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-4 hover:from-white/10 hover:shadow-lg transition cursor-pointer relative overflow-hidden">
-                        <div class="absolute -right-14 -top-14 h-28 w-28 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 blur-2xl"></div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <div class="h-10 w-10 rounded-lg bg-[url('/assets/images/logo/color-scheme.png')] bg-cover bg-center ring-1 ring-white/10"></div>
-                                <div>
-                                    <p class="font-semibold text-white">{{$theme}}</p>
-                                    <p class="text-xs text-white/60">Color scheme</p>
-                                </div>
-                            </div>
-                            <span class="check-badge h-6 w-6 items-center justify-center rounded-full bg-emerald-400/20 text-emerald-300">✓</span>
-                        </div>
-                        <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}} hidden" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="Click to select theme {{$theme}}" src="/assets/images/logo/color-scheme.png">
-                        <input type="radio" name="theme" value="{{$theme}}" class="hidden theme-input" />
-                    </label>
-                    {{end}}
-                </div>
-            </div>
-
-            <!-- additional plugins -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-                Additional Plugins (Advanced)
-            </h3>
-            <div class="drac-box container mx-auto w-full max-w-7xl px-4">
-                <p class="drac-text drac-line-height drac-text-white drac-mb-md">
-                    Select additional plugins to enhance your Vim/NeoVim experience. These plugins will be added to your configuration.
-                </p>
-                <div id="plugin-toolbar" class="drac-box drac-mb-md">
-                    <div class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between rounded-xl border border-white/10 bg-white/5 p-3">
-                        <div class="flex items-center gap-3 w-full md:w-auto">
-                            <input id="plugin-search" type="search" placeholder="Search plugins..." class="w-full md:w-80 rounded-md bg-black/40 border border-white/10 px-3 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-400/60" />
-                            <label class="inline-flex items-center gap-2 text-sm text-white/80 cursor-pointer select-none">
-                                <input id="plugin-selected-only" type="checkbox" class="rounded border-white/20 bg-black/40">
-                                Show only selected
-                            </label>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button type="button" id="plugin-expand-all" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-3 py-1.5 text-sm">Expand all</button>
-                            <button type="button" id="plugin-collapse-all" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-3 py-1.5 text-sm">Collapse all</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="plugin-categories-container">
-                    {{ range $category := .PluginCategories}}
-                    <div class="plugin-category drac-box drac-mb-lg {{if (or (eq $category.Name "Go Language") (eq $category.Name "Python Language") (eq $category.Name "JavaScript/TypeScript") (eq $category.Name "Rust Language") (eq $category.Name "Ruby Language") (eq $category.Name "PHP Language") (eq $category.Name "Lua Language") (eq $category.Name "C/C++ Language") (eq $category.Name "Haskell Language") (eq $category.Name "Elixir Language") (eq $category.Name "Elm Language") (eq $category.Name "Erlang Language") (eq $category.Name "OCaml Language") (eq $category.Name "Perl Language") (eq $category.Name "Scala Language") (eq $category.Name "Lisp Language") (eq $category.Name "HTML/CSS"))}}collapsible collapsed{{end}}" data-category-name="{{$category.Name}}">
-                        <h4 class="drac-heading drac-heading-lg drac-text-yellow-pink drac-mb-sm flex items-center justify-between">
-                            <span><span class="category-toggle">▾</span>{{$category.Name}} <span class="category-count drac-text drac-text-gray text-xs"></span></span>
-                            <span class="inline-flex items-center gap-2">
-                                <button type="button" class="cat-select-all inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-2 py-1 text-xs" data-category="{{$category.Name}}">Select all</button>
-                                <button type="button" class="cat-clear inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 px-2 py-1 text-xs" data-category="{{$category.Name}}">Clear</button>
+                <!-- Languages -->
+                <div class="mb-14">
+                    <h3 class="text-xl font-bold mb-1" style="color:var(--c-text);">Languages</h3>
+                    <p class="text-sm mb-5" style="color:var(--c-text-2);">Click to select the programming languages you work with.</p>
+                    <div class="langs_grid">
+                        {{ range $lang := .Langs}}
+                        <div class="select-card">
+                            <span class="button-checkbox">
+                                <button type="button" class="lang-expand" data-lang="{{$lang}}" title="Show {{$lang}} plugins" aria-label="Show {{$lang}} plugins">&#9662;</button>
+                                <img class="logo-icon" data-type="checkbox" data-value="{{$lang}}" alt="{{$lang}}" title="Select {{$lang}}" src="/assets/images/logo/{{$lang}}.png" />
+                                <span class="select-label">{{$lang}}</span>
+                                <input type="checkbox" name="langs" value="{{$lang}}" class="hidden">
                             </span>
-                        </h4>
-                        <p class="drac-text drac-text-gray drac-mb-md">{{$category.Description}}</p>
-                        <div class="plugins-grid drac-box">
-                            {{ range $plugin := $category.Plugins}}
-                            <div class="plugin-item drac-box drac-mb-sm">
-                                <div class="drac-box Highlights_cardBackground__2Fr7t rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
-                                    <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                        <div class="drac-box drac-flex drac-align-center drac-mb-xs">
-                                            <input type="checkbox" name="additional_plugins" value="{{$plugin.Name}}" id="plugin-{{$plugin.Name}}" class="drac-mr-sm" data-category="{{$category.Name}}">
-                                            <label for="plugin-{{$plugin.Name}}" class="drac-text drac-text-white drac-text-bold">{{$plugin.Name}}</label>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="mb-14">
+                    <h3 class="text-xl font-bold mb-1" style="color:var(--c-text);">Frameworks</h3>
+                    <p class="text-sm mb-5" style="color:var(--c-text-2);">Select the frameworks you use.</p>
+                    <div class="langs_grid">
+                        {{ range $framework := .Frameworks}}
+                        <div class="select-card">
+                            <span class="button-checkbox">
+                                <img class="logo-icon" data-type="checkbox" data-value="{{$framework}}" alt="{{$framework}}" title="Select {{$framework}}" src="/assets/images/logo/{{$framework}}.png" />
+                                <span class="select-label">{{$framework}}</span>
+                                <input type="checkbox" name="frameworks" value="{{$framework}}" class="hidden">
+                            </span>
+                        </div>
+                        {{end}}
+                    </div>
+                </div>
+
+                <!-- Themes -->
+                <div class="mb-14">
+                    <h3 class="text-xl font-bold mb-1" style="color:var(--c-text);">Color theme</h3>
+                    <p class="text-sm mb-5" style="color:var(--c-text-2);">Choose a color scheme for your editor.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        {{ range $theme := .Themes}}
+                        <label class="theme-card">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="theme-icon" style="background-image:url('/assets/images/logo/color-scheme.png');"></div>
+                                    <div>
+                                        <p class="font-medium text-sm" style="color:var(--c-text);">{{$theme}}</p>
+                                        <p class="text-xs" style="color:var(--c-text-3);">Color scheme</p>
+                                    </div>
+                                </div>
+                                <span class="check-badge">&#10003;</span>
+                            </div>
+                            <img class="logo-icon {{if eq $theme "molokai"}}selected{{end}} hidden" data-name="theme" data-type="radio" data-value="{{$theme}}" alt="{{$theme}}" src="/assets/images/logo/color-scheme.png">
+                            <input type="radio" name="theme" value="{{$theme}}" class="hidden theme-input" />
+                        </label>
+                        {{end}}
+                    </div>
+                </div>
+
+                <!-- Additional Plugins -->
+                <div class="mb-14">
+                    <h3 class="text-xl font-bold mb-1" style="color:var(--c-text);">Additional plugins</h3>
+                    <p class="text-sm mb-5" style="color:var(--c-text-2);">Optionally add extra plugins to enhance your setup.</p>
+
+                    <div id="plugin-toolbar" class="plugin-toolbar mb-4">
+                        <div class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+                            <div class="flex items-center gap-3 w-full md:w-auto">
+                                <input id="plugin-search" type="search" placeholder="Search plugins..." class="plugin-search" />
+                                <label class="inline-flex items-center gap-2 text-xs font-medium cursor-pointer select-none whitespace-nowrap" style="color:var(--c-text-2);">
+                                    <input id="plugin-selected-only" type="checkbox" class="accent-[var(--c-brand)]">
+                                    Selected only
+                                </label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" id="plugin-expand-all" class="cat-action-btn">Expand all</button>
+                                <button type="button" id="plugin-collapse-all" class="cat-action-btn">Collapse all</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="plugin-categories-container">
+                        {{ range $category := .PluginCategories}}
+                        <div class="plugin-category {{if (or (eq $category.Name "Go Language") (eq $category.Name "Python Language") (eq $category.Name "JavaScript/TypeScript") (eq $category.Name "Rust Language") (eq $category.Name "Ruby Language") (eq $category.Name "PHP Language") (eq $category.Name "Lua Language") (eq $category.Name "C/C++ Language") (eq $category.Name "Haskell Language") (eq $category.Name "Elixir Language") (eq $category.Name "Elm Language") (eq $category.Name "Erlang Language") (eq $category.Name "OCaml Language") (eq $category.Name "Perl Language") (eq $category.Name "Scala Language") (eq $category.Name "Lisp Language") (eq $category.Name "HTML/CSS"))}}collapsible collapsed{{end}}" data-category-name="{{$category.Name}}">
+                            <h4>
+                                <span><span class="category-toggle">&#9662;</span>{{$category.Name}} <span class="category-count"></span></span>
+                                <span class="inline-flex items-center gap-2">
+                                    <button type="button" class="cat-select-all cat-action-btn" data-category="{{$category.Name}}">Select all</button>
+                                    <button type="button" class="cat-clear cat-action-btn" data-category="{{$category.Name}}">Clear</button>
+                                </span>
+                            </h4>
+                            <p>{{$category.Description}}</p>
+                            <div class="plugins-grid">
+                                {{ range $plugin := $category.Plugins}}
+                                <div class="plugin-item">
+                                    <div class="plugin-inner">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <input type="checkbox" name="additional_plugins" value="{{$plugin.Name}}" id="plugin-{{$plugin.Name}}" data-category="{{$category.Name}}">
+                                            <label for="plugin-{{$plugin.Name}}">{{$plugin.Name}}</label>
                                         </div>
-                                        <p class="drac-text drac-text-gray drac-text-sm drac-mb-xs">{{$plugin.Description}}</p>
-                                        <div class="plugin-tags drac-box">
+                                        <p class="plugin-desc">{{$plugin.Description}}</p>
+                                        <div class="plugin-tags">
                                             {{ range $tag := $plugin.Tags}}
-                                            <span class="drac-text drac-text-xs drac-text-purple-cyan drac-bg-purple-cyan drac-text-black drac-px-xs drac-rounded drac-mr-xs">{{$tag}}</span>
+                                            <span class="plugin-tag">{{$tag}}</span>
                                             {{end}}
                                         </div>
                                     </div>
                                 </div>
+                                {{end}}
                             </div>
-                            {{end}}
                         </div>
+                        {{end}}
                     </div>
-                    {{end}}
-                </div>
-                <div id="plugin-validation" class="drac-box drac-mt-md" style="display: none;">
-                    <div id="plugin-warnings" class="drac-text drac-text-yellow-pink drac-mb-sm"></div>
-                    <div id="plugin-errors" class="drac-text drac-text-red drac-mb-sm"></div>
-                </div>
-            </div>
 
-            <!-- editors -->
-            <h3 class="drac-heading title drac-text-cyan-green drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-                Select your editor
-            </h3>
-            <div class="drac-box  Highlights_container__1kvqi editors_grid">
-                <!-- Editor: neovim -->
-                <div class="drac-box">
-                    <div class="drac-box Highlights_card__34b3J rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
-                        <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
-                            <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                <img class="logo-icon selected" data-name="editor" data-type="radio" data-value="nvim" alt="Click to select editor neovim" src="/assets/images/logo/neovim.png" />
+                    <div id="plugin-validation" style="display:none;" class="mt-4">
+                        <div id="plugin-warnings" class="mb-2"></div>
+                        <div id="plugin-errors" class="mb-2"></div>
+                    </div>
+                </div>
+
+                <!-- Editor -->
+                <div class="mb-14">
+                    <h3 class="text-xl font-bold mb-1" style="color:var(--c-text);">Editor</h3>
+                    <p class="text-sm mb-5" style="color:var(--c-text-2);">Choose between Neovim or Vim.</p>
+                    <div class="editors_grid">
+                        <div class="editor-card">
+                            <div class="editor-card-header">
+                                <img class="logo-icon selected" data-name="editor" data-type="radio" data-value="nvim" alt="Neovim" src="/assets/images/logo/neovim.png" />
                                 <input type="radio" name="editor" value="nvim" class="hidden" checked="checked">
                             </div>
-                        </div>
-                        <div class="drac-box drac-p-md">
-                            <h2 class="drac-heading drac-heading-lg drac-text-purple-cyan">Neovim</h2>
-                            <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
-                                Is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie). It is not a rewrite but a continuation and extension of Vim. Many clones and derivatives exist, some very clever—but none are Vim. Neovim is built for users
-                                who want the good parts of Vim, and more.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Editor: vim -->
-                <div class="drac-box">
-                    <div class="drac-box Highlights_card__34b3J rounded-2xl ring-1 ring-white/10 shadow hover:shadow-lg transition">
-                        <div class="drac-box Highlights_cardBackground__2Fr7t drac-bg-purple-cyan">
-                            <div class="drac-box Highlights_cardDetailsContainer__8lpMI drac-rounded-xl">
-                                <img class="logo-icon" data-name="editor" data-type="radio" data-value="vim" alt="Click to select editor vim" src="/assets/images/logo/vim.png" />
-                                <input type="radio" name="editor" value="vim" class="hidden">
+                            <div class="editor-card-body">
+                                <h3>Neovim</h3>
+                                <p>A refactor of Vim built for users who want the good parts of Vim, and more. Modern features, Lua scripting, built-in LSP client.</p>
                             </div>
                         </div>
-                        <div class="drac-box drac-p-md">
-                            <h2 class="drac-heading drac-heading-lg drac-text-purple-cyan">Vim</h2>
-                            <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">
-                                Vim is a highly configurable text editor built to enable efficient text editing. It is an improved version of the vi editor distributed with most UNIX systems. Vim is often called a "programmer's editor," and so useful for programming that many consider
-                                it an entire IDE.
-                            </p>
+                        <div class="editor-card">
+                            <div class="editor-card-header">
+                                <img class="logo-icon" data-name="editor" data-type="radio" data-value="vim" alt="Vim" src="/assets/images/logo/vim.png" />
+                                <input type="radio" name="editor" value="vim" class="hidden">
+                            </div>
+                            <div class="editor-card-body">
+                                <h3>Vim</h3>
+                                <p>The classic, highly configurable text editor. An improved version of vi, often called a &ldquo;programmer&rsquo;s editor&rdquo; and so useful many consider it an entire IDE.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="generate-btn" class="drac-box container Highlights_container__1kvqi">
-                <div class="drac-box">
-                    <p class="drac-text drac-line-height-lg drac-text-white drac-mt-sm">Click in the button to create your .vimrc</p>
-                    <input type="submit" value="Generate!" class="drac-btn drac-bg-cyan-green inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition" />
+                <!-- Generate -->
+                <div id="generate-btn">
+                    <p class="text-sm mb-4" style="color:var(--c-text-2);">Ready? Click the button to download your <code class="font-mono text-xs px-1 py-0.5 rounded" style="background:var(--c-tag-bg); color:var(--c-tag-text);">.vimrc</code></p>
+                    <input type="submit" value="Generate!" class="btn-primary btn-lg" />
                 </div>
 
-            </div>
-
-        </form>
-
-    </div>
-
-    <!-- FAQ -->
-    <div id="faq" class="drac-box">
-        <div class="drac-box Faq_container__26-En">
-            <h2 class="drac-heading title drac-heading-2xl drac-text-yellow-pink drac-px-sm drac-pb-lg">
-                Why use the Vim Bootstrap Distributions
-            </h2>
-
-            <div class="drac-box Faq_grid__2zjq3">
-                <div class="drac-box drac-mx-sm drac-mb-lg">
-                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
-                        Learn to use then configure
-                    </p>
-                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
-                        Put your focus on one thing at a time, when we focus on studying a single thing we accelerate our learning.
-                    </p>
-                </div>
-                <div class="drac-box drac-mx-sm drac-mb-lg">
-                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
-                        Maintained by the community
-                    </p>
-                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
-                        Created and maintained by a community that uses the Neovim/Vim on a daily basis.
-                    </p>
-                </div>
-                <div class="drac-box drac-mx-sm drac-mb-lg">
-                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
-                        We demystify the complexity of the Neovim/Vim configuration
-                    </p>
-                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
-                        Setting up the Neovim/Vim is not complicated, as long as you have a good configuration reference. Vim Bootstrap provides a great reference for setting up your configuration.
-                    </p>
-                </div>
-                <div class="drac-box drac-mx-sm drac-mb-lg">
-                    <p class="drac-heading drac-text-bold drac-line-height drac-text-white">
-                        Open Source, point the finger at the problems
-                    </p>
-                    <p class="drac-text answer drac-line-height drac-text-white drac-pt-none">
-                        Feel like you own the projects, report problems, propose improvements and the evolution of the projects. Welcome to the team.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Newsletter -->
-    <div id="newsletter" class="drac-box">
-        <h2 class="drac-heading title drac-text-pink-purple drac-heading-2xl drac-text-white drac-px-sm drac-pb-lg text-3xl md:text-4xl font-semibold tracking-tight">
-            Be the first to receive news!
-        </h2>
-        <div class="drac-box bodytext">
-            <span class="drac-text drac-line-height drac-text-white">
-                Stay up to date with our latest features and releases
-            </span>
-        </div>
-
-        <div class="drac-box bodyform">
-            <form action="https://buttondown.email/api/emails/embed-subscribe/editor-bootstrap" method="post" target="popupwindow" onsubmit="window.open( 'https://buttondown.email/editor-bootstrap', 'popupwindow')" class="form embeddable-buttondown-form">
-                <input type="email" name="email" id="bd-email" placeholder="your@email.com" required class="w-[320px] max-w-full rounded-md bg-black/40 border border-white/10 px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400/60" />
-                <input type="hidden" value="1" name="embed" />
-                <input type="submit" value="Subscribe" class="ml-3 inline-flex items-center rounded-md bg-gradient-to-r from-purple-500 to-cyan-400 px-4 py-2 text-gray-900 font-semibold shadow hover:shadow-lg transition cursor-pointer" />
             </form>
         </div>
-    </div>
+    </section>
 
-    <div id="authors" class="drac-box">
-        <div class="mx-auto w-full max-w-7xl px-4 py-16 text-center">
-            <h2 class="drac-heading title drac-heading-2xl drac-text-white">Our Contributors</h2>
-            <p class="drac-text drac-text-gray mt-2">Thanks to everyone building Vim Bootstrap.</p>
-            <div id="github-members" class="members mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                <!--Load members via JS-->
+    <!-- ─── FAQ ─────────────────────────────────────────────────────── -->
+    <section id="faq">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+            <div class="text-center mb-12">
+                <p class="section-label">FAQ</p>
+                <h2 class="section-title">Frequently asked questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item card">
+                    <h3>Why use a configuration generator?</h3>
+                    <p>Put your focus on one thing at a time. When you focus on studying a single thing you accelerate your learning. Start with a solid config and evolve it as you grow.</p>
+                </div>
+                <div class="faq-item card">
+                    <h3>Is it maintained?</h3>
+                    <p>Created and maintained by a community that uses Neovim/Vim on a daily basis. Open-source, transparent and always improving.</p>
+                </div>
+                <div class="faq-item card">
+                    <h3>Is Vim configuration complex?</h3>
+                    <p>Not at all, as long as you have a good reference. Vim Bootstrap provides a great starting point so you don&rsquo;t have to figure everything out from scratch.</p>
+                </div>
+                <div class="faq-item card">
+                    <h3>Can I contribute?</h3>
+                    <p>Absolutely. Feel like you own the project. Report issues, propose improvements and help shape the future. Welcome to the team.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="drac-box Footer_footer__108BV border-t border-white/10">
-        <p class="drac-text credits drac-text-lg drac-line-height drac-text-white text-white/80">
-            Made with
-            <span class="drac-text love drac-text-lg drac-line-height drac-text-white">♥</span> by
-            <a href="https://github.com/editor-bootstrap" target="blank" class="drac-anchor drac-text drac-text-lg drac-text-purple-cyan drac-text-purple--hover">Editor
-                Bootstrap</a> Community
+    <!-- ─── Newsletter ──────────────────────────────────────────────── -->
+    <section id="newsletter" style="background:var(--c-bg-subtle); border-top:1px solid var(--c-border); border-bottom:1px solid var(--c-border);">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20 text-center">
+            <p class="section-label">Stay updated</p>
+            <h2 class="section-title">Get notified about new features</h2>
+            <p class="section-subtitle mx-auto mt-3 mb-8">Join our newsletter for the latest releases and updates.</p>
+            <form action="https://buttondown.email/api/emails/embed-subscribe/editor-bootstrap" method="post" target="popupwindow"
+                  onsubmit="window.open('https://buttondown.email/editor-bootstrap','popupwindow')"
+                  class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <input type="email" name="email" id="bd-email" placeholder="you@example.com" required class="newsletter-input" />
+                <input type="hidden" value="1" name="embed" />
+                <input type="submit" value="Subscribe" class="btn-primary" />
+            </form>
+        </div>
+    </section>
+
+    <!-- ─── Contributors ────────────────────────────────────────────── -->
+    <section id="authors">
+        <div class="mx-auto max-w-6xl px-5 py-16 md:py-20 text-center">
+            <p class="section-label">Community</p>
+            <h2 class="section-title">Our contributors</h2>
+            <p class="section-subtitle mx-auto mt-3 mb-10">Thanks to everyone building Vim Bootstrap.</p>
+            <div id="github-members" class="members grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ─── Footer ──────────────────────────────────────────────────── -->
+    <footer class="site-footer">
+        <p>
+            Made with &#9829; by
+            <a href="https://github.com/editor-bootstrap" target="_blank">Editor Bootstrap</a>
+            Community
         </p>
-    </div>
+    </footer>
 
-    <a href='https://github.com/editor-bootstrap/vim-bootstrap' target="_blank" class="corner-ribbon">
+    <!-- GitHub corner ribbon -->
+    <a href="https://github.com/editor-bootstrap/vim-bootstrap" target="_blank" class="corner-ribbon">
         Contrib on GitHub
     </a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin=" anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js" integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg==" crossorigin=" anonymous"></script>
+    <!-- ─── Scripts ─────────────────────────────────────────────────── -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js"
+            integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg=="
+            crossorigin="anonymous"></script>
+
     <script id="github-members-tmpl" type="text/html">
-        <div class="drac-box" data-animation="fadeInUp" data-animation-delay="1s">
-            <a data-href="html_url" target="_blank" class="block group rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition p-4">
-                <img class="mx-auto h-16 w-16 rounded-full ring-1 ring-white/10" data-src="avatar_url" data-alt="login" />
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold text-white text-center" data-content="login"></h3>
-                </div>
+        <div>
+            <a data-href="html_url" target="_blank" class="member-card">
+                <img data-src="avatar_url" data-alt="login" />
+                <h3 data-content="login"></h3>
             </a>
         </div>
     </script>
 
     <script src="/assets/js/members.js"></script>
     <script src="/assets/js/form.js"></script>
+
     <script>
-        // Enhance theme selection UX without breaking existing .logo-icon handling
+        // Theme card UX – sync clicks to hidden radio + logo-icon state
         document.addEventListener('DOMContentLoaded', function() {
-            const themeCards = document.querySelectorAll('.theme-card');
-            themeCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    const input = this.querySelector('input.theme-input');
-                    const img = this.querySelector('img.logo-icon');
+            document.querySelectorAll('.theme-card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var input = this.querySelector('input.theme-input');
+                    var img = this.querySelector('img.logo-icon');
                     if (!input || !img) return;
-                    document.querySelectorAll('img.logo-icon[data-name="theme"]').forEach(i => i.classList.remove('selected'));
+                    document.querySelectorAll('img.logo-icon[data-name="theme"]').forEach(function(i) { i.classList.remove('selected'); });
                     img.classList.add('selected');
                     input.checked = true;
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                 });
             });
         });
-        // Plugin validation functionality
+
+        // ── Plugin validation ──
         function validatePlugins() {
-            const selectedPlugins = Array.from(document.querySelectorAll('input[name="additional_plugins"]:checked'))
-                .map(input => input.value);
-
-            if (selectedPlugins.length === 0) {
-                document.getElementById('plugin-validation').style.display = 'none';
-                return;
-            }
-
+            var selected = Array.from(document.querySelectorAll('input[name="additional_plugins"]:checked'))
+                .map(function(i) { return i.value; });
+            if (selected.length === 0) { document.getElementById('plugin-validation').style.display = 'none'; return; }
             fetch('/validate-plugins', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: selectedPlugins.map(plugin => `plugins=${encodeURIComponent(plugin)}`).join('&')
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: selected.map(function(p) { return 'plugins=' + encodeURIComponent(p); }).join('&')
             })
-            .then(response => response.json())
-            .then(data => {
-                const validationDiv = document.getElementById('plugin-validation');
-                const warningsDiv = document.getElementById('plugin-warnings');
-                const errorsDiv = document.getElementById('plugin-errors');
-
-                warningsDiv.innerHTML = '';
-                errorsDiv.innerHTML = '';
-
-                if (data.warnings && data.warnings.length > 0) {
-                    warningsDiv.innerHTML = '<strong>Warnings:</strong><br>' + data.warnings.join('<br>');
-                }
-
-                if (data.errors && data.errors.length > 0) {
-                    errorsDiv.innerHTML = '<strong>Errors:</strong><br>' + data.errors.join('<br>');
-                }
-
-                validationDiv.style.display = (data.warnings.length > 0 || data.errors.length > 0) ? 'block' : 'none';
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var box = document.getElementById('plugin-validation');
+                var w = document.getElementById('plugin-warnings');
+                var e = document.getElementById('plugin-errors');
+                w.innerHTML = ''; e.innerHTML = '';
+                if (data.warnings && data.warnings.length) w.innerHTML = '<strong>Warnings:</strong><br>' + data.warnings.join('<br>');
+                if (data.errors && data.errors.length) e.innerHTML = '<strong>Errors:</strong><br>' + data.errors.join('<br>');
+                box.style.display = (data.warnings.length || data.errors.length) ? 'block' : 'none';
             })
-            .catch(error => {
-                console.error('Error validating plugins:', error);
-            });
+            .catch(function(err) { console.error('Plugin validation error:', err); });
         }
 
-        // Helpers to (un)check plugins by category
-        function setPluginsByCategory(categoryName, checked) {
-            const target = (categoryName || '').toLowerCase();
-            const inputs = document.querySelectorAll('input[name="additional_plugins"]');
-            inputs.forEach(input => {
-                const cat = (input.dataset.category || '').toLowerCase();
-                if (cat === target) {
+        function setPluginsByCategory(catName, checked) {
+            var target = (catName || '').toLowerCase();
+            document.querySelectorAll('input[name="additional_plugins"]').forEach(function(input) {
+                if ((input.dataset.category || '').toLowerCase() === target) {
                     input.checked = checked;
-                    // fire change so any listeners react (e.g., validation)
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         }
 
-        // Map language -> plugin category name(s)
-        const langToCategories = {
-            'go': ['Go Language'],
-            'python': ['Python Language'],
-            'javascript': ['JavaScript/TypeScript'],
-            'typescript': ['JavaScript/TypeScript'],
-            'vuejs': ['Vue.js Framework'],
-            'react': ['React Framework'],
-            'rust': ['Rust Language'],
-            'ruby': ['Ruby Language'],
-            'php': ['PHP Language'],
-            'lua': ['Lua Language'],
-            'c': ['C/C++ Language'],
-            'cpp': ['C/C++ Language'],
-            'c++': ['C/C++ Language'],
-            'haskell': ['Haskell Language'],
-            'elixir': ['Elixir Language'],
-            'elm': ['Elm Language'],
-            'erlang': ['Erlang Language'],
-            'ocaml': ['OCaml Language'],
-            'perl': ['Perl Language'],
-            'scala': ['Scala Language'],
-            'lisp': ['Lisp Language'],
-            'html': ['HTML/CSS'],
-            'css': ['HTML/CSS']
+        var langToCategories = {
+            'go': ['Go Language'], 'python': ['Python Language'],
+            'javascript': ['JavaScript/TypeScript'], 'typescript': ['JavaScript/TypeScript'],
+            'vuejs': ['Vue.js Framework'], 'react': ['React Framework'],
+            'rust': ['Rust Language'], 'ruby': ['Ruby Language'],
+            'php': ['PHP Language'], 'lua': ['Lua Language'],
+            'c': ['C/C++ Language'], 'cpp': ['C/C++ Language'], 'c++': ['C/C++ Language'],
+            'haskell': ['Haskell Language'], 'elixir': ['Elixir Language'],
+            'elm': ['Elm Language'], 'erlang': ['Erlang Language'],
+            'ocaml': ['OCaml Language'], 'perl': ['Perl Language'],
+            'scala': ['Scala Language'], 'lisp': ['Lisp Language'],
+            'html': ['HTML/CSS'], 'css': ['HTML/CSS']
         };
 
-        // Wire up interactions on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Toolbar handlers
-            const categoriesContainer = document.getElementById('plugin-categories-container');
-            const searchInput = document.getElementById('plugin-search');
-            const selectedOnly = document.getElementById('plugin-selected-only');
-            const expandAllBtn = document.getElementById('plugin-expand-all');
-            const collapseAllBtn = document.getElementById('plugin-collapse-all');
+            var container = document.getElementById('plugin-categories-container');
+            var searchInput = document.getElementById('plugin-search');
+            var selectedOnly = document.getElementById('plugin-selected-only');
 
             function applyFilters() {
-                const term = (searchInput?.value || '').toLowerCase();
-                const onlySel = !!selectedOnly?.checked;
-                const items = categoriesContainer?.querySelectorAll('.plugin-item') || [];
-                items.forEach(item => {
-                    const label = item.querySelector('label');
-                    const name = (label?.textContent || '').toLowerCase();
-                    const checkbox = item.querySelector('input[type="checkbox"][name="additional_plugins"]');
-                    const matchesText = term === '' || name.includes(term);
-                    const matchesSel = !onlySel || (checkbox?.checked === true);
-                    item.style.display = (matchesText && matchesSel) ? '' : 'none';
+                var term = (searchInput ? searchInput.value : '').toLowerCase();
+                var onlySel = selectedOnly ? selectedOnly.checked : false;
+                (container ? container.querySelectorAll('.plugin-item') : []).forEach(function(item) {
+                    var label = item.querySelector('label');
+                    var name = (label ? label.textContent : '').toLowerCase();
+                    var cb = item.querySelector('input[type="checkbox"][name="additional_plugins"]');
+                    var show = (term === '' || name.indexOf(term) !== -1) && (!onlySel || (cb && cb.checked));
+                    item.style.display = show ? '' : 'none';
                 });
-                // Update per-category counts
-                categoriesContainer?.querySelectorAll('.plugin-category').forEach(cat => {
-                    const count = cat.querySelectorAll('.plugin-item').length;
-                    const visible = cat.querySelectorAll('.plugin-item:not([style*="display: none"])').length;
-                    const badge = cat.querySelector('.category-count');
-                    if (badge) badge.textContent = `(${visible}/${count})`;
-                });
+                if (container) {
+                    container.querySelectorAll('.plugin-category').forEach(function(cat) {
+                        var total = cat.querySelectorAll('.plugin-item').length;
+                        var vis = cat.querySelectorAll('.plugin-item:not([style*="display: none"])').length;
+                        var badge = cat.querySelector('.category-count');
+                        if (badge) badge.textContent = '(' + vis + '/' + total + ')';
+                    });
+                }
             }
 
-            searchInput?.addEventListener('input', () => { applyFilters(); });
-            selectedOnly?.addEventListener('change', () => { applyFilters(); });
-            expandAllBtn?.addEventListener('click', () => {
-                document.querySelectorAll('.plugin-category.collapsible').forEach(c => c.classList.remove('collapsed'));
+            if (searchInput) searchInput.addEventListener('input', applyFilters);
+            if (selectedOnly) selectedOnly.addEventListener('change', applyFilters);
+
+            document.getElementById('plugin-expand-all').addEventListener('click', function() {
+                document.querySelectorAll('.plugin-category.collapsible').forEach(function(c) { c.classList.remove('collapsed'); });
             });
-            collapseAllBtn?.addEventListener('click', () => {
-                document.querySelectorAll('.plugin-category.collapsible').forEach(c => c.classList.add('collapsed'));
+            document.getElementById('plugin-collapse-all').addEventListener('click', function() {
+                document.querySelectorAll('.plugin-category.collapsible').forEach(function(c) { c.classList.add('collapsed'); });
             });
 
-            // Per-category select/clear
-            categoriesContainer?.addEventListener('click', function(e) {
-                const target = e.target;
-                if (!(target instanceof Element)) return;
-                if (target.classList.contains('cat-select-all') || target.classList.contains('cat-clear')) {
-                    const catName = target.getAttribute('data-category') || '';
-                    const checked = target.classList.contains('cat-select-all');
-                    setPluginsByCategory(catName, checked);
+            if (container) container.addEventListener('click', function(e) {
+                var t = e.target;
+                if (!(t instanceof Element)) return;
+                if (t.classList.contains('cat-select-all') || t.classList.contains('cat-clear')) {
+                    setPluginsByCategory(t.getAttribute('data-category') || '', t.classList.contains('cat-select-all'));
                     validatePlugins();
                     applyFilters();
                 }
             });
 
-            // Initial count and filter state
             applyFilters();
 
-            // Validate on plugin toggle
-            const pluginCheckboxes = document.querySelectorAll('input[name="additional_plugins"]');
-            pluginCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    validatePlugins();
-                    applyFilters();
-                });
+            document.querySelectorAll('input[name="additional_plugins"]').forEach(function(cb) {
+                cb.addEventListener('change', function() { validatePlugins(); applyFilters(); });
             });
 
-            // Sync languages -> plugin categories
-            const langCheckboxes = document.querySelectorAll('input[name="langs"]');
-            langCheckboxes.forEach(cb => {
+            document.querySelectorAll('input[name="langs"]').forEach(function(cb) {
                 cb.addEventListener('change', function() {
-                    const lang = (cb.value || '').toLowerCase();
-                    const categories = langToCategories[lang] || [];
-                    categories.forEach(cat => setPluginsByCategory(cat, cb.checked));
+                    var lang = (cb.value || '').toLowerCase();
+                    (langToCategories[lang] || []).forEach(function(cat) { setPluginsByCategory(cat, cb.checked); });
                     validatePlugins();
                 });
             });
 
-            // Collapsible categories: only for language categories (marked with class 'collapsible')
-            document.querySelectorAll('.plugin-category.collapsible > h4').forEach(header => {
-                header.addEventListener('click', function() {
-                    const box = this.parentElement;
-                    box.classList.toggle('collapsed');
-                });
+            document.querySelectorAll('.plugin-category.collapsible > h4').forEach(function(header) {
+                header.addEventListener('click', function() { this.parentElement.classList.toggle('collapsed'); });
             });
 
-            // Language expand buttons: open corresponding plugin categories and scroll into view
-            document.querySelectorAll('.lang-expand').forEach(btn => {
+            document.querySelectorAll('.lang-expand').forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    const lang = (this.dataset.lang || '').toLowerCase();
-                    const categories = langToCategories[lang] || [];
-                    categories.forEach(cat => {
-                        const box = Array.from(document.querySelectorAll('.plugin-category'))
-                            .find(el => (el.dataset.categoryName || '').toLowerCase() === cat.toLowerCase());
-                        if (box) {
-                            box.classList.remove('collapsed');
-                            // Smooth scroll to the category
-                            box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
+                    var lang = (this.dataset.lang || '').toLowerCase();
+                    (langToCategories[lang] || []).forEach(function(cat) {
+                        var box = Array.from(document.querySelectorAll('.plugin-category'))
+                            .find(function(el) { return (el.dataset.categoryName || '').toLowerCase() === cat.toLowerCase(); });
+                        if (box) { box.classList.remove('collapsed'); box.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
                     });
                 });
             });
@@ -747,20 +602,12 @@
     </script>
 
     <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-53567832-1', 'auto');
-        ga('send', 'pageview');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create','UA-53567832-1','auto');
+        ga('send','pageview');
     </script>
 </body>
 
